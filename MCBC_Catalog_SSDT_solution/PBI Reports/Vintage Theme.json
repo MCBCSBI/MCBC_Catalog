@@ -1,0 +1,13 @@
+{
+
+"name": "Vintage",
+
+"dataColors": [ "#351431", "#775253", "#c3a995", "#656565", "#912f56", "#907e8e", "#b4a0a1", "#ded0c5", "#ababab", "#c38da2"],
+
+"background":"#FFFFFF",
+
+"foreground": "#775253",
+
+"tableAccent":"#351431"
+
+}

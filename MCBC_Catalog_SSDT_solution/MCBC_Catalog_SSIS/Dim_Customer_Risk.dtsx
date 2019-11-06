@@ -1,0 +1,2313 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2019 12:04:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{1F453B50-D10E-4BB4-BBB9-87C1602857CC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="2057"
+  DTS:MaxErrorCount="10"
+  DTS:ObjectName="Dim_Customer_Risk"
+  DTS:PackageType="5"
+  DTS:VersionBuild="434"
+  DTS:VersionGUID="{B21184C2-D305-43E2-80FE-C2FC48567043}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{4BCE66B7-3D19-4F43-88ED-D720C1544DC9}"
+      DTS:ObjectName="v_Backfill_Date_To_Load">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">4/24/2019 1:50:00 PM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AC3B00F3-AF37-4CE8-9011-BAE3C2847CB5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ControlTableUpdate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CE7E2E0F-8E77-4282-A72D-D9197DDA55FE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vListOfDates">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5B804F34-B213-4336-B5FA-B7423FF26430}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_CurrentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">4/26/2019</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{18F8E3F7-1499-4AB2-B34A-BF9A19531004}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_LastDateLoaded">
+      <DTS:VariableValue
+        DTS:DataType="7">5/30/2019 3:50:56 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF Load Dim_Customer_Risk"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2C3A29C9-28EC-470B-BA0E-BA7EF0B702C1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Load Dim_Customer_Risk"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\CONV convert data"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="CONV convert data"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Inputs[Data Conversion Input].Columns[Risk_Asset_Type_Desc]"
+                      cachedDataType="nText"
+                      cachedName="Risk_Asset_Type_Desc"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type_Desc]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\CONV convert data.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Output].Columns[Copy of Risk_Asset_Type_Desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Output].Columns[Copy of Risk_Asset_Type_Desc]"
+                      name="Copy of Risk_Asset_Type_Desc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type_Desc]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\CONV convert data.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CSPL check old hash vs new hash"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input].Columns[Scd2_Hash]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Scd2_Hash"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Scd2_Hash]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input].Columns[Scd2_Hash_Old]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Scd2_Hash_Old"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Scd2_Hash_Old]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Type 2 Change]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Type 2 Change"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Scd2_Hash]} != #{Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Scd2_Hash_Old]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Scd2_Hash != Scd2_Hash_Old</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[No Change]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="No Change"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP lookup Customer Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Customer where SCD2_END is null</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Customer where SCD2_END is null) [refTable]
+where [refTable].[Customer_Num] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Num" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name_1" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Gender" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Officer" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nationality" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Residence" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Type" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Of_Birth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sector" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Target" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Industry" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Legal_Id" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Since" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Contact_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Introducer" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Kyc_Document" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Kyc_Relationship" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Last_Kyc_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Auto_Next_Kyc_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Last_Suit_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Auto_Next_Suit_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Manual_Next_Kyc_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Manual_Next_Suit_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Aml_Check" dataType="DT_WSTR" length="4" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Aml_Result" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Last_Aml_Result_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Calc_Risk_Class" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Manual_Risk_Class" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Override_Reason" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Kyc_Complete" dataType="DT_WSTR" length="4" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[@ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Inputs[Lookup Input].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[@ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Customer_Num</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Match Output].Columns[Customer_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Match Output].Columns[Customer_key]"
+                      name="Customer_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Customer_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP lookup landing against existing dimension"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Customer_Risk where SCD2_END is null</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Customer_Risk where SCD2_END is null) [refTable]
+where [refTable].[Customer_Risk_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Customer_Risk_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Risk_ID" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Risk_Asset_Type" dataType="DT_WSTR" length="7" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Risk_Asset_Type_Desc" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Risk_Level" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Risk_Tolerance" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Risk_From_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Customer_Risk_ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Inputs[Lookup Input].Columns[Customer_Risk_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Customer_Risk_ID"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Customer_Risk_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Customer_Risk_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Scd2_Hash_Old]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="66"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Scd2_Hash_Old]"
+                      name="Scd2_Hash_Old"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Scd2_Hash</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Customer_Risk_Key_Old]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Customer_Risk_Key_Old]"
+                      name="Customer_Risk_Key_Old"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Customer_Risk_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="MLT dupicate type 2 change streams">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Customer_Risk]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Scd2_Hash]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Scd2_Hash"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Hash]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Scd2_Hash]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Start]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Customer_Risk_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Customer_Risk_ID"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Risk_ID]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Customer_Risk_ID]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Risk_Level]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Level"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Level]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Risk_Tolerance]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Tolerance"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Tolerance]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Tolerance]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Risk_Asset_Type_Desc]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of Risk_Asset_Type_Desc"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Asset_Type_Desc]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Copy of Risk_Asset_Type_Desc]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Risk_Asset_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Asset_Type"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Asset_Type]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Asset_Type]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Customer_key]"
+                      cachedDataType="i4"
+                      cachedName="Customer_key"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_key]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Match Output].Columns[Customer_key]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Risk_From_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Risk_From_Date"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_From_Date]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_From_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_key]"
+                      dataType="i4"
+                      name="Customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Start]"
+                      dataType="dbDate"
+                      name="Scd2_Start" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_End]"
+                      dataType="dbDate"
+                      name="Scd2_End" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      name="Scd2_Hash" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Risk_Key]"
+                      dataType="i4"
+                      name="Customer_Risk_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Risk_ID]"
+                      dataType="wstr"
+                      length="100"
+                      name="Customer_Risk_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Asset_Type]"
+                      dataType="wstr"
+                      length="7"
+                      name="Risk_Asset_Type" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Asset_Type_Desc]"
+                      dataType="wstr"
+                      length="100"
+                      name="Risk_Asset_Type_Desc" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level]"
+                      dataType="i4"
+                      name="Risk_Level" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Tolerance]"
+                      dataType="i4"
+                      name="Risk_Tolerance" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_From_Date]"
+                      dataType="dbDate"
+                      name="Risk_From_Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST write type 2 changes to type 2 table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SCD2_Dim_Customer_Risk]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].Columns[Customer_Risk_Key_Old]"
+                      cachedDataType="i4"
+                      cachedName="Customer_Risk_Key_Old"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Risk_Key_old]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output].Columns[Customer_Risk_Key_Old]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Risk_Key_old]"
+                      dataType="i4"
+                      name="Customer_Risk_Key_old" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC Get Data From landing"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+		 C.MIS_DATE 
+		,C.[@ID]
+		,Concat(C.[@ID],isnull(C.Risk_Asset_Type,'-1'),isnull(C.Risk_Level,'-1')
+		,isnull(C.Risk_Tolerance,'-1'),isnull(C.Risk_from_Date,'1900-01-01')) Customer_Risk_ID
+		,C.Risk_Asset_Type
+		,Asset_Desc.ASSET_DESC Risk_Asset_Type_Desc
+		,C.Risk_Level
+		,C.Risk_Tolerance
+		,CONVERT(date, c.Risk_From_Date, 112) Risk_From_Date
+		
+		
+
+    ,[Scd2_Hash] =
+		(isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
+			   C.[@ID]
+			  ,C.Risk_Asset_Type
+			  ,Asset_Desc.ASSET_DESC
+			  ,C.Risk_Level
+			  ,C.Risk_Tolerance
+			  ,C.Risk_From_Date
+		)),1),0))
+		
+FROM 
+	 [InsightLanding].[BS].[CUSTOMER_Risk_Asset_Type] C
+	 Left join [InsightLanding].[BS].[ASSET_TYPE] Asset_Desc on Asset_Desc.[@ID]=C.Risk_Asset_Type and Asset_Desc.MIS_DATE=C.MIS_DATE
+
+where (C.Risk_Asset_Type is not null or C.Risk_Level is not null or C.Risk_Tolerance is not null or C.Risk_From_Date is not null)
+and c.mis_date = ?</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{4BCE66B7-C2E6-4F43-88ED-D720C1544DC9};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Connections[OleDbConnection]"
+                  connectionManagerID="{671548CD-8576-49C9-868B-AEAAB720CD7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_Conn_T24]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Scd2_Hash]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Scd2_Hash]"
+                      length="66"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Scd2_Hash]"
+                      name="Scd2_Hash"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      name="@ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Customer_Risk_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Customer_Risk_ID]"
+                      length="240"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Customer_Risk_ID]"
+                      name="Customer_Risk_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Asset_Type]"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type]"
+                      name="Risk_Asset_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type_Desc]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Asset_Type_Desc]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type_Desc]"
+                      name="Risk_Asset_Type_Desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Level]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Level]"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Level]"
+                      name="Risk_Level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Tolerance]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Tolerance]"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Tolerance]"
+                      name="Risk_Tolerance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_From_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_From_Date]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_From_Date]"
+                      name="Risk_From_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      name="MIS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Scd2_Hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      name="Scd2_Hash" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="@ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Customer_Risk_ID]"
+                      dataType="wstr"
+                      length="240"
+                      name="Customer_Risk_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Asset_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Risk_Asset_Type" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Asset_Type_Desc]"
+                      dataType="nText"
+                      name="Risk_Asset_Type_Desc" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Level]"
+                      dataType="wstr"
+                      length="50"
+                      name="Risk_Level" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_Tolerance]"
+                      dataType="wstr"
+                      length="50"
+                      name="Risk_Tolerance" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Risk_From_Date]"
+                      dataType="dbDate"
+                      name="Risk_From_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      dataType="dbDate"
+                      name="MIS_DATE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Customer_Risk_ID]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Customer_Risk_ID]"
+                      name="Customer_Risk_ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Asset_Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Asset_Type]"
+                      name="Risk_Asset_Type" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Asset_Type_Desc]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Asset_Type_Desc]"
+                      name="Risk_Asset_Type_Desc" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Level]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Level]"
+                      name="Risk_Level" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Tolerance]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_Tolerance]"
+                      name="Risk_Tolerance" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_From_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Risk_From_Date]"
+                      name="Risk_From_Date" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Scd2_Hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Scd2_Hash]"
+                      name="Scd2_Hash" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Customer_Risk\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Customer_Risk_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Customer_Risk_ID"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Customer_Risk_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Customer_Risk_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Risk_Asset_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Asset_Type"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Asset_Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Copy of Risk_Asset_Type_Desc]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of Risk_Asset_Type_Desc"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Output].Columns[Copy of Risk_Asset_Type_Desc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Copy of Risk_Asset_Type_Desc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Risk_Level]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Level"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Level]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Level]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Risk_Tolerance]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Tolerance"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Tolerance]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Tolerance]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Scd2_Hash]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Scd2_Hash"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Scd2_Hash]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Scd2_Hash]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1].Columns[Risk_From_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Risk_From_Date"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_From_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_From_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Customer_Risk_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Customer_Risk_ID"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Customer_Risk_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Customer_Risk_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Risk_Asset_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Asset_Type"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Asset_Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Asset_Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Copy of Risk_Asset_Type_Desc]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of Risk_Asset_Type_Desc"
+                      lineageId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Output].Columns[Copy of Risk_Asset_Type_Desc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Copy of Risk_Asset_Type_Desc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Risk_Level]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Level"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Level]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Level]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Risk_Tolerance]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Risk_Tolerance"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_Tolerance]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Tolerance]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Scd2_Hash]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Scd2_Hash"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Scd2_Hash]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Scd2_Hash]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2].Columns[Risk_From_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Risk_From_Date"
+                      lineageId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Risk_From_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_From_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Customer_Risk_ID]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Customer_Risk_ID]"
+                      name="Customer_Risk_ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Asset_Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Asset_Type]"
+                      name="Risk_Asset_Type" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Copy of Risk_Asset_Type_Desc]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Copy of Risk_Asset_Type_Desc]"
+                      name="Copy of Risk_Asset_Type_Desc" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Level]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Level]"
+                      name="Risk_Level" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Tolerance]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_Tolerance]"
+                      name="Risk_Tolerance" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Scd2_Hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Scd2_Hash]"
+                      name="Scd2_Hash" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_From_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1].Columns[Risk_From_Date]"
+                      name="Risk_From_Date" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Data Conversion Output]"
+              endId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\DF Load Dim_Customer_Risk\CONV convert data.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Lookup Match Output]"
+              endId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Lookup Match Output1]"
+              endId="Package\DF Load Dim_Customer_Risk\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Lookup No Match Output]"
+              endId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Multicast Output 1]"
+              endId="Package\DF Load Dim_Customer_Risk\Union All.Inputs[Union All Input 2]"
+              name="Multicast Output 1"
+              startId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Multicast Output 2]"
+              endId="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[OLE DB Source Output]"
+              endId="Package\DF Load Dim_Customer_Risk\CONV convert data.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Type 2 Change]"
+              endId="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]"
+              name="Type 2 Change"
+              startId="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash.Outputs[Type 2 Change]" />
+            <path
+              refId="Package\DF Load Dim_Customer_Risk.Paths[Union All Output 1]"
+              endId="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key.Inputs[Lookup Input]"
+              name="Union All Output 1"
+              startId="Package\DF Load Dim_Customer_Risk\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Create scd2 table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E19B38E3-703A-425A-91C7-977629AD8284}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Create scd2 table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_Customer_Risk&#xA;create table SCD2_Dim_Customer_Risk&#xA;(&#xA;Customer_Risk_Key_old int not null,&#xA; End_Date datetime not null&#xA;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get current load date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{62BCB347-345F-4006-9D67-AE3B17F5968C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get current load date"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="select max(scd2_start) from Dim_Customer"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_CurrentDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get last date loaded from Ctrl table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3C03B2E0-9FD7-4F7C-873E-024426BCB06F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get last date loaded from Ctrl table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="select Last_Date_Loaded&#xA;from Control_Table&#xA;where Table_Name = 'Dim_Customer_Risk'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_LastDateLoaded" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Update Control Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{89F63D72-732F-4CC9-844A-E743BB87E8C9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Update Control Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="update control_table&#xA;set Last_Execution_Date = ?,&#xA;Last_Date_Loaded= ?&#xA;where table_name = 'Dim_Customer_Risk'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::v_Backfill_Date_To_Load"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update SCD 2 rows"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1D0ED81A-B215-4701-B99D-7C7AE424A017}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update SCD 2 rows"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="update d&#xA; set d.scd2_end= u.End_Date&#xA;from&#xA; Dim_Customer_Risk d&#xA; inner join SCD2_Dim_Customer_Risk u&#xA;  on d.Customer_Risk_key = u.Customer_Risk_key_old" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A24A71E5-5403-4593-8A0F-410F805B0F2C}"
+      DTS:From="Package\SQL Create scd2 table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF Load Dim_Customer_Risk" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5470FF45-067E-4122-8108-6406B57613A3}"
+      DTS:From="Package\DF Load Dim_Customer_Risk"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update SCD 2 rows" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6FCD544D-4B3E-4D97-A513-5FEB518DD075}"
+      DTS:From="Package\Update SCD 2 rows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Get current load date" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{ECAA6461-EE3B-417C-8DE3-9B819FEE3B34}"
+      DTS:From="Package\SQL Get current load date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL Update Control Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{7D3816E6-C5AE-4E56-BEC8-A139E9A372D4}"
+      DTS:From="Package\SQL Get last date loaded from Ctrl table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SQL Create scd2 table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\DF Load Dim_Customer_Risk"
+          TopLeft="208.13194201815,239.646987003846" />
+        <NodeLayout
+          Size="184,42.4"
+          Id="Package\SQL Create scd2 table"
+          TopLeft="288.55653831618,144.22597401824" />
+        <NodeLayout
+          Size="202.4,42.4"
+          Id="Package\SQL Get current load date"
+          TopLeft="459.150120407415,324.977931858982" />
+        <NodeLayout
+          Size="266.4,41.6"
+          Id="Package\SQL Get last date loaded from Ctrl table"
+          TopLeft="33.1200342625056,86.0136501047862" />
+        <NodeLayout
+          Size="201.6,42.4"
+          Id="Package\SQL Update Control Table"
+          TopLeft="506.314471556463,401.716025486474" />
+        <NodeLayout
+          Size="170.4,42.4"
+          Id="Package\Update SCD 2 rows"
+          TopLeft="463.154749977371,235.941822027037" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="380.55653831618,186.62597401824">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-65.2245962980301,53.021012985606"
+              Start="0,0"
+              End="-65.2245962980301,45.521012985606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.510506492803" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.510506492803"
+                    Point2="0,26.510506492803"
+                    Point3="-4,26.510506492803" />
+                  <mssgle:LineSegment
+                    End="-61.2245962980301,26.510506492803" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-61.2245962980301,26.510506492803"
+                    Point2="-65.2245962980301,26.510506492803"
+                    Point3="-65.2245962980301,30.510506492803" />
+                  <mssgle:LineSegment
+                    End="-65.2245962980301,45.521012985606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="422.53194201815,258.794404515442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.6228079592211,0"
+              Start="0,0"
+              End="33.1228079592211,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="33.1228079592211,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="548.488083310704,278.608488693704">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.9953704300437,46.3694431652783"
+              Start="0,0"
+              End="11.9953704300437,38.8694431652783">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.1847215826392" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.1847215826392"
+                    Point2="0,23.1847215826392"
+                    Point3="4,23.1847215826392" />
+                  <mssgle:LineSegment
+                    End="7.99537043004375,23.1847215826392" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.99537043004375,23.1847215826392"
+                    Point2="11.9953704300437,23.1847215826392"
+                    Point3="11.9953704300437,27.1847215826392" />
+                  <mssgle:LineSegment
+                    End="11.9953704300437,38.8694431652783" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="560.483453740748,367.644598525649">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.4976844823813,34.0714269608255"
+              Start="0,0"
+              End="46.4976844823813,26.5714269608255">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0357134804127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0357134804127"
+                    Point2="0,17.0357134804127"
+                    Point3="4,17.0357134804127" />
+                  <mssgle:LineSegment
+                    End="42.4976844823813,17.0357134804127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.4976844823813,17.0357134804127"
+                    Point2="46.4976844823813,17.0357134804127"
+                    Point3="46.4976844823813,21.0357134804127" />
+                  <mssgle:LineSegment
+                    End="46.4976844823813,26.5714269608255" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="299.520034262506,106.813650104786">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.0365040536748,37.4123239134537"
+              Start="0,0"
+              End="81.0365040536748,29.9123239134537">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="77.0365040536748,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.0365040536748,0"
+                    Point2="81.0365040536748,0"
+                    Point3="81.0365040536748,4" />
+                  <mssgle:LineSegment
+                    End="81.0365040536748,29.9123239134537" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF Load Dim_Customer_Risk">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="252,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\MLT dupicate type 2 change streams"
+          TopLeft="688.45239265765,327.815130375708" />
+        <NodeLayout
+          Size="121.6,42.4"
+          Id="Package\DF Load Dim_Customer_Risk\Union All"
+          TopLeft="351.261897192165,321.063300348851" />
+        <NodeLayout
+          Size="296,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table"
+          TopLeft="667.333344697952,491.352947815067" />
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\CSPL check old hash vs new hash"
+          TopLeft="700.00001192093,140.392158607299" />
+        <NodeLayout
+          Size="232,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing"
+          TopLeft="38.8571435188764,38.5666671937236" />
+        <NodeLayout
+          Size="295.2,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension"
+          TopLeft="266.666671207973,144.924371502487" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\CONV convert data"
+          TopLeft="336.190481915766,37.1372551843782" />
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Lookup No Match Output]"
+          TopLeft="413.164284200069,186.524371502487">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134.538928846364"
+              Start="0,0"
+              End="0,127.038928846364">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.038928846364" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,57.7147769231819,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Lookup Match Output]"
+          TopLeft="562.000004541306,163.32493172156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.000007379624,0"
+              Start="0,0"
+              End="130.500007379624,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="130.500007379624,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.0586169710618,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Data Conversion Output]"
+          TopLeft="417.261909895203,78.4705885177115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.4537829847759"
+              Start="0,0"
+              End="0,58.9537829847759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.9537829847759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Type 2 Change]"
+          TopLeft="816.392868955956,181.725491940632">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,146.089638435076"
+              Start="0,0"
+              End="0,138.589638435076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,138.589638435076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.14244140625,63.4632762487879,68.2848828125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[OLE DB Source Output]"
+          TopLeft="270.857143518876,58.5186278557176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.3333383968896,0"
+              Start="0,0"
+              End="57.8333383968896,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.8333383968896,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Multicast Output 2]"
+          TopLeft="814.892868677801,369.415130375708">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,121.937817439359"
+              Start="0,0"
+              End="0,114.437817439359">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.437817439359" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Multicast Output 1]"
+          TopLeft="688.45239265765,345.439215362279">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-215.590495465485,0"
+              Start="0,0"
+              End="-208.090495465485,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-208.090495465485,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\OLE DB Destination"
+          TopLeft="328.571434166967,498.7411817879" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\DF Load Dim_Customer_Risk\LKP lookup Customer Key"
+          TopLeft="313.142862475649,400.54902380049" />
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Lookup Match Output1]"
+          TopLeft="413.257148321308,442.14902380049">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.5921579874098"
+              Start="0,0"
+              End="0,49.0921579874098">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.0921579874098" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.7413914937049,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer_Risk.Paths[Union All Output 1]"
+          TopLeft="412.402379833907,363.463300348851">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.0857234516395"
+              Start="0,0"
+              End="0,29.5857234516395">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5857234516395" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Customer_Risk\OLE_DST write type 2 changes to type 2 table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Customer_Risk\OLE_SRC Get Data From landing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Customer_Risk\LKP lookup landing against existing dimension">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Customer_Risk\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

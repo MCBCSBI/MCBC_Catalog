@@ -1,0 +1,878 @@
+{
+  "name": "MCBC_Catalog_Tabular",
+  "compatibilityLevel": 1400,
+  "model": {
+    "culture": "en-GB",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/134LT135\\MSSQLSERVER01;MCBC_DW_SEY",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "134LT135\\MSSQLSERVER01",
+            "database": "MCBC_DW_SEY"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "134lt135\\mssqlserver01;MCBC_DW_SEY",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "v_dim_customer",
+        "columns": [
+          {
+            "name": "Customer_key",
+            "dataType": "int64",
+            "sourceColumn": "Customer_key"
+          },
+          {
+            "name": "Customer_No",
+            "dataType": "string",
+            "sourceColumn": "Customer_No"
+          },
+          {
+            "name": "Customer_Name",
+            "dataType": "string",
+            "sourceColumn": "Customer_Name"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "Account_Officer",
+            "dataType": "string",
+            "sourceColumn": "Account_Officer"
+          },
+          {
+            "name": "Nationality",
+            "dataType": "string",
+            "sourceColumn": "Nationality"
+          },
+          {
+            "name": "Residence",
+            "dataType": "string",
+            "sourceColumn": "Residence"
+          },
+          {
+            "name": "Customer_Type",
+            "dataType": "string",
+            "sourceColumn": "Customer_Type"
+          },
+          {
+            "name": "Date_Of_Birth",
+            "dataType": "dateTime",
+            "sourceColumn": "Date_Of_Birth"
+          },
+          {
+            "name": "Sector",
+            "dataType": "string",
+            "sourceColumn": "Sector"
+          },
+          {
+            "name": "Target",
+            "dataType": "string",
+            "sourceColumn": "Target"
+          },
+          {
+            "name": "Industry",
+            "dataType": "string",
+            "sourceColumn": "Industry"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "Legal_Id",
+            "dataType": "string",
+            "sourceColumn": "Legal_Id"
+          },
+          {
+            "name": "Customer_Since",
+            "dataType": "string",
+            "sourceColumn": "Customer_Since"
+          },
+          {
+            "name": "Contact_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Contact_Date"
+          },
+          {
+            "name": "Introducer",
+            "dataType": "string",
+            "sourceColumn": "Introducer"
+          },
+          {
+            "name": "Kyc_Relationship",
+            "dataType": "string",
+            "sourceColumn": "Kyc_Relationship"
+          },
+          {
+            "name": "Last_Kyc_Review_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Last_Kyc_Review_Date"
+          },
+          {
+            "name": "Auto_Next_Kyc_Review_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Auto_Next_Kyc_Review_Date"
+          },
+          {
+            "name": "Last_Suit_Review_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Last_Suit_Review_Date"
+          },
+          {
+            "name": "Auto_Next_Suit_Review_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Auto_Next_Suit_Review_Date"
+          },
+          {
+            "name": "Manual_Next_Kyc_Review_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Manual_Next_Kyc_Review_Date"
+          },
+          {
+            "name": "Manual_Next_Suit_Review_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Manual_Next_Suit_Review_Date"
+          },
+          {
+            "name": "Aml_Check",
+            "dataType": "string",
+            "sourceColumn": "Aml_Check"
+          },
+          {
+            "name": "Aml_Result",
+            "dataType": "string",
+            "sourceColumn": "Aml_Result"
+          },
+          {
+            "name": "Last_Aml_Result_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Last_Aml_Result_Date"
+          },
+          {
+            "name": "Calc_Risk_Class",
+            "dataType": "string",
+            "sourceColumn": "Calc_Risk_Class"
+          },
+          {
+            "name": "Manual_Risk_Class",
+            "dataType": "string",
+            "sourceColumn": "Manual_Risk_Class"
+          },
+          {
+            "name": "Override_Reason",
+            "dataType": "string",
+            "sourceColumn": "Override_Reason"
+          },
+          {
+            "name": "Kyc_Complete",
+            "dataType": "string",
+            "sourceColumn": "Kyc_Complete"
+          },
+          {
+            "name": "Scd2_Start",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Scd2_Start"
+          },
+          {
+            "name": "Scd2_End",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Scd2_End"
+          },
+          {
+            "name": "Scd2_Hash",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Scd2_Hash"
+          },
+          {
+            "name": "Pref_com_Channel",
+            "dataType": "string",
+            "sourceColumn": "Pref_com_Channel"
+          },
+          {
+            "type": "calculated",
+            "name": "Length of Relationship",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "var diff = ",
+              "    DATEDIFF(",
+              "        DATE(",
+              "            LEFT(v_dim_customer[Customer_Since],4),",
+              "            MID(v_dim_customer[Customer_Since],5,2),",
+              "            RIGHT(v_dim_customer[Customer_Since],2)",
+              "        ),",
+              "        TODAY()",
+              "        ,DAY",
+              "    )",
+              "return",
+              "    SWITCH(",
+              "        TRUE(),",
+              "        diff < 365, \"< 1Y\",",
+              "        diff < 730, \"1 - 2Y\",",
+              "        diff < 1825, \"3 - 5Y\",",
+              "         \"5Y +\"",
+              "    )",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "name": "Company_Code",
+            "dataType": "string",
+            "sourceColumn": "Company_Code"
+          },
+          {
+            "name": "Customer_Branch",
+            "dataType": "string",
+            "sourceColumn": "Company_Name"
+          },
+          {
+            "type": "calculated",
+            "name": "Age Group",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "var age = ",
+              "DATEDIFF(",
+              "    v_dim_customer[Date_Of_Birth],",
+              "    TODAY(),",
+              "    YEAR",
+              ")",
+              "return",
+              "SWITCH(",
+              "    TRUE(),",
+              "    age < 18, \"< 18\",",
+              "    age < 26, \"18 -25\",",
+              "    age < 36, \"26 -35\",",
+              "    age < 56, \"36 -55\",",
+              "    \"55 +\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Residence_Type",
+            "dataType": "string",
+            "sourceColumn": "Residence_Type"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134LT135\\MSSQLSERVER01;MCBC_DW_SEY\",",
+                "    dbo_v_dim_customer = Source{[Schema=\"dbo\",Item=\"v_dim_customer\"]}[Data]",
+                "in",
+                "    dbo_v_dim_customer"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "v_dim_date",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date_Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Date_Key"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Month_Name",
+            "dataType": "string",
+            "sourceColumn": "Month_Name"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Week_Of_Month",
+            "dataType": "int64",
+            "sourceColumn": "Week_Of_Month"
+          },
+          {
+            "name": "Day",
+            "dataType": "int64",
+            "sourceColumn": "Day"
+          },
+          {
+            "name": "Day_Name",
+            "dataType": "string",
+            "sourceColumn": "Day_Name"
+          },
+          {
+            "name": "Financial_Year",
+            "dataType": "int64",
+            "sourceColumn": "Financial_Year"
+          },
+          {
+            "name": "Financial_Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Financial_Quarter"
+          },
+          {
+            "name": "Date_Current_Week",
+            "dataType": "boolean",
+            "sourceColumn": "Date_Current_Week"
+          },
+          {
+            "name": "Date_Prior_Week",
+            "dataType": "boolean",
+            "sourceColumn": "Date_Prior_Week"
+          },
+          {
+            "name": "Has_Data",
+            "dataType": "boolean",
+            "sourceColumn": "Has_Data"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134LT135\\MSSQLSERVER01;MCBC_DW_SEY\",",
+                "    dbo_v_dim_date = Source{[Schema=\"dbo\",Item=\"v_dim_date\"]}[Data]",
+                "in",
+                "    dbo_v_dim_date"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "v_fact_com_channel",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "Date_Key",
+            "dataType": "int64",
+            "sourceColumn": "Date_Key"
+          },
+          {
+            "name": "Customer_Key",
+            "dataType": "int64",
+            "sourceColumn": "Customer_Key"
+          },
+          {
+            "name": "pref_com_channel",
+            "dataType": "string",
+            "sourceColumn": "pref_com_channel"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134LT135\\MSSQLSERVER01;MCBC_DW_SEY\",",
+                "    dbo_v_fact_com_channel = Source{[Schema=\"dbo\",Item=\"v_fact_com_channel\"]}[Data]",
+                "in",
+                "    dbo_v_fact_com_channel"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Measure_Table",
+        "columns": [
+          {
+            "name": "m1",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m1"
+          },
+          {
+            "name": "m2",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m2"
+          },
+          {
+            "name": "m3",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m3"
+          },
+          {
+            "name": "m4",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m4"
+          },
+          {
+            "name": "m5",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m5"
+          },
+          {
+            "name": "m6",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m6"
+          },
+          {
+            "name": "m7",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m7"
+          },
+          {
+            "name": "m8",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m8"
+          },
+          {
+            "name": "m9",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m9"
+          },
+          {
+            "name": "m10",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "m10"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134LT135\\MSSQLSERVER01;MCBC_DW_SEY\",",
+                "    dbo_Measure_Table = Source{[Schema=\"dbo\",Item=\"Measure_Table\"]}[Data]",
+                "in",
+                "    dbo_Measure_Table"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Preferred channel",
+            "expression": [
+              "",
+              "MAX(v_fact_com_channel[pref_com_channel])",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "isHidden": true,
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "Preferred Channel on First Date",
+            "expression": [
+              "",
+              "var fd = ",
+              "CALCULATE(",
+              "\tmin(v_dim_date[Date]),",
+              "\tFILTER(",
+              "\t\t\tVALUES(v_dim_date[Date]),",
+              "\t\t\tCOUNTROWS(RELATEDTABLE(v_fact_com_channel))>0",
+              "",
+              "\t\t)",
+              ")",
+              "return",
+              "CALCULATE(",
+              "    [Preferred channel],",
+              "\tv_dim_date[Date] = fd",
+              ")",
+              ""
+            ],
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "Preferred Channel on last Date",
+            "expression": [
+              "",
+              "var ld = ",
+              "CALCULATE(",
+              "\tmax(v_dim_date[Date]),",
+              "\tFILTER(",
+              "\t\t\tVALUES(v_dim_date[Date]),",
+              "\t\t\tCOUNTROWS(RELATEDTABLE(v_fact_com_channel))>0",
+              "",
+              "\t\t)",
+              ")",
+              "return",
+              "CALCULATE(",
+              "    [Preferred channel],",
+              "\tv_dim_date[Date] = ld",
+              ")",
+              ""
+            ],
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "No of E-Statement Acquisitions",
+            "expression": [
+              "",
+              "/*COUNTROWS(",
+              "    CALCULATETABLE(",
+              "        values(v_dim_customer[Customer_No]),",
+              "        FILTER(",
+              "            VALUES(v_dim_customer[Customer_No]),",
+              "            [Preferred Channel on First Date] = \"By Post\"",
+              "        ),",
+              "        FILTER(",
+              "            VALUES(v_dim_customer[Customer_No]),",
+              "            [Preferred Channel on last Date] = \"By Email\"",
+              "        )",
+              ")",
+              "",
+              ")*/",
+              "",
+              "COUNTROWS(",
+              "    FILTER(",
+              "        values(v_dim_customer[Customer_No]),",
+              "        [Preferred Channel on First Date] = \"By Post\"&&",
+              "        [Preferred Channel on last Date] = \"By Email\"",
+              "    )",
+              ") "
+            ],
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "No of E-Statement Cancellations",
+            "expression": [
+              "",
+              "/*COUNTROWS(",
+              "    CALCULATETABLE(",
+              "        values(v_dim_customer[Customer_No]),",
+              "        /*FILTER(",
+              "            VALUES(v_dim_customer[Scd2_End]),",
+              "            v_dim_customer[Scd2_End]=BLANK()",
+              "        ),*/",
+              "        FILTER(",
+              "            VALUES(v_dim_customer[Customer_No]),",
+              "            [Preferred Channel on First Date] = \"By Email\"",
+              "        ),",
+              "        FILTER(",
+              "            VALUES(v_dim_customer[Customer_No]),",
+              "            [Preferred Channel on last Date] = \"By Post\"",
+              "        )",
+              ")",
+              "",
+              ")*/",
+              "COUNTROWS(",
+              "    FILTER(",
+              "        values(v_dim_customer[Customer_No]),",
+              "        [Preferred Channel on First Date] = \"By Email\"&&",
+              "        [Preferred Channel on last Date] = \"By Post\"",
+              "    )",
+              ") "
+            ],
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "Count of customers with channel",
+            "expression": [
+              "",
+              "COUNTROWS(",
+              "    FILTER(",
+              "        v_dim_customer,",
+              "        v_dim_customer[Pref_com_Channel]<>BLANK()",
+              "        && v_dim_customer[Scd2_Start] <= LASTDATE(v_dim_date[Date])/*all records inserted on or before date*/",
+              "        &&(v_dim_customer[Scd2_End] = BLANK()||v_dim_customer[Scd2_End]>LASTDATE(v_dim_date[Date])",
+              "    )",
+              ")",
+              "        )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "Count of customers with email channel",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Count of customers with channel],",
+              "    FILTER(",
+              "      v_dim_customer,",
+              "      v_dim_customer[Pref_com_Channel] = \"By Email\"",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "Count of customers with post channel",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Count of customers with channel],",
+              "    FILTER(",
+              "      v_dim_customer,",
+              "      v_dim_customer[Pref_com_Channel] = \"By Post\"",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          },
+          {
+            "name": "Penetration rate",
+            "expression": [
+              "",
+              "DIVIDE([Count of customers with email channel],[Count of customers with channel],0)"
+            ],
+            "formatString": "0%;-0%;0%",
+            "displayFolder": "Customer Measures\\E-Statement Measures"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "8d0905d1-b340-433d-91f6-899a742f485c",
+        "fromTable": "v_fact_com_channel",
+        "fromColumn": "Customer_Key",
+        "toTable": "v_dim_customer",
+        "toColumn": "Customer_key"
+      },
+      {
+        "name": "bdd92a15-0ebf-4549-bb95-74acd3ce3c61",
+        "fromTable": "v_fact_com_channel",
+        "fromColumn": "Date_Key",
+        "toTable": "v_dim_date",
+        "toColumn": "Date_Key"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-MU",
+        "translations": {
+          "model": {
+            "name": "Model",
+            "tables": [
+              {
+                "name": "v_dim_customer",
+                "columns": [
+                  {
+                    "name": "Customer_Branch",
+                    "translatedCaption": "Customer_Branch"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "perspectives": [
+      {
+        "name": "Account Officer",
+        "tables": [
+          {
+            "name": "Measure_Table",
+            "columns": [
+              {
+                "name": "m1"
+              },
+              {
+                "name": "m10"
+              },
+              {
+                "name": "m2"
+              },
+              {
+                "name": "m3"
+              },
+              {
+                "name": "m4"
+              },
+              {
+                "name": "m5"
+              },
+              {
+                "name": "m6"
+              },
+              {
+                "name": "m7"
+              },
+              {
+                "name": "m8"
+              },
+              {
+                "name": "m9"
+              }
+            ],
+            "measures": [
+              {
+                "name": "Count of customers with channel"
+              },
+              {
+                "name": "Count of customers with email channel"
+              },
+              {
+                "name": "Count of customers with post channel"
+              },
+              {
+                "name": "No of E-Statement Acquisitions"
+              },
+              {
+                "name": "No of E-Statement Cancellations"
+              },
+              {
+                "name": "Preferred channel"
+              },
+              {
+                "name": "Preferred Channel on First Date"
+              },
+              {
+                "name": "Preferred Channel on last Date"
+              },
+              {
+                "name": "Penetration rate"
+              }
+            ]
+          },
+          {
+            "name": "v_dim_customer",
+            "columns": [
+              {
+                "name": "Account_Officer"
+              },
+              {
+                "name": "Address"
+              },
+              {
+                "name": "Customer_Name"
+              },
+              {
+                "name": "Customer_No"
+              },
+              {
+                "name": "Customer_Since"
+              },
+              {
+                "name": "Gender"
+              },
+              {
+                "name": "Industry"
+              },
+              {
+                "name": "Length of Relationship"
+              },
+              {
+                "name": "Nationality"
+              },
+              {
+                "name": "Pref_com_Channel"
+              },
+              {
+                "name": "Residence"
+              },
+              {
+                "name": "Sector"
+              },
+              {
+                "name": "Target"
+              },
+              {
+                "name": "Customer_Branch"
+              }
+            ]
+          },
+          {
+            "name": "v_dim_date",
+            "columns": [
+              {
+                "name": "Date"
+              },
+              {
+                "name": "Day"
+              },
+              {
+                "name": "Month"
+              },
+              {
+                "name": "Year"
+              }
+            ]
+          },
+          {
+            "name": "v_fact_com_channel",
+            "columns": [
+              {
+                "name": "Customer_Key"
+              },
+              {
+                "name": "Date_Key"
+              },
+              {
+                "name": "pref_com_channel"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "500"
+      }
+    ]
+  }
+}

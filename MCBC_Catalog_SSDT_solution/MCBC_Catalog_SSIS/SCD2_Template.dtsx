@@ -1,0 +1,1262 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/1/2019 10:28:31 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{32F665DE-E0A6-48E6-9303-40DF94C76EBC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="SCD2_Template"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{D2E83042-ECCE-44DD-B915-59B4F2C5DB22}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create SCD2 Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D1903CE1-D1A7-4322-8532-856F427D22A1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create SCD2 Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get current date loaded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D4592D83-3882-4118-A7E4-70B5A2DC3291}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get current date loaded"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get last date loaded from control table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{20AA06CB-3492-41EE-A2E2-243362B627F5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get last date loaded from control table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A452D52A-DFFB-4B78-A83F-A73709586308}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Dimension\CONV Convert Data"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="CONV Convert Data"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\CSPL check old hash vs new hash"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CSPL check old hash vs new hash"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Lookup against Dim_GL for changes"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml"></property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Connections[OleDbConnection]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\MLT dupicate type 2 change streams"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="MLT dupicate type 2 change streams">
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\OLE_DST Load Dim_GL"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST Load Dim_GL"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dimension\OLE_DST Load Dim_GL.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\OLE_DST Load Dim_GL.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\OLE_DST Load Dim_GL.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Dimension\OLE_DST Load Dim_GL.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dimension\OLE_DST Load Dim_GL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\OLE_DST Load Dim_GL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dimension\OLE_DST Load Dim_GL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\OLE_DST Load Dim_GL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST write type 2 changes to type 2 table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\OLE_SRC Get Data From landing"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC Get Data From landing"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dimension\OLE_SRC Get Data From landing.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </output>
+                <output
+                  refId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dimension\UN Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="UN Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Load Dimension\UN Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Dimension\UN Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Dimension\UN Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dimension\UN Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Dimension.Paths[Conditional Split Default Output]"
+              endId="Package\Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]"
+              name="Conditional Split Default Output"
+              startId="Package\Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\Load Dimension.Paths[Data Conversion Output]"
+              endId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Dimension\CONV Convert Data.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load Dimension.Paths[Lookup Match Output]"
+              endId="Package\Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Dimension.Paths[Lookup No Match Output]"
+              endId="Package\Load Dimension\UN Union All.Inputs[Union All Input 2]"
+              name="Lookup No Match Output"
+              startId="Package\Load Dimension\LKP Lookup against Dim_GL for changes.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load Dimension.Paths[Multicast Output 1]"
+              endId="Package\Load Dimension\UN Union All.Inputs[Union All Input 1]"
+              name="Multicast Output 1"
+              startId="Package\Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Load Dimension.Paths[Multicast Output 2]"
+              endId="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Load Dimension.Paths[OLE DB Source Output]"
+              endId="Package\Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Dimension.Paths[Union All Output 1]"
+              endId="Package\Load Dimension\OLE_DST Load Dim_GL.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Load Dimension\UN Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Control table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{64B8CC41-4A5E-479F-976F-05BEE94B2CE0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Control table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update SCD 2 rows"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E53EC693-1757-4EE5-8524-BA9B92521628}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update SCD 2 rows"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{422A3A0A-09DE-4A19-9BF7-08F62FE20480}"
+      DTS:From="Package\Create SCD2 Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{21803496-640B-4030-869E-19A564946873}"
+      DTS:From="Package\Load Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update SCD 2 rows" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{8B080EF3-F3CD-4F5C-B97E-D1707843FABD}"
+      DTS:From="Package\Update SCD 2 rows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Get current date loaded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{49EDBA0C-2385-4D17-BDE7-4EDC432E5D89}"
+      DTS:From="Package\Get current date loaded"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update Control table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{E9186BC3-0962-47BB-B584-E443779B65A8}"
+      DTS:From="Package\Get last date loaded from control table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Create SCD2 Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="261.333333333334,42.6666666666667"
+          Id="Package\Get last date loaded from control table"
+          TopLeft="23.3333329856395,14.2999997442961" />
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\Create SCD2 Table"
+          TopLeft="184.523806774191,80.4761890371641" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Load Dimension"
+          TopLeft="175.595235478665,171.476187409957" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Update SCD 2 rows"
+          TopLeft="282.880948247654,243.833329071601" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\Get current date loaded"
+          TopLeft="371.428565893855,308.904756381114" />
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\Update Control table"
+          TopLeft="404.166660644114,378.19047005801" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="268.523806774191,123.142855703831">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.595237962192,48.3333317061266"
+              Start="0,0"
+              End="-15.595237962192,40.8333317061266">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1666658530633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1666658530633"
+                    Point2="0,24.1666658530633"
+                    Point3="-4,24.1666658530633" />
+                  <mssgle:LineSegment
+                    End="-11.595237962192,24.1666658530633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.595237962192,24.1666658530633"
+                    Point2="-15.595237962192,24.1666658530633"
+                    Point3="-15.595237962192,28.1666658530633" />
+                  <mssgle:LineSegment
+                    End="-15.595237962192,40.8333317061266" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="252.928568811999,214.142854076624">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.285712768989,29.6904749949774"
+              Start="0,0"
+              End="115.285712768989,22.1904749949774">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.8452374974887" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.8452374974887"
+                    Point2="0,14.8452374974887"
+                    Point3="4,14.8452374974887" />
+                  <mssgle:LineSegment
+                    End="111.285712768989,14.8452374974887" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.285712768989,14.8452374974887"
+                    Point2="115.285712768989,14.8452374974887"
+                    Point3="115.285712768989,18.8452374974887" />
+                  <mssgle:LineSegment
+                    End="115.285712768989,22.1904749949774" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="453.547614914321,265.166662404935">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.8809509795338,43.7380939761797"
+              Start="0,0"
+              End="13.8809509795338,36.2380939761797">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="9.88095097953385,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.88095097953385,0"
+                    Point2="13.8809509795338,0"
+                    Point3="13.8809509795338,4" />
+                  <mssgle:LineSegment
+                    End="13.8809509795338,36.2380939761797" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="467.428565893855,351.571423047781">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.4047614169262,26.6190470102288"
+              Start="0,0"
+              End="25.4047614169262,19.1190470102288">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.30952350511438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.30952350511438"
+                    Point2="0,13.3095235051144"
+                    Point3="4,13.3095235051144" />
+                  <mssgle:LineSegment
+                    End="21.4047614169262,13.3095235051144" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.4047614169262,13.3095235051144"
+                    Point2="25.4047614169262,13.3095235051144"
+                    Point3="25.4047614169262,17.3095235051144" />
+                  <mssgle:LineSegment
+                    End="25.4047614169262,19.1190470102288" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="153.999999652306,56.9666664109627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.523807121884,23.5095226262013"
+              Start="0,0"
+              End="114.523807121884,16.0095226262013">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.75476131310066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.75476131310066"
+                    Point2="0,11.7547613131007"
+                    Point3="4,11.7547613131007" />
+                  <mssgle:LineSegment
+                    End="110.523807121884,11.7547613131007" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.523807121884,11.7547613131007"
+                    Point2="114.523807121884,11.7547613131007"
+                    Point3="114.523807121884,15.7547613131007" />
+                  <mssgle:LineSegment
+                    End="114.523807121884,16.0095226262013" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="233.333333333334,42.6666666666667"
+          Id="Package\Load Dimension\OLE_SRC Get Data From landing"
+          TopLeft="63.3333323895931,28.5999994885922" />
+        <NodeLayout
+          Size="270.666666666667,42.6666666666667"
+          Id="Package\Load Dimension\LKP Lookup against Dim_GL for changes"
+          TopLeft="129.166664741933,129.999997675419" />
+        <NodeLayout
+          Size="139.333333333334,42.6666666666667"
+          Id="Package\Load Dimension\UN Union All"
+          TopLeft="178.472219562779,249.166662211219" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Load Dimension\CSPL check old hash vs new hash"
+          TopLeft="485.416659433395,126.388886628879" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Load Dimension\CONV Convert Data"
+          TopLeft="310.416662041098,27.4444439536996" />
+        <NodeLayout
+          Size="253.333333333334,42.6666666666667"
+          Id="Package\Load Dimension\MLT dupicate type 2 change streams"
+          TopLeft="480.55554839472,217.388885001673" />
+        <NodeLayout
+          Size="189.333333333334,42.6666666666667"
+          Id="Package\Load Dimension\OLE_DST Load Dim_GL"
+          TopLeft="113.888887191812,348.1111048864" />
+        <NodeLayout
+          Size="297.333333333334,42.6666666666667"
+          Id="Package\Load Dimension\OLE_DST write type 2 changes to type 2 table"
+          TopLeft="493.749992642552,341.555550441477" />
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[OLE DB Source Output]"
+          TopLeft="179.99999905626,71.2666661552588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189.083329651505,-1.1555555348926"
+              Start="0,0"
+              End="189.083329651505,6.3444444651074">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="185.083329651505,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="185.083329651505,22.5"
+                    Point2="189.083329651505,22.5"
+                    Point3="189.083329651505,18.5" />
+                  <mssgle:LineSegment
+                    End="189.083329651505,6.3444444651074" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Data Conversion Output]"
+          TopLeft="423.749995374431,70.1111106203662">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-159.249997299165,59.8888870550527"
+              Start="0,0"
+              End="-159.249997299165,52.3888870550527">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.286737607579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.286737607579"
+                    Point2="0,24.286737607579"
+                    Point3="-4,24.286737607579" />
+                  <mssgle:LineSegment
+                    End="-155.249997299165,24.286737607579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-155.249997299165,24.286737607579"
+                    Point2="-159.249997299165,24.286737607579"
+                    Point3="-159.249997299165,28.286737607579" />
+                  <mssgle:LineSegment
+                    End="-159.249997299165,52.3888870550527" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Lookup Match Output]"
+          TopLeft="399.8333314086,149.527775485483">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.5833280247946,0"
+              Start="0,0"
+              End="78.0833280247946,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="78.0833280247946,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.14972270635268,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Conditional Split Default Output]"
+          TopLeft="605.986103914057,169.055553295546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.3333317061266"
+              Start="0,0"
+              End="0,40.8333317061266">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.8333317061266" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Multicast Output 1]"
+          TopLeft="480.55554839472,238.722218335006">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-162.749995498608,31.7777772095466"
+              Start="0,0"
+              End="-155.249995498608,31.7777772095466">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-77.3749977493038,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.3749977493038,0"
+                    Point2="-81.3749977493038,0"
+                    Point3="-81.3749977493038,4" />
+                  <mssgle:LineSegment
+                    End="-81.3749977493038,27.7777772095466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.3749977493038,27.7777772095466"
+                    Point2="-81.3749977493038,31.7777772095466"
+                    Point3="-85.3749977493038,31.7777772095466" />
+                  <mssgle:LineSegment
+                    End="-155.249995498608,31.7777772095466" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Multicast Output 2]"
+          TopLeft="607.222215061387,260.055551668339">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.1944442478317,81.4999987731378"
+              Start="0,0"
+              End="35.1944442478317,73.9999987731378">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.7499993865689" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.7499993865689"
+                    Point2="0,40.7499993865689"
+                    Point3="4,40.7499993865689" />
+                  <mssgle:LineSegment
+                    End="31.1944442478317,40.7499993865689" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.1944442478317,40.7499993865689"
+                    Point2="35.1944442478317,40.7499993865689"
+                    Point3="35.1944442478317,44.7499993865689" />
+                  <mssgle:LineSegment
+                    End="35.1944442478317,73.9999987731378" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Union All Output 1]"
+          TopLeft="248.138886229446,291.833328877886">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39.5833323709667,56.2777760085135"
+              Start="0,0"
+              End="-39.5833323709667,48.7777760085135">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1388880042568" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1388880042568"
+                    Point2="0,28.1388880042568"
+                    Point3="-4,28.1388880042568" />
+                  <mssgle:LineSegment
+                    End="-35.5833323709667,28.1388880042568" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.5833323709667,28.1388880042568"
+                    Point2="-39.5833323709667,28.1388880042568"
+                    Point3="-39.5833323709667,32.1388880042568" />
+                  <mssgle:LineSegment
+                    End="-39.5833323709667,48.7777760085135" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dimension.Paths[Lookup No Match Output]"
+          TopLeft="264.499998075267,172.666664342086">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.3611118458211,76.4999978691338"
+              Start="0,0"
+              End="-16.3611118458211,68.9999978691338">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.2499989345669" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.2499989345669"
+                    Point2="0,38.2499989345669"
+                    Point3="-4,38.2499989345669" />
+                  <mssgle:LineSegment
+                    End="-12.3611118458211,38.2499989345669" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.3611118458211,38.2499989345669"
+                    Point2="-16.3611118458211,38.2499989345669"
+                    Point3="-16.3611118458211,42.2499989345669" />
+                  <mssgle:LineSegment
+                    End="-16.3611118458211,68.9999978691338" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-63.9869426416605,43.2499989345669,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

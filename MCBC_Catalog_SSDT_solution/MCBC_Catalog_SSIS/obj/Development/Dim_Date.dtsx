@@ -1,0 +1,995 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2019 4:13:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{7EBC5681-898C-4840-81CE-C4217F0BFDFD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Dim_Date"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{D8345896-38F7-4B95-8CA7-3AAFB294F404}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF Load Dim_Date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A7F1CE62-7556-4B34-ABF9-0534BD1FA16A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Load Dim_Date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF Load Dim_Date\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Date_Key ]"
+                      cachedDataType="i8"
+                      cachedName="Date_Key "
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Key ]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Date"
+                      cachedScale="7"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Month]"
+                      cachedDataType="r8"
+                      cachedName="Month"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Month_Name]"
+                      cachedDataType="nText"
+                      cachedName="Month_Name"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month_Name]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Quarter]"
+                      cachedDataType="r8"
+                      cachedName="Quarter"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Week_Of_Month]"
+                      cachedDataType="r8"
+                      cachedName="Week_Of_Month"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Week_Of_Month]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Day]"
+                      cachedDataType="r8"
+                      cachedName="Day"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Day_Name]"
+                      cachedDataType="nText"
+                      cachedName="Day_Name"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day_Name]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Financial_Year]"
+                      cachedDataType="i8"
+                      cachedName="Financial_Year"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Year]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Financial_Quarter]"
+                      cachedDataType="i8"
+                      cachedName="Financial_Quarter"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Quarter]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Date_Current_Week]"
+                      cachedDataType="bool"
+                      cachedName="Date_Current_Week"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Current_Week]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[Date_Prior_Week]"
+                      cachedDataType="bool"
+                      cachedName="Date_Prior_Week"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Prior_Week]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Key]"
+                      name="Copy of Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Key ]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      name="Copy of Date"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year]"
+                      name="Copy of Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Year]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month]"
+                      name="Copy of Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month_Name]"
+                      name="Copy of Month_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month_Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Quarter]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Quarter]"
+                      name="Copy of Quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Quarter]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Week_Of_Month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Week_Of_Month]"
+                      name="Copy of Week_Of_Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Week_Of_Month]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Day]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Day]"
+                      name="Copy of Day"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Day_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Day_Name]"
+                      name="Copy of Day_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day_Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Financial_Year]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Financial_Year]"
+                      name="Copy of Financial_Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Year]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Financial_Quarter]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Financial_Quarter]"
+                      name="Copy of Financial_Quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Quarter]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Current_Week]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Current_Week]"
+                      name="Copy of Date_Current_Week"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Current_Week]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Prior_Week]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Prior_Week]"
+                      name="Copy of Date_Prior_Week"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Prior_Week]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Date\Load Dim_Date"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Dim_Date"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dim_Date\Load Dim_Date.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Date_Key]"
+                      cachedDataType="i8"
+                      cachedName="Copy of Date_Key"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Key]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Date]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Copy of Date"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Year]"
+                      cachedDataType="r8"
+                      cachedName="Copy of Year"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Month]"
+                      cachedDataType="r8"
+                      cachedName="Copy of Month"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Month_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Month_Name"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Month_Name]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Month_Name]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Quarter]"
+                      cachedDataType="r8"
+                      cachedName="Copy of Quarter"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Quarter]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Week_Of_Month]"
+                      cachedDataType="r8"
+                      cachedName="Copy of Week_Of_Month"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Week_Of_Month]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Week_Of_Month]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Day]"
+                      cachedDataType="r8"
+                      cachedName="Copy of Day"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Day]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Day_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Day_Name"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Day_Name]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Day_Name]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Financial_Year]"
+                      cachedDataType="i8"
+                      cachedName="Copy of Financial_Year"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Financial_Year]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Financial_Year]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Financial_Quarter]"
+                      cachedDataType="i8"
+                      cachedName="Copy of Financial_Quarter"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Financial_Quarter]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Financial_Quarter]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Date_Current_Week]"
+                      cachedDataType="bool"
+                      cachedName="Copy of Date_Current_Week"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Current_Week]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Current_Week]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].Columns[Copy of Date_Prior_Week]"
+                      cachedDataType="bool"
+                      cachedName="Copy of Date_Prior_Week"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Prior_Week]"
+                      lineageId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date_Prior_Week]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      dataType="i4"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Month_Name]"
+                      dataType="wstr"
+                      length="10"
+                      name="Month_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Week_Of_Month]"
+                      dataType="i4"
+                      name="Week_Of_Month" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Day_Name]"
+                      dataType="wstr"
+                      length="10"
+                      name="Day_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Financial_Year]"
+                      dataType="i4"
+                      name="Financial_Year" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Financial_Quarter]"
+                      dataType="i4"
+                      name="Financial_Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Current_Week]"
+                      dataType="bool"
+                      name="Date_Current_Week" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_Prior_Week]"
+                      dataType="bool"
+                      name="Date_Prior_Week" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Date\Load Dim_Date.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Date\Load Dim_Date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Load Dim_Date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dim_Date\Load Dim_Date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dim_Date\Power Query Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              description="Power Query Source"
+              name="Power Query Source">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode of the query."
+                  name="QueryMode"
+                  typeConverter="Microsoft.SqlServer.IntegrationServices.PowerQuery.TypeConverters.QueryModeTypeConverter, Microsoft.SqlServer.IntegrationServices.PowerQuery, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the M query to be executed."
+                  name="SingleQueryVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The single M query to be executed."
+                  name="SingleQueryText"
+                  state="cdata"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"><![CDATA[let
+    Source = #date(2005, 1, 1),
+    #"List of Dates" = List.Dates(
+                Source, Number.From(DateTime.LocalNow())+34675-Number.From(Source),#duration(1,0,0,0)
+                ),
+    #"Converted to Table" = Table.FromList(
+                                #"List of Dates", Splitter.SplitByNothing(), null, null, ExtraValues.Error
+                            ),
+    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Converted to Table", {{"Column1", type date}}, "en-GB"),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type with Locale",{{"Column1", "Date"}}),
+    #"Added DateKey" = Table.AddColumn(#"Renamed Columns", "DateKey", each Date.ToText([Date],"yyyyMMdd")),
+    #"Inserted Year" = Table.AddColumn(#"Added DateKey", "Year", each Date.Year([Date]), type number),
+    #"Inserted Month" = Table.AddColumn(#"Inserted Year", "Month", each Date.Month([Date]), type number),
+    #"Inserted Month Name" = Table.AddColumn(#"Inserted Month", "Month Name", each Date.MonthName([Date]), type text),
+    #"Inserted Quarter" = Table.AddColumn(#"Inserted Month Name", "Quarter", each Date.QuarterOfYear([Date]), type number),
+    #"Inserted Week of Month" = Table.AddColumn(#"Inserted Quarter", "WeekOfMonth", each Date.WeekOfMonth([Date]), type number),
+    #"Inserted Day" = Table.AddColumn(#"Inserted Week of Month", "Day", each Date.Day([Date]), type number),
+    #"Inserted Day Name" = Table.AddColumn(#"Inserted Day", "Day Name", each Date.DayOfWeekName([Date]), type text),
+    #"Added Financial Year" = Table.AddColumn(#"Inserted Day Name", "Financial Year", each 
+if
+    [Month]>3
+then
+    [Year]+1
+else
+    [Year]),
+    #"Added Financial Quarter" = Table.AddColumn(#"Added Financial Year", "Financial Quarter", each if
+    ([Quarter] - 1) > 0
+then
+    [Quarter] - 1
+else
+    [Quarter] + 3),
+    #"Added Current Week" = Table.AddColumn(#"Added Financial Quarter", "Date Current Week", each Date.IsInCurrentWeek([Date])),
+    #"Added Date Prior Week" = Table.AddColumn(#"Added Current Week", "Date Prior Week", each Date.IsInPreviousWeek([Date])),
+    #"Reordered Columns" = Table.ReorderColumns(#"Added Date Prior Week",{"DateKey", "Date", "Year", "Month", "Month Name", "Quarter", "WeekOfMonth", "Day", "Day Name", "Financial Year", "Financial Quarter"}),
+    #"Renamed Columns1" = Table.RenameColumns(#"Reordered Columns",{{"Day Name", "Day_Name"}, {"Financial Year", "Financial_Year"}, {"Financial Quarter", "Financial_Quarter"}, {"Date Current Week", "Date_Current_Week"}, {"Date Prior Week", "Date_Prior_Week"}, {"Month Name", "Month_Name"}, {"DateKey", "Date_Key"}, {"WeekOfMonth", "Week_Of_Month"}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns1",{{"Date", type datetime}, {"Date_Key", Int64.Type}, {"Financial_Year", Int64.Type}, {"Financial_Quarter", Int64.Type}, {"Date_Current_Week", type logical}, {"Date_Prior_Week", type logical}})
+in
+    #"Changed Type"]]></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.PowerQuerySource</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Key ]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date_Key]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Key ]"
+                      name="Date_Key " />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date]"
+                      dataType="dbTimeStamp2"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date]"
+                      name="Date"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Year]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Year]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Month]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month_Name]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Month_Name]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Month_Name]"
+                      name="Month_Name" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Quarter]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Quarter]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Week_Of_Month]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Week_Of_Month]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Week_Of_Month]"
+                      name="Week_Of_Month" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Day]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day_Name]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Day_Name]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Day_Name]"
+                      name="Day_Name" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Year]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Financial_Year]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Year]"
+                      name="Financial_Year" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Quarter]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Financial_Quarter]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Financial_Quarter]"
+                      name="Financial_Quarter" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Current_Week]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date_Current_Week]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Current_Week]"
+                      name="Date_Current_Week" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Prior_Week]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date_Prior_Week]"
+                      lineageId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].Columns[Date_Prior_Week]"
+                      name="Date_Prior_Week" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date_Key]"
+                      dataType="i8"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp2"
+                      name="Date"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Month]"
+                      dataType="r8"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Month_Name]"
+                      dataType="nText"
+                      name="Month_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Quarter]"
+                      dataType="r8"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Week_Of_Month]"
+                      dataType="r8"
+                      name="Week_Of_Month" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Day]"
+                      dataType="r8"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Day_Name]"
+                      dataType="nText"
+                      name="Day_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Financial_Year]"
+                      dataType="i8"
+                      name="Financial_Year" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Financial_Quarter]"
+                      dataType="i8"
+                      name="Financial_Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date_Current_Week]"
+                      dataType="bool"
+                      name="Date_Current_Week" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output].ExternalColumns[Date_Prior_Week]"
+                      dataType="bool"
+                      name="Date_Prior_Week" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF Load Dim_Date.Paths[Data Conversion Output]"
+              endId="Package\DF Load Dim_Date\Load Dim_Date.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DF Load Dim_Date\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF Load Dim_Date.Paths[Output]"
+              endId="Package\DF Load Dim_Date\Data Conversion.Inputs[Data Conversion Input]"
+              name="Output"
+              startId="Package\DF Load Dim_Date\Power Query Source.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\DF Load Dim_Date"
+          TopLeft="102.499998472631,58.0666656283538" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF Load Dim_Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\DF Load Dim_Date\Power Query Source"
+          TopLeft="131.527775817861,34.9555549305016" />
+        <NodeLayout
+          Size="152,41.3333333333334"
+          Id="Package\DF Load Dim_Date\Load Dim_Date"
+          TopLeft="220.243052273678,224.736107104437" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\DF Load Dim_Date\Data Conversion"
+          TopLeft="267.027773880711,116.433331349691" />
+        <EdgeLayout
+          Id="Package\DF Load Dim_Date.Paths[Output]"
+          TopLeft="219.527775817861,77.6222215971682">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.166664729516,38.8111097525228"
+              Start="0,0"
+              End="126.166664729516,31.3111097525228">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4055548762614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4055548762614"
+                    Point2="0,19.4055548762614"
+                    Point3="4,19.4055548762614" />
+                  <mssgle:LineSegment
+                    End="122.166664729516,19.4055548762614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.166664729516,19.4055548762614"
+                    Point2="126.166664729516,19.4055548762614"
+                    Point3="126.166664729516,23.4055548762614" />
+                  <mssgle:LineSegment
+                    End="126.166664729516,31.3111097525228" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Date.Paths[Data Conversion Output]"
+          TopLeft="345.694440547377,159.099998016358">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.4513882736992,65.6361090880793"
+              Start="0,0"
+              End="-49.4513882736992,58.1361090880793">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8180545440396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.8180545440396"
+                    Point2="0,32.8180545440396"
+                    Point3="-4,32.8180545440396" />
+                  <mssgle:LineSegment
+                    End="-45.4513882736992,32.8180545440396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.4513882736992,32.8180545440396"
+                    Point2="-49.4513882736992,32.8180545440396"
+                    Point3="-49.4513882736992,36.8180545440396" />
+                  <mssgle:LineSegment
+                    End="-49.4513882736992,58.1361090880793" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Date\Load Dim_Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

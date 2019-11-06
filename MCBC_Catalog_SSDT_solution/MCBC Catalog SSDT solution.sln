@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "MCBC_Catalog_SSIS", "MCBC_Catalog_SSIS\MCBC_Catalog_SSIS.dtproj", "{334B5242-046C-438E-8BBC-C5DD9B7BA6E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|x86 = Development|x86
+		yohram_dev|x86 = yohram_dev|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{334B5242-046C-438E-8BBC-C5DD9B7BA6E8}.Development|x86.ActiveCfg = yohram_dev
+		{334B5242-046C-438E-8BBC-C5DD9B7BA6E8}.Development|x86.Build.0 = yohram_dev
+		{334B5242-046C-438E-8BBC-C5DD9B7BA6E8}.yohram_dev|x86.ActiveCfg = yohram_dev
+		{334B5242-046C-438E-8BBC-C5DD9B7BA6E8}.yohram_dev|x86.Build.0 = yohram_dev
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB1A87FA-D5BF-46A8-8697-0AC48DC8C9CF}
+	EndGlobalSection
+EndGlobal

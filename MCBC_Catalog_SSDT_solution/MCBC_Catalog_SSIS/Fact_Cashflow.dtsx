@@ -1,0 +1,2442 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2019 3:59:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{438DEF95-2F25-4349-861E-B9B282B14659}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Fact_Cashflow"
+  DTS:PackageType="5"
+  DTS:VersionBuild="117"
+  DTS:VersionGUID="{9A2CA5C1-A82E-4E3E-B3C7-89A2B7D5C5F7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6388EDA0-BF22-48B3-82CC-BAC447F61E36}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\yohram\Desktop\Y\Pro SSIS 2014\Test SSIS Patterns\Integration Services Project1\Integration Services Project1\no match.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MIS_DATE"
+              DTS:DTSID="{DE6E259D-E95E-42E3-BF9C-A3610F099B71}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CURRENCY_AMT"
+              DTS:DTSID="{5003822D-DAB5-41BB-B046-316FFCB3715B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LOCAL_CCY_AMT"
+              DTS:DTSID="{5374BD2D-1C71-4ECF-BF37-2079501B6A40}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CONSOL_KEY"
+              DTS:DTSID="{13269A46-2E2D-4DF8-9051-600CF4525D42}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ASSET_TYPE"
+              DTS:DTSID="{3E02D308-6A08-4A3C-A2AA-BED7862566B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="304"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of MIS_DATE"
+              DTS:DTSID="{C97A1E08-04CF-49F3-94F7-BE73B48EBCC5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of CURRENCY_AMT"
+              DTS:DTSID="{E44A226E-C567-4604-B1ED-785AAD42ABE9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of LOCAL_CCY_AMT"
+              DTS:DTSID="{8E1851ED-7917-440A-AC04-B2030068B183}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date_Key"
+              DTS:DTSID="{B7E03965-7EFA-461B-B35A-D77098F5A1DA}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{C54AACBF-8CDC-4AB2-92B4-9141E7787BA0}"
+      DTS:ObjectName="v_Backfill_Date_To_Load">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">6/1/2019 8:03:52 PM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E4F3786E-D825-4EEA-84F4-D24596D4596E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_Current_Date">
+      <DTS:VariableValue
+        DTS:DataType="7">6/2/2019 11:23:40 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BF6FD4DE-1E08-4BFA-A59B-50A1DE293EF7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_Last_Date_Loaded">
+      <DTS:VariableValue
+        DTS:DataType="7">6/2/2019 11:29:21 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF Load Fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B7950B36-64AA-403C-9FED-0B85BE7FDA64}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Load Fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF Load Fact\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input].Columns[CASH_FLOW_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="CASH_FLOW_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input].Columns[CASH_FLOW_AMT_CCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CASH_FLOW_AMT_CCY"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_AMT_CCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input].Columns[@ID]"
+                      cachedDataType="i8"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_DATE]"
+                      name="Copy of CASH_FLOW_DATE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_DATE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      name="Copy of CASH_FLOW_AMT_CCY"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_AMT_CCY]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of @ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of @ID]"
+                      name="Copy of @ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\DER subs no match"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER subs no match"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output].Columns[Account_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output].Columns[Account_Key]"
+                      name="Account_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\LKP Account Key Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Account Key Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Account where scd2_end is null</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Account where scd2_end is null) [refTable]
+where [refTable].[Linked_Account_No] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Account_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Joint_Customer_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Buy_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Sell_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Contract_Number" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Purpose_Code" dataType="DT_WSTR" length="75" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sub_Purpose_Code" dataType="DT_WSTR" length="75" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LC_Type" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Title_1" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Linked_Account_No" dataType="DT_WSTR" length="19" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Limit_Reference" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Parent_Limit_Reference" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Limit_Expiry_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Limit_Review_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Start_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Renewal_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Bucket" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Close_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_WSTR" length="7" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Interest_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Penalty_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Effective_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Inactve_Marker" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Overdrawn_Flag" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of @ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input].Columns[Copy of @ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of @ID"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of @ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Linked_Account_No</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]"
+                      name="Account_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Account_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\LKP Company"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Company"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Company]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Company]) [refTable]
+where [refTable].[Company_Mnemonic] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Company_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_ID" dataType="DT_WSTR" length="11" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_name" dataType="DT_WSTR" length="22" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_Address" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_Mnemonic" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_start" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_end" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Fact\210:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\LKP Company.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input].Columns[BRANCH_CO_MNE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BRANCH_CO_MNE"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Company_Mnemonic</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]"
+                      name="Company_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Company_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Company.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\LKP Date Key Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Date Key Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Date]) [refTable]
+where [refTable].[Date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Week_Of_Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Current_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Prior_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Fact\334:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input].Columns[Copy of CASH_FLOW_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of CASH_FLOW_DATE"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_DATE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]"
+                      name="Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Date_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\MLT multicast to audit"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="MLT multicast to audit">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\MLT multicast to audit.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\MLT multicast to audit.Outputs[Multicast Output 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\DF Load Fact\MLT multicast to audit.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\OLE DST Fact"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DST Fact"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Cashflow]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\OLE DST Fact.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].Columns[Account_Key]"
+                      cachedDataType="i4"
+                      cachedName="Account_Key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Account_Key]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].Columns[CASH_FLOW_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CASH_FLOW_TYPE"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Cash_Flow_Type]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_TYPE]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of CASH_FLOW_AMT_CCY"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Cash_Flow_Amt_CCY]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_AMT_CCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].Columns[Company_Key]"
+                      cachedDataType="i4"
+                      cachedName="Company_Key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Company_Key]"
+                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      dataType="i4"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Account_Key]"
+                      dataType="i4"
+                      name="Account_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Cash_Flow_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cash_Flow_Type" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Cash_Flow_Amt_CCY]"
+                      dataType="numeric"
+                      name="Cash_Flow_Amt_CCY"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Record_Key]"
+                      dataType="i4"
+                      name="Record_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input].ExternalColumns[Company_Key]"
+                      dataType="i4"
+                      name="Company_Key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\OLE DST Fact.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE DST Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE DST Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE DST Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\OLE SRC Get data landing"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE SRC Get data landing"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">declare @bdate date  = ?;
+
+Insert into Tab1
+	select  distinct
+		c.MIS_DATE
+		,c.CURRENCY
+		,c.BRANCH_CO_MNE
+		,c.[@ID]
+		,concat(substring(t01.value,1,4),'-',substring(t01.value,5,2),'-',substring(t01.value,7,2)) as CASH_FLOW_DATE
+		,t01.rw as CASH_FLOW_DATE_seq
+	from
+		bs.EB_CASHFLOW c
+	cross apply
+	(
+		select  
+			ROW_NUMBER() over (order by c.CASH_FLOW_DATE) as rw
+			,t.value
+		from
+			string_split(c.CASH_FLOW_DATE,nchar(63741)) t
+	)t01 where c.MIS_DATE = @bdate
+
+Insert into Tab2
+	select  distinct
+		c.[@ID]
+		,c.CURRENCY
+		,t02.value CASH_FLOW_TYPE
+		,t02.rw as CASH_FLOW_type_seq
+	from
+		bs.EB_CASHFLOW c
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by c.CASH_FLOW_TYPE) as rw
+			,t.value
+		from
+			string_split(c.CASH_FLOW_TYPE,nchar(63741)) t
+	)t02 where c.MIS_DATE = @bdate
+
+Insert into Tab3
+	select distinct
+		c.[@ID]
+		,c.CURRENCY
+		,CAST(t03.value as NVARCHAR(50)) as CASH_FLOW_AMT_CCY
+		,t03.rw as CASH_FLOW_amt_seq
+
+	from
+		bs.EB_CASHFLOW c
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by c.CASH_FLOW_AMT) as rw
+			,t.value
+		from
+			string_split(c.CASH_FLOW_AMT,nchar(63741)) t
+	)t03 where c.MIS_DATE = @bdate
+
+
+select 
+	a.MIS_DATE,
+	a.BRANCH_CO_MNE,
+	a.[@ID],
+	a.CURRENCY,
+	a.CASH_FLOW_DATE,
+	b.CASH_FLOW_TYPE,
+	c.CASH_FLOW_AMT_CCY
+from Tab1 a
+	left join Tab2 b
+		on a.[@ID] = b.[@ID] --join the same sequence over each unique identifier
+			and a.CASH_FLOW_DATE_seq = b.CASH_FLOW_type_seq
+	left join Tab3 c
+		on a.[@ID] = c.[@ID]
+			and a.CASH_FLOW_DATE_seq = c.CASH_FLOW_amt_seq</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{C54AACBF-7323-4AB2-92B4-9141E7787BA0};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\OLE SRC Get data landing.Connections[OleDbConnection]"
+                  connectionManagerID="{671548CD-8576-49C9-868B-AEAAB720CD7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_Conn_T24]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      name="@ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CASH_FLOW_DATE]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_DATE]"
+                      name="CASH_FLOW_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CASH_FLOW_TYPE]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_TYPE]"
+                      name="CASH_FLOW_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      name="MIS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[BRANCH_CO_MNE]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]"
+                      name="BRANCH_CO_MNE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]"
+                      name="CURRENCY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_AMT_CCY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CASH_FLOW_AMT_CCY]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_AMT_CCY]"
+                      name="CASH_FLOW_AMT_CCY"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      dataType="i8"
+                      name="@ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CASH_FLOW_DATE]"
+                      dataType="dbDate"
+                      name="CASH_FLOW_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CASH_FLOW_TYPE]"
+                      dataType="wstr"
+                      length="50"
+                      name="CASH_FLOW_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      dataType="dbDate"
+                      name="MIS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      length="50"
+                      name="BRANCH_CO_MNE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      dataType="wstr"
+                      length="50"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CASH_FLOW_AMT_CCY]"
+                      dataType="wstr"
+                      length="50"
+                      name="CASH_FLOW_AMT_CCY" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      dataType="i8"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CURRENCY]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CURRENCY]"
+                      name="CURRENCY" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[BRANCH_CO_MNE]"
+                      name="BRANCH_CO_MNE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CASH_FLOW_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CASH_FLOW_DATE]"
+                      name="CASH_FLOW_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CASH_FLOW_TYPE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CASH_FLOW_TYPE]"
+                      name="CASH_FLOW_TYPE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CASH_FLOW_AMT_CCY]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CASH_FLOW_AMT_CCY]"
+                      name="CASH_FLOW_AMT_CCY" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[@ID]"
+                      cachedDataType="i8"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[CASH_FLOW_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="CASH_FLOW_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[CASH_FLOW_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CASH_FLOW_TYPE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_TYPE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_TYPE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[BRANCH_CO_MNE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BRANCH_CO_MNE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[CURRENCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CURRENCY"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CURRENCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[CASH_FLOW_AMT_CCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CASH_FLOW_AMT_CCY"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_AMT_CCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_AMT_CCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Copy of CASH_FLOW_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of CASH_FLOW_DATE"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of CASH_FLOW_AMT_CCY"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_AMT_CCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_AMT_CCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Copy of @ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of @ID"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of @ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Account_Key]"
+                      cachedDataType="i4"
+                      cachedName="Account_Key"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[@ID]"
+                      cachedDataType="i8"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[CASH_FLOW_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="CASH_FLOW_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[CASH_FLOW_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CASH_FLOW_TYPE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_TYPE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_TYPE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[BRANCH_CO_MNE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BRANCH_CO_MNE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[CURRENCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CURRENCY"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CURRENCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[CASH_FLOW_AMT_CCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CASH_FLOW_AMT_CCY"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CASH_FLOW_AMT_CCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_AMT_CCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Copy of CASH_FLOW_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of CASH_FLOW_DATE"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of CASH_FLOW_AMT_CCY"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CASH_FLOW_AMT_CCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_AMT_CCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Copy of @ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of @ID"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of @ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Account_Key]"
+                      cachedDataType="i4"
+                      cachedName="Account_Key"
+                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output].Columns[Account_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Fact\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      dataType="i8"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_DATE]"
+                      name="CASH_FLOW_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_TYPE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_TYPE]"
+                      name="CASH_FLOW_TYPE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]"
+                      name="BRANCH_CO_MNE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CURRENCY]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CURRENCY]"
+                      name="CURRENCY" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_AMT_CCY]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CASH_FLOW_AMT_CCY]"
+                      name="CASH_FLOW_AMT_CCY" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_DATE]"
+                      name="Copy of CASH_FLOW_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of CASH_FLOW_AMT_CCY]"
+                      name="Copy of CASH_FLOW_AMT_CCY"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]"
+                      name="Copy of @ID" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]"
+                      name="Date_Key" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
+                      name="Account_Key" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF Load Fact.Paths[Data Conversion Output]"
+              endId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Derived Column Output]"
+              endId="Package\DF Load Fact\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup Match Output]"
+              endId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup Match Output1]"
+              endId="Package\DF Load Fact\OLE DST Fact.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup Match Output2]"
+              endId="Package\DF Load Fact\Union All.Inputs[Union All Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup No Match Output]"
+              endId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[OLE DB Source Output]"
+              endId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Union All Output 1]"
+              endId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]"
+              name="Union All Output 1"
+              startId="Package\DF Load Fact\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Create Table for Extraction"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{eafb6d1b-92ee-4f9e-8133-f008e0bd649e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Create Table for Extraction"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{671548CD-8576-49C9-868B-AEAAB720CD7E}"
+          SQLTask:SqlStatementSource="drop table if exists Tab1;&#xA;drop table if exists Tab2;&#xA;drop table if exists Tab3;&#xA;&#xA;Create table  Tab1 &#xA;(MIS_DATE DATE,&#xA;CURRENCY nvarchar(50),&#xA;BRANCH_CO_MNE nvarchar(50),&#xA;[@ID] bigint,&#xA;CASH_FLOW_DATE DATE,&#xA;CASH_FLOW_DATE_seq int&#xA;);&#xA;&#xA;Create table  Tab2 &#xA;([@ID] bigint,&#xA;CURRENCY nvarchar(50),&#xA;CASH_FLOW_TYPE nvarchar(50),&#xA;CASH_FLOW_type_seq int&#xA;);&#xA;&#xA;Create table  Tab3 &#xA;([@ID] bigint,&#xA;CURRENCY nvarchar(50),&#xA;CASH_FLOW_AMT_CCY nvarchar(50),&#xA;CASH_FLOW_amt_seq int&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Drop table and recreate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3D2EFF32-BD7E-4B92-946D-1E2940DDA758}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Drop table and recreate"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="drop table if exists fact_cashflow;&#xA;exec sp_Fact_Cashflow;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Update Control Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5D216116-C1A6-41AE-A9F4-525F5FB165BA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Update Control Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="update control_table&#xA;set Last_Execution_Date = ?,&#xA;Last_Date_Loaded= ?&#xA;where table_name = 'Fact_Balances'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::v_Backfill_Date_To_Load"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5C8B28A7-B346-4AE7-9B3B-BC2C1D948816}"
+      DTS:From="Package\SQL Drop table and recreate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL Create Table for Extraction" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8CB45550-9CE6-4ABE-A882-0273EAB2E88F}"
+      DTS:From="Package\DF Load Fact"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL Update Control Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{469AF9B2-E747-4D77-89C7-D2B1E0A22E43}"
+      DTS:From="Package\SQL Create Table for Extraction"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DF Load Fact" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\DF Load Fact"
+          TopLeft="378.065474662284,210.472547754494" />
+        <NodeLayout
+          Size="213.6,42.4"
+          Id="Package\SQL Drop table and recreate"
+          TopLeft="61.404759092142,42.3816983738526" />
+        <NodeLayout
+          Size="201.6,42.4"
+          Id="Package\SQL Update Control Table"
+          TopLeft="452.624006300855,332.416525021383" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\SQL Create Table for Extraction"
+          TopLeft="207.119047287927,117.310638215542" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="168.204759092142,84.7816983738526">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="152.514288195785,32.5289398416893"
+              Start="0,0"
+              End="152.514288195785,25.0289398416893">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2644699208446" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2644699208446"
+                    Point2="0,16.2644699208446"
+                    Point3="4,16.2644699208446" />
+                  <mssgle:LineSegment
+                    End="148.514288195785,16.2644699208446" />
+                  <mssgle:CubicBezierSegment
+                    Point1="148.514288195785,16.2644699208446"
+                    Point2="152.514288195785,16.2644699208446"
+                    Point3="152.514288195785,20.2644699208446" />
+                  <mssgle:LineSegment
+                    End="152.514288195785,25.0289398416893" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="320.719047287927,158.910638215542">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.346427374357,51.5619095389517"
+              Start="0,0"
+              End="127.346427374357,44.0619095389517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7809547694759" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.7809547694759"
+                    Point2="0,25.7809547694759"
+                    Point3="4,25.7809547694759" />
+                  <mssgle:LineSegment
+                    End="123.346427374357,25.7809547694759" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.346427374357,25.7809547694759"
+                    Point2="127.346427374357,25.7809547694759"
+                    Point3="127.346427374357,29.7809547694759" />
+                  <mssgle:LineSegment
+                    End="127.346427374357,44.0619095389517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="448.065474662284,252.072547754494">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.358531638571,80.3439772668896"
+              Start="0,0"
+              End="105.358531638571,72.8439772668896">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.1719886334448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.1719886334448"
+                    Point2="0,40.1719886334448"
+                    Point3="4,40.1719886334448" />
+                  <mssgle:LineSegment
+                    End="101.358531638571,40.1719886334448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.358531638571,40.1719886334448"
+                    Point2="105.358531638571,40.1719886334448"
+                    Point3="105.358531638571,44.1719886334448" />
+                  <mssgle:LineSegment
+                    End="105.358531638571,72.8439772668896" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF Load Fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        <NodeLayout
+          Size="184,42.4"
+          Id="Package\DF Load Fact\MLT multicast to audit"
+          TopLeft="681.944434282681,513.861101922559" />
+        <NodeLayout
+          Size="201.6,42.4"
+          Id="Package\DF Load Fact\OLE SRC Get data landing"
+          TopLeft="43.9047612687763,30.044443907208" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DF Load Fact\Data Conversion"
+          TopLeft="144.114288127666,143.811766610591" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\DF Load Fact\OLE DST Fact"
+          TopLeft="159.8472211358,575.805734242093" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[OLE DB Source Output]"
+          TopLeft="144.704761268776,72.444443907208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.0095268588894,71.3673227033831"
+              Start="0,0"
+              End="77.0095268588894,63.8673227033831">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6836613516915" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6836613516915"
+                    Point2="0,35.6836613516915"
+                    Point3="4,35.6836613516915" />
+                  <mssgle:LineSegment
+                    End="73.0095268588894,35.6836613516915" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73.0095268588894,35.6836613516915"
+                    Point2="77.0095268588894,35.6836613516915"
+                    Point3="77.0095268588894,39.6836613516915" />
+                  <mssgle:LineSegment
+                    End="77.0095268588894,63.8673227033831" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup Match Output1]"
+          TopLeft="601.6,594.102867121046">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-298.5527788642,0"
+              Start="0,0"
+              End="-291.0527788642,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-291.0527788642,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-193.71777615085,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Data Conversion Output]"
+          TopLeft="221.714288127666,185.411766610591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="295.485711872334,79.388233389409"
+              Start="0,0"
+              End="295.485711872334,71.888233389409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.6941166947045" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.6941166947045"
+                    Point2="0,39.6941166947045"
+                    Point3="4,39.6941166947045" />
+                  <mssgle:LineSegment
+                    End="291.485711872334,39.6941166947045" />
+                  <mssgle:CubicBezierSegment
+                    Point1="291.485711872334,39.6941166947045"
+                    Point2="295.485711872334,39.6941166947045"
+                    Point3="295.485711872334,43.6941166947045" />
+                  <mssgle:LineSegment
+                    End="295.485711872334,71.888233389409" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42.4"
+          Id="Package\DF Load Fact\LKP Date Key Lookup"
+          TopLeft="4.6666666790843,121.799153487551" />
+        <NodeLayout
+          Size="196,42.4"
+          Id="Package\DF Load Fact\LKP Account Key Lookup"
+          TopLeft="127.572437317667,228.400138464938" />
+        <NodeLayout
+          Size="172,42.4"
+          Id="Package\DF Load Fact\DER subs no match"
+          TopLeft="432.54165392307,249.166661823789" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup No Match Output]"
+          TopLeft="323.572437317667,249.733471798271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108.969216605403,20.7665233588516"
+              Start="0,0"
+              End="101.469216605403,20.7665233588516">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.4846083027013,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.4846083027013,0"
+                    Point2="54.4846083027013,0"
+                    Point3="54.4846083027013,4" />
+                  <mssgle:LineSegment
+                    End="54.4846083027013,16.7665233588516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.4846083027013,16.7665233588516"
+                    Point2="54.4846083027013,20.7665233588516"
+                    Point3="58.4846083027013,20.7665233588516" />
+                  <mssgle:LineSegment
+                    End="101.469216605403,20.7665233588516" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-1.3217784160487,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup Match Output]"
+          TopLeft="94.6666666790843,164.465820154218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130.905770638583,63.9343183107203"
+              Start="0,0"
+              End="130.905770638583,56.4343183107203">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.9671591553602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.9671591553602"
+                    Point2="0,31.9671591553602"
+                    Point3="4,31.9671591553602" />
+                  <mssgle:LineSegment
+                    End="126.905770638583,31.9671591553602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="126.905770638583,31.9671591553602"
+                    Point2="130.905770638583,31.9671591553602"
+                    Point3="130.905770638583,35.9671591553602" />
+                  <mssgle:LineSegment
+                    End="130.905770638583,56.4343183107203" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.2614986005415,36.9671591553602,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\DF Load Fact\LKP Company"
+          TopLeft="179.428580070029,426.58823966122" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DF Load Fact\Union All"
+          TopLeft="192.685720046686,318.400000583424" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup Match Output2]"
+          TopLeft="225.572437317667,270.800138464938">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.1132827290188,47.5998621184863"
+              Start="0,0"
+              End="27.1132827290188,40.0998621184863">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7999310592432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.7999310592432"
+                    Point2="0,23.7999310592432"
+                    Point3="4,23.7999310592432" />
+                  <mssgle:LineSegment
+                    End="23.1132827290188,23.7999310592432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.1132827290188,23.7999310592432"
+                    Point2="27.1132827290188,23.7999310592432"
+                    Point3="27.1132827290188,27.7999310592432" />
+                  <mssgle:LineSegment
+                    End="27.1132827290188,40.0998621184863" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.6347453542406,28.7999310592432,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Derived Column Output]"
+          TopLeft="518.54165392307,291.566661823789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-247.189267209718,26.8333387596354"
+              Start="0,0"
+              End="-247.189267209718,19.3333387596354">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.8881611076788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.8881611076788"
+                    Point2="0,15.8881611076788"
+                    Point3="-4,15.8881611076788" />
+                  <mssgle:LineSegment
+                    End="-243.189267209718,15.8881611076788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-243.189267209718,15.8881611076788"
+                    Point2="-247.189267209718,15.8881611076788"
+                    Point3="-247.189267209718,19.8881611076788" />
+                  <mssgle:LineSegment
+                    End="-247.189267209718,19.3333387596354" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Union All Output 1]"
+          TopLeft="251.857150058357,360.000000583424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.5882390777956"
+              Start="0,0"
+              End="0,59.0882390777956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.0882390777956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Group LKP"
+          ParentId="Package\DF Load Fact"
+          HeaderHeight="43.2"
+          IsExpanded="True"
+          PanelSize="648.8,640.8"
+          Size="648.8,684"
+          Id="8d129d5b-031c-4b59-82ce-c7261e4f1ea7"
+          TopLeft="422.772819909774,99.7117660271668">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\DF Load Fact\LKP Date Key Lookup</s:String>
+            <s:String>Package\DF Load Fact\LKP Account Key Lookup</s:String>
+            <s:String>Package\DF Load Fact\DER subs no match</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup No Match Output]</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup Match Output]</s:String>
+            <s:String>Package\DF Load Fact\LKP Company</s:String>
+            <s:String>Package\DF Load Fact\Union All</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup Match Output2]</s:String>
+            <s:String>Package\DF Load Fact.Paths[Derived Column Output]</s:String>
+            <s:String>Package\DF Load Fact.Paths[Union All Output 1]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\LKP Company">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Company]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\OLE SRC Get data landing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\LKP Account Key Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\LKP Date Key Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\OLE DST Fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

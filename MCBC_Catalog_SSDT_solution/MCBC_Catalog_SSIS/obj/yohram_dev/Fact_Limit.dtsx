@@ -1,0 +1,3010 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2019 3:59:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{9B982523-2658-41F7-907A-D23758F14F12}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Fact_Limit"
+  DTS:PackageType="5"
+  DTS:VersionBuild="141"
+  DTS:VersionGUID="{16D73807-3075-4A26-8715-76ACB9BC3869}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6B7B3E7B-D2A7-4EAC-960F-3E6498169557}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\yohram\Desktop\Y\Pro SSIS 2014\Test SSIS Patterns\Integration Services Project1\Integration Services Project1\no match.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MIS_DATE"
+              DTS:DTSID="{D375C894-3F5E-4172-AB1B-C3FD7D938D99}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CURRENCY_AMT"
+              DTS:DTSID="{2010F113-5410-434C-83C1-94EF3E4800D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LOCAL_CCY_AMT"
+              DTS:DTSID="{E35354E1-A319-4110-B5C4-D8C547F152E7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CONSOL_KEY"
+              DTS:DTSID="{AB52CD94-BDD2-4771-B9F2-D8383EF2D728}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ASSET_TYPE"
+              DTS:DTSID="{2CFF8743-159D-4065-915E-6D2748E778C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="304"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of MIS_DATE"
+              DTS:DTSID="{397CC271-D2EB-49E9-8D67-0EDC0D41DDC8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of CURRENCY_AMT"
+              DTS:DTSID="{F34534A5-1900-480B-9D12-E5D4B137F2E2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of LOCAL_CCY_AMT"
+              DTS:DTSID="{DC836B15-9CE9-462C-842D-02BFBDC6BF64}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date_Key"
+              DTS:DTSID="{939A3FFC-7167-4D17-AB0C-D943DA95351A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{B6C5E993-4D48-4037-BF75-BD87F1649850}"
+      DTS:ObjectName="v_Backfill_Date_To_Load">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">6/1/2019 8:03:52 PM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D10BBDEE-ACA6-4BC1-A3F1-F83EFEDBEA4E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_curr_date">
+      <DTS:VariableValue
+        DTS:DataType="7">6/14/2019 3:42:22 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{10083AF2-DD5B-469C-8C08-5A2B09FE51A7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_Last_Date_Loaded">
+      <DTS:VariableValue
+        DTS:DataType="7">6/2/2019 11:29:21 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF Load Fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3D13DDCB-EE51-4319-8802-A70CCD2A091A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Load Fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF Load Fact\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input].Columns[ADVISED_AMOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ADVISED_AMOUNT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMOUNT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input].Columns[MAXIMUM_TOTAL]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MAXIMUM_TOTAL"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input].Columns[ORIGINAL_LIMIT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ORIGINAL_LIMIT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ORIGINAL_LIMIT]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ADVISED_AMOUNT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ADVISED_AMOUNT]"
+                      name="Copy of ADVISED_AMOUNT"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMOUNT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MAXIMUM_TOTAL]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MAXIMUM_TOTAL]"
+                      name="Copy of MAXIMUM_TOTAL"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGINAL_LIMIT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGINAL_LIMIT]"
+                      name="Copy of ORIGINAL_LIMIT"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ORIGINAL_LIMIT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\DER substitute null account"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER substitute null account"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\DER substitute null account.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF Load Fact\DER substitute null account.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Output].Columns[Account_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Output].Columns[Account_Key]"
+                      name="Account_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF Load Fact\DER substitute null account.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\LKP Account Key Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Account Key Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Account where scd2_end is null</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Account where scd2_end is null) [refTable]
+where [refTable].[Limit_Reference] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Account_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Joint_Customer_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Buy_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Sell_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Contract_Number" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Purpose_Code" dataType="DT_WSTR" length="75" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sub_Purpose_Code" dataType="DT_WSTR" length="75" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LC_Type" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Title_1" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Linked_Account_No" dataType="DT_WSTR" length="19" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Limit_Reference" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Start_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Renewal_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Bucket" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Close_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_WSTR" length="7" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Interest_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Penalty_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Limit_Reference</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]"
+                      name="Account_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Account_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\LKP Company Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Company Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Company where SCD2_End is null</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Company where SCD2_End is null) [refTable]
+where [refTable].[Company_Mnemonic] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Company_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_ID" dataType="DT_WSTR" length="11" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_name" dataType="DT_WSTR" length="22" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_Address" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_Mnemonic" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_start" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_end" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\LKP Company Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\LKP Company Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\LKP Company Lookup.Inputs[Lookup Input].Columns[BRANCH_CO_MNE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BRANCH_CO_MNE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Company_Mnemonic</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Company Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Match Output].Columns[Company_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Match Output].Columns[Company_Key]"
+                      name="Company_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Company_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Company Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Company Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\LKP Date Key Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Date Key Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Date]) [refTable]
+where [refTable].[Date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Week_Of_Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Current_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Prior_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]"
+                      name="Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Date_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\OLE DST Load Fact"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DST Load Fact"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Limit]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\OLE DST Load Fact.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[Account_Key]"
+                      cachedDataType="i4"
+                      cachedName="Account_Key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Account_Key]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[INTERNAL_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="INTERNAL_AMT"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[INTERNAL_AMT]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[INTERNAL_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="INTERNAL_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[INTERNAL_AMT_LCY]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT_LCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[UTILISED_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="UTILISED_AMT"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[UTILISED_AMT]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[UTILISED_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="UTILISED_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[UTILISED_AMT_LCY]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT_LCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[ADVISED_AMOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ADVISED_AMOUNT"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ADVISED_AMOUNT]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMOUNT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[ADVISED_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="ADVISED_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ADVISED_AMOUNT_LCY]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMT_LCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[ONLINE_LIMIT]"
+                      cachedDataType="numeric"
+                      cachedName="ONLINE_LIMIT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ONLINE_LIMIT]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[ONLINE_LIMIT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="ONLINE_LIMIT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ONLINE_LIMIT_LCY]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT_LCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[MAXIMUM_TOTAL]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MAXIMUM_TOTAL"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[MAXIMUM_TOTAL]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[MAXIMUM_TOTAL_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="MAXIMUM_TOTAL_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[MAXIMUM_TOTAL_LCY]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL_LCY]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[AVAIL_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="AVAIL_AMT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[AVAIL_AMT]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[AVAIL_AMT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[ORIGINAL_LIMIT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ORIGINAL_LIMIT"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ORIGINAL_LIMIT]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ORIGINAL_LIMIT]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Limit_ID]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]" />
+                    <inputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[Company_Key]"
+                      cachedDataType="i4"
+                      cachedName="Company_Key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Company_Key]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      dataType="i4"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Account_Key]"
+                      dataType="i4"
+                      name="Account_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[INTERNAL_AMT]"
+                      dataType="numeric"
+                      name="INTERNAL_AMT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[INTERNAL_AMT_LCY]"
+                      dataType="numeric"
+                      name="INTERNAL_AMT_LCY"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[UTILISED_AMT]"
+                      dataType="numeric"
+                      name="UTILISED_AMT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[UTILISED_AMT_LCY]"
+                      dataType="numeric"
+                      name="UTILISED_AMT_LCY"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ADVISED_AMOUNT]"
+                      dataType="numeric"
+                      name="ADVISED_AMOUNT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ADVISED_AMOUNT_LCY]"
+                      dataType="numeric"
+                      name="ADVISED_AMOUNT_LCY"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ONLINE_LIMIT]"
+                      dataType="numeric"
+                      name="ONLINE_LIMIT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ONLINE_LIMIT_LCY]"
+                      dataType="numeric"
+                      name="ONLINE_LIMIT_LCY"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[MAXIMUM_TOTAL]"
+                      dataType="numeric"
+                      name="MAXIMUM_TOTAL"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[MAXIMUM_TOTAL_LCY]"
+                      dataType="numeric"
+                      name="MAXIMUM_TOTAL_LCY"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[AVAIL_AMT]"
+                      dataType="numeric"
+                      name="AVAIL_AMT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[ORIGINAL_LIMIT]"
+                      dataType="numeric"
+                      name="ORIGINAL_LIMIT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Limit_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Limit_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Company_Key]"
+                      dataType="i4"
+                      name="Company_Key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\OLE DST Load Fact.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE DST Load Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE DST Load Fact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\OLE SRC Get data landing"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE SRC Get data landing"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @BusinessDate Date = ?;
+
+select 
+	
+	 L.MIS_DATE
+	,L.[@ID]
+	,L.[ACCOUNT]
+	,L.[BRANCH_CO_MNE]
+	,L.INTERNAL_AMT
+	,L.INTERNAL_AMT_LCY
+	,L.UTILISED_AMT
+	,L.UTILISED_AMT_LCY
+	,L.ADVISED_AMOUNT
+	,L.ADVISED_AMT_LCY
+	,CAST(ISNULL(L.ONLINE_LIMIT,0) as DECIMAL(19,2)) ONLINE_LIMIT
+	,L.ONLINE_LIMIT_LCY
+	,L.MAXIMUM_TOTAL
+	,L.MAXIMUM_TOTAL_LCY
+	,CAST(ISNULL(L.AVAIL_AMT,0) as DECIMAL(19,2)) AVAIL_AMT
+	,L.ORIGINAL_LIMIT
+	
+
+	from bs.LIMIT L
+	where L.MIS_DATE = @BusinessDate</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{B6C5E993-B2B7-4037-BF75-BD87F1649850};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Fact\OLE SRC Get data landing.Connections[OleDbConnection]"
+                  connectionManagerID="{671548CD-8576-49C9-868B-AEAAB720CD7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_Conn_T24]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      name="MIS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      length="150"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      name="@ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ACCOUNT]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ACCOUNT]"
+                      name="ACCOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[INTERNAL_AMT]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT]"
+                      name="INTERNAL_AMT"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[INTERNAL_AMT_LCY]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT_LCY]"
+                      name="INTERNAL_AMT_LCY"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[UTILISED_AMT]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT]"
+                      name="UTILISED_AMT"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[UTILISED_AMT_LCY]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT_LCY]"
+                      name="UTILISED_AMT_LCY"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMOUNT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ADVISED_AMOUNT]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMOUNT]"
+                      name="ADVISED_AMOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMT_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ADVISED_AMT_LCY]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMT_LCY]"
+                      name="ADVISED_AMT_LCY"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ONLINE_LIMIT]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT]"
+                      name="ONLINE_LIMIT"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ONLINE_LIMIT_LCY]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT_LCY]"
+                      name="ONLINE_LIMIT_LCY"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MAXIMUM_TOTAL]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL]"
+                      name="MAXIMUM_TOTAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MAXIMUM_TOTAL_LCY]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL_LCY]"
+                      name="MAXIMUM_TOTAL_LCY"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[AVAIL_AMT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[AVAIL_AMT]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[AVAIL_AMT]"
+                      name="AVAIL_AMT"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ORIGINAL_LIMIT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ORIGINAL_LIMIT]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ORIGINAL_LIMIT]"
+                      name="ORIGINAL_LIMIT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[BRANCH_CO_MNE]"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]"
+                      name="BRANCH_CO_MNE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      dataType="dbDate"
+                      name="MIS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="@ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                      dataType="nText"
+                      name="ACCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[INTERNAL_AMT]"
+                      dataType="numeric"
+                      name="INTERNAL_AMT"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[INTERNAL_AMT_LCY]"
+                      dataType="numeric"
+                      name="INTERNAL_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[UTILISED_AMT]"
+                      dataType="numeric"
+                      name="UTILISED_AMT"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[UTILISED_AMT_LCY]"
+                      dataType="numeric"
+                      name="UTILISED_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ADVISED_AMOUNT]"
+                      dataType="wstr"
+                      length="50"
+                      name="ADVISED_AMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ADVISED_AMT_LCY]"
+                      dataType="numeric"
+                      name="ADVISED_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ONLINE_LIMIT]"
+                      dataType="numeric"
+                      name="ONLINE_LIMIT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ONLINE_LIMIT_LCY]"
+                      dataType="numeric"
+                      name="ONLINE_LIMIT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MAXIMUM_TOTAL]"
+                      dataType="wstr"
+                      length="50"
+                      name="MAXIMUM_TOTAL" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[MAXIMUM_TOTAL_LCY]"
+                      dataType="numeric"
+                      name="MAXIMUM_TOTAL_LCY"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[AVAIL_AMT]"
+                      dataType="numeric"
+                      name="AVAIL_AMT"
+                      precision="19"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[ORIGINAL_LIMIT]"
+                      dataType="wstr"
+                      length="50"
+                      name="ORIGINAL_LIMIT" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      length="50"
+                      name="BRANCH_CO_MNE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ACCOUNT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ACCOUNT]"
+                      name="ACCOUNT" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[BRANCH_CO_MNE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[BRANCH_CO_MNE]"
+                      name="BRANCH_CO_MNE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[INTERNAL_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[INTERNAL_AMT]"
+                      name="INTERNAL_AMT"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[INTERNAL_AMT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[INTERNAL_AMT_LCY]"
+                      name="INTERNAL_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[UTILISED_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[UTILISED_AMT]"
+                      name="UTILISED_AMT"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[UTILISED_AMT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[UTILISED_AMT_LCY]"
+                      name="UTILISED_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ADVISED_AMOUNT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ADVISED_AMOUNT]"
+                      name="ADVISED_AMOUNT" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ADVISED_AMT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ADVISED_AMT_LCY]"
+                      name="ADVISED_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ONLINE_LIMIT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ONLINE_LIMIT]"
+                      name="ONLINE_LIMIT"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ONLINE_LIMIT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ONLINE_LIMIT_LCY]"
+                      name="ONLINE_LIMIT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MAXIMUM_TOTAL]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MAXIMUM_TOTAL]"
+                      name="MAXIMUM_TOTAL" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MAXIMUM_TOTAL_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MAXIMUM_TOTAL_LCY]"
+                      name="MAXIMUM_TOTAL_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[AVAIL_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[AVAIL_AMT]"
+                      name="AVAIL_AMT"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ORIGINAL_LIMIT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ORIGINAL_LIMIT]"
+                      name="ORIGINAL_LIMIT" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      name="@ID" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Fact\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[ACCOUNT]"
+                      cachedDataType="nText"
+                      cachedName="ACCOUNT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ACCOUNT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ACCOUNT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[INTERNAL_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="INTERNAL_AMT"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[INTERNAL_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="INTERNAL_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[UTILISED_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="UTILISED_AMT"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[UTILISED_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="UTILISED_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[ADVISED_AMOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ADVISED_AMOUNT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMOUNT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMOUNT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[ADVISED_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="ADVISED_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[ONLINE_LIMIT]"
+                      cachedDataType="numeric"
+                      cachedName="ONLINE_LIMIT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[ONLINE_LIMIT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="ONLINE_LIMIT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[MAXIMUM_TOTAL]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MAXIMUM_TOTAL"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[MAXIMUM_TOTAL_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="MAXIMUM_TOTAL_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[AVAIL_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="AVAIL_AMT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[AVAIL_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[AVAIL_AMT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[ORIGINAL_LIMIT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ORIGINAL_LIMIT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ORIGINAL_LIMIT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ORIGINAL_LIMIT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Copy of ADVISED_AMOUNT]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of ADVISED_AMOUNT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ADVISED_AMOUNT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ADVISED_AMOUNT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Copy of MAXIMUM_TOTAL]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of MAXIMUM_TOTAL"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MAXIMUM_TOTAL]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of MAXIMUM_TOTAL]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Copy of ORIGINAL_LIMIT]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of ORIGINAL_LIMIT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGINAL_LIMIT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ORIGINAL_LIMIT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Account_Key]"
+                      cachedDataType="i4"
+                      cachedName="Account_Key"
+                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Company_Key]"
+                      cachedDataType="i4"
+                      cachedName="Company_Key"
+                      lineageId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Match Output].Columns[Company_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[ACCOUNT]"
+                      cachedDataType="nText"
+                      cachedName="ACCOUNT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ACCOUNT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ACCOUNT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[INTERNAL_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="INTERNAL_AMT"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[INTERNAL_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="INTERNAL_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[INTERNAL_AMT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[UTILISED_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="UTILISED_AMT"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[UTILISED_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="UTILISED_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[UTILISED_AMT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[ADVISED_AMOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ADVISED_AMOUNT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMOUNT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMOUNT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[ADVISED_AMT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="ADVISED_AMT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ADVISED_AMT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[ONLINE_LIMIT]"
+                      cachedDataType="numeric"
+                      cachedName="ONLINE_LIMIT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[ONLINE_LIMIT_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="ONLINE_LIMIT_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ONLINE_LIMIT_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[MAXIMUM_TOTAL]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MAXIMUM_TOTAL"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[MAXIMUM_TOTAL_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="MAXIMUM_TOTAL_LCY"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[MAXIMUM_TOTAL_LCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL_LCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[AVAIL_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="AVAIL_AMT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[AVAIL_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[AVAIL_AMT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[ORIGINAL_LIMIT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ORIGINAL_LIMIT"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[ORIGINAL_LIMIT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ORIGINAL_LIMIT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Copy of ADVISED_AMOUNT]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of ADVISED_AMOUNT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ADVISED_AMOUNT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ADVISED_AMOUNT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Copy of MAXIMUM_TOTAL]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of MAXIMUM_TOTAL"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MAXIMUM_TOTAL]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of MAXIMUM_TOTAL]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Copy of ORIGINAL_LIMIT]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of ORIGINAL_LIMIT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ORIGINAL_LIMIT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ORIGINAL_LIMIT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Date_Key]"
+                      cachedDataType="i4"
+                      cachedName="Date_Key"
+                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Account_Key]"
+                      cachedDataType="i4"
+                      cachedName="Account_Key"
+                      lineageId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Output].Columns[Account_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Company_Key]"
+                      cachedDataType="i4"
+                      cachedName="Company_Key"
+                      lineageId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Match Output].Columns[Company_Key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Fact\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ACCOUNT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ACCOUNT]"
+                      name="ACCOUNT" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT]"
+                      name="INTERNAL_AMT"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[INTERNAL_AMT_LCY]"
+                      name="INTERNAL_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT]"
+                      name="UTILISED_AMT"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[UTILISED_AMT_LCY]"
+                      name="UTILISED_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMOUNT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMOUNT]"
+                      name="ADVISED_AMOUNT" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ADVISED_AMT_LCY]"
+                      name="ADVISED_AMT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT]"
+                      name="ONLINE_LIMIT"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ONLINE_LIMIT_LCY]"
+                      name="ONLINE_LIMIT_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL]"
+                      name="MAXIMUM_TOTAL" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[MAXIMUM_TOTAL_LCY]"
+                      name="MAXIMUM_TOTAL_LCY"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[AVAIL_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[AVAIL_AMT]"
+                      name="AVAIL_AMT"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ORIGINAL_LIMIT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[ORIGINAL_LIMIT]"
+                      name="ORIGINAL_LIMIT" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ADVISED_AMOUNT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ADVISED_AMOUNT]"
+                      name="Copy of ADVISED_AMOUNT"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of MAXIMUM_TOTAL]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of MAXIMUM_TOTAL]"
+                      name="Copy of MAXIMUM_TOTAL"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ORIGINAL_LIMIT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Copy of ORIGINAL_LIMIT]"
+                      name="Copy of ORIGINAL_LIMIT"
+                      precision="19"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]"
+                      name="Date_Key" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
+                      name="Account_Key" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]"
+                      name="Company_Key" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF Load Fact.Paths[Data Conversion Output]"
+              endId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Derived Column Output]"
+              endId="Package\DF Load Fact\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\DF Load Fact\DER substitute null account.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup Match Output]"
+              endId="Package\DF Load Fact\Union All.Inputs[Union All Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup Match Output1]"
+              endId="Package\DF Load Fact\LKP Company Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup Match Output2]"
+              endId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Fact\LKP Company Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Lookup No Match Output]"
+              endId="Package\DF Load Fact\DER substitute null account.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[OLE DB Source Output]"
+              endId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF Load Fact.Paths[Union All Output 1]"
+              endId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\DF Load Fact\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get last date loaded from Ctrl table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BF375D19-DB3C-42B1-A007-545987357BCA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get last date loaded from Ctrl table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="&#xA;select Last_Date_Loaded&#xA;from Control_Table&#xA;where Table_Name = 'Fact_Limit'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_Last_Date_Loaded" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Update Control Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{47B0B269-AC9D-4111-AF6A-829F78FDCDE7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Update Control Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="update control_table&#xA;set Last_Execution_Date = ?,&#xA;Last_Date_Loaded= ?&#xA;where table_name = 'Fact_Limit'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::v_Backfill_Date_To_Load"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DE3CAF13-5D2A-4F21-920C-6B2D0F01B844}"
+      DTS:From="Package\SQL Get last date loaded from Ctrl table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF Load Fact" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EC0954D6-7B9E-44B3-AC8F-F57F537B553C}"
+      DTS:From="Package\DF Load Fact"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL Update Control Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="141.6,42.4"
+          Id="Package\DF Load Fact"
+          TopLeft="250.952377212899,132.660182813036" />
+        <NodeLayout
+          Size="266.4,41.6"
+          Id="Package\SQL Get last date loaded from Ctrl table"
+          TopLeft="15.4166664369404,14.2666682473818" />
+        <NodeLayout
+          Size="201.6,42.4"
+          Id="Package\SQL Update Control Table"
+          TopLeft="292.103170250499,313.652908116005" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="148.61666643694,55.8666682473818">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="173.135710775959,76.7935145656542"
+              Start="0,0"
+              End="173.135710775959,69.2935145656542">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.3967572828271" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.3967572828271"
+                    Point2="0,38.3967572828271"
+                    Point3="4,38.3967572828271" />
+                  <mssgle:LineSegment
+                    End="169.135710775959,38.3967572828271" />
+                  <mssgle:CubicBezierSegment
+                    Point1="169.135710775959,38.3967572828271"
+                    Point2="173.135710775959,38.3967572828271"
+                    Point3="173.135710775959,42.3967572828271" />
+                  <mssgle:LineSegment
+                    End="173.135710775959,69.2935145656542" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="321.619043879566,175.326849479703">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.1507930376001,138.326058636302"
+              Start="0,0"
+              End="71.1507930376001,130.826058636302">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.1630293181512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.1630293181512"
+                    Point2="0,69.1630293181512"
+                    Point3="4,69.1630293181512" />
+                  <mssgle:LineSegment
+                    End="67.1507930376001,69.1630293181512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.1507930376001,69.1630293181512"
+                    Point2="71.1507930376001,69.1630293181512"
+                    Point3="71.1507930376001,73.1630293181512" />
+                  <mssgle:LineSegment
+                    End="71.1507930376001,130.826058636302" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF Load Fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        <NodeLayout
+          Size="170.4,42.4"
+          Id="Package\DF Load Fact\OLE DST Load Fact"
+          TopLeft="676.954363020339,661.835145346826" />
+        <NodeLayout
+          Size="201.6,42.4"
+          Id="Package\DF Load Fact\OLE SRC Get data landing"
+          TopLeft="41.1488088741518,29.4326791927459" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DF Load Fact\Data Conversion"
+          TopLeft="149.600002520425,143.670590037046" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Data Conversion Output]"
+          TopLeft="227.200002520425,185.270590037046">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="254.799997479575,87.5294099629544"
+              Start="0,0"
+              End="254.799997479575,80.0294099629544">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.7647049814772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.7647049814772"
+                    Point2="0,43.7647049814772"
+                    Point3="4,43.7647049814772" />
+                  <mssgle:LineSegment
+                    End="250.799997479575,43.7647049814772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="250.799997479575,43.7647049814772"
+                    Point2="254.799997479575,43.7647049814772"
+                    Point3="254.799997479575,47.7647049814772" />
+                  <mssgle:LineSegment
+                    End="254.799997479575,80.0294099629544" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Union All Output 1]"
+          TopLeft="761.477181510169,538.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,123.435145346826"
+              Start="0,0"
+              End="0,115.935145346826">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,115.935145346826" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[OLE DB Source Output]"
+          TopLeft="141.815475540818,72.0993458594126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.4511936462732,71.5712441776334"
+              Start="0,0"
+              End="85.4511936462732,64.0712441776334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7856220888167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7856220888167"
+                    Point2="0,35.7856220888167"
+                    Point3="4,35.7856220888167" />
+                  <mssgle:LineSegment
+                    End="81.4511936462732,35.7856220888167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.4511936462732,35.7856220888167"
+                    Point2="85.4511936462732,35.7856220888167"
+                    Point3="85.4511936462732,39.7856220888167" />
+                  <mssgle:LineSegment
+                    End="85.4511936462732,64.0712441776334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42.4"
+          Id="Package\DF Load Fact\LKP Date Key Lookup"
+          TopLeft="4.30952382726321,120.561058271595" />
+        <NodeLayout
+          Size="196,42.4"
+          Id="Package\DF Load Fact\LKP Account Key Lookup"
+          TopLeft="128.614103968812,227.316805150976" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DF Load Fact\DER substitute null account"
+          TopLeft="411.505567769955,227.200005104962" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup No Match Output]"
+          TopLeft="324.614103968812,248.258405127969">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.8914638011433,0"
+              Start="0,0"
+              End="79.3914638011433,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="79.3914638011433,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.1106548181784,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DF Load Fact\Union All"
+          TopLeft="313.142864451117,344.988239223652" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup Match Output]"
+          TopLeft="226.614103968812,269.716805150976">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="146.528760482305,75.2714340726757"
+              Start="0,0"
+              End="146.528760482305,67.7714340726757">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6357170363379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.6357170363379"
+                    Point2="0,37.6357170363379"
+                    Point3="4,37.6357170363379" />
+                  <mssgle:LineSegment
+                    End="142.528760482305,37.6357170363379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="142.528760482305,37.6357170363379"
+                    Point2="146.528760482305,37.6357170363379"
+                    Point3="146.528760482305,41.6357170363379" />
+                  <mssgle:LineSegment
+                    End="146.528760482305,67.7714340726757" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25.0729935224025,42.6357170363379,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Derived Column Output]"
+          TopLeft="515.505567769955,268.800005104963">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-123.696036652172,76.1882341186892"
+              Start="0,0"
+              End="-123.696036652172,68.6882341186892">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1114544123817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.1114544123817"
+                    Point2="0,45.1114544123817"
+                    Point3="-4,45.1114544123817" />
+                  <mssgle:LineSegment
+                    End="-119.696036652172,45.1114544123817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-119.696036652172,45.1114544123817"
+                    Point2="-123.696036652172,45.1114544123817"
+                    Point3="-123.696036652172,49.1114544123817" />
+                  <mssgle:LineSegment
+                    End="-123.696036652172,68.6882341186892" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\DF Load Fact\LKP Company Lookup"
+          TopLeft="289.047629193992,117.835142721417" />
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup Match Output1]"
+          TopLeft="184.309523827263,140.198100496506">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.738105366729,0"
+              Start="0,0"
+              End="97.2381053667291,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97.2381053667291,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.42766596461454,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup Match Output2]"
+          TopLeft="379.447629193992,159.435142721417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-152.83352522518,67.8816624295589"
+              Start="0,0"
+              End="-152.83352522518,60.3816624295589">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9408312147795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9408312147795"
+                    Point2="0,33.9408312147795"
+                    Point3="-4,33.9408312147795" />
+                  <mssgle:LineSegment
+                    End="-148.83352522518,33.9408312147795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-148.83352522518,33.9408312147795"
+                    Point2="-152.83352522518,33.9408312147795"
+                    Point3="-152.83352522518,37.9408312147795" />
+                  <mssgle:LineSegment
+                    End="-152.83352522518,60.3816624295589" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-124.60814933134,38.9408312147795,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Group LKP"
+          ParentId="Package\DF Load Fact"
+          HeaderHeight="43.2"
+          IsExpanded="True"
+          PanelSize="681.6,451.2"
+          Size="681.6,494.4"
+          Id="8d129d5b-031c-4b59-82ce-c7261e4f1ea7"
+          TopLeft="387.701398159174,108.866530331228">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\DF Load Fact\LKP Date Key Lookup</s:String>
+            <s:String>Package\DF Load Fact\LKP Account Key Lookup</s:String>
+            <s:String>Package\DF Load Fact\DER substitute null account</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup No Match Output]</s:String>
+            <s:String>Package\DF Load Fact\Union All</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup Match Output]</s:String>
+            <s:String>Package\DF Load Fact.Paths[Derived Column Output]</s:String>
+            <s:String>Package\DF Load Fact\LKP Company Lookup</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup Match Output1]</s:String>
+            <s:String>Package\DF Load Fact.Paths[Lookup Match Output2]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\LKP Date Key Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\LKP Company Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\OLE DST Load Fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\LKP Account Key Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Fact\OLE SRC Get data landing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

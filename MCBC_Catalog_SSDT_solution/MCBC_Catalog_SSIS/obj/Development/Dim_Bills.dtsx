@@ -1,0 +1,2746 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2019 12:04:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{2B12A401-0A12-4F1E-971E-88A09E040BFD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Dim_Bills"
+  DTS:PackageType="5"
+  DTS:VersionBuild="212"
+  DTS:VersionGUID="{82CD7119-81B7-4B3C-90C6-E5EEEA5DA16D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{73C23FDB-7824-49E0-A947-54BC692568AC}"
+      DTS:ObjectName="v_Backfill_Date_To_Load">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">4/24/2019 1:50:00 PM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FD455057-BDAE-4F4F-8120-2958A55AF22A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ControlTableUpdate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{84518ED0-48E5-43CB-9696-5955BFA1FBA2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vListOfDates">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EA5A4DF6-E8B2-4BF8-A092-8D508732491C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_CurrentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">4/26/2019</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{949FFDD2-BDDF-484A-A7C9-DCAB43C86C6A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_LastDateLoaded">
+      <DTS:VariableValue
+        DTS:DataType="7">5/30/2019 3:50:56 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF Load Dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D202B69C-7749-4B27-B51D-C8816A66FD9B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Load Dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF Load Dimension\CONV Convert Data"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="CONV Convert Data"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[BILL_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="BILL_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_STATUS]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[BILL_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="BILL_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_ST_CHG_DT]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[SETTLE_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="SETTLE_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SETTLE_STATUS]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[SET_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="SET_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SET_ST_CHG_DT]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[AGING_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="AGING_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_STATUS]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input].Columns[AGING_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="AGING_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_ST_CHG_DT]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of @ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="150"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of @ID]"
+                      name="Copy of @ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_STATUS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_STATUS]"
+                      name="Copy of BILL_STATUS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_STATUS]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SETTLE_STATUS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SETTLE_STATUS]"
+                      name="Copy of SETTLE_STATUS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SETTLE_STATUS]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SET_ST_CHG_DT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SET_ST_CHG_DT]"
+                      name="Copy of SET_ST_CHG_DT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SET_ST_CHG_DT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_STATUS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_STATUS]"
+                      name="Copy of AGING_STATUS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_STATUS]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_ST_CHG_DT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_ST_CHG_DT]"
+                      name="Copy of AGING_ST_CHG_DT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_ST_CHG_DT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_ST_CHG_DT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_ST_CHG_DT]"
+                      name="Copy of BILL_ST_CHG_DT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_ST_CHG_DT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\CSPL check old hash vs new hash"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CSPL check old hash vs new hash"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input].Columns[scd2_hash_old]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="scd2_hash_old"
+                      lineageId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[scd2_hash_old]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input].Columns[Hash_SCD2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Hash_SCD2"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Type 2 Change]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Type 2 Change"
+                  synchronousInputId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]} != #{Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[scd2_hash_old]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Hash_SCD2 != scd2_hash_old</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[No Change]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="No Change"
+                  synchronousInputId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\DER datatype change for date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER datatype change for date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\DER datatype change for date.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\DER datatype change for date.Inputs[Derived Column Input].Columns[Copy of BILL_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of BILL_ST_CHG_DT"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_ST_CHG_DT]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)#{Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_ST_CHG_DT]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)[Copy of BILL_ST_CHG_DT]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF Load Dimension\DER datatype change for date.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF Load Dimension\DER datatype change for date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP Lookup against Dim_Bills for changes"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from dim_bills where scd2_end is null</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from dim_bills where scd2_end is null) [refTable]
+where [refTable].[Bill_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Bill_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Bill_ID" dataType="DT_WSTR" length="80" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Bill_Status" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Bill_Status_Change_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Settle_Status" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Settle_Status_Change_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Aging_Status" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Aging_Status_Change_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_start" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_end" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Inputs[Lookup Input].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Bill_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[scd2_hash_old]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="66"
+                      lineageId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[scd2_hash_old]"
+                      name="scd2_hash_old"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">scd2_hash</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[Bill_Key_old]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[Bill_Key_old]"
+                      name="Bill_Key_old"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Bill_Key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\MLT dupicate type 2 change streams"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="MLT dupicate type 2 change streams">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 3]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 1]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\OLE_DST Load Dimension"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST Load Dimension"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Bills]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dimension\OLE_DST Load Dimension.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[scd2_start]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Hash_SCD2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Hash_SCD2"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[scd2_hash]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_ID]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[@ID]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Copy of BILL_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of BILL_STATUS"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Status]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_STATUS]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Copy of SET_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of SET_ST_CHG_DT"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Settle_Status_Change_Date]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SET_ST_CHG_DT]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Copy of AGING_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of AGING_ST_CHG_DT"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Aging_Status_Change_Date]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_ST_CHG_DT]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Copy of SETTLE_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of SETTLE_STATUS"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Settle_Status]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SETTLE_STATUS]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Copy of AGING_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of AGING_STATUS"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Aging_Status]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_STATUS]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].Columns[Copy of BILL_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of BILL_ST_CHG_DT"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Status_Change_Date]"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_ST_CHG_DT]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[scd2_start]"
+                      dataType="dbTimeStamp"
+                      name="scd2_start" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[scd2_end]"
+                      dataType="dbTimeStamp"
+                      name="scd2_end" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[scd2_hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      name="scd2_hash" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Key]"
+                      dataType="i4"
+                      name="Bill_Key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_ID]"
+                      dataType="wstr"
+                      length="80"
+                      name="Bill_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Status]"
+                      dataType="wstr"
+                      length="15"
+                      name="Bill_Status" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Status_Change_Date]"
+                      dataType="dbDate"
+                      name="Bill_Status_Change_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Settle_Status]"
+                      dataType="wstr"
+                      length="15"
+                      name="Settle_Status" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Settle_Status_Change_Date]"
+                      dataType="wstr"
+                      length="8"
+                      name="Settle_Status_Change_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Aging_Status]"
+                      dataType="wstr"
+                      length="15"
+                      name="Aging_Status" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input].ExternalColumns[Aging_Status_Change_Date]"
+                      dataType="wstr"
+                      length="8"
+                      name="Aging_Status_Change_Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\OLE_DST Load Dimension.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\OLE_DST Load Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_DST Load Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\OLE_DST Load Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST write type 2 changes to type 2 table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SCD2_Dim_Bills]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Connections[OleDbConnection]"
+                  connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].Columns[Bill_Key_old]"
+                      cachedDataType="i4"
+                      cachedName="Bill_Key_old"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Key_old]"
+                      lineageId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output].Columns[Bill_Key_old]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[Bill_Key_old]"
+                      dataType="i4"
+                      name="Bill_Key_old" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\OLE_SRC Get Data From landing"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC Get Data From landing"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--use InsightLanding
+--go
+select
+	 b.MIS_DATE
+	,b.[@ID]
+	--,b.ARRANGEMENT_ID
+	--,b.PAYMENT_DATE
+	--,b.ACTUAL_PAY_DATE
+	--,b.CURRENCY
+	,t01.value as BILL_STATUS
+	,SUBSTRING(t02.value,1,4) + '-' +
+ SUBSTRING(t02.value,5,2) + '-' + SUBSTRING(t02.value,7,2) as BILL_ST_CHG_DT
+	,t03.value as SETTLE_STATUS
+	,t04.value as SET_ST_CHG_DT
+	,t05.value as AGING_STATUS
+	,t06.value as AGING_ST_CHG_DT
+	,[Hash_SCD2]=
+			isnull(
+				convert(char(66),HASHBYTES('SHA2_256',concat(b.[@ID],t01.value,t02.value,t03.value,t04.value,t05.value,t06.value)),1),
+				0
+			)
+
+from 
+	bs.AA_BILL_DETAILS b 
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by b.BILL_STATUS asc) as rw
+			,t.value
+		from
+			string_split(b.BILL_STATUS,nchar(63741)) t
+	)t01
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by b.BILL_ST_CHG_DT asc) as rw
+			,t.value
+		from
+			string_split(b.BILL_ST_CHG_DT,nchar(63741)) t
+	)t02
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by b.SETTLE_STATUS asc) as rw
+			,t.value
+		from
+			string_split(b.SETTLE_STATUS,nchar(63741)) t
+	)t03
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by b.SET_ST_CHG_DT asc) as rw
+			,t.value
+		from
+			string_split(b.SET_ST_CHG_DT,nchar(63741)) t
+	)t04
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by b.AGING_STATUS asc) as rw
+			,t.value
+		from
+			string_split(b.AGING_STATUS,nchar(63741)) t
+	)t05
+	cross apply
+	(
+		select
+			ROW_NUMBER() over (order by b.AGING_ST_CHG_DT asc) as rw
+			,t.value
+		from
+			string_split(b.AGING_ST_CHG_DT,nchar(63741)) t
+	)t06
+where 
+	--[@ID] = 'AABILL19025LRZ9R' and
+	b.MIS_DATE = ?
+	and t01.rw = 1
+	and t02.rw = 1
+	and t03.rw = 1
+	and t04.rw = 1
+	and t05.rw = 1
+	and t06.rw = 1</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{73C23FDB-87DB-49E0-A947-54BC692568AC};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Connections[OleDbConnection]"
+                  connectionManagerID="{671548CD-8576-49C9-868B-AEAAB720CD7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_Conn_T24]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]"
+                      name="MIS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      length="150"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]"
+                      name="@ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_STATUS]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[BILL_STATUS]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_STATUS]"
+                      name="BILL_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_ST_CHG_DT]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[BILL_ST_CHG_DT]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_ST_CHG_DT]"
+                      name="BILL_ST_CHG_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SETTLE_STATUS]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[SETTLE_STATUS]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SETTLE_STATUS]"
+                      name="SETTLE_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SET_ST_CHG_DT]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[SET_ST_CHG_DT]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SET_ST_CHG_DT]"
+                      name="SET_ST_CHG_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_STATUS]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[AGING_STATUS]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_STATUS]"
+                      name="AGING_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_ST_CHG_DT]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[AGING_ST_CHG_DT]"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_ST_CHG_DT]"
+                      name="AGING_ST_CHG_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Hash_SCD2]"
+                      length="66"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]"
+                      name="Hash_SCD2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[MIS_DATE]"
+                      dataType="dbDate"
+                      name="MIS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
+                      dataType="wstr"
+                      length="150"
+                      name="@ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[BILL_STATUS]"
+                      dataType="nText"
+                      name="BILL_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[BILL_ST_CHG_DT]"
+                      dataType="nText"
+                      name="BILL_ST_CHG_DT" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[SETTLE_STATUS]"
+                      dataType="nText"
+                      name="SETTLE_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[SET_ST_CHG_DT]"
+                      dataType="nText"
+                      name="SET_ST_CHG_DT" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[AGING_STATUS]"
+                      dataType="nText"
+                      name="AGING_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[AGING_ST_CHG_DT]"
+                      dataType="nText"
+                      name="AGING_ST_CHG_DT" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Hash_SCD2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      name="Hash_SCD2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[BILL_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[BILL_STATUS]"
+                      name="BILL_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[BILL_ST_CHG_DT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[BILL_ST_CHG_DT]"
+                      name="BILL_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[SETTLE_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[SETTLE_STATUS]"
+                      name="SETTLE_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[SET_ST_CHG_DT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[SET_ST_CHG_DT]"
+                      name="SET_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[AGING_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[AGING_STATUS]"
+                      name="AGING_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[AGING_ST_CHG_DT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[AGING_ST_CHG_DT]"
+                      name="AGING_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Hash_SCD2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Hash_SCD2]"
+                      name="Hash_SCD2" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Load Dimension\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[BILL_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="BILL_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[BILL_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="BILL_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[SETTLE_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="SETTLE_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SETTLE_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SETTLE_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[SET_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="SET_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SET_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SET_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[AGING_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="AGING_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[AGING_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="AGING_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Hash_SCD2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Hash_SCD2"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of @ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Copy of @ID"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of @ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of BILL_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of BILL_STATUS"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of SETTLE_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of SETTLE_STATUS"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SETTLE_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SETTLE_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of SET_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of SET_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SET_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SET_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of AGING_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of AGING_STATUS"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of AGING_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of AGING_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1].Columns[Copy of BILL_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of BILL_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MIS_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[@ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="@ID"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[BILL_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="BILL_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[BILL_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="BILL_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[BILL_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[SETTLE_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="SETTLE_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SETTLE_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SETTLE_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[SET_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="SET_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[SET_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SET_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[AGING_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="AGING_STATUS"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[AGING_ST_CHG_DT]"
+                      cachedDataType="nText"
+                      cachedName="AGING_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[AGING_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Hash_SCD2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="66"
+                      cachedName="Hash_SCD2"
+                      lineageId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of @ID]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Copy of @ID"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of @ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of BILL_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of BILL_STATUS"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of SETTLE_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of SETTLE_STATUS"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SETTLE_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SETTLE_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of SET_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of SET_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of SET_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SET_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of AGING_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of AGING_STATUS"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_STATUS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_STATUS]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of AGING_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of AGING_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of AGING_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2].Columns[Copy of BILL_ST_CHG_DT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of BILL_ST_CHG_DT"
+                      lineageId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output].Columns[Copy of BILL_ST_CHG_DT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_ST_CHG_DT]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF Load Dimension\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]"
+                      name="MIS_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[@ID]"
+                      name="@ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_STATUS]"
+                      name="BILL_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_ST_CHG_DT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[BILL_ST_CHG_DT]"
+                      name="BILL_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SETTLE_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SETTLE_STATUS]"
+                      name="SETTLE_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SET_ST_CHG_DT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[SET_ST_CHG_DT]"
+                      name="SET_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_STATUS]"
+                      name="AGING_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_ST_CHG_DT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[AGING_ST_CHG_DT]"
+                      name="AGING_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]"
+                      name="Hash_SCD2" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of @ID]"
+                      name="Copy of @ID" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_STATUS]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_STATUS]"
+                      name="Copy of BILL_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SETTLE_STATUS]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SETTLE_STATUS]"
+                      name="Copy of SETTLE_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SET_ST_CHG_DT]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of SET_ST_CHG_DT]"
+                      name="Copy of SET_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_STATUS]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_STATUS]"
+                      name="Copy of AGING_STATUS" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_ST_CHG_DT]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of AGING_ST_CHG_DT]"
+                      name="Copy of AGING_ST_CHG_DT" />
+                    <outputColumn
+                      refId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_ST_CHG_DT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1].Columns[Copy of BILL_ST_CHG_DT]"
+                      name="Copy of BILL_ST_CHG_DT" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF Load Dimension.Paths[Data Conversion Output]"
+              endId="Package\DF Load Dimension\DER datatype change for date.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\DF Load Dimension\CONV Convert Data.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Derived Column Output]"
+              endId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\DF Load Dimension\DER datatype change for date.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Lookup Match Output]"
+              endId="Package\DF Load Dimension\CSPL check old hash vs new hash.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Lookup No Match Output]"
+              endId="Package\DF Load Dimension\Union All.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Multicast Output 2]"
+              endId="Package\DF Load Dimension\Union All.Inputs[Union All Input 2]"
+              name="Multicast Output 2"
+              startId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Multicast Output 3]"
+              endId="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 3"
+              startId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Outputs[Multicast Output 3]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[OLE DB Source Output]"
+              endId="Package\DF Load Dimension\CONV Convert Data.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF Load Dimension\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Type 2 Change]"
+              endId="Package\DF Load Dimension\MLT dupicate type 2 change streams.Inputs[Multicast Input 1]"
+              name="Type 2 Change"
+              startId="Package\DF Load Dimension\CSPL check old hash vs new hash.Outputs[Type 2 Change]" />
+            <path
+              refId="Package\DF Load Dimension.Paths[Union All Output 1]"
+              endId="Package\DF Load Dimension\OLE_DST Load Dimension.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\DF Load Dimension\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Create scd2 table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D38861D8-7CD5-4555-88A0-6061E0097E78}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Create scd2 table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_Bills&#xA;create table SCD2_Dim_Bills&#xA;(&#xA;&#x9;Bill_Key_old int not null,&#xA;&#x9;End_Date datetime not null&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get current load date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E8AF41E1-CEEA-429A-B677-575BDC042989}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get current load date"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="select max(scd2_start) from Dim_BIlls"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_CurrentDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get last date loaded from Ctrl table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A929D5E6-254C-4006-892B-95197BCC9241}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get last date loaded from Ctrl table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="&#xA;select Last_Date_Loaded&#xA;from Control_Table&#xA;where Table_Name = 'Dim_Bills'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_LastDateLoaded" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Update Control Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{72781227-ADFA-4807-BF84-2B687259A3B2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Update Control Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="update control_table&#xA;set Last_Execution_Date = ?,&#xA;Last_Date_Loaded= ?&#xA;where table_name = 'Dim_Bills'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::v_Backfill_Date_To_Load"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update SCD 2 rows"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{11A11411-97C3-443B-810C-FFE0F314DDEB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update SCD 2 rows"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+          SQLTask:SqlStatementSource="update d&#xA;&#x9;set d.scd2_end = u.End_Date&#xA;from&#xA;&#x9;Dim_Bills d&#xA;&#x9;inner join SCD2_Dim_Bills u&#xA;&#x9;&#x9;on d.BIll_Key = u.BIll_key_old" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{392628C1-1E1D-4B7F-A0ED-FC69A32E012F}"
+      DTS:From="Package\SQL Create scd2 table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF Load Dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3A732CB9-64A5-4DCE-9AB5-3BBAB362FFFE}"
+      DTS:From="Package\DF Load Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update SCD 2 rows" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{344F7CA1-72C7-49AD-805F-F1C9416BCCE6}"
+      DTS:From="Package\Update SCD 2 rows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Get current load date" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B96CB852-C691-443C-AFAB-8310F0E15BA8}"
+      DTS:From="Package\SQL Get current load date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL Update Control Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{4716A3E9-B79F-476F-A261-C5E1B9B8E802}"
+      DTS:From="Package\SQL Get last date loaded from Ctrl table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SQL Create scd2 table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DF Load Dimension"
+          TopLeft="187.480155936486,161.060711405724" />
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\SQL Create scd2 table"
+          TopLeft="262.083329427988,71.0666653958957" />
+        <NodeLayout
+          Size="202.666666666667,42.6666666666667"
+          Id="Package\SQL Get current load date"
+          TopLeft="433.854160201736,252.583329129716" />
+        <NodeLayout
+          Size="268,42.6666666666667"
+          Id="Package\SQL Get last date loaded from Ctrl table"
+          TopLeft="7.63888887440163,13.1857140499354" />
+        <NodeLayout
+          Size="201.333333333334,42.6666666666667"
+          Id="Package\SQL Update Control Table"
+          TopLeft="480.55554839472,329.347216407541" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Update SCD 2 rows"
+          TopLeft="437.395826815628,163.547219297771" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="354.083329427988,113.733332062562">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.2698401581683,47.3273793431616"
+              Start="0,0"
+              End="-81.2698401581683,39.8273793431616">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.6636896715808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.6636896715808"
+                    Point2="0,23.6636896715808"
+                    Point3="-4,23.6636896715808" />
+                  <mssgle:LineSegment
+                    End="-77.2698401581683,23.6636896715808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.2698401581683,23.6636896715808"
+                    Point2="-81.2698401581683,23.6636896715808"
+                    Point3="-81.2698401581683,27.6636896715808" />
+                  <mssgle:LineSegment
+                    End="-81.2698401581683,39.8273793431616" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="358.146822603153,183.637298685081">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.249004212475,0"
+              Start="0,0"
+              End="71.749004212475,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="71.749004212475,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="522.729160148961,206.213885964438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.4583333861081,46.3694431652783"
+              Start="0,0"
+              End="12.4583333861081,38.8694431652783">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.1847215826392" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.1847215826392"
+                    Point2="0,23.1847215826392"
+                    Point3="4,23.1847215826392" />
+                  <mssgle:LineSegment
+                    End="8.45833338610805,23.1847215826392" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.45833338610805,23.1847215826392"
+                    Point2="12.4583333861081,23.1847215826392"
+                    Point3="12.4583333861081,27.1847215826392" />
+                  <mssgle:LineSegment
+                    End="12.4583333861081,38.8694431652783" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="535.187493535069,295.249995796383">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.0347215263173,34.0972206111583"
+              Start="0,0"
+              End="46.0347215263173,26.5972206111583">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0486103055791" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0486103055791"
+                    Point2="0,17.0486103055791"
+                    Point3="4,17.0486103055791" />
+                  <mssgle:LineSegment
+                    End="42.0347215263173,17.0486103055791" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.0347215263173,17.0486103055791"
+                    Point2="46.0347215263173,17.0486103055791"
+                    Point3="46.0347215263173,21.0486103055791" />
+                  <mssgle:LineSegment
+                    End="46.0347215263173,26.5972206111583" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="275.638888874402,34.5190473832687">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.4444405535864,36.547618012627"
+              Start="0,0"
+              End="78.4444405535864,29.047618012627">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.4444405535864,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.4444405535864,0"
+                    Point2="78.4444405535864,0"
+                    Point3="78.4444405535864,4" />
+                  <mssgle:LineSegment
+                    End="78.4444405535864,29.047618012627" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF Load Dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="233.333333333334,43.3333333333334"
+          Id="Package\DF Load Dimension\OLE_SRC Get Data From landing"
+          TopLeft="111.805553889523,34.7476190819343" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\DF Load Dimension\CONV Convert Data"
+          TopLeft="407.638882814596,36.2746031816139" />
+        <NodeLayout
+          Size="297.333333333334,42.6666666666667"
+          Id="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table"
+          TopLeft="680.555545414487,448.555549124214" />
+        <NodeLayout
+          Size="276,42.6666666666667"
+          Id="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes"
+          TopLeft="252.182535924728,147.126981496149" />
+        <NodeLayout
+          Size="202.666666666667,42.6666666666667"
+          Id="Package\DF Load Dimension\OLE_DST Load Dimension"
+          TopLeft="221.249996703117,503.272213759456" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\DF Load Dimension\CSPL check old hash vs new hash"
+          TopLeft="659.523799696139,127.523807243506" />
+        <NodeLayout
+          Size="253.333333333334,42.6666666666667"
+          Id="Package\DF Load Dimension\MLT dupicate type 2 change streams"
+          TopLeft="660.747344651453,236.716926984102" />
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Type 2 Change]"
+          TopLeft="778.857133029472,170.190473910173">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.55687828864677,66.5264530739292"
+              Start="0,0"
+              End="8.55687828864677,59.0264530739292">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2632265369646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.2632265369646"
+                    Point2="0,33.2632265369646"
+                    Point3="4,33.2632265369646" />
+                  <mssgle:LineSegment
+                    End="4.55687828864677,33.2632265369646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.55687828864677,33.2632265369646"
+                    Point2="8.55687828864677,33.2632265369646"
+                    Point3="8.55687828864677,37.2632265369646" />
+                  <mssgle:LineSegment
+                    End="8.55687828864677,59.0264530739292" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-29.8640022619266,38.2632265369646,68.2848828125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[OLE DB Source Output]"
+          TopLeft="345.138887222856,59.900000020663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.4999955917397,0"
+              Start="0,0"
+              End="54.9999955917397,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.9999955917397,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Multicast Output 3]"
+          TopLeft="787.414011318119,279.383593650768">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.8082007630345,169.171955473446"
+              Start="0,0"
+              End="41.8082007630345,161.671955473446">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5859777367228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,80.5859777367228"
+                    Point2="0,84.5859777367228"
+                    Point3="4,84.5859777367228" />
+                  <mssgle:LineSegment
+                    End="37.8082007630345,84.5859777367228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.8082007630345,84.5859777367228"
+                    Point2="41.8082007630345,84.5859777367228"
+                    Point3="41.8082007630345,88.5859777367228" />
+                  <mssgle:LineSegment
+                    End="41.8082007630345,161.671955473446" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Lookup Match Output]"
+          TopLeft="528.182535924728,168.460314829482">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131.341263771411,-19.6031742526425"
+              Start="0,0"
+              End="123.841263771411,-19.6031742526425">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.6706318857055,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.6706318857055,0"
+                    Point2="65.6706318857055,0"
+                    Point3="65.6706318857055,-4" />
+                  <mssgle:LineSegment
+                    End="65.6706318857055,-15.6031742526425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.6706318857055,-15.6031742526425"
+                    Point2="65.6706318857055,-19.6031742526425"
+                    Point3="69.6706318857055,-19.6031742526425" />
+                  <mssgle:LineSegment
+                    End="123.841263771411,-19.6031742526425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.4792451669555,1,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="221.333333333334,42.6666666666667"
+          Id="Package\DF Load Dimension\DER datatype change for date"
+          TopLeft="672.361101125264,47.388888359401" />
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Data Conversion Output]"
+          TopLeft="579.638882814596,57.6079365149472">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.7222183106676,11.1142851777871"
+              Start="0,0"
+              End="85.2222183106676,11.1142851777871">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.3611091553338,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.3611091553338,0"
+                    Point2="46.3611091553338,0"
+                    Point3="46.3611091553338,4" />
+                  <mssgle:LineSegment
+                    End="46.3611091553338,7.11428517778708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.3611091553338,7.11428517778708"
+                    Point2="46.3611091553338,11.1142851777871"
+                    Point3="50.3611091553338,11.1142851777871" />
+                  <mssgle:LineSegment
+                    End="85.2222183106676,11.1142851777871" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Derived Column Output]"
+          TopLeft="783.02776779193,90.0555550260677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-392.845231867202,57.0714264700809"
+              Start="0,0"
+              End="-392.845231867202,49.5714264700809">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5357132350404" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5357132350404"
+                    Point2="0,28.5357132350404"
+                    Point3="-4,28.5357132350404" />
+                  <mssgle:LineSegment
+                    End="-388.845231867202,28.5357132350404" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-388.845231867202,28.5357132350404"
+                    Point2="-392.845231867202,28.5357132350404"
+                    Point3="-392.845231867202,32.5357132350404" />
+                  <mssgle:LineSegment
+                    End="-392.845231867202,49.5714264700809" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121.333333333334,42.6666666666667"
+          Id="Package\DF Load Dimension\Union All"
+          TopLeft="393.055551105903,323.94444306261" />
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Lookup No Match Output]"
+          TopLeft="390.182535924728,189.793648162815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.539681847842,134.150794899795"
+              Start="0,0"
+              End="63.539681847842,126.650794899795">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.0753974498975" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.0753974498975"
+                    Point2="0,67.0753974498975"
+                    Point3="4,67.0753974498975" />
+                  <mssgle:LineSegment
+                    End="59.539681847842,67.0753974498975" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59.539681847842,67.0753974498975"
+                    Point2="63.539681847842,67.0753974498975"
+                    Point3="63.539681847842,71.0753974498975" />
+                  <mssgle:LineSegment
+                    End="63.539681847842,126.650794899795" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.036545794829,72.0753974498975,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Multicast Output 2]"
+          TopLeft="746.52512242923,279.383593650768">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-273.914015767772,44.5608494118417"
+              Start="0,0"
+              End="-273.914015767772,37.0608494118417">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0936170911604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0936170911604"
+                    Point2="0,22.0936170911604"
+                    Point3="-4,22.0936170911604" />
+                  <mssgle:LineSegment
+                    End="-269.914015767772,22.0936170911604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-269.914015767772,22.0936170911604"
+                    Point2="-273.914015767772,22.0936170911604"
+                    Point3="-273.914015767772,26.0936170911604" />
+                  <mssgle:LineSegment
+                    End="-273.914015767772,37.0608494118417" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dimension.Paths[Union All Output 1]"
+          TopLeft="453.72221777257,366.611109729277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-131.13888773612,136.661104030179"
+              Start="0,0"
+              End="-131.13888773612,129.161104030179">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.3305520150896" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64.3305520150896"
+                    Point2="0,68.3305520150896"
+                    Point3="-4,68.3305520150896" />
+                  <mssgle:LineSegment
+                    End="-127.13888773612,68.3305520150896" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-127.13888773612,68.3305520150896"
+                    Point2="-131.13888773612,68.3305520150896"
+                    Point3="-131.13888773612,72.3305520150896" />
+                  <mssgle:LineSegment
+                    End="-131.13888773612,129.161104030179" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dimension\OLE_SRC Get Data From landing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dimension\OLE_DST write type 2 changes to type 2 table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dimension\LKP Lookup against Dim_Bills for changes">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dimension\OLE_DST Load Dimension">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/19/2019 2:58:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{81DD2AB5-B364-4073-B8F6-F374A289CFD4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="SSAS Processing"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{5BECAA2B-F551-4139-B8DD-0963A0F4BE3B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[134lt135\mssqlserver01.MCBC_Catalog_Tabular]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{E124A52A-977E-4AA5-902C-EAD82E4471F5}"
+      DTS:ObjectName="134lt135\mssqlserver01.MCBC_Catalog_Tabular">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=134lt135\mssqlserver01;Initial Catalog=MCBC_Catalog_Tabular;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Analysis Services Processing Task"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{52E31C05-48F0-4663-8C65-00719CECB34E}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Analysis Services Processing Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="134lt135\mssqlserver01.MCBC_Catalog_Tabular"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;MCBC_Catalog_Tabular&quot;,&#xA;              &quot;table&quot;: &quot;v_dim_customer&quot;,&#xA;              &quot;partition&quot;: &quot;Partition&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;MCBC_Catalog_Tabular&quot;,&#xA;              &quot;table&quot;: &quot;v_fact_com_channel&quot;,&#xA;              &quot;partition&quot;: &quot;Partition&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;MCBC_Catalog_Tabular&quot;,&#xA;              &quot;table&quot;: &quot;v_fact_com_channel&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;MCBC_Catalog_Tabular&quot;,&#xA;              &quot;table&quot;: &quot;v_dim_date&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;MCBC_Catalog_Tabular&quot;,&#xA;              &quot;table&quot;: &quot;v_dim_customer&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;MCBC_Catalog_Tabular&quot;,&#xA;              &quot;table&quot;: &quot;v_dim_date&quot;,&#xA;              &quot;partition&quot;: &quot;Partition&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="237.333333333334,42.6666666666667"
+          Id="Package\Analysis Services Processing Task"
+          TopLeft="55.8333325013518,38.9999993026257" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[134lt135\mssqlserver01.MCBC_Catalog_Tabular]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

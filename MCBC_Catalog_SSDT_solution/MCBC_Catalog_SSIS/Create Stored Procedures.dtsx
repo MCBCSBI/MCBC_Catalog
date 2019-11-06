@@ -1,0 +1,1656 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/4/2019 4:44:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{05D5A9EE-88B9-46F9-B6C0-85A38AB95C24}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Create Stored Procedures"
+  DTS:PackageType="5"
+  DTS:VersionBuild="144"
+  DTS:VersionGUID="{C491B68C-3F79-43DB-A508-97409F342114}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A332D00F-D36D-4443-B01A-09C95E495B10}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_account&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_account">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_account.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C30A4308-C690-4D8E-9D9C-4A2601FCCFAD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_company&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_company">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_company.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C9BC5DA0-0FAC-404B-9149-4869CF01D742}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_currency&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_currency">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_currency.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1B457B5A-CE75-4CF1-B706-429FA95F5F58}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_customer&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_customer">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_customer.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{682B3C6A-63CA-47BD-8888-84C6C5CB068C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_gl&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_gl">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_gl.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1FC46D61-46A6-434A-88CA-DB33D9C063E5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_gl_mapping&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_gl_mapping">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_gl_mapping.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CD13637F-B8EA-436A-8A70-68A4395B7179}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;scd2_dim_product&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="scd2_dim_product">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\scd2_dim_product.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE410BB7-94A1-41F1-A0C1-1FCDDF42094A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_create_dw&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_create_dw">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_create_dw.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8F168EC9-C765-4147-BD22-72239D2E881C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_ctrl_table&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_ctrl_table">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_ctrl_table.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AA1742DB-2C6A-4B06-8D4E-77DAFE80EB15}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_account&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_account">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_account.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6644B33F-DBE9-4624-A837-0398CF7712DB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_company&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_company">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_company.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7FF0AA5F-1A58-4376-9BF6-FCD00664FCCB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_currency&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_currency">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_currency.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{049D62EB-6AC0-436A-9D25-7858EB4CA45B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_customer&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_customer">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_customer.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0BD9F905-EAAC-42AE-9B46-942266C20B31}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_date&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_date">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_date.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0335B39F-B4E7-425D-AA75-02E333AB1F74}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_gl_mapping&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_gl_mapping">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_gl_mapping.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{46565DA9-ECC9-4C24-8A2B-E80BD7DC41B6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_dim_product&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_dim_product">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_dim_product.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F22D0B93-CC36-4323-AC01-A74F2DC45203}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_drop_dw&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_drop_dw">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_drop_dw.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8A7FB131-8496-4A51-B94D-79F035DFACCC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_fact_acct_entries&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_fact_acct_entries">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_fact_acct_entries.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4A17302A-7020-42E3-9EAC-94549E8CFCF0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_fact_balances&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_fact_balances">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_fact_balances.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{261D5125-D80F-4F8D-980C-4B4D3F73FC12}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_fact_com_channel&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_fact_com_channel">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_fact_com_channel.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B8D85027-5F2A-44BF-A793-96DB479A7E05}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_stg_gl&quot; +&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_stg_gl">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_stg_gl.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8881FF44-9982-4A87-A5A9-208CF060F4F9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_stg_product&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_stg_product">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_stg_product.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9C5B61B0-5F00-4C43-8633-445EBA1AE1D4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;sp_update_views_dw&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sp_update_views_dw">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\sp_update_views_dw.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D6B65246-3114-4CD4-8FEA-4D662CD80C3D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;v_dim_account&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_dim_account">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\v_dim_account.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7D847B1A-C999-47E8-90EF-08C329761F1D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;v_dim_company&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_dim_company">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\v_dim_company.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{06528A9D-D057-40BE-90AC-3B15467622B0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;v_dim_customer&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_dim_customer">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\v_dim_customer.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AB78EB02-70AB-4020-B0AC-B751DF76A756}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;v_fact_com_channel&quot;+&#xA; @[User::_3_ending_script]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_fact_com_channel">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\v_fact_com_channel.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{970FBA04-15E5-4F8B-B8E5-D65042F2E00C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;DECLARE @SQL varchar(MAX)&#xA;SELECT @SQL = BulkColumn&#xA;FROM OPENROWSET&#xA;    (   BULK &quot;+ &quot;'&quot;+ @[$Project::Path]+&quot;\\&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="_2_opening_script">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9D6524BF-E64A-4A22-BE01-CE42576FACD8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;.sql&quot;+&quot;'&quot;+&quot;&#xA;    ,   SINGLE_BLOB ) AS MYTABLE&#xA;&#xA;--PRINT @sql&#xA;EXEC (@sql)&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="_3_ending_script">
+      <DTS:VariableValue
+        DTS:DataType="8">.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dimensions SPs"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{00832AB5-778D-4802-901A-450BF387EF24}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dimensions SPs">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Dimensions SPs\sp_Dim_Account"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{e72ef92a-aa1b-4e9c-a26d-8c77057369b8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_Dim_Account"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'sp_dim_account'&#xA;declare @sql nvarchar(max) =&#xA;'drop table if exists Dim_Account&#xA;&#xA;&#x9;CREATE TABLE [dbo].[Dim_Account]&#xA;&#x9;(&#xA;&#x9;&#x9;[Account_Key] Int not null Identity(1,1),&#xA;&#x9;&#x9;Customer_Key int not null,&#xA;&#x9;&#x9;Joint_Customer_Key int not null,&#xA;&#x9;&#x9;Product_Key int not null,&#xA;&#x9;&#x9;Currency_Buy_Key int not null,&#xA;&#x9;&#x9;Currency_Sell_Key int not null,&#xA;&#x9;&#x9;[Account_Contract_Number] [Nvarchar](100) Not Null,&#xA;&#x9;&#x9;--Purpose_Code nvarchar(75),&#xA;&#x9;&#x9;--Sub_Purpose_Code nvarchar(75),&#xA;&#x9;&#x9;LC_Type nvarchar(10) null,&#xA;&#x9;&#x9;[Account_Title_1] [Nvarchar](35) Null,&#xA;&#x9;&#x9;[Linked_Account_No] [Nvarchar](19) Null,&#xA;&#x9;&#x9;Limit_Reference nvarchar(50),&#xA;&#x9;&#x9;Parent_Limit_Reference nvarchar(50),&#xA;&#x9;&#x9;Limit_Expiry_Date Date,&#xA;&#x9;&#x9;Limit_Review_Date Date,&#xA;&#x9;&#x9;Start_Date date,&#xA;&#x9;&#x9;Maturity_Date date,&#xA;&#x9;&#x9;Renewal_Date date,&#xA;&#x9;&#x9;Maturity_Bucket nvarchar(25),&#xA;&#x9;&#x9;Close_Date date,&#xA;&#x9;&#x9;Status nvarchar(7),&#xA;&#x9;&#x9;Interest_Rate nvarchar(10),&#xA;&#x9;&#x9;--Penalty_Rate nvarchar(10),&#xA;&#x9;&#x9;--Effective_Rate nvarchar(10),&#xA;&#x9;&#x9;Inactve_Marker nvarchar(10),&#xA;&#x9;&#x9;Overdrawn_Flag nvarchar(1),&#xA;&#x9;&#x9;[Scd2_Start] Date Null,&#xA;&#x9;&#x9;[Scd2_End] Date Null,&#xA;&#x9;&#x9;[Scd2_Hash] [Char](66) Not Null&#xA;&#x9;)&#xA;&#xA;&#x9;set identity_insert Dim_Account on&#xA;&#xA;&#x9;alter table Dim_Account&#xA;&#x9;&#x9;add &#xA;&#x9;&#x9;&#x9;constraint pk_Dim_Account primary key clustered (Account_key)&#xA;&#x9;&#x9;&#x9;,constraint fk_customer foreign key (Customer_key) references dim_customer(customer_key)&#xA;&#x9;&#x9;&#x9;,constraint fk_joint_customer foreign key (Joint_Customer_key) references dim_customer(customer_key)&#xA;&#x9;&#x9;&#x9;,constraint fk_prdct foreign key (Product_Key) references dim_product(product_key)&#xA;&#x9;&#x9;&#x9;,constraint fk_Currency_Buy foreign key (Currency_Buy_Key) references dim_currency(currency_key)&#xA;&#x9;&#x9;&#x9;,constraint fk_Currency_Sell foreign key (Currency_Sell_Key) references dim_currency(currency_key)&#xA;&#xA;&#x9;insert into Dim_Account(Account_Key,Customer_key,Joint_Customer_Key,Product_Key,Currency_Buy_Key,Currency_Sell_Key,&#xA;&#x9;Account_Contract_Number, Scd2_Hash)&#xA;&#x9;&#x9;values(-1,-1,-1,-1,-1,-1,-1,-1);&#xA;&#xA;&#x9;alter table Dim_Account&#xA;&#x9;NOCHECK CONSTRAINT fk_customer,fk_joint_customer,fk_prdct,fk_Currency_Buy,fk_Currency_Sell;&#xA;&#x9;'&#xA;&#xA;begin try&#xA;exec(&#xA;'create procedure ' + @procname + &#xA;' as begin '+ @sql + ' end'&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter procedure ' + @procname + &#xA;' as begin '+ @sql + ' end'&#xA;)&#xA;end catch&#xA;&#xA;--exec sp_Dim_Currency&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dimensions SPs\sp_Dim_GL_Mapping"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{5b09bc72-e4b7-41ed-ab1d-39a40aad02e5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_Dim_GL_Mapping"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'sp_dim_gl_mapping'&#xA;declare @sql nvarchar(max) =&#xA;'Drop table if exists Dim_GL_Mapping&#xA;&#xA;&#x9;&#x9;create table Dim_GL_Mapping&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;GL_Mapping_Key int identity (1,1) not null,&#xA;&#x9;&#x9;&#x9;GL_Key int not null,&#xA;&#x9;&#x9;&#x9;Consol_Key nvarchar(150) not null,&#xA;&#x9;&#x9;&#x9;Asset_Type nvarchar(50) not null,&#xA;&#x9;&#x9;&#x9;scd2_start datetime not null,&#xA;&#x9;&#x9;&#x9;scd2_end datetime ,&#xA;&#x9;&#x9;&#x9;scd2_hash char(66) not null&#xA;&#x9;&#x9;)&#xA;&#xA;&#x9;&#x9;alter table dim_gl_mapping&#xA;&#x9;&#x9;&#x9;add constraint pk_gl_mapping primary key clustered (gl_mapping_key),&#xA;&#x9;&#x9;&#x9;&#x9;constraint fk_dim_gl foreign key(gl_key) references dim_gl(gl_key)&#xA;&#xA;&#x9;&#x9;alter table dim_gl_mapping&#xA;&#x9;&#x9;&#x9;NOCHECK CONSTRAINT fk_dim_gl;'&#xA;&#xA;begin try&#xA;exec(&#xA;'create procedure ' + @procname + &#xA;' as begin '+ @sql + ' end'&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter procedure ' + @procname + &#xA;' as begin '+ @sql + ' end'&#xA;)&#xA;end catch&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Fact SPs"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9CA34911-D63A-4B34-8FF2-E3EF9B471D16}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fact SPs">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Fact SPs\sp_fact_acct_entries"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{7a0153dd-3ce3-441d-a4f0-a4847bd19779}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_fact_acct_entries"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_fact_acct_entries" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Fact SPs\sp_Fact_Balances"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{7159f1a3-c598-4b7f-9869-19bce17f0c18}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_Fact_Balances"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Fact SPs\sp_fact_com_channel"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{d71bc827-a972-424a-885c-16f2c0e4730a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_fact_com_channel"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_fact_com_channel" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SCD2 staging tables"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EC12C373-9322-47E9-A366-A138328EED53}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SCD2 staging tables">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SCD2 staging tables\SCD2_Dim_Account"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{ca6021d4-9472-4b98-ae5f-23d78d28d45b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SCD2_Dim_Account"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_Account&#xA;create table SCD2_Dim_Account&#xA;(&#xA;&#x9;Account_Key_old int not null,&#xA;&#x9;End_Date datetime not null&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SCD2 staging tables\SCD2_Dim_Currency"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{a92965a6-7005-4265-9995-01c0525042f6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SCD2_Dim_Currency"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_Currency&#xA;create table SCD2_Dim_Currency&#xA;(&#xA;&#x9;Currency_Key_old int not null,&#xA;&#x9;End_Date datetime not null&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SCD2 staging tables\SCD2_Dim_Customer"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{18168485-3dcc-484f-9fcc-6534ad7b4bca}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SCD2_Dim_Customer"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_Customer&#xA;create table SCD2_Dim_Customer&#xA;(&#xA;Customer_Key_old int not null,&#xA; End_Date datetime not null&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SCD2 staging tables\SCD2_Dim_GL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{7FCAEBE3-0D38-45D7-A657-D33634F55022}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SCD2_Dim_GL"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_GL&#xA;create table SCD2_Dim_GL&#xA;(&#xA;&#x9;GL_Key_old int not null,&#xA;&#x9;End_Date datetime not null&#xA;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SCD2 staging tables\SCD2_Dim_GL Mapping"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{1cf2cfd5-1671-40e6-aeb3-48f30dd417b6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SCD2_Dim_GL Mapping"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_GL_Mapping&#xA;create table SCD2_Dim_GL_Mapping&#xA;(&#xA;&#x9;GL_Mapping_Key_old int not null,&#xA;&#x9;End_Date datetime not null&#xA;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SCD2 staging tables\SCD2_Dim_Product"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{085f227d-61f5-43cf-9a15-313950b5e436}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SCD2_Dim_Product"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="drop table if exists SCD2_Dim_Product&#xA;create table SCD2_Dim_Product&#xA;(&#xA;&#x9;Product_Key_old int not null,&#xA;&#x9;End_Date datetime not null&#xA;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Snowflake Dimensions SPs"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{420B7ED7-4FFB-49F8-BC03-C2FD9734470B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Snowflake Dimensions SPs">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Snowflake Dimensions SPs\sp_dim_Currency"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{5d618bb0-52cf-4b35-bf53-6a344f43cf1d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_dim_Currency"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_dim_currency" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Snowflake Dimensions SPs\sp_dim_Customer"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{45e37b8f-d37a-4c23-8277-7cadddb3ca58}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_dim_Customer"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_dim_customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Snowflake Dimensions SPs\sp_dim_gl_mapping"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{334D0BF6-4C43-4D83-8766-C69B00626E5B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_dim_gl_mapping"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_dim_gl_mapping" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Snowflake Dimensions SPs\sp_dim_product"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{b55b755c-8639-4bb9-ac74-cea9e7a47f07}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_dim_product"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_dim_product" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Staging SPs"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7E044D82-2080-424A-BE6B-7195C81FE4A6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Staging SPs">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Staging SPs\sp_stg_GL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{9d33ba23-28f7-4b40-b3a4-3b0943f63b49}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_stg_GL"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{FDF475B7-E3AD-4DEF-8657-39A9711586B2}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_stg_gl" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging SPs\sp_stg_Product"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{7c2bef19-44c2-40e7-97b3-b1d11e05a8c2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_stg_Product"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{FDF475B7-E3AD-4DEF-8657-39A9711586B2}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_stg_product" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Utilities+ Dim_Date"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E5BABEA0-2883-4395-A565-EF3CC27BC663}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Utilities+ Dim_Date">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Utilities+ Dim_Date\sp_create_DW"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{efa3336a-d496-4d44-9647-7b676e622096}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:MaxErrorCount="0"
+          DTS:ObjectName="sp_create_DW"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_create_dw" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Utilities+ Dim_Date\sp_ctrl_table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{64b6ca92-f5b6-4afa-9a27-72ed7e0ccf6b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_ctrl_table"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'sp_ctrl_table'&#xA;declare @sql nvarchar(max) =&#xA;'drop table if exists Control_Table&#xA;create table Control_Table&#xA;(&#xA;&#x9;Table_name nvarchar(100) not null,&#xA;&#x9;Last_Execution_Date datetime,&#xA;&#x9;Last_Date_Loaded datetime&#xA;)&#xA;&#xA;insert into Control_Table(Table_name)&#xA;&#x9;values&#xA;&#x9;&#x9;(''Dim_GL''),&#xA;&#x9;&#x9;(''Fact_Balances''),&#xA;&#x9;&#x9;(''Dim_GL_Mapping''),&#xA;&#x9;&#x9;(''Fact_Acct_Entries''),&#xA;&#x9;&#x9;(''Dim_Account''),&#xA;&#x9;&#x9;(''Dim_Company''),&#xA;&#x9;&#x9;(''Dim_Customer''),&#xA;&#x9;&#x9;(''Dim_Customer_Risk''),&#xA;&#x9;&#x9;(''Dim_Bills''),&#xA;&#x9;&#x9;(''Fact_Bills''),&#xA;&#x9;&#x9;(''Dim_Product''),&#xA;&#x9;&#x9;(''Fact_Transaction''),&#xA;&#x9;&#x9;(''Dim_Currency''),&#xA;&#x9;&#x9;(''Dim_Transaction''),&#xA;&#x9;&#x9;(''Dim_Transaction_code''),&#xA;&#x9;&#x9;(''Dim_Commission_Type''),&#xA;&#x9;&#x9;(''Dim_CurrencyMarket''),&#xA;&#x9;&#x9;(''Fact_Currency''),&#xA;&#x9;&#x9;(''Fact_Balances_PL''),&#xA;&#x9;&#x9;(''Fact_Account_Opening''),&#xA;&#x9;&#x9;(''Fact_Cashflow''),&#xA;&#x9;&#x9;(''Dim_User''),&#xA;&#x9;&#x9;(''Fact_Acct_Inactive_Reset''),&#xA;&#x9;&#x9;(''Fact_Collateral''),&#xA;&#x9;&#x9;(''Dim_Collateral''),&#xA;&#x9;&#x9;(''Fact_Limit''),&#xA;&#x9;&#x9;(''Fact_Interest''),&#xA;&#x9;&#x9;(''Fact_Commission_Type''),&#xA;&#x9;&#x9;(''Fact_Teller_ID'')&#xA;&#xA;update Control_Table&#xA;&#x9;set Last_Date_Loaded = ''1900-01-01'' where Last_Date_Loaded is null&#xA;&#xA;update Control_Table&#xA;&#x9;set Last_Execution_Date = ''1900-01-01'' where Last_Execution_Date is null'&#xA;&#xA;begin try&#xA;exec(&#xA;'create procedure ' + @procname + &#xA;' as begin '+ @sql + ' end'&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter procedure ' + @procname + &#xA;' as begin '+ @sql + ' end'&#xA;)&#xA;end catch&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Utilities+ Dim_Date\sp_Dim_Date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2018501c-5207-455e-80e0-eececadf8159}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_Dim_Date"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_dim_date" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Utilities+ Dim_Date\sp_drop_DW"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{54c85c82-1545-473e-8328-75c130cd629f}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_drop_DW"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_drop_dw" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Utilities+ Dim_Date\sp_update_views_dw"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{813ecfdb-e33d-4d4f-b2e9-c587595e396e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sp_update_views_dw"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sp_update_views_dw" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Views"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{481E6F7E-1147-422A-A869-DBEFF0A61535}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Views">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_account"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{58c98a53-0d81-42e7-a63c-d4ef727c07bf}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_account"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::v_dim_account" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_customer"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{d6ed83d1-d821-4ba4-958d-1fb8972f8d7a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_customer"
+          DTS:ThreadHint="6">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::v_dim_customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{58e72305-3574-4520-b5d9-5b4b242218f3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_date"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_gl"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{05c8e111-b393-4331-90d8-843f51b3ea8e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_gl"
+          DTS:ThreadHint="8">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_product"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{5e6752ba-5824-451a-bd98-f8ddadcb67cc}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_product"
+          DTS:ThreadHint="9">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_transaction"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{f43d8b72-ad0e-4e16-a356-6ec7cc440ee7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_transaction"
+          DTS:ThreadHint="10">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_dim_user"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{b84cbdb4-db60-4444-b3bd-0149e34379ab}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_dim_user"
+          DTS:ThreadHint="11">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_fact_acct_entries"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{ff5c9282-c1e8-4b06-8709-e7db4bdd78ef}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_fact_acct_entries"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_fact_balances"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{1387ff63-a751-4273-8de7-7d501f21ca16}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_fact_balances"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_fact_com_channel"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ff6c630e-2676-4bc4-aad1-88b9deb7a66e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_fact_com_channel"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::v_fact_com_channel" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_fact_transaction"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{6eb1ce9b-d138-4c6e-ba1e-ae5fd9ffcea5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_fact_transaction"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Views\v_gl_mapping"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{f061cb50-7dc2-4c40-875d-a05612ae863f}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="v_gl_mapping"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="&#xA;declare @procname nvarchar(100) = 'v_gl'&#xA;declare @sql nvarchar(max) =&#xA;'select * from dim_gl'&#xA;&#xA;begin try&#xA;exec(&#xA;'create view ' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end try&#xA;&#xA;begin catch&#xA;exec(&#xA;'alter view' + @procname + &#xA;' as '+ @sql&#xA;)&#xA;end catch&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7AECA782-E914-4D4F-901D-51419E5701D8}"
+      DTS:From="Package\Snowflake Dimensions SPs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Dimensions SPs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C83BF614-801B-43CA-8631-D4CE951C568F}"
+      DTS:From="Package\Utilities+ Dim_Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Staging SPs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2C47CCD9-2735-4AAB-824F-77947E87C65A}"
+      DTS:From="Package\Dimensions SPs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SCD2 staging tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{D594A72C-D04F-407B-A469-8A5ECBCB057B}"
+      DTS:From="Package\Staging SPs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Snowflake Dimensions SPs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{B70BF3DE-8D1B-4B2C-9F1B-D4CE43616460}"
+      DTS:From="Package\SCD2 staging tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Fact SPs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{2C817B65-40BA-4192-BA76-881582D5FFFF}"
+      DTS:From="Package\Fact SPs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Views" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\Dimensions SPs\sp_Dim_Account"
+          TopLeft="14.2658717726314,122.061906349262" />
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\Dimensions SPs\sp_Dim_GL_Mapping"
+          TopLeft="19.0277764635783,3.33333337207637" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="212,262"
+          Size="212,304.666666666667"
+          Id="Package\Dimensions SPs"
+          TopLeft="473.015865967388,1060.63648960663" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\Fact SPs\sp_fact_acct_entries"
+          TopLeft="34.1666670516126,74.6166592706243" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Fact SPs\sp_Fact_Balances"
+          TopLeft="32.5000004097819,10.6000008833405" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Fact SPs\sp_fact_com_channel"
+          TopLeft="33.3333218842743,144.81665646563" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="340,306"
+          Size="340,348.666666666667"
+          Id="Package\Fact SPs"
+          TopLeft="1250.20831470378,1097.01666505108" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\SCD2 staging tables\SCD2_Dim_Account"
+          TopLeft="29.0317377213926,360.652380757928" />
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\SCD2 staging tables\SCD2_Dim_Currency"
+          TopLeft="26.7499917236473,300.699999041756" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\SCD2 staging tables\SCD2_Dim_Customer"
+          TopLeft="29.3888805732134,66.833329213659" />
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\SCD2 staging tables\SCD2_Dim_GL"
+          TopLeft="28.9722139127557,9.66666173338893" />
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\SCD2 staging tables\SCD2_Dim_GL Mapping"
+          TopLeft="29.666658346852,126.166663321853" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\SCD2 staging tables\SCD2_Dim_Product"
+          TopLeft="26.0555472895508,239.199998305639" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="266,502"
+          Size="266,544.666666666667"
+          Id="Package\SCD2 staging tables"
+          TopLeft="778.055543961625,1040.59998202841" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Snowflake Dimensions SPs\sp_dim_Currency"
+          TopLeft="37.9444496929644,121.077777534988" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Snowflake Dimensions SPs\sp_dim_Customer"
+          TopLeft="16.3888873159886,71.9444413966603" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Snowflake Dimensions SPs\sp_dim_gl_mapping"
+          TopLeft="24.0277760910492,5.5" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Snowflake Dimensions SPs\sp_dim_product"
+          TopLeft="30.6249982149652,255.888884536756" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283.333333333334,354"
+          Size="283.333333333334,396.666666666667"
+          Id="Package\Snowflake Dimensions SPs"
+          TopLeft="111.805553889523,1047.53331523776" />
+        <NodeLayout
+          Size="128,42.6666666666667"
+          Id="Package\Staging SPs\sp_stg_GL"
+          TopLeft="39.3849148964953,29.9222232011294" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Staging SPs\sp_stg_Product"
+          TopLeft="34.5238038578202,104.783334809443" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="210.666666666667,205.333333333334"
+          Size="210.666666666667,248"
+          Id="Package\Staging SPs"
+          TopLeft="577.916658055037,654.39999206543" />
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\Utilities+ Dim_Date\sp_create_DW"
+          TopLeft="45.8531748139787,72.6238129697242" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Utilities+ Dim_Date\sp_ctrl_table"
+          TopLeft="48.0059525596777,130.323808266321" />
+        <NodeLayout
+          Size="142.666666666667,42.6666666666667"
+          Id="Package\Utilities+ Dim_Date\sp_Dim_Date"
+          TopLeft="47.4503970124004,194.712697839671" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Utilities+ Dim_Date\sp_drop_DW"
+          TopLeft="46.6805547308176,12.8499982681872" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Utilities+ Dim_Date\sp_update_views_dw"
+          TopLeft="44.8115081628341,261.629365145597" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="365.333333333334,395.333333333334"
+          Size="365.333333333334,438"
+          Id="Package\Utilities+ Dim_Date"
+          TopLeft="21.8849203230014,559.692847770552" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Views\v_dim_account"
+          TopLeft="23.9404570327274,11.9666525926248" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Views\v_dim_customer"
+          TopLeft="16.8333235606553,105.483325844308" />
+        <NodeLayout
+          Size="134,42.6666666666667"
+          Id="Package\Views\v_dim_date"
+          TopLeft="20.0833331160247,150.582530679766" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Views\v_dim_gl"
+          TopLeft="18.023791278757,196.482531694833" />
+        <NodeLayout
+          Size="149.333333333334,42.6666666666667"
+          Id="Package\Views\v_dim_product"
+          TopLeft="17.7460135051183,241.660310500593" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Views\v_dim_transaction"
+          TopLeft="8.08332783853052,294.566660449704" />
+        <NodeLayout
+          Size="134,42.6666666666667"
+          Id="Package\Views\v_dim_user"
+          TopLeft="35.3849021311673,340.92697355641" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Views\v_fact_acct_entries"
+          TopLeft="15.3849024291903,384.260306114883" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Views\v_fact_balances"
+          TopLeft="225.583324597528,181.8603115699" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\Views\v_fact_com_channel"
+          TopLeft="209.041650756573,268.583326611419" />
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Views\v_fact_transaction"
+          TopLeft="240.384899076429,26.2936476849817" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Views\v_gl_mapping"
+          TopLeft="242.884899039176,93.4269816537005" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="492.666666666667,585.333333333334"
+          Size="492.666666666667,628"
+          Id="Package\Views"
+          TopLeft="1148.80950669093,1564.57141692638" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="395.138887222856,1245.86664857109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.8769787445317,-32.89682563113"
+              Start="0,0"
+              End="70.3769787445317,-32.89682563113">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.9384893722658,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.9384893722658,0"
+                    Point2="38.9384893722658,0"
+                    Point3="38.9384893722658,-4" />
+                  <mssgle:LineSegment
+                    End="38.9384893722658,-28.89682563113" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.9384893722658,-28.89682563113"
+                    Point2="38.9384893722658,-32.89682563113"
+                    Point3="42.9384893722658,-32.89682563113" />
+                  <mssgle:LineSegment
+                    End="70.3769787445317,-32.89682563113" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="387.218253656335,778.546419917991">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="190.698404398702,0"
+              Start="0,0"
+              End="183.198404398702,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="183.198404398702,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="685.015865967388,1212.96982293996">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.039677994237,99.9634924217801"
+              Start="0,0"
+              End="85.539677994237,99.9634924217801">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.5198389971185,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.5198389971185,0"
+                    Point2="46.5198389971185,0"
+                    Point3="46.5198389971185,4" />
+                  <mssgle:LineSegment
+                    End="46.5198389971185,95.9634924217801" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.5198389971185,95.9634924217801"
+                    Point2="46.5198389971185,99.9634924217801"
+                    Point3="50.5198389971185,99.9634924217801" />
+                  <mssgle:LineSegment
+                    End="85.539677994237,99.9634924217801" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="683.24999138837,902.39999206543">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-429.777770832181,145.13332317233"
+              Start="0,0"
+              End="-429.777770832181,137.63332317233">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.566661586165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,68.566661586165"
+                    Point2="0,72.566661586165"
+                    Point3="-4,72.566661586165" />
+                  <mssgle:LineSegment
+                    End="-425.777770832181,72.566661586165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-425.777770832181,72.566661586165"
+                    Point2="-429.777770832181,72.566661586165"
+                    Point3="-429.777770832181,76.566661586165" />
+                  <mssgle:LineSegment
+                    End="-429.777770832181,137.63332317233" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="1044.05554396163,1312.93331536174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="206.152770742155,-41.58331697733"
+              Start="0,0"
+              End="198.652770742155,-41.58331697733">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.0763853710774,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.0763853710774,0"
+                    Point2="103.076385371077,0"
+                    Point3="103.076385371077,-4" />
+                  <mssgle:LineSegment
+                    End="103.076385371077,-37.58331697733" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.076385371077,-37.58331697733"
+                    Point2="103.076385371077,-41.58331697733"
+                    Point3="107.076385371077,-41.58331697733" />
+                  <mssgle:LineSegment
+                    End="198.652770742155,-41.58331697733" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="1420.20831470378,1445.68333171775">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.0654746795167,118.888085208633"
+              Start="0,0"
+              End="-25.0654746795167,111.388085208633">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.4440426043166" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.4440426043166"
+                    Point2="0,59.4440426043166"
+                    Point3="-4,59.4440426043166" />
+                  <mssgle:LineSegment
+                    End="-21.0654746795167,59.4440426043166" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.0654746795167,59.4440426043166"
+                    Point2="-25.0654746795167,59.4440426043166"
+                    Point3="-25.0654746795167,63.4440426043166" />
+                  <mssgle:LineSegment
+                    End="-25.0654746795167,111.388085208633" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

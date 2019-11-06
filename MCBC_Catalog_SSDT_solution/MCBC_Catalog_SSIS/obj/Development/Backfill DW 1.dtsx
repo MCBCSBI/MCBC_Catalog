@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/1/2019 7:49:57 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="134LT135"
+  DTS:CreatorName="MCB\yohram"
+  DTS:DTSID="{FB581F3B-EA17-4ED4-9014-EB4BED310434}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Backfill DW"
+  DTS:PackageType="5"
+  DTS:VersionBuild="83"
+  DTS:VersionGUID="{5473F7B5-7AE4-42F9-AAA0-9578C89FA54A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{42339786-FF63-4498-B386-1F221468F67B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_Backfill_Date_To_Load">
+      <DTS:VariableValue
+        DTS:DataType="7">6/1/2019 7:50:43 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{092BD2CD-4604-41CB-ABB8-AAA6DAC8E941}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_Backfill_List_Of_Dates">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C3A16E34-4A47-40F0-8145-778E7220FD06}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select * from dim_gl_mapping where scd2_start &lt;=&quot;&#xA;+&quot;'&quot;+&#xA;(DT_WSTR,4)YEAR(@[User::v_Backfill_Date_To_Load]) + &quot;-&quot;&#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2)MONTH(@[User::v_Backfill_Date_To_Load]), 2) + &quot;-&quot;&#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2)DAY( @[User::v_Backfill_Date_To_Load]), 2)&#xA;+&quot;'&quot;&#xA;+&quot; &quot;&#xA;+&quot;and (scd2_end &gt;&quot;&#xA;+&quot;'&quot;+&#xA;(DT_WSTR,4)YEAR(@[User::v_Backfill_Date_To_Load]) + &quot;-&quot;&#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2)MONTH(@[User::v_Backfill_Date_To_Load]), 2) + &quot;-&quot;&#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2)DAY( @[User::v_Backfill_Date_To_Load]), 2)&#xA;+&quot;'&quot;&#xA;+&quot; &quot;&#xA;+&quot;or scd2_end is null)&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_lookup_dim_gl_mapping">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from dim_gl_mapping where scd2_start &lt;='2019-06-01' and (scd2_end &gt;'2019-06-01' or scd2_end is null)</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{9B502C23-6A83-4D06-91C1-4104A0F0F8FD}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{3B268045-3EF1-4DE7-9216-8067A6A5D707}"
+        DTS:ObjectName="{3B268045-3EF1-4DE7-9216-8067A6A5D707}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::v_Backfill_List_Of_Dates" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\load dimensions"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{E380F7C3-7B8E-4113-801E-742564B00329}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="load dimensions">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\load dimensions\Dim Bills"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{d370ae49-9ec5-4ebb-95b8-5297791770c1}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Dim Bills"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Dim_Collateral.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>v_Backfill_Date_To_Load</ParameterName>
+                    <BindedVariableOrParameterName>User::v_Backfill_Date_To_Load</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\load fact"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{2551C602-8933-465E-9070-BAEA0194C56D}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="load fact">
+          <DTS:Variables />
+          <DTS:Executables />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1013E502-BB73-43B4-848F-91259A0D950C}"
+          DTS:From="Package\Foreach Loop Container\load dimensions"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\load fact" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{1E10CF0B-F426-4A57-92E4-C600328D5FE7}"
+          DTS:ObjectName="{1E10CF0B-F426-4A57-92E4-C600328D5FE7}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::v_Backfill_Date_To_Load" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get list of dates to loop from landing"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8414F432-BD26-47CB-8660-A781724E2835}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get list of dates to loop from landing"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{671548CD-8576-49C9-868B-AEAAB720CD7E}"
+          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;bs.ACCOUNT where mis_date = '2019-05-31'&#xA;order by&#xA;&#x9;MIS_DATE"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_Backfill_List_Of_Dates" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EDF5693B-086D-4A32-9567-E9375CF1F585}"
+      DTS:From="Package\Get list of dates to loop from landing"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Foreach Loop Container\load dimensions\Dim Bills"
+          TopLeft="153.333328763644,96.2143000990149" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="441.333333333334,378.666666666667"
+          Size="441.333333333334,422"
+          Id="Package\Foreach Loop Container\load dimensions"
+          TopLeft="39.9265875063303,12.3611109884251" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="465.333333333334,306.666666666667"
+          Size="465.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\load fact"
+          TopLeft="28.8333333209156,533.671423931122" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="261.04662708029,434.361110988425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99.3103129426969"
+              Start="0,0"
+              End="0,91.8103129426969">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.8103129426969" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="516,938.666666666667"
+          Size="516,982"
+          Id="Package\Foreach Loop Container"
+          TopLeft="113.333331644535,129.814284942746" />
+        <NodeLayout
+          Size="252,42.6666666666667"
+          Id="Package\Get list of dates to loop from landing"
+          TopLeft="218.333330079913,20.3666678522031" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="344.333330079913,63.0333345188698">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.000001564622,66.7809504238763"
+              Start="0,0"
+              End="27.000001564622,59.2809504238763">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3904752119382" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.3904752119382"
+                    Point2="0,33.3904752119382"
+                    Point3="4,33.3904752119382" />
+                  <mssgle:LineSegment
+                    End="23.000001564622,33.3904752119382" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.000001564622,33.3904752119382"
+                    Point2="27.000001564622,33.3904752119382"
+                    Point3="27.000001564622,37.3904752119382" />
+                  <mssgle:LineSegment
+                    End="27.000001564622,59.2809504238763" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

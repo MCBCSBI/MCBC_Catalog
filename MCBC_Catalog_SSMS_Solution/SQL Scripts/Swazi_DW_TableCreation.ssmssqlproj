@@ -1,0 +1,520 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Swazi_DW_TableCreation">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="(local):MCB\BRAJUG">
+          <Created>2019-08-19T22:49:15.8541136+04:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="(local)\MSSQLSERVER01:MCB\BRAJUG">
+          <Created>2019-05-31T16:48:23.4747844+04:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)\MSSQLSERVER01</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>Swazi_DW_mock</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="134lt129:MCB\BRAJUG">
+          <Created>2019-05-29T16:23:34.3171773+04:00</Created>
+          <Type>SQL</Type>
+          <Server>134lt129</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+        <ConnectionNode Name="134LT135\MSSQLSERVER01:MCB\BRAJUG">
+          <Created>2019-05-31T16:00:53.1734611+04:00</Created>
+          <Type>SQL</Type>
+          <Server>134LT135\MSSQLSERVER01</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="Dim_Limit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Dim_Limit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Dim_User.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Dim_User.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Acct_Entries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Acct_Entries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Balances.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Balances.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Balances_PL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Balances_PL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Company.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Company.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_Bills.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_Bills.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_Collateral.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_Collateral.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_Comm_Type.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_Comm_Type.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_Customer.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_Customer.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_Product.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_Product.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Dim_Transaction.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Dim_Transaction.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_DimAccount.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_DimAccount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_DimCurrency.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_DimCurrency.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Fact_Account_Opening.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Fact_Account_Opening.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Fact_Bills.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Fact_Bills.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Fact_Cash_Flow.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Fact_Cash_Flow.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Fact_Collateral.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Fact_Collateral.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Dw_Fact_Comm_Type.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Dw_Fact_Comm_Type.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_fact_Transaction.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_fact_Transaction.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_Fact_Transaction_YR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_Fact_Transaction_YR.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DW_GLMapping.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DW_GLMapping.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Fact_Limit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Fact_Limit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Mdm_Dim_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Mdm_Dim_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="select statements.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>select statements.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_create_DW.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_create_DW.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_ctrl_table.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_ctrl_table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Account.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Account.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Bills.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Bills.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Commission_Type.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Commission_Type.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Company.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Company.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_dim_Customer.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_dim_Customer.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Date.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Date.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_dim_GL_Mapping.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_dim_GL_Mapping.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Product.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Product.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Dim_Transaction.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Dim_Transaction.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_drop_DW.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_drop_DW.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Account_Opening.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Account_Opening.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Acct_Entries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Acct_Entries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Acct_Entries_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Acct_Entries_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Balances.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Balances.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Balances_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Balances_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Balances_PL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Balances_PL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Bills.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Bills.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Bills_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Bills_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Cashflow.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Cashflow.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Collateral.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Collateral.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Comm_Type.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Comm_Type.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Currency.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Currency.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_fact_interest.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134lt129:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134lt129</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_fact_interest.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Limit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Limit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Limit_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Limit_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Fact_Transaction.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Fact_Transaction.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_stg_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_stg_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_stg_Product.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_stg_Product.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_update_Views.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_update_Views.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="stg_Dim_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>stg_Dim_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Stg_Dim_Product.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Stg_Dim_Product.sql</FullPath>
+        </FileNode>
+        <FileNode Name="stg_SCD2_Dim_Bills.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>stg_SCD2_Dim_Bills.sql</FullPath>
+        </FileNode>
+        <FileNode Name="stg_SCD2_Dim_Collateral.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>stg_SCD2_Dim_Collateral.sql</FullPath>
+        </FileNode>
+        <FileNode Name="stg_SCD2_Dim_Company.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>stg_SCD2_Dim_Company.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Stg_SCD2_Dim_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Stg_SCD2_Dim_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="stg_SCD2_Dim_Product.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>stg_SCD2_Dim_Product.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Stg_SCD2_GL_mapping.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Stg_SCD2_GL_mapping.sql</FullPath>
+        </FileNode>
+        <FileNode Name="String split.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>String split.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_Account.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_Account.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_Acct_Entries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_Acct_Entries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_Company.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_Company.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_Customer.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_Customer.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_Date.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_Date.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_GL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_GL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_GL_Mapping.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_GL_Mapping.sql</FullPath>
+        </FileNode>
+        <FileNode Name="v_Product.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:134LT135\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>134LT135\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>v_Product.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
