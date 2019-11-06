@@ -2,18 +2,18 @@ drop table if exists Dim_Account
 
 	CREATE TABLE [dbo].[Dim_Account]
 	(
-		[Account_Key] Int not null Identity(1,1),
-		--Customer_Key int not null,
-		--Joint_Customer_Key int not null,
-		--Product_Key int not null,
-		--Currency_Buy_Key int not null,
-		--Currency_Sell_Key int not null,
-		[Account_Contract_Number] [Nvarchar](100) Not Null,
+		Account_Key Int not null Identity(1,1),
+		Account_No [Nvarchar](19) Null
+		,Account_Contract_No [Nvarchar](100) Null
+		,Account_Title [Nvarchar](65) Null
+		,Product_Code int
+		,Product_Description nvarchar(55)
+		,Account_Branch_Code nvarchar(11) null	
+		,Account_Branch_Name nvarchar(55) null 
 		--Purpose_Code nvarchar(75),
 		--Sub_Purpose_Code nvarchar(75),
 		--LC_Type nvarchar(10) null,
-		[Account_Title_1] [Nvarchar](35) Null,
-		[Linked_Account_No] [Nvarchar](19) Null,
+		
 		--Limit_Reference nvarchar(50),
 		--Parent_Limit_Reference nvarchar(50),
 		--Limit_Expiry_Date Date,
@@ -29,9 +29,9 @@ drop table if exists Dim_Account
 		--Effective_Rate nvarchar(10),
 		--Inactve_Marker nvarchar(10),
 		--Overdrawn_Flag nvarchar(1),
-		[Scd2_Start] Date Null,
-		[Scd2_End] Date Null,
-		[Scd2_Hash] [Char](66) Not Null
+		,[Scd2_Start] Date Null
+		,[Scd2_End] Date Null
+		,[Scd2_Hash] [Char](66) Not Null
 	)
 
 	set identity_insert Dim_Account on
