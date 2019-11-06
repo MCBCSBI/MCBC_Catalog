@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Account"
   DTS:PackageType="5"
-  DTS:VersionBuild="454"
-  DTS:VersionGUID="{031B8AC7-2D0A-4CD0-B3A7-47072B728F9D}">
+  DTS:VersionBuild="458"
+  DTS:VersionGUID="{73A0103F-AA97-4269-8384-4D283EFED19A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -123,12 +123,6 @@ EXEC (@sql)</DTS:VariableValue>
       DTS:ObjectName="DF Load Dim_Account"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
-      <DTS:PropertyExpression
-        DTS:Name="[LKP Lookup against Dim_Account_mapping for changes].[SqlCommand]">"select * from " + REPLACE( @[System::TaskName] , "DF Load ", "" )  + 
-" where Scd2_Start &lt;= '" + 
-(DT_WSTR, 10) (DT_DBDATE) @[$Package::v_Backfill_Date_To_Load] + "'" +
-" and Scd2_End &gt;'" + 
-(DT_WSTR, 10) (DT_DBDATE) @[$Package::v_Backfill_Date_To_Load] + "'"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -245,13 +239,13 @@ EXEC (@sql)</DTS:VariableValue>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Account where Scd2_Start &lt;= '2019-04-24' and Scd2_End &gt;'2019-04-24'</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from Dim_Account where Scd2_End is null</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Account where Scd2_Start &lt;= '2019-04-24' and Scd2_End &gt;'2019-04-24') [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Account where Scd2_End is null) [refTable]
 where [refTable].[Account_No] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -283,7 +277,7 @@ where [refTable].[Account_No] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Account_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_No" dataType="DT_WSTR" length="19" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Contract_No" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Title" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Account_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_No" dataType="DT_WSTR" length="19" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Contract_No" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Title" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Description" dataType="DT_WSTR" length="55" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Branch_Code" dataType="DT_WSTR" length="11" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Branch_Name" dataType="DT_WSTR" length="55" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -738,6 +732,12 @@ where [refTable].[Account_No] = ?</property>
                       cachedName="Account_Key_Old"
                       externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[Account_Key_old]"
                       lineageId="Package\DF Load Dim_Account\LKP Lookup against Dim_Account_mapping for changes.Outputs[Lookup Match Output].Columns[Account_Key_Old]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].Columns[mis_date]"
+                      cachedDataType="dbDate"
+                      cachedName="mis_date"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[mis_date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -847,7 +847,6 @@ select
 	,a.branch_code
 	,a.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
-	a.mis_date,
 	a.[@id]
 	,a.account_contract_id
 	,a.account_title_1
@@ -1625,7 +1624,7 @@ from a
         <NodeLayout
           Size="182.4,41.6"
           Id="Package\DF Load Dim_Account"
-          TopLeft="191.328370237843,201.557350718018" />
+          TopLeft="192.471227400163,201.557350718018" />
         <NodeLayout
           Size="184,42.4"
           Id="Package\SQL Create scd2 table"
@@ -1648,26 +1647,26 @@ from a
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-79.0281677547703,47.6607889235013"
+              EndConnector="-77.8853105924502,47.660788923502"
               Start="0,0"
-              End="-79.0281677547703,40.1607889235013">
+              End="-77.8853105924502,40.160788923502">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.8303944617507" />
+                    End="0,19.830394461751" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.8303944617507"
-                    Point2="0,23.8303944617507"
-                    Point3="-4,23.8303944617507" />
+                    Point1="0,19.830394461751"
+                    Point2="0,23.830394461751"
+                    Point3="-4,23.830394461751" />
                   <mssgle:LineSegment
-                    End="-75.0281677547703,23.8303944617507" />
+                    End="-73.8853105924502,23.830394461751" />
                   <mssgle:CubicBezierSegment
-                    Point1="-75.0281677547703,23.8303944617507"
-                    Point2="-79.0281677547703,23.8303944617507"
-                    Point3="-79.0281677547703,27.8303944617507" />
+                    Point1="-73.8853105924502,23.830394461751"
+                    Point2="-77.8853105924502,23.830394461751"
+                    Point3="-77.8853105924502,27.830394461751" />
                   <mssgle:LineSegment
-                    End="-79.0281677547703,40.1607889235013" />
+                    End="-77.8853105924502,40.160788923502" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1678,18 +1677,18 @@ from a
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="373.728370237843,223.767233207205">
+          TopLeft="374.871227400163,223.767233207204">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="70.4462207083139,0"
+              EndConnector="69.3033635459931,0"
               Start="0,0"
-              End="62.9462207083139,0">
+              End="61.8033635459931,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="62.9462207083139,0" />
+                    End="61.8033635459931,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1775,7 +1774,11 @@ from a
         <NodeLayout
           Size="341.6,42.4"
           Id="Package\DF Load Dim_Account\LKP Lookup against Dim_Account_mapping for changes"
-          TopLeft="41.3948418572675,150.515360728533" />
+          TopLeft="41.3948418572675,151.127125442995" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DF Load Dim_Account\OLE_DST Load Dim"
+          TopLeft="47.3469395818238,464.941182991213" />
         <NodeLayout
           Size="233.6,42.4"
           Id="Package\DF Load Dim_Account\OLE_SRC Get Data From landing"
@@ -1792,6 +1795,40 @@ from a
           Size="236.8,41.6"
           Id="Package\DF Load Dim_Account\CSPL check old hash vs new hash"
           TopLeft="526.679232154155,151.315360728533" />
+        <EdgeLayout
+          Id="Package\DF Load Dim_Account.Paths[Union All Output 1]"
+          TopLeft="101.394841857268,384.188240098788">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.1520977245563,80.7529428924247"
+              Start="0,0"
+              End="31.1520977245563,73.2529428924247">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.3764714462123" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.3764714462123"
+                    Point2="0,40.3764714462123"
+                    Point3="4,40.3764714462123" />
+                  <mssgle:LineSegment
+                    End="27.1520977245563,40.3764714462123" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.1520977245563,40.3764714462123"
+                    Point2="31.1520977245563,40.3764714462123"
+                    Point3="31.1520977245563,44.3764714462123" />
+                  <mssgle:LineSegment
+                    End="31.1520977245563,73.2529428924247" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[Type 2 Change]"
           TopLeft="641.279232154155,192.915360728533">
@@ -1818,30 +1855,30 @@ from a
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[OLE DB Source Output]"
-          TopLeft="158.194841857267,79.741923498883">
+          TopLeft="158.194841857268,79.7419234988829">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54.0000000000001,70.7734372296501"
+              EndConnector="54,71.3852019441122"
               Start="0,0"
-              End="54.0000000000001,63.2734372296501">
+              End="54,63.8852019441122">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.386718614825" />
+                    End="0,31.6926009720561" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.386718614825"
-                    Point2="0,35.386718614825"
-                    Point3="4,35.386718614825" />
+                    Point1="0,31.6926009720561"
+                    Point2="0,35.6926009720561"
+                    Point3="4,35.6926009720561" />
                   <mssgle:LineSegment
-                    End="50.0000000000001,35.386718614825" />
+                    End="50,35.6926009720561" />
                   <mssgle:CubicBezierSegment
-                    Point1="50.0000000000001,35.386718614825"
-                    Point2="54.0000000000001,35.386718614825"
-                    Point3="54.0000000000001,39.386718614825" />
+                    Point1="50,35.6926009720561"
+                    Point2="54,35.6926009720561"
+                    Point3="54,39.6926009720561" />
                   <mssgle:LineSegment
-                    End="54.0000000000001,63.2734372296501" />
+                    End="54,63.8852019441122" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1920,43 +1957,43 @@ from a
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[Lookup No Match Output]"
-          TopLeft="212.194841857268,192.915360728533">
+          TopLeft="212.194841857268,193.527125442995">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-129.466666666667,149.672879370255"
+              EndConnector="-129.466666666667,149.061114655793"
               Start="0,0"
-              End="-129.466666666667,142.172879370255">
+              End="-129.466666666667,141.561114655793">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,84.6220996271247" />
+                    End="0,84.2598705198774" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,84.6220996271247"
-                    Point2="0,88.6220996271247"
-                    Point3="-4,88.6220996271247" />
+                    Point1="0,84.2598705198774"
+                    Point2="0,88.2598705198774"
+                    Point3="-4,88.2598705198774" />
                   <mssgle:LineSegment
-                    End="-125.466666666667,88.6220996271247" />
+                    End="-125.466666666667,88.2598705198774" />
                   <mssgle:CubicBezierSegment
-                    Point1="-125.466666666667,88.6220996271247"
-                    Point2="-129.466666666667,88.6220996271247"
-                    Point3="-129.466666666667,92.6220996271247" />
+                    Point1="-125.466666666667,88.2598705198774"
+                    Point2="-129.466666666667,88.2598705198774"
+                    Point3="-129.466666666667,92.2598705198774" />
                   <mssgle:LineSegment
-                    End="-129.466666666667,142.172879370255" />
+                    End="-129.466666666667,141.561114655793" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-120.539720052083,93.6220996271247,111.6127734375,11.609375"
+              BoundingBox="-120.539720052083,93.2598705198774,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[Lookup Match Output]"
-          TopLeft="382.994841857268,171.915360728533">
+          TopLeft="382.994841857267,172.221243085764">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1974,46 +2011,8 @@ from a
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="19.9008084296938,5,96.3827734375,11.609375"
+              BoundingBox="19.9008084296937,5,96.3827734375,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\DF Load Dim_Account\OLE_DST Load Dim"
-          TopLeft="47.3469395818238,464.941182991213" />
-        <EdgeLayout
-          Id="Package\DF Load Dim_Account.Paths[Union All Output 1]"
-          TopLeft="101.394841857268,384.188240098788">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="31.1520977245563,80.7529428924247"
-              Start="0,0"
-              End="31.1520977245563,73.2529428924247">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.3764714462123" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.3764714462123"
-                    Point2="0,40.3764714462123"
-                    Point3="4,40.3764714462123" />
-                  <mssgle:LineSegment
-                    End="27.1520977245563,40.3764714462123" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.1520977245563,40.3764714462123"
-                    Point2="31.1520977245563,40.3764714462123"
-                    Point3="31.1520977245563,44.3764714462123" />
-                  <mssgle:LineSegment
-                    End="31.1520977245563,73.2529428924247" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2038,7 +2037,7 @@ from a
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2048,16 +2047,8 @@ from a
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF Load Dim_Account\OLE_SRC Get Data From landing">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -2073,6 +2064,14 @@ from a
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Account\OLE_SRC Get Data From landing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

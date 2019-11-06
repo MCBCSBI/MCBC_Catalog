@@ -43,7 +43,6 @@ select
 	,a.branch_code
 	,a.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
-	a.mis_date,
 	a.[@id]
 	,a.account_contract_id
 	,a.account_title_1

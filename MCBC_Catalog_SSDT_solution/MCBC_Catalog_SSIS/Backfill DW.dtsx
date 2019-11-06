@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="280"
-  DTS:VersionGUID="{94001FC2-6E1E-4C0C-AE9C-88A93A87A0CF}">
+  DTS:VersionBuild="284"
+  DTS:VersionGUID="{AC385446-AAA4-40E5-88D2-884594299B92}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -902,7 +902,7 @@ EXEC (@sql)</DTS:VariableValue>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{671548CD-8576-49C9-868B-AEAAB720CD7E}"
-          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;BNK_ACCOUNT where mis_date = '2019-09-30'&#xA;order by&#xA;&#x9;MIS_DATE"
+          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;BNK_ACCOUNT --where mis_date = '2019-09-30'&#xA;order by&#xA;&#x9;MIS_DATE"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1313,37 +1313,37 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="252,42.4"
           Id="Package\Get list of dates to loop from landing"
-          TopLeft="243.84225905582,140.487090404251" />
+          TopLeft="244.98511621814,141.710619833175" />
         <NodeLayout
           Size="165.6,42.4"
           Id="Package\SQL Update views"
           TopLeft="828.749987650664,1004.39442648447" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="369.84225905582,182.887090404251">
+          TopLeft="370.98511621814,184.110619833175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61.629961475535,67.4105257293401"
+              EndConnector="60.4871043132151,66.1869963004158"
               Start="0,0"
-              End="61.629961475535,59.9105257293401">
+              End="60.4871043132151,58.6869963004158">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.70526286467" />
+                    End="0,29.0934981502079" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.70526286467"
-                    Point2="0,33.70526286467"
-                    Point3="4,33.70526286467" />
+                    Point1="0,29.0934981502079"
+                    Point2="0,33.0934981502079"
+                    Point3="4,33.0934981502079" />
                   <mssgle:LineSegment
-                    End="57.629961475535,33.70526286467" />
+                    End="56.4871043132151,33.0934981502079" />
                   <mssgle:CubicBezierSegment
-                    Point1="57.629961475535,33.70526286467"
-                    Point2="61.629961475535,33.70526286467"
-                    Point3="61.629961475535,37.70526286467" />
+                    Point1="56.4871043132151,33.0934981502079"
+                    Point2="60.4871043132151,33.0934981502079"
+                    Point3="60.4871043132151,37.0934981502079" />
                   <mssgle:LineSegment
-                    End="61.629961475535,59.9105257293401" />
+                    End="60.4871043132151,58.6869963004158" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
