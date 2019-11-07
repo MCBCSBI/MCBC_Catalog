@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Fact Balances"
   DTS:PackageType="5"
-  DTS:VersionBuild="104"
-  DTS:VersionGUID="{5312D150-799A-4C14-9246-0850DD441FE2}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{5DE92990-E7C9-4383-A1C1-9C5BD7F09F97}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -771,7 +771,7 @@ where [refTable].[Date] = ?</property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--declare @dt date = '2019-09-30';
 declare @dt date = ?;
 
-/*PRIMARY CUSTOMERS*/
+/*PRIMARY CUSTOMERS FOR ACCOUNTS*/
 with c as (
 	select 
 		a.MIS_DATE,
@@ -783,7 +783,7 @@ with c as (
 		a.MIS_DATE = @dt
 ),
 
-/*JOINT CUSTOMERS*/
+/*JOINT CUSTOMERS FOR ACCOUNTS*/
 j as (
 	select 
 		a.MIS_DATE,
@@ -806,7 +806,7 @@ j as (
 		--and a.[@ID] = '137154'
 ),
 
---select u.* into ##temp1
+
 u as (
 	select u.*
 	from (
@@ -834,8 +834,8 @@ select
 	,cast(g.ASSET_TYPE as nvarchar(20)) as ASSET_TYPE
 	--,g.CUSTOMER --primary customer
 	,g.LOCAL_CCY_AMT 
-	,u.customer as customer_all --both primary and joint
-	,u.IsPrimary
+	,isnull(u.customer,g.CUSTOMER) as customer_all --for non-account contracts such as MM TF etc, use the customer number that is in RE CRF GL
+	,isnull(u.IsPrimary,1) as IsPrimary --for non account contracts, default primary to 1
 from 
 	BNK_RE_CRF_GL g
 	left join u
