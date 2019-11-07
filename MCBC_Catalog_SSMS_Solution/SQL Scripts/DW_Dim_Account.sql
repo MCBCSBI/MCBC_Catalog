@@ -1,11 +1,11 @@
-Declare @dt date = ?;
---Declare @dt Date =  '2019-09-30';
+--Declare @dt date = ?;
+Declare @dt Date =  '2019-09-30';
 
 with a as(
 /*ACCOUNTS*/
 select 
 	ac.MIS_DATE
-	,ac.[@ID]
+	,ac.[@ID] as account_no
 	,ac.ARRANGEMENT_ID as ACCOUNT_CONTRACT_ID
 	,ac.ACCOUNT_TITLE_1
 	,ac.CATEGORY
@@ -31,27 +31,63 @@ from
 		and co.mis_date = ac.mis_date
 where 
 	ac.MIS_DATE = @dt
+
+),
+
+l as (
+	select
+	lc.MIS_DATE
+	,null as account_no
+	,lc.[@ID] as account_contract_id
+	,null as account_title
+	,lc.CATEGORY_CODE as CATEGORY
+	,c.description as CATEGORY_DESC
+	,lc.LC_CURRENCY as CURRENCY
+	,lc.CON_CUS_LINK as CUSTOMER
+	,null as JOINT_HOLDER
+	,lc.ISSUE_DATE as opening_date
+	,null as INACTIV_MARKER
+	,lc.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
+	from
+		BNK_LETTER_OF_CREDIT lc
+		left join bnk_category c
+			on c.[@id] = lc.CATEGORY_CODE
+			and c.mis_date = lc.mis_date
+		left join bnk_company co
+			on co.[@id] = lc.co_code
+			and co.mis_date = lc.mis_date
+	where 
+		lc.MIS_DATE = @dt
+),
+
+u as (
+	select * from a
+	union
+	select * from l
 )
 
+
 select
-	a.mis_date,
-	a.[@id]
-	,a.account_contract_id
-	,a.account_title_1
-	,a.CATEGORY
-	,a.CATEGORY_DESC
-	,a.branch_code
-	,a.BRANCH_NAME
+	u.mis_date,
+	u.account_no
+	,u.account_contract_id
+	,u.account_title_1
+	,u.CATEGORY
+	,u.CATEGORY_DESC
+	,u.branch_code
+	,u.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
-	a.[@id]
-	,a.account_contract_id
-	,a.account_title_1
-	,a.CATEGORY
-	,a.CATEGORY_DESC
-	,a.branch_code
-	,a.BRANCH_NAME
+	u.account_no
+	,u.account_contract_id
+	,u.account_title_1
+	,u.CATEGORY
+	,u.CATEGORY_DESC
+	,u.branch_code
+	,u.BRANCH_NAME
 				)),1),0) as Hash_SCD2
-from a
+from u
 
 --where 
 	--a.MIS_DATE = @dt

@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Account"
   DTS:PackageType="5"
-  DTS:VersionBuild="458"
-  DTS:VersionGUID="{73A0103F-AA97-4269-8384-4D283EFED19A}">
+  DTS:VersionBuild="460"
+  DTS:VersionGUID="{AE4F09DB-55AB-4773-8942-0C7511E97732}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -282,7 +282,7 @@ where [refTable].[Account_No] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@id]};</property>
+                  name="ParameterMap">#{Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -306,11 +306,11 @@ where [refTable].[Account_No] = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Dim_Account\LKP Lookup against Dim_Account_mapping for changes.Inputs[Lookup Input].Columns[@id]"
+                      refId="Package\DF Load Dim_Account\LKP Lookup against Dim_Account_mapping for changes.Inputs[Lookup Input].Columns[account_no]"
                       cachedDataType="wstr"
                       cachedLength="19"
-                      cachedName="@id"
-                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@id]">
+                      cachedName="account_no"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -510,13 +510,6 @@ where [refTable].[Account_No] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[@id]"
-                      cachedDataType="wstr"
-                      cachedLength="19"
-                      cachedName="@id"
-                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Account_No]"
-                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[@id]" />
-                    <inputColumn
                       refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[account_contract_id]"
                       cachedDataType="wstr"
                       cachedLength="17"
@@ -571,6 +564,13 @@ where [refTable].[Account_No] = ?</property>
                       cachedName="Hash_SCD2"
                       externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Hash]"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[account_no]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="account_no"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Account_No]"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -809,7 +809,7 @@ with a as(
 /*ACCOUNTS*/
 select 
 	ac.MIS_DATE
-	,ac.[@ID]
+	,ac.[@ID] as account_no
 	,ac.ARRANGEMENT_ID as ACCOUNT_CONTRACT_ID
 	,ac.ACCOUNT_TITLE_1
 	,ac.CATEGORY
@@ -835,27 +835,63 @@ from
 		and co.mis_date = ac.mis_date
 where 
 	ac.MIS_DATE = @dt
+
+),
+
+l as (
+	select
+	lc.MIS_DATE
+	,null as account_no
+	,lc.[@ID] as account_contract_id
+	,null as account_title
+	,lc.CATEGORY_CODE as CATEGORY
+	,c.description as CATEGORY_DESC
+	,lc.LC_CURRENCY as CURRENCY
+	,lc.CON_CUS_LINK as CUSTOMER
+	,null as JOINT_HOLDER
+	,lc.ISSUE_DATE as opening_date
+	,null as INACTIV_MARKER
+	,lc.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
+	from
+		BNK_LETTER_OF_CREDIT lc
+		left join bnk_category c
+			on c.[@id] = lc.CATEGORY_CODE
+			and c.mis_date = lc.mis_date
+		left join bnk_company co
+			on co.[@id] = lc.co_code
+			and co.mis_date = lc.mis_date
+	where 
+		lc.MIS_DATE = @dt
+),
+
+u as (
+	select * from a
+	union
+	select * from l
 )
 
+
 select
-	a.mis_date,
-	a.[@id]
-	,a.account_contract_id
-	,a.account_title_1
-	,a.CATEGORY
-	,a.CATEGORY_DESC
-	,a.branch_code
-	,a.BRANCH_NAME
+	u.mis_date,
+	u.account_no
+	,u.account_contract_id
+	,u.account_title_1
+	,u.CATEGORY
+	,u.CATEGORY_DESC
+	,u.branch_code
+	,u.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
-	a.[@id]
-	,a.account_contract_id
-	,a.account_title_1
-	,a.CATEGORY
-	,a.CATEGORY_DESC
-	,a.branch_code
-	,a.BRANCH_NAME
+	u.account_no
+	,u.account_contract_id
+	,u.account_title_1
+	,u.CATEGORY
+	,u.CATEGORY_DESC
+	,u.branch_code
+	,u.BRANCH_NAME
 				)),1),0) as Hash_SCD2
-from a
+from u
 
 --where 
 	--a.MIS_DATE = @dt
@@ -908,16 +944,6 @@ from a
                       length="66"
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Hash_SCD2]"
                       name="Hash_SCD2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@id]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[@id]"
-                      length="19"
-                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@id]"
-                      name="@id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_title_1]"
@@ -987,6 +1013,16 @@ from a
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[CATEGORY_DESC]"
                       name="CATEGORY_DESC"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[account_no]"
+                      length="19"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]"
+                      name="account_no"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -996,11 +1032,6 @@ from a
                       dataType="str"
                       length="66"
                       name="Hash_SCD2" />
-                    <externalMetadataColumn
-                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[@id]"
-                      dataType="wstr"
-                      length="19"
-                      name="@id" />
                     <externalMetadataColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[account_title_1]"
                       dataType="nText"
@@ -1026,12 +1057,17 @@ from a
                     <externalMetadataColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[CATEGORY]"
                       dataType="wstr"
-                      length="6"
+                      length="9"
                       name="CATEGORY" />
                     <externalMetadataColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[CATEGORY_DESC]"
                       dataType="nText"
                       name="CATEGORY_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[account_no]"
+                      dataType="wstr"
+                      length="19"
+                      name="account_no" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1045,11 +1081,11 @@ from a
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[mis_date]"
                       name="mis_date" />
                     <outputColumn
-                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[@id]"
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[account_no]"
                       dataType="wstr"
                       length="19"
-                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[@id]"
-                      name="@id" />
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[account_no]"
+                      name="account_no" />
                     <outputColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[account_contract_id]"
                       dataType="wstr"
@@ -1064,7 +1100,7 @@ from a
                     <outputColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[CATEGORY]"
                       dataType="wstr"
-                      length="6"
+                      length="9"
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[CATEGORY]"
                       name="CATEGORY" />
                     <outputColumn
@@ -1132,20 +1168,6 @@ from a
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 1].Columns[@id]"
-                      cachedDataType="wstr"
-                      cachedLength="19"
-                      cachedName="@id"
-                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@id]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[@id]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1244,6 +1266,20 @@ from a
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CATEGORY_DESC]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 1].Columns[account_no]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="account_no"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1265,20 +1301,6 @@ from a
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 2].Columns[@id]"
-                      cachedDataType="wstr"
-                      cachedLength="19"
-                      cachedName="@id"
-                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[@id]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[@id]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1377,6 +1399,20 @@ from a
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CATEGORY_DESC]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 2].Columns[account_no]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="account_no"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1400,12 +1436,6 @@ from a
                       length="66"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Hash_SCD2]"
                       name="Hash_SCD2" />
-                    <outputColumn
-                      refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[@id]"
-                      dataType="wstr"
-                      length="19"
-                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[@id]"
-                      name="@id" />
                     <outputColumn
                       refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_title_1]"
                       dataType="wstr"
@@ -1446,6 +1476,12 @@ from a
                       length="50"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CATEGORY_DESC]"
                       name="CATEGORY_DESC" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]"
+                      dataType="wstr"
+                      length="19"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]"
+                      name="account_no" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1778,11 +1814,7 @@ from a
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\DF Load Dim_Account\OLE_DST Load Dim"
-          TopLeft="47.3469395818238,464.941182991213" />
-        <NodeLayout
-          Size="233.6,42.4"
-          Id="Package\DF Load Dim_Account\OLE_SRC Get Data From landing"
-          TopLeft="41.3948418572675,37.3419234988829" />
+          TopLeft="47.9183681629837,465.552947705675" />
         <NodeLayout
           Size="120,41.6"
           Id="Package\DF Load Dim_Account\Union All"
@@ -1792,35 +1824,39 @@ from a
           Id="Package\DF Load Dim_Account\MLT dupicate type 2 change streams"
           TopLeft="511.479232154155,241.672341893108" />
         <NodeLayout
+          Size="233.6,42.4"
+          Id="Package\DF Load Dim_Account\OLE_SRC Get Data From landing"
+          TopLeft="41.3948418572675,37.3419234988829" />
+        <NodeLayout
           Size="236.8,41.6"
           Id="Package\DF Load Dim_Account\CSPL check old hash vs new hash"
           TopLeft="526.679232154155,151.315360728533" />
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[Union All Output 1]"
-          TopLeft="101.394841857268,384.188240098788">
+          TopLeft="101.394841857267,384.188240098788">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.1520977245563,80.7529428924247"
+              EndConnector="31.7235263057162,81.3647076068871"
               Start="0,0"
-              End="31.1520977245563,73.2529428924247">
+              End="31.7235263057162,73.8647076068871">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.3764714462123" />
+                    End="0,36.6823538034435" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.3764714462123"
-                    Point2="0,40.3764714462123"
-                    Point3="4,40.3764714462123" />
+                    Point1="0,36.6823538034435"
+                    Point2="0,40.6823538034435"
+                    Point3="4,40.6823538034435" />
                   <mssgle:LineSegment
-                    End="27.1520977245563,40.3764714462123" />
+                    End="27.7235263057162,40.6823538034435" />
                   <mssgle:CubicBezierSegment
-                    Point1="27.1520977245563,40.3764714462123"
-                    Point2="31.1520977245563,40.3764714462123"
-                    Point3="31.1520977245563,44.3764714462123" />
+                    Point1="27.7235263057162,40.6823538034435"
+                    Point2="31.7235263057162,40.6823538034435"
+                    Point3="31.7235263057162,44.6823538034435" />
                   <mssgle:LineSegment
-                    End="31.1520977245563,73.2529428924247" />
+                    End="31.7235263057162,73.8647076068871" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2011,7 +2047,7 @@ from a
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="19.9008084296937,5,96.3827734375,11.609375"
+              BoundingBox="19.900808429694,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
