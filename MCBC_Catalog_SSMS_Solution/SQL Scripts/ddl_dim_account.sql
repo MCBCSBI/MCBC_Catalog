@@ -8,6 +8,7 @@ drop table if exists Dim_Account
 		,Account_Title [Nvarchar](65) Null
 		,Product_Code int
 		,Product_Description nvarchar(55)
+		,Currency_Denomination nvarchar(3)
 		,Opening_Date date
 		,Maturity_Rollover_Date date
 		,Close_date date
@@ -37,7 +38,7 @@ drop table if exists Dim_Account
 		,[Scd2_Hash] [Char](66) Not Null
 	)
 
-	set identity_insert Dim_Account on
+	--set identity_insert Dim_Account on
 
 	alter table Dim_Account
 	add 

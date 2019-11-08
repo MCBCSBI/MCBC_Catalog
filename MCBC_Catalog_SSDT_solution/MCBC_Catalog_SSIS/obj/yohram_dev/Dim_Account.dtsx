@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Account"
   DTS:PackageType="5"
-  DTS:VersionBuild="465"
-  DTS:VersionGUID="{03C60FA7-3B1D-4555-AF49-4777FC1ADE70}">
+  DTS:VersionBuild="466"
+  DTS:VersionGUID="{3A6B9D6B-0C45-4496-B334-BB4497333838}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -589,6 +589,13 @@ where [refTable].[Account_No] = ?</property>
                       cachedName="CLOSE_DATE"
                       externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Close_date]"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[Currency_Denomination]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Currency_Denomination"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Currency_Denomination]"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Currency_Denomination]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -656,6 +663,11 @@ where [refTable].[Account_No] = ?</property>
                       refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Close_date]"
                       dataType="dbDate"
                       name="Close_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Currency_Denomination]"
+                      dataType="wstr"
+                      length="3"
+                      name="Currency_Denomination" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -838,100 +850,137 @@ where [refTable].[Account_No] = ?</property>
 with a as(
 /*ACCOUNTS*/
 select 
-	ac.MIS_DATE
-	,ac.[@ID] as account_no
-	,ac.ARRANGEMENT_ID as ACCOUNT_CONTRACT_ID
-	,ac.ACCOUNT_TITLE_1
-	,ac.CATEGORY
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.ARRANGEMENT_ID as ACCOUNT_CONTRACT_ID
+	,t.ACCOUNT_TITLE_1
+	,t.CATEGORY
 	,c.description as CATEGORY_DESC
-	,ac.CURRENCY
-	,ac.CUSTOMER
-	,ac.JOINT_HOLDER
-	,cast(ac.OPENING_DATE as date) as OPENING_DATE
+	,t.CURRENCY as Currency_Denomination
+	,t.CUSTOMER
+	,t.JOINT_HOLDER
+	,cast(t.OPENING_DATE as date) as OPENING_DATE
 	,d.MATURITY_DATE
 	,cl.ACCT_CLOSE_DATE as CLOSE_DATE
-	,ac.INACTIV_MARKER
+	,t.INACTIV_MARKER
 	--,null as INTEREST
 	--,null as PENALTY_INTEREST
 	--,CASE WHEN Overdrawn_Account.ACCOUNT_ID is not null THEN N'Y' ELSE N'N' END as Overdrawn_Flag
-	,ac.CO_CODE as BRANCH_CODE
+	,t.CO_CODE as BRANCH_CODE
 	,co.COMPANY_NAME as BRANCH_NAME
 from
-	dbo.BNK_ACCOUNT ac
+	dbo.BNK_ACCOUNT t
 	left join bnk_category c
-		on c.[@id] = ac.category
-		and c.mis_date = ac.mis_date
+		on c.[@id] = t.category
+		and c.mis_date = t.mis_date
 	left join bnk_company co
-		on co.[@id] = ac.co_code
-		and co.mis_date = ac.mis_date
+		on co.[@id] = t.co_code
+		and co.mis_date = t.mis_date
 	left join BNK_AA_ACCOUNT_DETAILS d
-		on d.MIS_DATE = ac.MIS_DATE
-		and d.[@ID] = ac.ARRANGEMENT_ID
+		on d.MIS_DATE = t.MIS_DATE
+		and d.[@ID] = t.ARRANGEMENT_ID
 	left join BNK_ACCOUNT_CLOSED cl
-		on cl.MIS_DATE = ac.MIS_DATE
-		and cl.[@ID] = ac.[@ID]
+		on cl.MIS_DATE = t.MIS_DATE
+		and cl.[@ID] = t.[@ID]
 where 
-	ac.MIS_DATE = @dt
+	t.MIS_DATE = @dt
 
 ),
 
 l as (
+/*LETTER OF CREDIT*/
 	select
-	lc.MIS_DATE
-	,lc.[@ID] as account_no
-	,lc.[@ID] as account_contract_id
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.[@ID] as account_contract_id
 	,null as account_title
-	,lc.CATEGORY_CODE as CATEGORY
+	,t.CATEGORY_CODE as CATEGORY
 	,c.description as CATEGORY_DESC
-	,lc.LC_CURRENCY as CURRENCY
-	,lc.CON_CUS_LINK as CUSTOMER
+	,t.LC_CURRENCY as Currency_Denomination
+	,t.CON_CUS_LINK as CUSTOMER
 	,null as JOINT_HOLDER
-	,lc.ISSUE_DATE as opening_date
+	,t.ISSUE_DATE as opening_date
 	,null as MATURITY_DATE
 	,null as CLOSE_DATE
 	,null as INACTIV_MARKER
-	,lc.CO_CODE as BRANCH_CODE
+	,t.CO_CODE as BRANCH_CODE
 	,co.COMPANY_NAME as BRANCH_NAME
 	--,*
 	from
-		BNK_LETTER_OF_CREDIT lc
+		BNK_LETTER_OF_CREDIT t
 		left join bnk_category c
-			on c.[@id] = lc.CATEGORY_CODE
-			and c.mis_date = lc.mis_date
+			on c.[@id] = t.CATEGORY_CODE
+			and c.mis_date = t.mis_date
 		left join bnk_company co
-			on co.[@id] = lc.co_code
-			and co.mis_date = lc.mis_date
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
 	where 
-		lc.MIS_DATE = @dt
+		t.MIS_DATE = @dt
 ),
 
 m as (
+/*MONEY MARKET*/
 	select 
-		m.MIS_DATE,
-		m.[@id] as account_no
-		,m.[@ID] as account_contract_id
+		t.MIS_DATE,
+		t.[@id] as account_no
+		,t.[@ID] as account_contract_id
 		,null as ACCOUNT_TITLE_1
-		,m.CATEGORY
+		,t.CATEGORY
 		,c.description as CATEGORY_DESC
-		,m.CURRENCY
-		,m.CUSTOMER_ID as CUSTOMER
+		,t.CURRENCY as Currency_Denomination
+		,t.CUSTOMER_ID as CUSTOMER
 		,null as JOINT_HOLDER
-		,m.DEAL_DATE
-		,isnull(m.ROLLOVER_DATE,m.MATURITY_DATE) as MATURITY_DATE
+		,t.DEAL_DATE
+		,isnull(t.ROLLOVER_DATE,t.MATURITY_DATE) as MATURITY_DATE
 		,null as CLOSE_DATE
 		,null as INACTIV_MARKER
-		,m.CO_CODE as BRANCH_CODE
+		,t.CO_CODE as BRANCH_CODE
 		,co.COMPANY_NAME as BRANCH_NAME
 
 	from
-		BNK_MM_MONEY_MARKET m
+		BNK_MM_MONEY_MARKET t
 		left join bnk_category c
-			on c.[@id] = m.category
-			and c.mis_date = m.mis_date
+			on c.[@id] = t.category
+			and c.mis_date = t.mis_date
 		left join bnk_company co
-			on co.[@id] = m.co_code
-			and co.mis_date = m.mis_date
-	where m.MIS_DATE = @dt
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where t.MIS_DATE = @dt
+),
+
+f as (
+/*FOREX*/
+	select 
+		t.MIS_DATE,
+		t.[@id] as account_no
+		,t.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,t.CATEGORY_CODE
+		,c.description as CATEGORY_DESC
+		,null as Currency_Denomination
+		,t.COUNTERPARTY as CUSTOMER
+		,null as JOINT_HOLDER
+		,t.DEAL_DATE
+		,case 
+			when t.VALUE_DATE_BUY &gt; t.VALUE_DATE_SELL
+			then t.VALUE_DATE_BUY
+			else t.VALUE_DATE_SELL
+		end as MATURITY_DATE
+		,null as CLOSE_DATE
+		,null as INACTIV_MARKER
+		,t.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_FOREX t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY_CODE
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where t.MIS_DATE = @dt
+
 ),
 
 u as (
@@ -940,6 +989,8 @@ u as (
 	select * from l
 	union
 	select * from m
+	union
+	select * from f
 )
 
 
@@ -950,6 +1001,7 @@ select
 	,u.account_title_1
 	,u.CATEGORY
 	,u.CATEGORY_DESC
+	,u.Currency_Denomination
 	,u.OPENING_DATE
 	,u.MATURITY_DATE
 	,u.CLOSE_DATE
@@ -961,6 +1013,10 @@ select
 	,u.account_title_1
 	,u.CATEGORY
 	,u.CATEGORY_DESC
+	,u.Currency_Denomination
+	,u.OPENING_DATE
+	,u.MATURITY_DATE
+	,u.CLOSE_DATE
 	,u.branch_code
 	,u.BRANCH_NAME
 				)),1),0) as Hash_SCD2
@@ -1123,6 +1179,16 @@ from u
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[CLOSE_DATE]"
                       name="CLOSE_DATE"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Currency_Denomination]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Currency_Denomination]"
+                      length="3"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Currency_Denomination]"
+                      name="Currency_Denomination"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1180,6 +1246,11 @@ from u
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[CLOSE_DATE]"
                       dataType="dbDate"
                       name="CLOSE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[Currency_Denomination]"
+                      dataType="wstr"
+                      length="3"
+                      name="Currency_Denomination" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1220,6 +1291,12 @@ from u
                       dataType="nText"
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[CATEGORY_DESC]"
                       name="CATEGORY_DESC" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Currency_Denomination]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[Currency_Denomination]"
+                      name="Currency_Denomination" />
                     <outputColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[OPENING_DATE]"
                       dataType="dbDate"
@@ -1446,6 +1523,20 @@ from u
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 1].Columns[Currency_Denomination]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Currency_Denomination"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Currency_Denomination]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Currency_Denomination]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1618,6 +1709,20 @@ from u
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 2].Columns[Currency_Denomination]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Currency_Denomination"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[Currency_Denomination]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Currency_Denomination]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1702,6 +1807,12 @@ from u
                       dataType="dbDate"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]"
                       name="CLOSE_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Currency_Denomination]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[Currency_Denomination]"
+                      name="Currency_Denomination" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1903,26 +2014,26 @@ from u
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-76.1710248489701,48.2725536379641"
+              EndConnector="-76.17102484897,48.272553637964"
               Start="0,0"
-              End="-76.1710248489701,40.7725536379641">
+              End="-76.17102484897,40.772553637964">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1362768189821" />
+                    End="0,20.136276818982" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1362768189821"
-                    Point2="0,24.1362768189821"
-                    Point3="-4,24.1362768189821" />
+                    Point1="0,20.136276818982"
+                    Point2="0,24.136276818982"
+                    Point3="-4,24.136276818982" />
                   <mssgle:LineSegment
-                    End="-72.1710248489701,24.1362768189821" />
+                    End="-72.17102484897,24.136276818982" />
                   <mssgle:CubicBezierSegment
-                    Point1="-72.1710248489701,24.1362768189821"
-                    Point2="-76.1710248489701,24.1362768189821"
-                    Point3="-76.1710248489701,28.1362768189821" />
+                    Point1="-72.17102484897,24.136276818982"
+                    Point2="-76.17102484897,24.136276818982"
+                    Point3="-76.17102484897,28.136276818982" />
                   <mssgle:LineSegment
-                    End="-76.1710248489701,40.7725536379641" />
+                    End="-76.17102484897,40.772553637964" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1937,14 +2048,14 @@ from u
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="67.5890778025131,0"
+              EndConnector="67.589077802513,0"
               Start="0,0"
-              End="60.0890778025131,0">
+              End="60.089077802513,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="60.0890778025131,0" />
+                    End="60.089077802513,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2046,7 +2157,7 @@ from u
         <NodeLayout
           Size="233.6,42.4"
           Id="Package\DF Load Dim_Account\OLE_SRC Get Data From landing"
-          TopLeft="41.3948418572675,37.3419234988829" />
+          TopLeft="42.5376990195874,37.953688213345" />
         <NodeLayout
           Size="236.8,41.6"
           Id="Package\DF Load Dim_Account\CSPL check old hash vs new hash"
@@ -2111,30 +2222,30 @@ from u
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[OLE DB Source Output]"
-          TopLeft="158.194841857268,79.7419234988829">
+          TopLeft="159.337699019587,80.353688213345">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54,71.3852019441122"
+              EndConnector="52.8571428376801,70.77343722965"
               Start="0,0"
-              End="54,63.8852019441122">
+              End="52.8571428376801,63.27343722965">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.6926009720561" />
+                    End="0,31.386718614825" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.6926009720561"
-                    Point2="0,35.6926009720561"
-                    Point3="4,35.6926009720561" />
+                    Point1="0,31.386718614825"
+                    Point2="0,35.386718614825"
+                    Point3="4,35.386718614825" />
                   <mssgle:LineSegment
-                    End="50,35.6926009720561" />
+                    End="48.8571428376801,35.386718614825" />
                   <mssgle:CubicBezierSegment
-                    Point1="50,35.6926009720561"
-                    Point2="54,35.6926009720561"
-                    Point3="54,39.6926009720561" />
+                    Point1="48.8571428376801,35.386718614825"
+                    Point2="52.8571428376801,35.386718614825"
+                    Point3="52.8571428376801,39.386718614825" />
                   <mssgle:LineSegment
-                    End="54,63.8852019441122" />
+                    End="52.8571428376801,63.27343722965" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
