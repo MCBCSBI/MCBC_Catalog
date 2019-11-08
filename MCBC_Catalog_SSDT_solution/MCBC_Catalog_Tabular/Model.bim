@@ -19,73 +19,288 @@
         "options": {},
         "credential": {
           "AuthenticationKind": "Windows",
-          "Username": "mcb\\yohram",
+          "kind": "SQL",
+          "path": "134lt135\\mssqlserver01;MCBC_DW_Sey_V2",
+          "Username": "MCB\\YOHRAM",
           "EncryptConnection": false
         }
       }
     ],
     "tables": [
       {
+        "name": "v_dim_account",
+        "columns": [
+          {
+            "name": "Account_Key",
+            "dataType": "int64",
+            "sourceColumn": "Account_Key"
+          },
+          {
+            "name": "Account_No",
+            "dataType": "string",
+            "sourceColumn": "Account_No"
+          },
+          {
+            "name": "Account_Contract_No",
+            "dataType": "string",
+            "sourceColumn": "Account_Contract_No"
+          },
+          {
+            "name": "Account_Title",
+            "dataType": "string",
+            "sourceColumn": "Account_Title"
+          },
+          {
+            "name": "Product_Code",
+            "dataType": "int64",
+            "sourceColumn": "Product_Code"
+          },
+          {
+            "name": "Product_Description",
+            "dataType": "string",
+            "sourceColumn": "Product_Description"
+          },
+          {
+            "name": "Account_Branch_Code",
+            "dataType": "string",
+            "sourceColumn": "Account_Branch_Code"
+          },
+          {
+            "name": "Account_Branch_Name",
+            "dataType": "string",
+            "sourceColumn": "Account_Branch_Name"
+          },
+          {
+            "name": "Scd2_Start",
+            "dataType": "dateTime",
+            "sourceColumn": "Scd2_Start"
+          },
+          {
+            "name": "Scd2_End",
+            "dataType": "dateTime",
+            "sourceColumn": "Scd2_End"
+          },
+          {
+            "name": "Scd2_Hash",
+            "dataType": "string",
+            "sourceColumn": "Scd2_Hash"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134lt135\\mssqlserver01;MCBC_DW_Sey_V2\",",
+                "    dbo_v_dim_account = Source{[Schema=\"dbo\",Item=\"v_dim_account\"]}[Data]",
+                "in",
+                "    dbo_v_dim_account"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "v_dim_date",
+        "columns": [
+          {
+            "name": "Date_Key",
+            "dataType": "int64",
+            "sourceColumn": "Date_Key"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Month_Name",
+            "dataType": "string",
+            "sourceColumn": "Month_Name"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Week_Of_Month",
+            "dataType": "int64",
+            "sourceColumn": "Week_Of_Month"
+          },
+          {
+            "name": "Day",
+            "dataType": "int64",
+            "sourceColumn": "Day"
+          },
+          {
+            "name": "Day_Name",
+            "dataType": "string",
+            "sourceColumn": "Day_Name"
+          },
+          {
+            "name": "Financial_Year",
+            "dataType": "int64",
+            "sourceColumn": "Financial_Year"
+          },
+          {
+            "name": "Financial_Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Financial_Quarter"
+          },
+          {
+            "name": "Date_Current_Week",
+            "dataType": "boolean",
+            "sourceColumn": "Date_Current_Week"
+          },
+          {
+            "name": "Date_Prior_Week",
+            "dataType": "boolean",
+            "sourceColumn": "Date_Prior_Week"
+          },
+          {
+            "name": "Has_Data",
+            "dataType": "boolean",
+            "sourceColumn": "Has_Data"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134lt135\\mssqlserver01;MCBC_DW_Sey_V2\",",
+                "    dbo_v_dim_date = Source{[Schema=\"dbo\",Item=\"v_dim_date\"]}[Data]",
+                "in",
+                "    dbo_v_dim_date"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "v_fact_balances",
+        "columns": [
+          {
+            "name": "Date_Key",
+            "dataType": "int64",
+            "sourceColumn": "Date_Key"
+          },
+          {
+            "name": "Account_Key",
+            "dataType": "int64",
+            "sourceColumn": "Account_Key"
+          },
+          {
+            "name": "Account_Contract_No",
+            "dataType": "string",
+            "sourceColumn": "Account_Contract_No"
+          },
+          {
+            "name": "Isprimary",
+            "dataType": "boolean",
+            "sourceColumn": "Isprimary"
+          },
+          {
+            "name": "Asset_Type",
+            "dataType": "string",
+            "sourceColumn": "Asset_Type"
+          },
+          {
+            "name": "Balance_LCY",
+            "dataType": "double",
+            "sourceColumn": "Balance_LCY"
+          },
+          {
+            "name": "Balance_FCY",
+            "dataType": "double",
+            "sourceColumn": "Balance_FCY"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134lt135\\mssqlserver01;MCBC_DW_Sey_V2\",",
+                "    dbo_v_fact_balances = Source{[Schema=\"dbo\",Item=\"v_fact_balances\"]}[Data]",
+                "in",
+                "    dbo_v_fact_balances"
+              ]
+            }
+          }
+        ]
+      },
+      {
         "name": "Measure_Table",
         "columns": [
           {
             "name": "m1",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m1"
           },
           {
             "name": "m2",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m2"
           },
           {
             "name": "m3",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m3"
           },
           {
             "name": "m4",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m4"
           },
           {
             "name": "m5",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m5"
           },
           {
             "name": "m6",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m6"
           },
           {
             "name": "m7",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m7"
           },
           {
             "name": "m8",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m8"
           },
           {
             "name": "m9",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m9"
           },
           {
             "name": "m10",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "m10"
           }
         ],
@@ -97,7 +312,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = #\"SQL/134LT135\\MSSQLSERVER01;MCBC_DW_SEY\",",
+                "    Source = #\"SQL/134lt135\\mssqlserver01;MCBC_DW_Sey_V2\",",
                 "    dbo_Measure_Table = Source{[Schema=\"dbo\",Item=\"Measure_Table\"]}[Data]",
                 "in",
                 "    dbo_Measure_Table"
