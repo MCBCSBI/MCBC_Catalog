@@ -4,12 +4,13 @@ drop table if exists Fact_Balances;
 			timestamp
 			,Date_Key int not null
 			--,Branch_Key int not null
-			,Account_Key int not null
 			--,Account_Contract_No nvarchar (100)
 			--,GL_Key int not null
 			--,GL_Mapping_Key int not null
 			,Isprimary bit
+			,Account_Key int not null
 			,Asset_Type nvarchar(20)
+			--,Currency nvarchar(3)
 			,Balance_LCY decimal(19,2) 
 			,Balance_FCY decimal(19,2) 
 		)

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Fact Balances"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{728CCED3-8634-417E-9600-D38C834A6DE3}">
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{629EBD68-CEA1-469A-B865-359A392669CF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -666,6 +666,14 @@ where [refTable].[Date] = ?</property>
                       cachedName="ASSET_TYPE"
                       externalMetadataColumnId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type]"
                       lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[ASSET_TYPE]" />
+                    <inputColumn
+                      refId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].Columns[CURRENCY_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="CURRENCY_AMT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].ExternalColumns[Balance_FCY]"
+                      lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY_AMT]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -817,13 +825,14 @@ u as (
 )
 
 select 
-	g.MIS_DATE,
-	cast(g.[LINE/CONTRACT] as nvarchar(25)) as [LINE/CONTRACT]
-	,cast(g.ASSET_TYPE as nvarchar(20)) as ASSET_TYPE
-	--,g.CUSTOMER --primary customer
-	,g.LOCAL_CCY_AMT 
+	g.MIS_DATE
 	,isnull(u.customer,g.CUSTOMER) as customer_all --for non-account contracts such as MM TF etc, use the customer number that is in RE CRF GL
 	,isnull(u.IsPrimary,1) as IsPrimary --for non account contracts, default primary to 1
+	,cast(g.[LINE/CONTRACT] as nvarchar(25)) as [LINE/CONTRACT]
+	,cast(g.ASSET_TYPE as nvarchar(20)) as ASSET_TYPE
+	,cast(g.CURRENCY as nvarchar(3)) as CURRENCY
+	,g.CURRENCY_AMT
+	,g.LOCAL_CCY_AMT 
 from 
 	BNK_RE_CRF_GL g
 	left join u
@@ -926,6 +935,27 @@ where
                       lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[IsPrimary]"
                       name="IsPrimary"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      length="50"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]"
+                      name="CURRENCY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY_AMT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY_AMT]"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY_AMT]"
+                      name="CURRENCY_AMT"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -955,6 +985,15 @@ where
                       refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[IsPrimary]"
                       dataType="i4"
                       name="IsPrimary" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY_AMT]"
+                      dataType="nText"
+                      name="CURRENCY_AMT" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -989,6 +1028,17 @@ where
                       dataType="nText"
                       lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[customer_all]"
                       name="customer_all" />
+                    <outputColumn
+                      refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CURRENCY]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CURRENCY]"
+                      name="CURRENCY" />
+                    <outputColumn
+                      refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CURRENCY_AMT]"
+                      dataType="nText"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CURRENCY_AMT]"
+                      name="CURRENCY_AMT" />
                     <outputColumn
                       refId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[IsPrimary]"
                       dataType="i4"
@@ -1132,6 +1182,35 @@ where
                           name="OutputColumnLineageID">#{Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[Account_Key]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load fact_balances\Union All.Inputs[Union All Input 1].Columns[CURRENCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CURRENCY"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load fact_balances\Union All.Inputs[Union All Input 1].Columns[CURRENCY_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="CURRENCY_AMT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY_AMT]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1236,6 +1315,35 @@ where
                           name="OutputColumnLineageID">#{Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[Date_Key]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load fact_balances\Union All.Inputs[Union All Input 2].Columns[CURRENCY]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CURRENCY"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load fact_balances\Union All.Inputs[Union All Input 2].Columns[CURRENCY_AMT]"
+                      cachedDataType="numeric"
+                      cachedName="CURRENCY_AMT"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DF Load fact_balances\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CURRENCY_AMT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY_AMT]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1297,6 +1405,19 @@ where
                       dataType="i4"
                       lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
                       name="Account_Key" />
+                    <outputColumn
+                      refId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY]"
+                      name="CURRENCY" />
+                    <outputColumn
+                      refId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY_AMT]"
+                      dataType="numeric"
+                      lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[CURRENCY_AMT]"
+                      name="CURRENCY_AMT"
+                      precision="19"
+                      scale="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1520,6 +1641,78 @@ where
           Id="Package\DF Load fact_balances\LKP Date Key"
           TopLeft="41.6952308091272,155.795789556825" />
         <EdgeLayout
+          Id="Package\DF Load fact_balances.Paths[Lookup No Match Output]"
+          TopLeft="368.939884493123,202.888220024283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-245.266414021015,74.1538006678491"
+              Start="0,0"
+              End="-245.266414021015,66.6538006678491">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0769003339246"
+                    Point2="0,37.0769003339246"
+                    Point3="-4,37.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-241.266414021015,37.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-241.266414021015,37.0769003339246"
+                    Point2="-245.266414021015,37.0769003339246"
+                    Point3="-245.266414021015,41.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-245.266414021015,66.6538006678491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-178.439593729257,42.0769003339246,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load fact_balances.Paths[Lookup Match Output1]"
+          TopLeft="368.939884493123,202.888220024283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-245.266414021015,74.1538006678491"
+              Start="0,0"
+              End="-245.266414021015,66.6538006678491">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0769003339246"
+                    Point2="0,37.0769003339246"
+                    Point3="-4,37.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-241.266414021015,37.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-241.266414021015,37.0769003339246"
+                    Point2="-245.266414021015,37.0769003339246"
+                    Point3="-245.266414021015,41.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-245.266414021015,66.6538006678491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-170.824593729258,42.0769003339246,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DF Load fact_balances.Paths[Lookup Match Output]"
           TopLeft="183.295230809127,179.342004790554">
           <EdgeLayout.Curve>
@@ -1605,104 +1798,32 @@ where
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-48.3129334849238,84.4815034258081"
+              EndConnector="-48.3129334849238,84.4815034258076"
               Start="0,0"
-              End="-48.3129334849238,76.9815034258081">
+              End="-48.3129334849238,76.9815034258076">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.2407517129041" />
+                    End="0,38.2407517129038" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.2407517129041"
-                    Point2="0,42.2407517129041"
-                    Point3="-4,42.2407517129041" />
+                    Point1="0,38.2407517129038"
+                    Point2="0,42.2407517129038"
+                    Point3="-4,42.2407517129038" />
                   <mssgle:LineSegment
-                    End="-44.3129334849238,42.2407517129041" />
+                    End="-44.3129334849238,42.2407517129038" />
                   <mssgle:CubicBezierSegment
-                    Point1="-44.3129334849238,42.2407517129041"
-                    Point2="-48.3129334849238,42.2407517129041"
-                    Point3="-48.3129334849238,46.2407517129041" />
+                    Point1="-44.3129334849238,42.2407517129038"
+                    Point2="-48.3129334849238,42.2407517129038"
+                    Point3="-48.3129334849238,46.2407517129038" />
                   <mssgle:LineSegment
-                    End="-48.3129334849238,76.9815034258081" />
+                    End="-48.3129334849238,76.9815034258076" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Load fact_balances.Paths[Lookup No Match Output]"
-          TopLeft="368.939884493123,202.888220024283">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-245.266414021015,74.1538006678491"
-              Start="0,0"
-              End="-245.266414021015,66.6538006678491">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.0769003339246"
-                    Point2="0,37.0769003339246"
-                    Point3="-4,37.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-241.266414021015,37.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-241.266414021015,37.0769003339246"
-                    Point2="-245.266414021015,37.0769003339246"
-                    Point3="-245.266414021015,41.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-245.266414021015,66.6538006678491" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-178.439593729257,42.0769003339246,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Load fact_balances.Paths[Lookup Match Output1]"
-          TopLeft="368.939884493123,202.888220024283">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-245.266414021015,74.1538006678491"
-              Start="0,0"
-              End="-245.266414021015,66.6538006678491">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.0769003339246"
-                    Point2="0,37.0769003339246"
-                    Point3="-4,37.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-241.266414021015,37.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-241.266414021015,37.0769003339246"
-                    Point2="-245.266414021015,37.0769003339246"
-                    Point3="-245.266414021015,41.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-245.266414021015,66.6538006678491" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-170.824593729258,42.0769003339246,96.3827734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

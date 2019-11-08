@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="292"
-  DTS:VersionGUID="{EC0A2839-50C4-4A93-A45E-916C8ED55E94}">
+  DTS:VersionBuild="293"
+  DTS:VersionGUID="{536DEA84-C1BF-4FF5-BBCB-1E04A45B244E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -361,6 +361,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim_Account"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
+              DTS:Disabled="True"
               DTS:DTSID="{132de1c2-782e-4327-b8ee-5efde8c61123}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
