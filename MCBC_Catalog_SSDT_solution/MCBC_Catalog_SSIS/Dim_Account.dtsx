@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Account"
   DTS:PackageType="5"
-  DTS:VersionBuild="460"
-  DTS:VersionGUID="{AE4F09DB-55AB-4773-8942-0C7511E97732}">
+  DTS:VersionBuild="464"
+  DTS:VersionGUID="{0817906B-7472-4025-A3B4-C98DCE6D63CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -818,8 +818,8 @@ select
 	,ac.CUSTOMER
 	,ac.JOINT_HOLDER
 	,cast(ac.OPENING_DATE as date) as OPENING_DATE
+	,null as MATURITY_DATE
 	,ac.INACTIV_MARKER
-	--,null as MATURITY_DATE
 	--,null as INTEREST
 	--,null as PENALTY_INTEREST
 	--,CASE WHEN Overdrawn_Account.ACCOUNT_ID is not null THEN N'Y' ELSE N'N' END as Overdrawn_Flag
@@ -841,7 +841,7 @@ where
 l as (
 	select
 	lc.MIS_DATE
-	,null as account_no
+	,lc.[@ID] as account_no
 	,lc.[@ID] as account_contract_id
 	,null as account_title
 	,lc.CATEGORY_CODE as CATEGORY
@@ -850,6 +850,7 @@ l as (
 	,lc.CON_CUS_LINK as CUSTOMER
 	,null as JOINT_HOLDER
 	,lc.ISSUE_DATE as opening_date
+	,null as MATURITY_DATE
 	,null as INACTIV_MARKER
 	,lc.CO_CODE as BRANCH_CODE
 	,co.COMPANY_NAME as BRANCH_NAME
@@ -866,10 +867,40 @@ l as (
 		lc.MIS_DATE = @dt
 ),
 
+m as (
+	select 
+		m.MIS_DATE,
+		m.[@id] as account_no
+		,m.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,m.CATEGORY
+		,c.description as CATEGORY_DESC
+		,m.CURRENCY
+		,m.CUSTOMER_ID as CUSTOMER
+		,null as JOINT_HOLDER
+		,m.DEAL_DATE
+		,isnull(m.ROLLOVER_DATE,m.MATURITY_DATE) as MATURITY_DATE
+		,null as INACTIV_MARKER
+		,m.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_MM_MONEY_MARKET m
+		left join bnk_category c
+			on c.[@id] = m.category
+			and c.mis_date = m.mis_date
+		left join bnk_company co
+			on co.[@id] = m.co_code
+			and co.mis_date = m.mis_date
+	where m.MIS_DATE = @dt
+),
+
 u as (
 	select * from a
 	union
 	select * from l
+	union
+	select * from m
 )
 
 
@@ -1660,7 +1691,7 @@ from u
         <NodeLayout
           Size="182.4,41.6"
           Id="Package\DF Load Dim_Account"
-          TopLeft="192.471227400163,201.557350718018" />
+          TopLeft="194.185513143643,202.16911543248" />
         <NodeLayout
           Size="184,42.4"
           Id="Package\SQL Create scd2 table"
@@ -1683,26 +1714,26 @@ from u
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-77.8853105924502,47.660788923502"
+              EndConnector="-76.1710248489701,48.2725536379641"
               Start="0,0"
-              End="-77.8853105924502,40.160788923502">
+              End="-76.1710248489701,40.7725536379641">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.830394461751" />
+                    End="0,20.1362768189821" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.830394461751"
-                    Point2="0,23.830394461751"
-                    Point3="-4,23.830394461751" />
+                    Point1="0,20.1362768189821"
+                    Point2="0,24.1362768189821"
+                    Point3="-4,24.1362768189821" />
                   <mssgle:LineSegment
-                    End="-73.8853105924502,23.830394461751" />
+                    End="-72.1710248489701,24.1362768189821" />
                   <mssgle:CubicBezierSegment
-                    Point1="-73.8853105924502,23.830394461751"
-                    Point2="-77.8853105924502,23.830394461751"
-                    Point3="-77.8853105924502,27.830394461751" />
+                    Point1="-72.1710248489701,24.1362768189821"
+                    Point2="-76.1710248489701,24.1362768189821"
+                    Point3="-76.1710248489701,28.1362768189821" />
                   <mssgle:LineSegment
-                    End="-77.8853105924502,40.160788923502" />
+                    End="-76.1710248489701,40.7725536379641" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1713,18 +1744,18 @@ from u
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="374.871227400163,223.767233207204">
+          TopLeft="376.585513143643,224.073115564436">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69.3033635459931,0"
+              EndConnector="67.5890778025131,0"
               Start="0,0"
-              End="61.8033635459931,0">
+              End="60.0890778025131,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="61.8033635459931,0" />
+                    End="60.0890778025131,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2073,7 +2104,7 @@ from u
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2083,7 +2114,7 @@ from u
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

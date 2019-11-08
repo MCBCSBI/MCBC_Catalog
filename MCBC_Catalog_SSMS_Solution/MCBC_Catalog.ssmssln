@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SQL Scripts\ddl_ctrl_table.sql = SQL Scripts\ddl_ctrl_table.sql
 		SQL Scripts\ddl_dim_account.sql = SQL Scripts\ddl_dim_account.sql
 		SQL Scripts\ddl_dim_date.sql = SQL Scripts\ddl_dim_date.sql
+		SQL Scripts\ddl_fact_balances.sql = SQL Scripts\ddl_fact_balances.sql
 		SQL Scripts\ddl_update_views_DW.sql = SQL Scripts\ddl_update_views_DW.sql
 		SQL Scripts\Dim_Limit.sql = SQL Scripts\Dim_Limit.sql
 		SQL Scripts\Dim_Transaction.sql = SQL Scripts\Dim_Transaction.sql
@@ -32,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SQL Scripts\DW_Fact_Account_Opening.sql = SQL Scripts\DW_Fact_Account_Opening.sql
 		SQL Scripts\DW_Fact_Acct_Reset.sql = SQL Scripts\DW_Fact_Acct_Reset.sql
 		SQL Scripts\DW_Fact_Acount_Opening.sql = SQL Scripts\DW_Fact_Acount_Opening.sql
+		SQL Scripts\dw_fact_balances.sql = SQL Scripts\dw_fact_balances.sql
 		SQL Scripts\DW_Fact_Balances_Audit.sql = SQL Scripts\DW_Fact_Balances_Audit.sql
 		SQL Scripts\DW_Fact_Bills.sql = SQL Scripts\DW_Fact_Bills.sql
 		SQL Scripts\DW_Fact_Cash_Flow.sql = SQL Scripts\DW_Fact_Cash_Flow.sql
@@ -140,7 +142,7 @@ Global
 		Default|Default = Default|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D296989-C84B-4A36-BBF6-C49CB8747B10}.Default|Default.ActiveCfg = Default
+		{1BB91E20-C95D-41B8-8CC6-1BF8C90BF599}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

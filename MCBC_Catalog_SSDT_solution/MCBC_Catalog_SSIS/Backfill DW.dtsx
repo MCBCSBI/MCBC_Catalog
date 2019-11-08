@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="288"
-  DTS:VersionGUID="{1D59DD31-D1C3-45DB-8F6E-71A724BB199C}">
+  DTS:VersionBuild="289"
+  DTS:VersionGUID="{7CC4A96C-3EF2-401B-9CA6-55F0F8D9DADC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>

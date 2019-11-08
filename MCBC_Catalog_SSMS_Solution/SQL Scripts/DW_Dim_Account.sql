@@ -14,8 +14,8 @@ select
 	,ac.CUSTOMER
 	,ac.JOINT_HOLDER
 	,cast(ac.OPENING_DATE as date) as OPENING_DATE
+	,d.MATURITY_DATE
 	,ac.INACTIV_MARKER
-	--,null as MATURITY_DATE
 	--,null as INTEREST
 	--,null as PENALTY_INTEREST
 	--,CASE WHEN Overdrawn_Account.ACCOUNT_ID is not null THEN N'Y' ELSE N'N' END as Overdrawn_Flag
@@ -29,6 +29,9 @@ from
 	left join bnk_company co
 		on co.[@id] = ac.co_code
 		and co.mis_date = ac.mis_date
+	left join BNK_AA_ACCOUNT_DETAILS d
+		on d.MIS_DATE = ac.MIS_DATE
+		and d.[@ID] = ac.ARRANGEMENT_ID
 where 
 	ac.MIS_DATE = @dt
 
@@ -37,7 +40,7 @@ where
 l as (
 	select
 	lc.MIS_DATE
-	,null as account_no
+	,lc.[@ID] as account_no
 	,lc.[@ID] as account_contract_id
 	,null as account_title
 	,lc.CATEGORY_CODE as CATEGORY
@@ -46,6 +49,7 @@ l as (
 	,lc.CON_CUS_LINK as CUSTOMER
 	,null as JOINT_HOLDER
 	,lc.ISSUE_DATE as opening_date
+	,null as MATURITY_DATE
 	,null as INACTIV_MARKER
 	,lc.CO_CODE as BRANCH_CODE
 	,co.COMPANY_NAME as BRANCH_NAME
@@ -62,10 +66,40 @@ l as (
 		lc.MIS_DATE = @dt
 ),
 
+m as (
+	select 
+		m.MIS_DATE,
+		m.[@id] as account_no
+		,m.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,m.CATEGORY
+		,c.description as CATEGORY_DESC
+		,m.CURRENCY
+		,m.CUSTOMER_ID as CUSTOMER
+		,null as JOINT_HOLDER
+		,m.DEAL_DATE
+		,isnull(m.ROLLOVER_DATE,m.MATURITY_DATE) as MATURITY_DATE
+		,null as INACTIV_MARKER
+		,m.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_MM_MONEY_MARKET m
+		left join bnk_category c
+			on c.[@id] = m.category
+			and c.mis_date = m.mis_date
+		left join bnk_company co
+			on co.[@id] = m.co_code
+			and co.mis_date = m.mis_date
+	where m.MIS_DATE = @dt
+),
+
 u as (
 	select * from a
 	union
 	select * from l
+	union
+	select * from m
 )
 
 
