@@ -54,7 +54,7 @@ l as (
 	,t.CON_CUS_LINK as CUSTOMER
 	,null as JOINT_HOLDER
 	,t.ISSUE_DATE as opening_date
-	,null as MATURITY_DATE
+	,t.EXPIRY_DATE as MATURITY_DATE
 	,null as CLOSE_DATE
 	,null as INACTIV_MARKER
 	,t.CO_CODE as BRANCH_CODE
@@ -137,6 +137,37 @@ f as (
 
 ),
 
+md as(
+/*MD DEALS*/
+	select
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.[@ID] as account_contract_id
+	,null as account_title
+	,t.CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.CURRENCY as Currency_Denomination
+	,t.CUSTOMER as CUSTOMER
+	,null as JOINT_HOLDER
+	,t.DEAL_DATE as opening_date
+	,t.MATURITY_DATE as MATURITY_DATE
+	,null as CLOSE_DATE
+	,null as INACTIV_MARKER
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
+	from
+		BNK_MD_DEAL t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where 
+		t.MIS_DATE = @dt
+),
+
 u as (
 	select * from a
 	union
@@ -145,6 +176,8 @@ u as (
 	select * from m
 	union
 	select * from f
+	union
+	select * from md
 )
 
 

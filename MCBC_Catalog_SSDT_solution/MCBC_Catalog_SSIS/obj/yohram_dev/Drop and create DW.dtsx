@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Drop and create DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="59"
-  DTS:VersionGUID="{3EF2BA0E-1C07-4346-802A-05B1AF200F97}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{91328631-4148-496A-900C-5EF981E91F75}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -206,7 +206,6 @@ EXEC (@sql)</DTS:VariableValue>
           DTS:refId="Package\Create Dw\Create Dimensions"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
-          DTS:Disabled="True"
           DTS:DTSID="{26381146-480B-4A36-A68F-4E80F257B269}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -397,7 +396,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL create ctrl table"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -422,7 +421,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL create dim_date"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -447,7 +446,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL Create v_dim_date"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -509,7 +508,6 @@ EXEC (@sql)</DTS:VariableValue>
           DTS:refId="Package\Drop DW\Drop Dimensions"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
-          DTS:Disabled="True"
           DTS:DTSID="{E158A71C-602F-4179-84D9-AE617E2A8BF4}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"

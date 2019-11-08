@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="293"
-  DTS:VersionGUID="{536DEA84-C1BF-4FF5-BBCB-1E04A45B244E}">
+  DTS:VersionBuild="295"
+  DTS:VersionGUID="{084AA3AD-3A07-481F-B926-9877911D0099}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -361,7 +361,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim_Account"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
-              DTS:Disabled="True"
               DTS:DTSID="{132de1c2-782e-4327-b8ee-5efde8c61123}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -902,7 +901,7 @@ EXEC (@sql)</DTS:VariableValue>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{671548CD-8576-49C9-868B-AEAAB720CD7E}"
-          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;BNK_ACCOUNT --where mis_date = '2019-09-30'&#xA;order by&#xA;&#x9;MIS_DATE"
+          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;BNK_ACCOUNT where mis_date = '2019-09-30'&#xA;order by&#xA;&#x9;MIS_DATE"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"

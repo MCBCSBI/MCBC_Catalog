@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">134LT135</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe/qWqRFueEyXvrOtnXKUOgAAAAACAAAAAAADZgAAwAAAABAAAAB5OdD9vPuROiGs54bCaUZgAAAAAASAAACgAAAAEAAAAClh4nT86FVVra1bp8m247qIAAAAcvTVzeYMtjH7ZSiNv6xYR6yLQIidNr9WklukrAexDEsIY869DsME2sureh+TpSA0bki4gIQXKhH9f3d5wA3OOnwrjSP5foNjJUmYSDe5X9JPL6n8Z4CpbdDSmM7rEZkR2YybpiY4dJQqczca07bq8qLp49KeCu87SNMmr0f2NE0wI5rOnd4/4RQAAAAfMjyABvVZ1bfHA6bXDxY/A5iaOQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe/qWqRFueEyXvrOtnXKUOgAAAAACAAAAAAADZgAAwAAAABAAAABtC+Tak9VXeDi+LzPK5LixAAAAAASAAACgAAAAEAAAAKQkDrsChivK439hrE5iMk6IAAAAxx6AqyQ4YuRJVdI49e08zIQ6P4Qv3N8o/OauBhxRXuy2yYOk6T3r2dvJF5WW/WDUZQFqeBlNR5UofL4nbCgdh655XzzD1bzC7Rk7YKSFddMUm5hnlOIOPXI8oUgqwIjpPg9674xlX9QxI5WGnUCREFoitquvfbDhbgjOmpb3OLooXe/bibbH7BQAAABR685UMRnB6LzlkE53BU05kFKMMw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -86,7 +86,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">MCBC_DW_Sey_V2</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">MCBC_DW_Sey</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -232,7 +232,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">MCBC_Masterdata_Sey</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">MCBC_MasterData_Sey</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -305,7 +305,8 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">mcbc_staging_sey</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">
+                </SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -734,8 +735,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

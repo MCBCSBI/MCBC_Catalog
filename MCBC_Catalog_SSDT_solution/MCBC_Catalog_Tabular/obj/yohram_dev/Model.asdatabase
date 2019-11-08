@@ -31,6 +31,7 @@
           {
             "name": "Account_Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Account_Key"
           },
           {
@@ -71,16 +72,19 @@
           {
             "name": "Scd2_Start",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "Scd2_Start"
           },
           {
             "name": "Scd2_End",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "Scd2_End"
           },
           {
             "name": "Scd2_Hash",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Scd2_Hash"
           },
           {
@@ -97,6 +101,11 @@
             "name": "Close_date",
             "dataType": "dateTime",
             "sourceColumn": "Close_date"
+          },
+          {
+            "name": "Currency_Denomination",
+            "dataType": "string",
+            "sourceColumn": "Currency_Denomination"
           }
         ],
         "partitions": [
@@ -123,6 +132,7 @@
           {
             "name": "Date_Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Date_Key"
           },
           {
