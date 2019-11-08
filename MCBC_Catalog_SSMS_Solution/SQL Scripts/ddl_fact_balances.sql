@@ -5,7 +5,7 @@ drop table if exists Fact_Balances;
 			,Date_Key int not null
 			--,Branch_Key int not null
 			,Account_Key int not null
-			,Account_Contract_No nvarchar (100)
+			--,Account_Contract_No nvarchar (100)
 			--,GL_Key int not null
 			--,GL_Mapping_Key int not null
 			,Isprimary bit

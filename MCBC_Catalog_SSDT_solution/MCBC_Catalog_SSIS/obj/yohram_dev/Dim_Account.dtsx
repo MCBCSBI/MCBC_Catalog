@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Account"
   DTS:PackageType="5"
-  DTS:VersionBuild="464"
-  DTS:VersionGUID="{0817906B-7472-4025-A3B4-C98DCE6D63CE}">
+  DTS:VersionBuild="465"
+  DTS:VersionGUID="{03C60FA7-3B1D-4555-AF49-4777FC1ADE70}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -571,6 +571,24 @@ where [refTable].[Account_No] = ?</property>
                       cachedName="account_no"
                       externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Account_No]"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[OPENING_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="OPENING_DATE"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Opening_Date]"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[MATURITY_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MATURITY_DATE"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Maturity_Rollover_Date]"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[MATURITY_DATE]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].Columns[CLOSE_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="CLOSE_DATE"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Close_date]"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -626,6 +644,18 @@ where [refTable].[Account_No] = ?</property>
                       dataType="str"
                       length="66"
                       name="Scd2_Hash" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Opening_Date]"
+                      dataType="dbDate"
+                      name="Opening_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Maturity_Rollover_Date]"
+                      dataType="dbDate"
+                      name="Maturity_Rollover_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_DST Load Dim.Inputs[OLE DB Destination Input].ExternalColumns[Close_date]"
+                      dataType="dbDate"
+                      name="Close_date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -818,7 +848,8 @@ select
 	,ac.CUSTOMER
 	,ac.JOINT_HOLDER
 	,cast(ac.OPENING_DATE as date) as OPENING_DATE
-	,null as MATURITY_DATE
+	,d.MATURITY_DATE
+	,cl.ACCT_CLOSE_DATE as CLOSE_DATE
 	,ac.INACTIV_MARKER
 	--,null as INTEREST
 	--,null as PENALTY_INTEREST
@@ -833,6 +864,12 @@ from
 	left join bnk_company co
 		on co.[@id] = ac.co_code
 		and co.mis_date = ac.mis_date
+	left join BNK_AA_ACCOUNT_DETAILS d
+		on d.MIS_DATE = ac.MIS_DATE
+		and d.[@ID] = ac.ARRANGEMENT_ID
+	left join BNK_ACCOUNT_CLOSED cl
+		on cl.MIS_DATE = ac.MIS_DATE
+		and cl.[@ID] = ac.[@ID]
 where 
 	ac.MIS_DATE = @dt
 
@@ -851,6 +888,7 @@ l as (
 	,null as JOINT_HOLDER
 	,lc.ISSUE_DATE as opening_date
 	,null as MATURITY_DATE
+	,null as CLOSE_DATE
 	,null as INACTIV_MARKER
 	,lc.CO_CODE as BRANCH_CODE
 	,co.COMPANY_NAME as BRANCH_NAME
@@ -880,6 +918,7 @@ m as (
 		,null as JOINT_HOLDER
 		,m.DEAL_DATE
 		,isnull(m.ROLLOVER_DATE,m.MATURITY_DATE) as MATURITY_DATE
+		,null as CLOSE_DATE
 		,null as INACTIV_MARKER
 		,m.CO_CODE as BRANCH_CODE
 		,co.COMPANY_NAME as BRANCH_NAME
@@ -911,6 +950,9 @@ select
 	,u.account_title_1
 	,u.CATEGORY
 	,u.CATEGORY_DESC
+	,u.OPENING_DATE
+	,u.MATURITY_DATE
+	,u.CLOSE_DATE
 	,u.branch_code
 	,u.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
@@ -1054,6 +1096,33 @@ from u
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[account_no]"
                       name="account_no"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[OPENING_DATE]"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]"
+                      name="OPENING_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MATURITY_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[MATURITY_DATE]"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MATURITY_DATE]"
+                      name="MATURITY_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[CLOSE_DATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[CLOSE_DATE]"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[CLOSE_DATE]"
+                      name="CLOSE_DATE"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1099,6 +1168,18 @@ from u
                       dataType="wstr"
                       length="19"
                       name="account_no" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[OPENING_DATE]"
+                      dataType="dbDate"
+                      name="OPENING_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[MATURITY_DATE]"
+                      dataType="dbDate"
+                      name="MATURITY_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].ExternalColumns[CLOSE_DATE]"
+                      dataType="dbDate"
+                      name="CLOSE_DATE" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1139,6 +1220,21 @@ from u
                       dataType="nText"
                       lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[CATEGORY_DESC]"
                       name="CATEGORY_DESC" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[OPENING_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[OPENING_DATE]"
+                      name="OPENING_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[MATURITY_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[MATURITY_DATE]"
+                      name="MATURITY_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[CLOSE_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[CLOSE_DATE]"
+                      name="CLOSE_DATE" />
                     <outputColumn
                       refId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Error Output].Columns[branch_code]"
                       dataType="wstr"
@@ -1311,6 +1407,45 @@ from u
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 1].Columns[OPENING_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="OPENING_DATE"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 1].Columns[MATURITY_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MATURITY_DATE"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MATURITY_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[MATURITY_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 1].Columns[CLOSE_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="CLOSE_DATE"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[CLOSE_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1444,6 +1579,45 @@ from u
                           name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 2].Columns[OPENING_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="OPENING_DATE"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 2].Columns[MATURITY_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MATURITY_DATE"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[MATURITY_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[MATURITY_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Inputs[Union All Input 2].Columns[CLOSE_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="CLOSE_DATE"
+                      lineageId="Package\DF Load Dim_Account\OLE_SRC Get Data From landing.Outputs[OLE DB Source Output].Columns[CLOSE_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1513,6 +1687,21 @@ from u
                       length="19"
                       lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[account_no]"
                       name="account_no" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]"
+                      name="OPENING_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[MATURITY_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[MATURITY_DATE]"
+                      name="MATURITY_DATE" />
+                    <outputColumn
+                      refId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]"
+                      dataType="dbDate"
+                      lineageId="Package\DF Load Dim_Account\Union All.Outputs[Union All Output 1].Columns[CLOSE_DATE]"
+                      name="CLOSE_DATE" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>

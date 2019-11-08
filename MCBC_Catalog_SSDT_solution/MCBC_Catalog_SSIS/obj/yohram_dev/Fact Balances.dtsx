@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Fact Balances"
   DTS:PackageType="5"
-  DTS:VersionBuild="105"
-  DTS:VersionGUID="{5DE92990-E7C9-4383-A1C1-9C5BD7F09F97}">
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{728CCED3-8634-417E-9600-D38C834A6DE3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -666,13 +666,6 @@ where [refTable].[Date] = ?</property>
                       cachedName="ASSET_TYPE"
                       externalMetadataColumnId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type]"
                       lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[ASSET_TYPE]" />
-                    <inputColumn
-                      refId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].Columns[LINE/CONTRACT]"
-                      cachedDataType="wstr"
-                      cachedLength="25"
-                      cachedName="LINE/CONTRACT"
-                      externalMetadataColumnId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].ExternalColumns[Account_Contract_No]"
-                      lineageId="Package\DF Load fact_balances\Union All.Outputs[Union All Output 1].Columns[LINE/CONTRACT]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -710,11 +703,6 @@ where [refTable].[Date] = ?</property>
                       dataType="wstr"
                       length="20"
                       name="Asset_Type" />
-                    <externalMetadataColumn
-                      refId="Package\DF Load fact_balances\OLE DST Fact Balances.Inputs[OLE DB Destination Input].ExternalColumns[Account_Contract_No]"
-                      dataType="wstr"
-                      length="100"
-                      name="Account_Contract_No" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1449,26 +1437,26 @@ where
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.0954076606259,60.0245501888424"
+              EndConnector="-28.0954076606259,60.0245501888422"
               Start="0,0"
-              End="-28.0954076606259,52.5245501888424">
+              End="-28.0954076606259,52.5245501888422">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.0122750944212" />
+                    End="0,26.0122750944211" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.0122750944212"
-                    Point2="0,30.0122750944212"
-                    Point3="-4,30.0122750944212" />
+                    Point1="0,26.0122750944211"
+                    Point2="0,30.0122750944211"
+                    Point3="-4,30.0122750944211" />
                   <mssgle:LineSegment
-                    End="-24.0954076606259,30.0122750944212" />
+                    End="-24.0954076606259,30.0122750944211" />
                   <mssgle:CubicBezierSegment
-                    Point1="-24.0954076606259,30.0122750944212"
-                    Point2="-28.0954076606259,30.0122750944212"
-                    Point3="-28.0954076606259,34.0122750944212" />
+                    Point1="-24.0954076606259,30.0122750944211"
+                    Point2="-28.0954076606259,30.0122750944211"
+                    Point3="-28.0954076606259,34.0122750944211" />
                   <mssgle:LineSegment
-                    End="-28.0954076606259,52.5245501888424" />
+                    End="-28.0954076606259,52.5245501888422" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1483,14 +1471,14 @@ where
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.6664814084318"
+              EndConnector="0,56.666481408432"
               Start="0,0"
-              End="0,49.1664814084318">
+              End="0,49.166481408432">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.1664814084318" />
+                    End="0,49.166481408432" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1508,9 +1496,13 @@ where
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\DF Load fact_balances\LKP Date Key"
-          TopLeft="41.6952308091272,155.795789556825" />
+          Size="200.8,41.6"
+          Id="Package\DF Load fact_balances\DER Replace missing keys"
+          TopLeft="360.816332675278,275.294121507955" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\DF Load fact_balances\LKP Account Key"
+          TopLeft="290.139884493123,161.288220024283" />
         <NodeLayout
           Size="189.6,42.4"
           Id="Package\DF Load fact_balances\OLE DST Fact Balances"
@@ -1519,44 +1511,14 @@ where
           Size="200.8,41.6"
           Id="Package\DF Load fact_balances\OLE SRC Get data landing"
           TopLeft="60.408164294051,29.7142861310174" />
-        <EdgeLayout
-          Id="Package\DF Load fact_balances.Paths[OLE DB Source Output]"
-          TopLeft="160.808164294051,71.3142861310174">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-48.3129334849238,84.4815034258081"
-              Start="0,0"
-              End="-48.3129334849238,76.9815034258081">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.2407517129041" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.2407517129041"
-                    Point2="0,42.2407517129041"
-                    Point3="-4,42.2407517129041" />
-                  <mssgle:LineSegment
-                    End="-44.3129334849238,42.2407517129041" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-44.3129334849238,42.2407517129041"
-                    Point2="-48.3129334849238,42.2407517129041"
-                    Point3="-48.3129334849238,46.2407517129041" />
-                  <mssgle:LineSegment
-                    End="-48.3129334849238,76.9815034258081" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="157.6,41.6"
-          Id="Package\DF Load fact_balances\LKP Account Key"
-          TopLeft="290.139884493123,161.288220024283" />
+          Size="120,41.6"
+          Id="Package\DF Load fact_balances\Union All"
+          TopLeft="63.6734704721079,277.042020692132" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\DF Load fact_balances\LKP Date Key"
+          TopLeft="41.6952308091272,155.795789556825" />
         <EdgeLayout
           Id="Package\DF Load fact_balances.Paths[Lookup Match Output]"
           TopLeft="183.295230809127,179.342004790554">
@@ -1577,110 +1539,8 @@ where
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="1.48094012324804,5,96.3827734375,11.609375"
+              BoundingBox="1.48094012324805,5,96.3827734375,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\DF Load fact_balances\Union All"
-          TopLeft="63.6734704721079,277.042020692132" />
-        <EdgeLayout
-          Id="Package\DF Load fact_balances.Paths[Lookup Match Output1]"
-          TopLeft="368.939884493123,202.888220024283">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-245.266414021015,74.1538006678491"
-              Start="0,0"
-              End="-245.266414021015,66.6538006678491">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.0769003339246"
-                    Point2="0,37.0769003339246"
-                    Point3="-4,37.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-241.266414021015,37.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-241.266414021015,37.0769003339246"
-                    Point2="-245.266414021015,37.0769003339246"
-                    Point3="-245.266414021015,41.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-245.266414021015,66.6538006678491" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-170.824593729258,42.0769003339246,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Load fact_balances.Paths[Lookup No Match Output]"
-          TopLeft="368.939884493123,202.888220024283">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-245.266414021015,74.1538006678491"
-              Start="0,0"
-              End="-245.266414021015,66.6538006678491">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.0769003339246"
-                    Point2="0,37.0769003339246"
-                    Point3="-4,37.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-241.266414021015,37.0769003339246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-241.266414021015,37.0769003339246"
-                    Point2="-245.266414021015,37.0769003339246"
-                    Point3="-245.266414021015,41.0769003339246" />
-                  <mssgle:LineSegment
-                    End="-245.266414021015,66.6538006678491" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-178.439593729258,42.0769003339246,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="200.8,41.6"
-          Id="Package\DF Load fact_balances\DER Replace missing keys"
-          TopLeft="360.816332675278,275.294121507955" />
-        <EdgeLayout
-          Id="Package\DF Load fact_balances.Paths[Union All Output 1]"
-          TopLeft="183.673470472108,296.968071100044">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="177.14286220317,0"
-              Start="0,0"
-              End="169.64286220317,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="169.64286220317,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1717,26 +1577,154 @@ where
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load fact_balances.Paths[Union All Output 1]"
+          TopLeft="183.673470472108,296.968071100044">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="177.14286220317,0"
+              Start="0,0"
+              End="169.64286220317,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="169.64286220317,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load fact_balances.Paths[OLE DB Source Output]"
+          TopLeft="160.808164294051,71.3142861310174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48.3129334849238,84.4815034258081"
+              Start="0,0"
+              End="-48.3129334849238,76.9815034258081">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.2407517129041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.2407517129041"
+                    Point2="0,42.2407517129041"
+                    Point3="-4,42.2407517129041" />
+                  <mssgle:LineSegment
+                    End="-44.3129334849238,42.2407517129041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.3129334849238,42.2407517129041"
+                    Point2="-48.3129334849238,42.2407517129041"
+                    Point3="-48.3129334849238,46.2407517129041" />
+                  <mssgle:LineSegment
+                    End="-48.3129334849238,76.9815034258081" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load fact_balances.Paths[Lookup No Match Output]"
+          TopLeft="368.939884493123,202.888220024283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-245.266414021015,74.1538006678491"
+              Start="0,0"
+              End="-245.266414021015,66.6538006678491">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0769003339246"
+                    Point2="0,37.0769003339246"
+                    Point3="-4,37.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-241.266414021015,37.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-241.266414021015,37.0769003339246"
+                    Point2="-245.266414021015,37.0769003339246"
+                    Point3="-245.266414021015,41.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-245.266414021015,66.6538006678491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-178.439593729257,42.0769003339246,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load fact_balances.Paths[Lookup Match Output1]"
+          TopLeft="368.939884493123,202.888220024283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-245.266414021015,74.1538006678491"
+              Start="0,0"
+              End="-245.266414021015,66.6538006678491">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0769003339246"
+                    Point2="0,37.0769003339246"
+                    Point3="-4,37.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-241.266414021015,37.0769003339246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-241.266414021015,37.0769003339246"
+                    Point2="-245.266414021015,37.0769003339246"
+                    Point3="-245.266414021015,41.0769003339246" />
+                  <mssgle:LineSegment
+                    End="-245.266414021015,66.6538006678491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-170.824593729258,42.0769003339246,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load fact_balances\LKP Date Key">
+    design-time-name="Package\DF Load fact_balances\LKP Account Key">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Dim_Date]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1765,22 +1753,22 @@ where
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load fact_balances\LKP Account Key">
+    design-time-name="Package\DF Load fact_balances\LKP Date Key">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string"></Value>
+          type="q3:string">[dbo].[Dim_Date]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

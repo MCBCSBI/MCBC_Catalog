@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SSAS_Conn"
+  DTS:DTSID="{E124A52A-977E-4AA5-902C-EAD82E4471F5}"
+  DTS:CreationName="MSOLAP100">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=134lt135\mssqlserver01;Initial Catalog=MCBC_Catalog_Tabular;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

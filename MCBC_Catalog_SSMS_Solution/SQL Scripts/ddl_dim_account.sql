@@ -8,6 +8,9 @@ drop table if exists Dim_Account
 		,Account_Title [Nvarchar](65) Null
 		,Product_Code int
 		,Product_Description nvarchar(55)
+		,Opening_Date date
+		,Maturity_Rollover_Date date
+		,Close_date date
 		,Account_Branch_Code nvarchar(11) null	
 		,Account_Branch_Name nvarchar(55) null 
 		--Purpose_Code nvarchar(75),

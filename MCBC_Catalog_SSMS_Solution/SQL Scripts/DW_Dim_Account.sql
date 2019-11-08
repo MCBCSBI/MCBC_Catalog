@@ -15,6 +15,7 @@ select
 	,ac.JOINT_HOLDER
 	,cast(ac.OPENING_DATE as date) as OPENING_DATE
 	,d.MATURITY_DATE
+	,cl.ACCT_CLOSE_DATE as CLOSE_DATE
 	,ac.INACTIV_MARKER
 	--,null as INTEREST
 	--,null as PENALTY_INTEREST
@@ -32,6 +33,9 @@ from
 	left join BNK_AA_ACCOUNT_DETAILS d
 		on d.MIS_DATE = ac.MIS_DATE
 		and d.[@ID] = ac.ARRANGEMENT_ID
+	left join BNK_ACCOUNT_CLOSED cl
+		on cl.MIS_DATE = ac.MIS_DATE
+		and cl.[@ID] = ac.[@ID]
 where 
 	ac.MIS_DATE = @dt
 
@@ -50,6 +54,7 @@ l as (
 	,null as JOINT_HOLDER
 	,lc.ISSUE_DATE as opening_date
 	,null as MATURITY_DATE
+	,null as CLOSE_DATE
 	,null as INACTIV_MARKER
 	,lc.CO_CODE as BRANCH_CODE
 	,co.COMPANY_NAME as BRANCH_NAME
@@ -79,6 +84,7 @@ m as (
 		,null as JOINT_HOLDER
 		,m.DEAL_DATE
 		,isnull(m.ROLLOVER_DATE,m.MATURITY_DATE) as MATURITY_DATE
+		,null as CLOSE_DATE
 		,null as INACTIV_MARKER
 		,m.CO_CODE as BRANCH_CODE
 		,co.COMPANY_NAME as BRANCH_NAME
@@ -110,6 +116,9 @@ select
 	,u.account_title_1
 	,u.CATEGORY
 	,u.CATEGORY_DESC
+	,u.OPENING_DATE
+	,u.MATURITY_DATE
+	,u.CLOSE_DATE
 	,u.branch_code
 	,u.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(

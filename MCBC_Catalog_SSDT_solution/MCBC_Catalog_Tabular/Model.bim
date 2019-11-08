@@ -16,12 +16,10 @@
           "authentication": null,
           "query": null
         },
-        "options": {},
         "credential": {
-          "AuthenticationKind": "Windows",
+          "AuthenticationKind": "ServiceAccount",
           "kind": "SQL",
           "path": "134lt135\\mssqlserver01;MCBC_DW_Sey_V2",
-          "Username": "MCB\\YOHRAM",
           "EncryptConnection": false
         }
       }
@@ -84,6 +82,21 @@
             "name": "Scd2_Hash",
             "dataType": "string",
             "sourceColumn": "Scd2_Hash"
+          },
+          {
+            "name": "Opening_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Opening_Date"
+          },
+          {
+            "name": "Maturity_Rollover_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Maturity_Rollover_Date"
+          },
+          {
+            "name": "Close_date",
+            "dataType": "dateTime",
+            "sourceColumn": "Close_date"
           }
         ],
         "partitions": [
@@ -105,6 +118,7 @@
       },
       {
         "name": "v_dim_date",
+        "dataCategory": "Time",
         "columns": [
           {
             "name": "Date_Key",
@@ -114,7 +128,14 @@
           {
             "name": "Date",
             "dataType": "dateTime",
-            "sourceColumn": "Date"
+            "isKey": true,
+            "sourceColumn": "Date",
+            "annotations": [
+              {
+                "name": "TabularEditor_MarkAsDateKey",
+                "value": "1"
+              }
+            ]
           },
           {
             "name": "Year",
@@ -200,21 +221,19 @@
           {
             "name": "Date_Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Date_Key"
           },
           {
             "name": "Account_Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Account_Key"
-          },
-          {
-            "name": "Account_Contract_No",
-            "dataType": "string",
-            "sourceColumn": "Account_Contract_No"
           },
           {
             "name": "Isprimary",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "Isprimary"
           },
           {
@@ -225,11 +244,13 @@
           {
             "name": "Balance_LCY",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "Balance_LCY"
           },
           {
             "name": "Balance_FCY",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "Balance_FCY"
           }
         ],
@@ -256,51 +277,61 @@
           {
             "name": "m1",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m1"
           },
           {
             "name": "m2",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m2"
           },
           {
             "name": "m3",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m3"
           },
           {
             "name": "m4",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m4"
           },
           {
             "name": "m5",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m5"
           },
           {
             "name": "m6",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m6"
           },
           {
             "name": "m7",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m7"
           },
           {
             "name": "m8",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m8"
           },
           {
             "name": "m9",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m9"
           },
           {
             "name": "m10",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "m10"
           }
         ],
@@ -319,7 +350,48 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "Balances Customer LCY",
+            "expression": [
+              "",
+              "SUM(v_fact_balances[Balance_LCY])",
+              ""
+            ],
+            "formatString": "#,0.00",
+            "displayFolder": "Customer"
+          },
+          {
+            "name": "Balances GL LCY",
+            "description": "desc",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Balances Customer LCY],",
+              "    v_fact_balances[Isprimary] = TRUE()",
+              ")"
+            ],
+            "formatString": "#,0.00",
+            "displayFolder": "GL"
+          }
         ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "3381843b-6b32-404c-9305-4a07b6aad00d",
+        "fromTable": "v_fact_balances",
+        "fromColumn": "Account_Key",
+        "toTable": "v_dim_account",
+        "toColumn": "Account_Key"
+      },
+      {
+        "name": "624ec9a3-b148-43d6-89b3-89120570f135",
+        "fromTable": "v_fact_balances",
+        "fromColumn": "Date_Key",
+        "toTable": "v_dim_date",
+        "toColumn": "Date_Key"
       }
     ],
     "cultures": [
