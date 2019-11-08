@@ -384,6 +384,31 @@
             ],
             "formatString": "#,0.00",
             "displayFolder": "GL"
+          },
+          {
+            "name": "Count of current products",
+            "expression": [
+              "",
+              "COUNTROWS(",
+              "    FILTER(",
+              "        v_dim_account,",
+              "        v_dim_account[Scd2_End]=BLANK()",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Product"
+          },
+          {
+            "name": "No of Products opened",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Count of current products],",
+              "/*(v_dim_account[Product_Code] >=3000 && v_dim_account[Product_Code]<=3999),*/",
+              "    USERELATIONSHIP(v_dim_date[Date],v_dim_account[Opening_Date])",
+              ")"
+            ],
+            "displayFolder": "Product"
           }
         ]
       }
@@ -402,6 +427,14 @@
         "fromColumn": "Date_Key",
         "toTable": "v_dim_date",
         "toColumn": "Date_Key"
+      },
+      {
+        "name": "fd8669f4-b1e7-42c8-92d4-a80f035916aa",
+        "fromTable": "v_dim_account",
+        "fromColumn": "Opening_Date",
+        "toTable": "v_dim_date",
+        "toColumn": "Date",
+        "isActive": false
       }
     ],
     "cultures": [

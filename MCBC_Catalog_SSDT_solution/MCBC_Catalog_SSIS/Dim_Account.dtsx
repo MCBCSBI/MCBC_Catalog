@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Account"
   DTS:PackageType="5"
-  DTS:VersionBuild="467"
-  DTS:VersionGUID="{A45C0B7F-3F0D-4FE1-A44A-34AD6AA0360F}">
+  DTS:VersionBuild="468"
+  DTS:VersionGUID="{34C856AE-A158-4123-B6E1-9A4C2BD8CE0F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -852,7 +852,7 @@ with a as(
 select 
 	t.MIS_DATE
 	,t.[@ID] as account_no
-	,t.ARRANGEMENT_ID as ACCOUNT_CONTRACT_ID
+	,isnull(t.ARRANGEMENT_ID,t.[@ID]) as ACCOUNT_CONTRACT_ID
 	,t.ACCOUNT_TITLE_1
 	,t.CATEGORY
 	,c.description as CATEGORY_DESC
@@ -2168,33 +2168,57 @@ from u
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="297.6,42.4"
-          Id="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table"
-          TopLeft="465.879232154155,342.588240098788" />
-        <NodeLayout
           Size="341.6,42.4"
           Id="Package\DF Load Dim_Account\LKP Lookup against Dim_Account_mapping for changes"
           TopLeft="41.3948418572675,151.127125442995" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\DF Load Dim_Account\OLE_DST Load Dim"
-          TopLeft="47.9183681629837,465.552947705675" />
         <NodeLayout
           Size="120,41.6"
           Id="Package\DF Load Dim_Account\Union All"
           TopLeft="41.3948418572675,342.588240098788" />
         <NodeLayout
-          Size="252,41.6"
-          Id="Package\DF Load Dim_Account\MLT dupicate type 2 change streams"
-          TopLeft="511.479232154155,241.672341893108" />
+          Size="170.4,41.6"
+          Id="Package\DF Load Dim_Account\OLE_DST Load Dim"
+          TopLeft="47.9183681629837,465.552947705675" />
         <NodeLayout
           Size="233.6,42.4"
           Id="Package\DF Load Dim_Account\OLE_SRC Get Data From landing"
           TopLeft="42.5376990195874,37.953688213345" />
         <NodeLayout
+          Size="252,41.6"
+          Id="Package\DF Load Dim_Account\MLT dupicate type 2 change streams"
+          TopLeft="511.479232154155,241.672341893108" />
+        <NodeLayout
+          Size="297.6,42.4"
+          Id="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table"
+          TopLeft="465.879232154155,342.588240098788" />
+        <NodeLayout
           Size="236.8,41.6"
           Id="Package\DF Load Dim_Account\CSPL check old hash vs new hash"
           TopLeft="526.679232154155,151.315360728533" />
+        <EdgeLayout
+          Id="Package\DF Load Dim_Account.Paths[Lookup Match Output]"
+          TopLeft="382.994841857267,172.221243085764">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="143.684390296888,0"
+              Start="0,0"
+              End="136.184390296888,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="136.184390296888,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19.900808429694,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Dim_Account.Paths[Union All Output 1]"
           TopLeft="101.394841857267,384.188240098788">
@@ -2391,46 +2415,9 @@ from u
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Load Dim_Account.Paths[Lookup Match Output]"
-          TopLeft="382.994841857267,172.221243085764">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="143.684390296888,0"
-              Start="0,0"
-              End="136.184390296888,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="136.184390296888,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="19.900808429694,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DF Load Dim_Account\LKP Lookup against Dim_Account_mapping for changes">
     <Properties>
@@ -2472,6 +2459,19 @@ from u
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Account\OLE_DST write type 2 changes to type 2 table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

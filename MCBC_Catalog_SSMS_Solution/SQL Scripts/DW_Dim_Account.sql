@@ -6,7 +6,7 @@ with a as(
 select 
 	t.MIS_DATE
 	,t.[@ID] as account_no
-	,t.ARRANGEMENT_ID as ACCOUNT_CONTRACT_ID
+	,isnull(t.ARRANGEMENT_ID,t.[@ID]) as ACCOUNT_CONTRACT_ID
 	,t.ACCOUNT_TITLE_1
 	,t.CATEGORY
 	,c.description as CATEGORY_DESC

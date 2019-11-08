@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "MCBC_Catalog_Tabular", "MCBC_Catalog_Tabular\MCBC_Catalog_Tabular.smproj", "{8CE414BB-95B2-4C99-9E03-51BA72086E22}"
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "MCBC_Catalog_SSIS", "MCBC_Catalog_SSIS\MCBC_Catalog_SSIS.dtproj", "{1673C604-B0C2-4433-A115-23AE5E2BAE61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		yohram_dev|x86 = yohram_dev|x86
@@ -13,6 +15,8 @@ Global
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.yohram_dev|x86.ActiveCfg = yohram_dev|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.yohram_dev|x86.Build.0 = yohram_dev|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.yohram_dev|x86.Deploy.0 = yohram_dev|x86
+		{1673C604-B0C2-4433-A115-23AE5E2BAE61}.yohram_dev|x86.ActiveCfg = yohram_dev
+		{1673C604-B0C2-4433-A115-23AE5E2BAE61}.yohram_dev|x86.Build.0 = yohram_dev
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
