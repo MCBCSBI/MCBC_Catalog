@@ -373,7 +373,7 @@
             "displayFolder": "Customer"
           },
           {
-            "name": "Balances GL LCY",
+            "name": "GL Balances LCY",
             "description": "desc",
             "expression": [
               "",
@@ -408,6 +408,23 @@
               "    USERELATIONSHIP(v_dim_date[Date],v_dim_account[Opening_Date])",
               ")"
             ],
+            "displayFolder": "Product"
+          },
+          {
+            "name": "GL Balances LCY of Opened Products",
+            "expression": [
+              "",
+              "/*to add asset types for other products like SC*/",
+              "CALCULATE(",
+              "    [GL Balances LCY],",
+              "    FILTER(",
+              "        RELATEDTABLE(v_fact_balances),",
+              "        v_fact_balances[Asset_Type] in {\"TOTCOMMITMENT\",\"FXSPOTBUY\",\"CREDIT\",\"ISSUE\",\"LIVEDB\",\"COLL\"} ",
+              "    ), ",
+              "    USERELATIONSHIP(v_dim_date[Date],v_dim_account[Opening_Date])",
+              ")"
+            ],
+            "formatString": "#,0.00",
             "displayFolder": "Product"
           }
         ]
