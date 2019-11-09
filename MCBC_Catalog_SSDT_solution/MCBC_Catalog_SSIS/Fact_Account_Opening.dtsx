@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Fact_Account_Opening"
   DTS:PackageType="5"
-  DTS:VersionBuild="97"
-  DTS:VersionGUID="{64F472A1-7ED5-4ABB-A814-3A86D7AF8DDF}">
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{F0A17E0A-2A7A-4051-AD9A-E42B281581B8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -165,117 +165,72 @@
           version="1">
           <components>
             <component
-              refId="Package\DF Load Fact\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DF Load Fact\DER subs no match"
+              refId="Package\DF Load Fact\DER replace missing keys"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="DER subs no match"
+              name="DER replace missing keys"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]"
+                  refId="Package\DF Load Fact\DER replace missing keys.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output].Columns[Account_Key]"
-                      dataType="i4"
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Load Fact\DER replace missing keys.Inputs[Derived Column Input].Columns[Customer_key]"
+                      cachedDataType="i4"
+                      cachedName="Customer_key"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output].Columns[Account_Key]"
-                      name="Account_Key"
-                      truncationRowDisposition="FailComponent">
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Customer_key]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">-1</property>
+                          name="Expression">[REPLACENULL](#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Customer_key]},0)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">-1</property>
+                          name="FriendlyExpression">REPLACENULL(Customer_key,0)</property>
                       </properties>
-                    </outputColumn>
-                  </outputColumns>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF Load Fact\DER replace missing keys.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output]"
+                  refId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DF Load Fact\DER replace missing keys.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -284,11 +239,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\DF Load Fact\LKP Account Key Lookup"
+              refId="Package\DF Load Fact\LKP Account Key"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="LKP Account Key Lookup"
+              name="LKP Account Key"
               usesDispositions="true"
               version="6">
               <properties>
@@ -304,7 +259,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from Dim_Account where scd2_end is null) [refTable]
-where [refTable].[Linked_Account_No] = ?</property>
+where [refTable].[Account_No] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -335,12 +290,12 @@ where [refTable].[Linked_Account_No] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Account_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Joint_Customer_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Buy_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Sell_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Contract_Number" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Title_1" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Linked_Account_No" dataType="DT_WSTR" length="19" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Start_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Bucket" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Close_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_WSTR" length="7" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Interest_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Penalty_Rate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Account_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_No" dataType="DT_WSTR" length="19" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Contract_No" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Title" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Description" dataType="DT_WSTR" length="55" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Currency_Denomination" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Opening_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Maturity_Rollover_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Close_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Branch_Code" dataType="DT_WSTR" length="11" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Account_Branch_Name" dataType="DT_WSTR" length="55" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]};</property>
+                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[account_no]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -352,7 +307,7 @@ where [refTable].[Linked_Account_No] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF Load Fact\LKP Account Key Lookup.Connections[OleDbConnection]"
+                  refId="Package\DF Load Fact\LKP Account Key.Connections[OleDbConnection]"
                   connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
                   description="Connection manager used to access lookup data."
@@ -360,20 +315,20 @@ where [refTable].[Linked_Account_No] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]"
+                  refId="Package\DF Load Fact\LKP Account Key.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input].Columns[@ID]"
+                      refId="Package\DF Load Fact\LKP Account Key.Inputs[Lookup Input].Columns[account_no]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="@ID"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
+                      cachedLength="19"
+                      cachedName="account_no"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[account_no]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Linked_Account_No</property>
+                          name="JoinToReferenceColumn">Account_No</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -386,17 +341,17 @@ where [refTable].[Linked_Account_No] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]"
+                      refId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Match Output].Columns[Account_Key]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]"
+                      lineageId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Match Output].Columns[Account_Key]"
                       name="Account_Key"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -410,30 +365,30 @@ where [refTable].[Linked_Account_No] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Account Key.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -442,11 +397,11 @@ where [refTable].[Linked_Account_No] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DF Load Fact\LKP Company"
+              refId="Package\DF Load Fact\LKP Customer key"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="LKP Company"
+              name="LKP Customer key"
               usesDispositions="true"
               version="6">
               <properties>
@@ -455,14 +410,14 @@ where [refTable].[Linked_Account_No] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from dim_company where scd2_end is null</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from dim_customer where scd2_end is null</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from dim_company where scd2_end is null) [refTable]
-where [refTable].[Company_Mnemonic] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from dim_customer where scd2_end is null) [refTable]
+where [refTable].[Customer_No] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -477,7 +432,7 @@ where [refTable].[Company_Mnemonic] = ?</property>
                   dataType="System.Int32"
                   description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                   name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
+                  typeConverter="LookupNoMatchBehavior">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -493,12 +448,12 @@ where [refTable].[Company_Mnemonic] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Company_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_ID" dataType="DT_WSTR" length="11" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_name" dataType="DT_WSTR" length="22" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_Address" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Company_Mnemonic" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_start" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_end" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scd2_hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_No" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Name" dataType="DT_WSTR" length="150" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sector" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Target" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Industry" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Branch_Code" dataType="DT_WSTR" length="11" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Branch_Name" dataType="DT_WSTR" length="75" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Customer_Since" dataType="DT_WSTR" length="35" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Start" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_End" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Scd2_Hash" dataType="DT_STR" length="66" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]};</property>
+                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CUSTOMER]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -510,7 +465,7 @@ where [refTable].[Company_Mnemonic] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF Load Fact\LKP Company.Connections[OleDbConnection]"
+                  refId="Package\DF Load Fact\LKP Customer key.Connections[OleDbConnection]"
                   connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
                   description="Connection manager used to access lookup data."
@@ -518,20 +473,20 @@ where [refTable].[Company_Mnemonic] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]"
+                  refId="Package\DF Load Fact\LKP Customer key.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input].Columns[BRANCH_CO_MNE]"
+                      refId="Package\DF Load Fact\LKP Customer key.Inputs[Lookup Input].Columns[CUSTOMER]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="BRANCH_CO_MNE"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]">
+                      cachedLength="10"
+                      cachedName="CUSTOMER"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CUSTOMER]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Company_Mnemonic</property>
+                          name="JoinToReferenceColumn">Customer_No</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -544,55 +499,54 @@ where [refTable].[Company_Mnemonic] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output]"
+                  refId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Customer key.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]"
+                      refId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Match Output].Columns[Customer_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]"
-                      name="Company_Key"
+                      lineageId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Match Output].Columns[Customer_key]"
+                      name="Customer_key"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Company_Key</property>
+                          name="CopyFromReferenceColumn">Customer_key</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\LKP Company.Outputs[Lookup No Match Output]"
+                  refId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Customer key.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output]"
+                  refId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Customer key.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -601,11 +555,11 @@ where [refTable].[Company_Mnemonic] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DF Load Fact\LKP Date Key Lookup"
+              refId="Package\DF Load Fact\LKP Date Key"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="LKP Date Key Lookup"
+              name="LKP Date Key"
               usesDispositions="true"
               version="6">
               <properties>
@@ -652,12 +606,12 @@ where [refTable].[Date] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Week_Of_Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Current_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Prior_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Week_Of_Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day_Name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Financial_Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Current_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Prior_Week" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Has_Data" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[DATE]};</property>
+                  name="ParameterMap">#{Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -669,7 +623,7 @@ where [refTable].[Date] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF Load Fact\LKP Date Key Lookup.Connections[OleDbConnection]"
+                  refId="Package\DF Load Fact\LKP Date Key.Connections[OleDbConnection]"
                   connectionManagerID="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Destination_Conn]"
                   description="Connection manager used to access lookup data."
@@ -677,14 +631,14 @@ where [refTable].[Date] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]"
+                  refId="Package\DF Load Fact\LKP Date Key.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input].Columns[DATE]"
+                      refId="Package\DF Load Fact\LKP Date Key.Inputs[Lookup Input].Columns[OPENING_DATE]"
                       cachedDataType="dbDate"
-                      cachedName="DATE"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[DATE]">
+                      cachedName="OPENING_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -702,18 +656,18 @@ where [refTable].[Date] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]"
+                      refId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Match Output].Columns[Date_Key]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]"
+                      lineageId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Match Output].Columns[Date_Key]"
                       name="Date_Key"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -727,57 +681,33 @@ where [refTable].[Date] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DF Load Fact\LKP Date Key.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DF Load Fact\MLT multicast to audit"
-              componentClassID="Microsoft.Multicast"
-              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
-              name="MLT multicast to audit">
-              <inputs>
-                <input
-                  refId="Package\DF Load Fact\MLT multicast to audit.Inputs[Multicast Input 1]"
-                  name="Multicast Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DF Load Fact\MLT multicast to audit.Outputs[Multicast Output 2]"
-                  dangling="true"
-                  deleteOutputOnPathDetached="true"
-                  name="Multicast Output 2"
-                  synchronousInputId="Package\DF Load Fact\MLT multicast to audit.Inputs[Multicast Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -867,18 +797,11 @@ where [refTable].[Date] = ?</property>
                       externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Account_Key]"
                       lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]" />
                     <inputColumn
-                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[Company_Key]"
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[Customer_key]"
                       cachedDataType="i4"
-                      cachedName="Company_Key"
-                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Branch_Key]"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]" />
-                    <inputColumn
-                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].Columns[Action]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Action"
-                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Action]"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Action]" />
+                      cachedName="Customer_key"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Customer_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -891,14 +814,14 @@ where [refTable].[Date] = ?</property>
                       dataType="i4"
                       name="Account_Key" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Branch_Key]"
-                      dataType="i4"
-                      name="Branch_Key" />
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[timestamp]"
+                      dataType="bytes"
+                      length="8"
+                      name="timestamp" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[Action]"
-                      dataType="wstr"
-                      length="15"
-                      name="Action" />
+                      refId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      dataType="i4"
+                      name="customer_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -952,28 +875,194 @@ where [refTable].[Date] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">declare @businessdate date = ?
-select * from
-(	
-	select 
-		a.BRANCH_CO_MNE
-		,a.[@ID]
-		,concat(substring(a.OPENING_DATE,1,4),'-',substring(a.OPENING_DATE,5,2),'-',substring(a.OPENING_DATE,7,2)) as DATE
-		,N'Opening' as Action
-	from
-		bs.ACCOUNT a
-	where a.MIS_DATE = a.OPENING_DATE
-union
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @dt date = ?;
+--Declare @dt Date =  '2019-09-30';
+
+with a as(
+/*ACCOUNTS*/
+select 
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,isnull(t.ARRANGEMENT_ID,t.[@ID]) as ACCOUNT_CONTRACT_ID
+	,t.ACCOUNT_TITLE_1
+	,t.CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.CURRENCY as Currency_Denomination
+	,t.CUSTOMER
+	,t.JOINT_HOLDER
+	,cast(t.OPENING_DATE as date) as OPENING_DATE
+	,d.MATURITY_DATE
+	,cl.ACCT_CLOSE_DATE as CLOSE_DATE
+	,t.INACTIV_MARKER
+	--,null as INTEREST
+	--,null as PENALTY_INTEREST
+	--,CASE WHEN Overdrawn_Account.ACCOUNT_ID is not null THEN N'Y' ELSE N'N' END as Overdrawn_Flag
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+from
+	dbo.BNK_ACCOUNT t
+	left join bnk_category c
+		on c.[@id] = t.category
+		and c.mis_date = t.mis_date
+	left join bnk_company co
+		on co.[@id] = t.co_code
+		and co.mis_date = t.mis_date
+	left join BNK_AA_ACCOUNT_DETAILS d
+		on d.MIS_DATE = t.MIS_DATE
+		and d.[@ID] = t.ARRANGEMENT_ID
+	left join BNK_ACCOUNT_CLOSED cl
+		on cl.MIS_DATE = t.MIS_DATE
+		and cl.[@ID] = t.[@ID]
+where 
+	t.MIS_DATE = @dt
+
+),
+
+l as (
+/*LETTER OF CREDIT*/
 	select
-		c.BRANCH_CO_MNE
-		,c.[@ID]
-		,C.ACCT_CLOSE_DATE
-		,N'Closure' as Action
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.[@ID] as account_contract_id
+	,null as account_title
+	,t.CATEGORY_CODE as CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.LC_CURRENCY as Currency_Denomination
+	,t.CON_CUS_LINK as CUSTOMER
+	,null as JOINT_HOLDER
+	,t.ISSUE_DATE as opening_date
+	,t.EXPIRY_DATE as MATURITY_DATE
+	,null as CLOSE_DATE
+	,null as INACTIV_MARKER
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
 	from
-		bs.ACCOUNT_CLOSED c
-	where c.MIS_DATE = c.ACCT_CLOSE_DATE
-) a
-where a.DATE = @businessdate</property>
+		BNK_LETTER_OF_CREDIT t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY_CODE
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where 
+		t.MIS_DATE = @dt
+),
+
+m as (
+/*MONEY MARKET*/
+	select 
+		t.MIS_DATE,
+		t.[@id] as account_no
+		,t.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,t.CATEGORY
+		,c.description as CATEGORY_DESC
+		,t.CURRENCY as Currency_Denomination
+		,t.CUSTOMER_ID as CUSTOMER
+		,null as JOINT_HOLDER
+		,t.DEAL_DATE
+		,isnull(t.ROLLOVER_DATE,t.MATURITY_DATE) as MATURITY_DATE
+		,null as CLOSE_DATE
+		,null as INACTIV_MARKER
+		,t.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_MM_MONEY_MARKET t
+		left join bnk_category c
+			on c.[@id] = t.category
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where t.MIS_DATE = @dt
+),
+
+f as (
+/*FOREX*/
+	select 
+		t.MIS_DATE,
+		t.[@id] as account_no
+		,t.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,t.CATEGORY_CODE
+		,c.description as CATEGORY_DESC
+		,null as Currency_Denomination
+		,t.COUNTERPARTY as CUSTOMER
+		,null as JOINT_HOLDER
+		,t.DEAL_DATE
+		,case 
+			when t.VALUE_DATE_BUY &gt; t.VALUE_DATE_SELL
+			then t.VALUE_DATE_BUY
+			else t.VALUE_DATE_SELL
+		end as MATURITY_DATE
+		,null as CLOSE_DATE
+		,null as INACTIV_MARKER
+		,t.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_FOREX t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY_CODE
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where t.MIS_DATE = @dt
+
+),
+
+md as(
+/*MD DEALS*/
+	select
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.[@ID] as account_contract_id
+	,null as account_title
+	,t.CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.CURRENCY as Currency_Denomination
+	,t.CUSTOMER as CUSTOMER
+	,null as JOINT_HOLDER
+	,t.DEAL_DATE as opening_date
+	,t.MATURITY_DATE as MATURITY_DATE
+	,null as CLOSE_DATE
+	,null as INACTIV_MARKER
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
+	from
+		BNK_MD_DEAL t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where 
+		t.MIS_DATE = @dt
+),
+
+u as (
+	select * from a
+	union
+	select * from l
+	union
+	select * from m
+	union
+	select * from f
+	union
+	select * from md
+)
+
+
+select
+	u.OPENING_DATE,
+	u.account_no,
+	u.CUSTOMER
+from u</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1010,66 +1099,51 @@ where a.DATE = @businessdate</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
-                      length="50"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]"
-                      name="@ID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[DATE]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[DATE]"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[DATE]"
-                      name="DATE"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[OPENING_DATE]"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]"
+                      name="OPENING_DATE"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[Action]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[account_no]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[Action]"
-                      length="50"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[Action]"
-                      name="Action"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[account_no]"
+                      length="19"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[account_no]"
+                      name="account_no"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CUSTOMER]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[BRANCH_CO_MNE]"
-                      length="50"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]"
-                      name="BRANCH_CO_MNE"
+                      externalMetadataColumnId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CUSTOMER]"
+                      length="10"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CUSTOMER]"
+                      name="CUSTOMER"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[@ID]"
-                      dataType="wstr"
-                      length="50"
-                      name="@ID" />
-                    <externalMetadataColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[DATE]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[OPENING_DATE]"
                       dataType="dbDate"
-                      name="DATE" />
+                      name="OPENING_DATE" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[Action]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[account_no]"
                       dataType="wstr"
-                      length="7"
-                      name="Action" />
+                      length="19"
+                      name="account_no" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[BRANCH_CO_MNE]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].ExternalColumns[CUSTOMER]"
                       dataType="wstr"
-                      length="50"
-                      name="BRANCH_CO_MNE" />
+                      length="10"
+                      name="CUSTOMER" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1078,28 +1152,22 @@ where a.DATE = @businessdate</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[BRANCH_CO_MNE]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[BRANCH_CO_MNE]"
-                      name="BRANCH_CO_MNE" />
-                    <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[@ID]"
-                      name="@ID" />
-                    <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[DATE]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[OPENING_DATE]"
                       dataType="dbDate"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[DATE]"
-                      name="DATE" />
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[OPENING_DATE]"
+                      name="OPENING_DATE" />
                     <outputColumn
-                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[Action]"
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[account_no]"
                       dataType="wstr"
-                      length="7"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[Action]"
-                      name="Action" />
+                      length="19"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[account_no]"
+                      name="account_no" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CUSTOMER]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[CUSTOMER]"
+                      name="CUSTOMER" />
                     <outputColumn
                       refId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1130,65 +1198,51 @@ where a.DATE = @businessdate</property>
                   name="Union All Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[@ID]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="@ID"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[DATE]"
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[OPENING_DATE]"
                       cachedDataType="dbDate"
-                      cachedName="DATE"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[DATE]">
+                      cachedName="OPENING_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[DATE]}</property>
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Action]"
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[account_no]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Action"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[Action]">
+                      cachedLength="19"
+                      cachedName="account_no"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[account_no]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Action]}</property>
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[account_no]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[BRANCH_CO_MNE]"
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[CUSTOMER]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="BRANCH_CO_MNE"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]">
+                      cachedLength="10"
+                      cachedName="CUSTOMER"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CUSTOMER]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]}</property>
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMER]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
                       refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Date_Key]"
                       cachedDataType="i4"
                       cachedName="Date_Key"
-                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]">
+                      lineageId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Match Output].Columns[Date_Key]">
                       <properties>
                         <property
                           containsID="true"
@@ -1198,29 +1252,29 @@ where a.DATE = @businessdate</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Company_Key]"
-                      cachedDataType="i4"
-                      cachedName="Company_Key"
-                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Account_Key]"
                       cachedDataType="i4"
                       cachedName="Account_Key"
-                      lineageId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output].Columns[Account_Key]">
+                      lineageId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Match Output].Columns[Account_Key]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 1].Columns[Customer_key]"
+                      cachedDataType="i4"
+                      cachedName="Customer_key"
+                      lineageId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Match Output].Columns[Customer_key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Customer_key]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1232,65 +1286,51 @@ where a.DATE = @businessdate</property>
                   name="Union All Input 2">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[@ID]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="@ID"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[@ID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[DATE]"
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[OPENING_DATE]"
                       cachedDataType="dbDate"
-                      cachedName="DATE"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[DATE]">
+                      cachedName="OPENING_DATE"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[OPENING_DATE]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[DATE]}</property>
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Action]"
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[account_no]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Action"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[Action]">
+                      cachedLength="19"
+                      cachedName="account_no"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[account_no]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Action]}</property>
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[account_no]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[BRANCH_CO_MNE]"
+                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[CUSTOMER]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="BRANCH_CO_MNE"
-                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[BRANCH_CO_MNE]">
+                      cachedLength="10"
+                      cachedName="CUSTOMER"
+                      lineageId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output].Columns[CUSTOMER]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]}</property>
+                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMER]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
                       refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Date_Key]"
                       cachedDataType="i4"
                       cachedName="Date_Key"
-                      lineageId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output].Columns[Date_Key]">
+                      lineageId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Match Output].Columns[Date_Key]">
                       <properties>
                         <property
                           containsID="true"
@@ -1300,23 +1340,10 @@ where a.DATE = @businessdate</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Company_Key]"
-                      cachedDataType="i4"
-                      cachedName="Company_Key"
-                      lineageId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output].Columns[Company_Key]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\DF Load Fact\Union All.Inputs[Union All Input 2].Columns[Account_Key]"
                       cachedDataType="i4"
                       cachedName="Account_Key"
-                      lineageId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output].Columns[Account_Key]">
+                      lineageId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Match Output].Columns[Account_Key]">
                       <properties>
                         <property
                           containsID="true"
@@ -1342,43 +1369,37 @@ where a.DATE = @businessdate</property>
                   name="Union All Output 1">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[@ID]"
-                      name="@ID" />
-                    <outputColumn
-                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[DATE]"
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]"
                       dataType="dbDate"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[DATE]"
-                      name="DATE" />
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[OPENING_DATE]"
+                      name="OPENING_DATE" />
                     <outputColumn
-                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Action]"
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[account_no]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Action]"
-                      name="Action" />
+                      length="19"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[account_no]"
+                      name="account_no" />
                     <outputColumn
-                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]"
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMER]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[BRANCH_CO_MNE]"
-                      name="BRANCH_CO_MNE" />
+                      length="10"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[CUSTOMER]"
+                      name="CUSTOMER" />
                     <outputColumn
                       refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]"
                       dataType="i4"
                       lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Date_Key]"
                       name="Date_Key" />
                     <outputColumn
-                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]"
-                      dataType="i4"
-                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Company_Key]"
-                      name="Company_Key" />
-                    <outputColumn
                       refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
                       dataType="i4"
                       lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Account_Key]"
                       name="Account_Key" />
+                    <outputColumn
+                      refId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Customer_key]"
+                      dataType="i4"
+                      lineageId="Package\DF Load Fact\Union All.Outputs[Union All Output 1].Columns[Customer_key]"
+                      name="Customer_key" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1387,43 +1408,38 @@ where a.DATE = @businessdate</property>
           </components>
           <paths>
             <path
-              refId="Package\DF Load Fact.Paths[Data Conversion Output]"
-              endId="Package\DF Load Fact\LKP Date Key Lookup.Inputs[Lookup Input]"
-              name="Data Conversion Output"
-              startId="Package\DF Load Fact\Data Conversion.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\DF Load Fact.Paths[Derived Column Output]"
-              endId="Package\DF Load Fact\Union All.Inputs[Union All Input 2]"
+              endId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\DF Load Fact\DER subs no match.Outputs[Derived Column Output]" />
+              startId="Package\DF Load Fact\DER replace missing keys.Outputs[Derived Column Output]" />
             <path
               refId="Package\DF Load Fact.Paths[Lookup Match Output]"
-              endId="Package\DF Load Fact\LKP Company.Inputs[Lookup Input]"
+              endId="Package\DF Load Fact\LKP Account Key.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\DF Load Fact\LKP Date Key Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\DF Load Fact\LKP Date Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DF Load Fact.Paths[Lookup Match Output1]"
-              endId="Package\DF Load Fact\LKP Account Key Lookup.Inputs[Lookup Input]"
+              endId="Package\DF Load Fact\LKP Customer key.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\DF Load Fact\LKP Company.Outputs[Lookup Match Output]" />
+              startId="Package\DF Load Fact\LKP Account Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DF Load Fact.Paths[Lookup Match Output2]"
               endId="Package\DF Load Fact\Union All.Inputs[Union All Input 1]"
               name="Lookup Match Output"
-              startId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DF Load Fact.Paths[Lookup No Match Output]"
-              endId="Package\DF Load Fact\DER subs no match.Inputs[Derived Column Input]"
+              endId="Package\DF Load Fact\Union All.Inputs[Union All Input 2]"
               name="Lookup No Match Output"
-              startId="Package\DF Load Fact\LKP Account Key Lookup.Outputs[Lookup No Match Output]" />
+              startId="Package\DF Load Fact\LKP Customer key.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\DF Load Fact.Paths[OLE DB Source Output]"
-              endId="Package\DF Load Fact\Data Conversion.Inputs[Data Conversion Input]"
+              endId="Package\DF Load Fact\LKP Date Key.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\DF Load Fact\OLE SRC Get data landing.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DF Load Fact.Paths[Union All Output 1]"
-              endId="Package\DF Load Fact\OLE DST Load Fact.Inputs[OLE DB Destination Input]"
+              endId="Package\DF Load Fact\DER replace missing keys.Inputs[Derived Column Input]"
               name="Union All Output 1"
               startId="Package\DF Load Fact\Union All.Outputs[Union All Output 1]" />
           </paths>
@@ -1434,7 +1450,6 @@ where a.DATE = @businessdate</property>
       DTS:refId="Package\SQL Get last date loaded from Ctrl table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{415CF40C-9A24-4ACF-9FAB-9E5928BD5C64}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -1444,7 +1459,7 @@ where a.DATE = @businessdate</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
-          SQLTask:SqlStatementSource="&#xA;select Last_Date_Loaded&#xA;from Control_Table&#xA;where Table_Name = 'Fact_Balances'"
+          SQLTask:SqlStatementSource="select Last_Date_Loaded&#xA;from Control_Table&#xA;where Table_Name = 'Fact_account_opening'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1513,15 +1528,15 @@ where a.DATE = @businessdate</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="141.333333333334,42.6666666666667"
+          Size="141.6,42.4"
           Id="Package\DF Load Fact"
           TopLeft="249.910710561755,133.033330954511" />
         <NodeLayout
-          Size="268,42.6666666666667"
+          Size="268,42.4"
           Id="Package\SQL Get last date loaded from Ctrl table"
           TopLeft="15.4166664369404,14.2666682473818" />
         <NodeLayout
-          Size="201.333333333334,42.6666666666667"
+          Size="201.6,42.4"
           Id="Package\SQL Update Control Table"
           TopLeft="292.624003576071,311.004760015209" />
         <EdgeLayout
@@ -1599,49 +1614,49 @@ where a.DATE = @businessdate</property>
     design-time-name="Package\DF Load Fact">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184,42.6666666666667"
-          Id="Package\DF Load Fact\MLT multicast to audit"
-          TopLeft="681.944434282681,513.861101922559" />
-        <NodeLayout
-          Size="201.333333333334,42.6666666666667"
-          Id="Package\DF Load Fact\OLE SRC Get data landing"
-          TopLeft="43.9047612687763,30.044443907208" />
-        <NodeLayout
-          Size="157.333333333334,42.6666666666667"
-          Id="Package\DF Load Fact\Data Conversion"
-          TopLeft="77.752971565065,98.0116229363136" />
-        <NodeLayout
-          Size="170.666666666667,42.6666666666667"
+          Size="170.4,42.4"
           Id="Package\DF Load Fact\OLE DST Load Fact"
-          TopLeft="508.027769970371,617.639394464083" />
+          TopLeft="392.313482285483,599.286453030219" />
+        <NodeLayout
+          Size="201.6,42.4"
+          Id="Package\DF Load Fact\OLE SRC Get data landing"
+          TopLeft="43.1904755423264,30.8091498002856" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\DF Load Fact\LKP Date Key"
+          TopLeft="259.923806689801,136.528563450505" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\DF Load Fact\LKP Account Key"
+          TopLeft="383.543863054834,256.575627082406" />
         <EdgeLayout
           Id="Package\DF Load Fact.Paths[OLE DB Source Output]"
-          TopLeft="144.571427935443,72.7111105738746">
+          TopLeft="143.990475542326,73.2091498002856">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.8482102962886,25.300512362439"
+              EndConnector="186.733331147475,63.3194136502197"
               Start="0,0"
-              End="11.8482102962886,17.800512362439">
+              End="186.733331147475,55.8194136502197">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.65025618121949" />
+                    End="0,27.6597068251099" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.65025618121949"
-                    Point2="0,12.6502561812195"
-                    Point3="4,12.6502561812195" />
+                    Point1="0,27.6597068251099"
+                    Point2="0,31.6597068251099"
+                    Point3="4,31.6597068251099" />
                   <mssgle:LineSegment
-                    End="7.84821029628864,12.6502561812195" />
+                    End="182.733331147475,31.6597068251099" />
                   <mssgle:CubicBezierSegment
-                    Point1="7.84821029628864,12.6502561812195"
-                    Point2="11.8482102962886,12.6502561812195"
-                    Point3="11.8482102962886,16.6502561812195" />
+                    Point1="182.733331147475,31.6597068251099"
+                    Point2="186.733331147475,31.6597068251099"
+                    Point3="186.733331147475,35.6597068251099" />
                   <mssgle:LineSegment
-                    End="11.8482102962886,17.800512362439" />
+                    End="186.733331147475,55.8194136502197" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1650,286 +1665,210 @@ where a.DATE = @businessdate</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Load Fact.Paths[Data Conversion Output]"
-          TopLeft="156.419638231732,140.67828960298">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="360.913695101602,124.655043730353"
-              Start="0,0"
-              End="360.913695101602,117.155043730353">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.3275218651766" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.3275218651766"
-                    Point2="0,62.3275218651766"
-                    Point3="4,62.3275218651766" />
-                  <mssgle:LineSegment
-                    End="356.913695101602,62.3275218651766" />
-                  <mssgle:CubicBezierSegment
-                    Point1="356.913695101602,62.3275218651766"
-                    Point2="360.913695101602,62.3275218651766"
-                    Point3="360.913695101602,66.3275218651766" />
-                  <mssgle:LineSegment
-                    End="360.913695101602,117.155043730353" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42.6666666666667"
-          Id="Package\DF Load Fact\LKP Date Key Lookup"
-          TopLeft="4.6666666790843,121.799153487551" />
-        <NodeLayout
-          Size="196,42.6666666666667"
-          Id="Package\DF Load Fact\LKP Account Key Lookup"
-          TopLeft="127.572437317667,227.316805150976" />
-        <NodeLayout
-          Size="144,42.6666666666667"
-          Id="Package\DF Load Fact\LKP Company"
-          TopLeft="313.761893788264,88.7904724689326" />
         <EdgeLayout
           Id="Package\DF Load Fact.Paths[Lookup Match Output]"
-          TopLeft="184.666666679084,143.132486820884">
+          TopLeft="330.723806689801,178.128563450505">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="129.095227109179,-33.0086810186184"
+              EndConnector="131.620056365033,78.4470636319004"
               Start="0,0"
-              End="121.595227109179,-33.0086810186184">
+              End="131.620056365033,70.9470636319004">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="60.5476135545897,0" />
+                    End="0,35.2235318159502" />
                   <mssgle:CubicBezierSegment
-                    Point1="60.5476135545897,0"
-                    Point2="64.5476135545897,0"
-                    Point3="64.5476135545897,-4" />
+                    Point1="0,35.2235318159502"
+                    Point2="0,39.2235318159502"
+                    Point3="4,39.2235318159502" />
                   <mssgle:LineSegment
-                    End="64.5476135545897,-29.0086810186184" />
+                    End="127.620056365033,39.2235318159502" />
                   <mssgle:CubicBezierSegment
-                    Point1="64.5476135545897,-29.0086810186184"
-                    Point2="64.5476135545897,-33.0086810186184"
-                    Point3="68.5476135545897,-33.0086810186184" />
+                    Point1="127.620056365033,39.2235318159502"
+                    Point2="131.620056365033,39.2235318159502"
+                    Point3="131.620056365033,43.2235318159502" />
                   <mssgle:LineSegment
-                    End="121.595227109179,-33.0086810186184" />
+                    End="131.620056365033,70.9470636319004" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="16.3562268358397,1,96.3827734375,11.609375"
+              BoundingBox="17.6186414637664,44.2235318159502,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\DF Load Fact\LKP Customer key"
+          TopLeft="392.14286382101,338.7647106334" />
         <EdgeLayout
           Id="Package\DF Load Fact.Paths[Lookup Match Output1]"
-          TopLeft="385.761893788264,131.457139135599">
+          TopLeft="462.343863054834,298.175627082406">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-160.189456470597,95.8596660153767"
+              EndConnector="11.7990007661764,40.5890835509942"
               Start="0,0"
-              End="-160.189456470597,88.3596660153767">
+              End="11.7990007661764,33.0890835509942">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.9298330076884" />
+                    End="0,16.2945417754971" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,43.9298330076884"
-                    Point2="0,47.9298330076884"
-                    Point3="-4,47.9298330076884" />
+                    Point1="0,16.2945417754971"
+                    Point2="0,20.2945417754971"
+                    Point3="4,20.2945417754971" />
                   <mssgle:LineSegment
-                    End="-156.189456470597,47.9298330076884" />
+                    End="7.79900076617639,20.2945417754971" />
                   <mssgle:CubicBezierSegment
-                    Point1="-156.189456470597,47.9298330076884"
-                    Point2="-160.189456470597,47.9298330076884"
-                    Point3="-160.189456470597,51.9298330076884" />
+                    Point1="7.79900076617639,20.2945417754971"
+                    Point2="11.7990007661764,20.2945417754971"
+                    Point3="11.7990007661764,24.2945417754971" />
                   <mssgle:LineSegment
-                    End="-160.189456470597,88.3596660153767" />
+                    End="11.7990007661764,33.0890835509942" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-128.286114954049,52.9298330076884,96.3827734375,11.609375"
+              BoundingBox="-42.2918863356618,25.2945417754971,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\DF Load Fact\DER subs no match"
-          TopLeft="450.944431426625,246.388883142008" />
-        <EdgeLayout
-          Id="Package\DF Load Fact.Paths[Lookup No Match Output]"
-          TopLeft="323.572437317667,248.650138484309">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.371994108958,19.0720779910318"
-              Start="0,0"
-              End="119.871994108958,19.0720779910318">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="59.6859970544789,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59.6859970544789,0"
-                    Point2="63.6859970544789,0"
-                    Point3="63.6859970544789,4" />
-                  <mssgle:LineSegment
-                    End="63.6859970544789,15.0720779910318" />
-                  <mssgle:CubicBezierSegment
-                    Point1="63.6859970544789,15.0720779910318"
-                    Point2="63.6859970544789,19.0720779910318"
-                    Point3="67.6859970544789,19.0720779910318" />
-                  <mssgle:LineSegment
-                    End="119.871994108958,19.0720779910318" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="7.87961033572889,-17.609375,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="121.333333333334,42.6666666666667"
+          Size="120,41.6"
           Id="Package\DF Load Fact\Union All"
-          TopLeft="136.166662113534,330.191211022156" />
+          TopLeft="399.28572108551,441.235300305805" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\DF Load Fact\DER replace missing keys"
+          TopLeft="587.142867141841,435.882359054262" />
         <EdgeLayout
           Id="Package\DF Load Fact.Paths[Lookup Match Output2]"
-          TopLeft="225.572437317667,269.983471817643">
+          TopLeft="474.14286382101,380.3647106334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.7391085374661,60.207739204513"
+              EndConnector="-14.8571427355007,60.8705896724055"
               Start="0,0"
-              End="-28.7391085374661,52.707739204513">
+              End="-14.8571427355007,53.3705896724055">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.1038696022565" />
+                    End="0,26.4352948362028" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.1038696022565"
-                    Point2="0,30.1038696022565"
-                    Point3="-4,30.1038696022565" />
+                    Point1="0,26.4352948362028"
+                    Point2="0,30.4352948362028"
+                    Point3="-4,30.4352948362028" />
                   <mssgle:LineSegment
-                    End="-24.7391085374661,30.1038696022565" />
+                    End="-10.8571427355007,30.4352948362028" />
                   <mssgle:CubicBezierSegment
-                    Point1="-24.7391085374661,30.1038696022565"
-                    Point2="-28.7391085374661,30.1038696022565"
-                    Point3="-28.7391085374661,34.1038696022565" />
+                    Point1="-10.8571427355007,30.4352948362028"
+                    Point2="-14.8571427355007,30.4352948362028"
+                    Point3="-14.8571427355007,34.4352948362028" />
                   <mssgle:LineSegment
-                    End="-28.7391085374661,52.707739204513" />
+                    End="-14.8571427355007,53.3705896724055" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-62.560940987483,35.1038696022565,96.3827734375,11.609375"
+              BoundingBox="-55.6199580865004,35.4352948362028,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Lookup No Match Output]"
+          TopLeft="474.14286382101,380.3647106334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.8571427355007,60.8705896724055"
+              Start="0,0"
+              End="-14.8571427355007,53.3705896724055">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.4352948362028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.4352948362028"
+                    Point2="0,30.4352948362028"
+                    Point3="-4,30.4352948362028" />
+                  <mssgle:LineSegment
+                    End="-10.8571427355007,30.4352948362028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.8571427355007,30.4352948362028"
+                    Point2="-14.8571427355007,30.4352948362028"
+                    Point3="-14.8571427355007,34.4352948362028" />
+                  <mssgle:LineSegment
+                    End="-14.8571427355007,53.3705896724055" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-63.2349580865003,35.4352948362028,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Fact.Paths[Union All Output 1]"
+          TopLeft="519.28572108551,459.358829680034">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.8571460563311,0"
+              Start="0,0"
+              End="60.3571460563311,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="60.3571460563311,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Load Fact.Paths[Derived Column Output]"
-          TopLeft="536.944431426625,289.055549808674">
+          TopLeft="686.342867141841,477.482359054262">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-321.222213757535,41.1356612134813"
+              EndConnector="-208.829384856358,121.804093975957"
               Start="0,0"
-              End="-321.222213757535,33.6356612134813">
+              End="-208.829384856358,114.304093975957">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3601637988729" />
+                    End="0,56.9020469879787" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.3601637988729"
-                    Point2="0,24.3601637988729"
-                    Point3="-4,24.3601637988729" />
+                    Point1="0,56.9020469879787"
+                    Point2="0,60.9020469879787"
+                    Point3="-4,60.9020469879787" />
                   <mssgle:LineSegment
-                    End="-317.222213757535,24.3601637988729" />
+                    End="-204.829384856358,60.9020469879787" />
                   <mssgle:CubicBezierSegment
-                    Point1="-317.222213757535,24.3601637988729"
-                    Point2="-321.222213757535,24.3601637988729"
-                    Point3="-321.222213757535,28.3601637988729" />
+                    Point1="-204.829384856358,60.9020469879787"
+                    Point2="-208.829384856358,60.9020469879787"
+                    Point3="-208.829384856358,64.9020469879787" />
                   <mssgle:LineSegment
-                    End="-321.222213757535,33.6356612134813" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <GroupLayout
-          Text="Group LKP"
-          ParentId="Package\DF Load Fact"
-          HeaderHeight="43.2"
-          IsExpanded="True"
-          PanelSize="648.666666666667,450.666666666667"
-          Size="648.666666666667,494"
-          Id="8d129d5b-031c-4b59-82ce-c7261e4f1ea7"
-          TopLeft="422.772819909774,99.7117660271668">
-          <GroupLayout.ChildrenIds>
-            <s:String>Package\DF Load Fact\LKP Date Key Lookup</s:String>
-            <s:String>Package\DF Load Fact\LKP Account Key Lookup</s:String>
-            <s:String>Package\DF Load Fact\LKP Company</s:String>
-            <s:String>Package\DF Load Fact.Paths[Lookup Match Output]</s:String>
-            <s:String>Package\DF Load Fact.Paths[Lookup Match Output1]</s:String>
-            <s:String>Package\DF Load Fact\DER subs no match</s:String>
-            <s:String>Package\DF Load Fact.Paths[Lookup No Match Output]</s:String>
-            <s:String>Package\DF Load Fact\Union All</s:String>
-            <s:String>Package\DF Load Fact.Paths[Lookup Match Output2]</s:String>
-            <s:String>Package\DF Load Fact.Paths[Derived Column Output]</s:String>
-          </GroupLayout.ChildrenIds>
-        </GroupLayout>
-        <EdgeLayout
-          Id="Package\DF Load Fact.Paths[Union All Output 1]"
-          TopLeft="619.333333333333,516">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-25.9722300296294,101.639394464083"
-              Start="0,0"
-              End="-25.9722300296294,94.1393944640832">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.8196972320417" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46.8196972320417"
-                    Point2="0,50.8196972320417"
-                    Point3="-4,50.8196972320417" />
-                  <mssgle:LineSegment
-                    End="-21.9722300296294,50.8196972320417" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.9722300296294,50.8196972320417"
-                    Point2="-25.9722300296294,50.8196972320417"
-                    Point3="-25.9722300296294,54.8196972320417" />
-                  <mssgle:LineSegment
-                    End="-25.9722300296294,94.1393944640832" />
+                    End="-208.829384856358,114.304093975957" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1942,25 +1881,15 @@ where a.DATE = @businessdate</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load Fact\LKP Company">
+    design-time-name="Package\DF Load Fact\OLE DST Load Fact">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1973,7 +1902,7 @@ where a.DATE = @businessdate</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load Fact\LKP Account Key Lookup">
+    design-time-name="Package\DF Load Fact\LKP Account Key">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -1988,7 +1917,7 @@ where a.DATE = @businessdate</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1996,12 +1925,12 @@ where a.DATE = @businessdate</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load Fact\LKP Date Key Lookup">
+    design-time-name="Package\DF Load Fact\LKP Date Key">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2011,7 +1940,7 @@ where a.DATE = @businessdate</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2019,15 +1948,25 @@ where a.DATE = @businessdate</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load Fact\OLE DST Load Fact">
+    design-time-name="Package\DF Load Fact\LKP Customer key">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -8,7 +8,7 @@
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Dim_Date.dtsx</Name>
-      <LastWriteTime>2019-11-09T07:13:50.2875464Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T19:30:09.2211614Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -18,12 +18,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Master Package.dtsx</Name>
-      <LastWriteTime>2019-11-09T17:03:00.6723109Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T19:40:42.2184583Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Backfill DW.dtsx</Name>
-      <LastWriteTime>2019-11-09T17:03:18.3532051Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T19:40:19.6967992Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -108,7 +108,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Account_Opening.dtsx</Name>
-      <LastWriteTime>2019-11-09T07:13:50.3344265Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T19:40:00.6726959Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -163,7 +163,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Drop and create DW.dtsx</Name>
-      <LastWriteTime>2019-11-09T17:02:45.5227011Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T19:40:44.3741967Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="304"
-  DTS:VersionGUID="{EC6933F1-A4D8-4268-91E0-6CB54D62175A}">
+  DTS:VersionBuild="305"
+  DTS:VersionGUID="{1EFD1974-9DEC-49F5-8E38-A8021CEF65C2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -229,6 +229,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim Customer"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
+              DTS:Disabled="True"
               DTS:DTSID="{72ABF681-B004-4D01-A0E7-DE5D051E4492}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -360,6 +361,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim_Account"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
+              DTS:Disabled="True"
               DTS:DTSID="{132de1c2-782e-4327-b8ee-5efde8c61123}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -474,6 +476,31 @@ EXEC (@sql)</DTS:VariableValue>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>Fact_Cashflow.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>v_Backfill_Date_To_Load</ParameterName>
+                    <BindedVariableOrParameterName>User::v_Backfill_Date_To_Load</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>v_lookup_dim_gl_mapping</ParameterName>
+                    <BindedVariableOrParameterName>User::v_lookup_dim_gl_mapping</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Load Droppable facts\Fact_Account_Opening"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{54f8e4ac-fbde-482b-bfaf-bd5afe09cdfe}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Fact_Account_Opening"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Fact_Account_Opening.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>v_Backfill_Date_To_Load</ParameterName>
                     <BindedVariableOrParameterName>User::v_Backfill_Date_To_Load</BindedVariableOrParameterName>
@@ -706,35 +733,10 @@ EXEC (@sql)</DTS:VariableValue>
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\Foreach Loop Container\load fact\Fact_Account_Opening"
-              DTS:CreationName="Microsoft.ExecutePackageTask"
-              DTS:Description="Execute Package Task"
-              DTS:Disabled="True"
-              DTS:DTSID="{933e1a38-a1f5-4a2f-8dad-df4cd4920ef0}"
-              DTS:ExecutableType="Microsoft.ExecutePackageTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="Fact_Account_Opening"
-              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <ExecutePackageTask>
-                  <UseProjectReference>True</UseProjectReference>
-                  <PackageName>Fact_Account_Opening.dtsx</PackageName>
-                  <ParameterAssignment>
-                    <ParameterName>v_Backfill_Date_To_Load</ParameterName>
-                    <BindedVariableOrParameterName>User::v_Backfill_Date_To_Load</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>v_lookup_dim_gl_mapping</ParameterName>
-                    <BindedVariableOrParameterName>User::v_lookup_dim_gl_mapping</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                </ExecutePackageTask>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
               DTS:refId="Package\Foreach Loop Container\load fact\Fact_balances"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
+              DTS:Disabled="True"
               DTS:DTSID="{378C9A7E-B780-477E-94CB-4EDA1FE90063}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -971,7 +973,7 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="146.4,42.4"
           Id="Package\Foreach Loop Container\load dimensions\Dim Customer"
-          TopLeft="252.536708005071,9.42032308541883" />
+          TopLeft="251.584327036471,9.42032308541883" />
         <NodeLayout
           Size="152,42.4"
           Id="Package\Foreach Loop Container\load dimensions\dim gl mapping"
@@ -995,7 +997,7 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="161.6,41.6"
           Id="Package\Foreach Loop Container\load dimensions\Dim_Account"
-          TopLeft="30.4087367396115,11.4308811801437" />
+          TopLeft="29.4563557710117,11.4308811801437" />
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\Foreach Loop Container\load dimensions\Dim_Customer_Risk"
@@ -1093,13 +1095,17 @@ EXEC (@sql)</DTS:VariableValue>
           Size="145.6,42.4"
           Id="Package\Foreach Loop Container\Load Droppable facts\Fact Cashflow"
           TopLeft="28.1666638230284,6.26665972391788" />
+        <NodeLayout
+          Size="188,42.4"
+          Id="Package\Foreach Loop Container\Load Droppable facts\Fact_Account_Opening"
+          TopLeft="27.2142828544286,108.666659723918" />
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="False"
-          PanelSize="430.4,111.2"
-          Size="202.4,43.2"
+          IsExpanded="True"
+          PanelSize="430.4,206.4"
+          Size="430.4,249.6"
           Id="Package\Foreach Loop Container\Load Droppable facts"
-          TopLeft="34.6369023258563,1395.92058587684" />
+          TopLeft="678.446437099391,769.881361410599" />
         <NodeLayout
           Size="157.6,42.4"
           Id="Package\Foreach Loop Container\load fact\Fact Acct Entries"
@@ -1133,13 +1139,9 @@ EXEC (@sql)</DTS:VariableValue>
           Id="Package\Foreach Loop Container\load fact\Fact Transaction"
           TopLeft="55.0682572132775,274.679743075539" />
         <NodeLayout
-          Size="188,42.4"
-          Id="Package\Foreach Loop Container\load fact\Fact_Account_Opening"
-          TopLeft="244.857133078129,195.593471206319" />
-        <NodeLayout
           Size="145.6,42.4"
           Id="Package\Foreach Loop Container\load fact\Fact_balances"
-          TopLeft="53.9761841254069,24.1999947154523" />
+          TopLeft="53.9761841254069,25.2196025728891" />
         <NodeLayout
           Size="122.4,41.6"
           Id="Package\Foreach Loop Container\load fact\Fact_bills"
@@ -1158,37 +1160,37 @@ EXEC (@sql)</DTS:VariableValue>
           PanelSize="606.4,548.8"
           Size="606.4,592"
           Id="Package\Foreach Loop Container\load fact"
-          TopLeft="21.8253968444202,782.180569145146" />
+          TopLeft="608.49207350196,24.6119310695515" />
         <NodeLayout
           Size="205.6,42.4"
           Id="Package\Foreach Loop Container\Update Dim Date Has data"
-          TopLeft="271.793645044878,1512.29761892309" />
+          TopLeft="722.269843192632,1079.98388736986" />
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="260.72658750633,718.149346273963">
+          TopLeft="481.52658750633,364.949346273963">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64.2988093380899,64.031222871183"
+              EndConnector="126.96548599563,-44.3374152044115"
               Start="0,0"
-              End="64.2988093380899,56.531222871183">
+              End="119.46548599563,-44.3374152044115">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.0156114355915" />
+                    End="59.4827429978151,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.0156114355915"
-                    Point2="0,32.0156114355915"
-                    Point3="4,32.0156114355915" />
+                    Point1="59.4827429978151,0"
+                    Point2="63.4827429978151,0"
+                    Point3="63.4827429978151,-4" />
                   <mssgle:LineSegment
-                    End="60.2988093380899,32.0156114355915" />
+                    End="63.4827429978151,-40.3374152044115" />
                   <mssgle:CubicBezierSegment
-                    Point1="60.2988093380899,32.0156114355915"
-                    Point2="64.2988093380899,32.0156114355915"
-                    Point3="64.2988093380899,36.0156114355915" />
+                    Point1="63.4827429978151,-40.3374152044115"
+                    Point2="63.4827429978151,-44.3374152044115"
+                    Point3="67.4827429978151,-44.3374152044115" />
                   <mssgle:LineSegment
-                    End="64.2988093380899,56.531222871183" />
+                    End="119.46548599563,-44.3374152044115" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1199,24 +1201,30 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="325.02539684442,1374.18056914515">
+          TopLeft="911.692073501961,616.611931069551">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-87.9884945185639,43.3400167316918"
+              EndConnector="-18.0456364025697,153.269430341048"
               Start="0,0"
-              End="-80.4884945185639,43.3400167316918">
+              End="-18.0456364025697,145.769430341048">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.3400167316918" />
+                    End="0,72.6347151705239" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.3400167316918"
-                    Point2="0,43.3400167316918"
-                    Point3="-4,43.3400167316918" />
+                    Point1="0,72.6347151705239"
+                    Point2="0,76.6347151705239"
+                    Point3="-4,76.6347151705239" />
                   <mssgle:LineSegment
-                    End="-80.4884945185639,43.3400167316918" />
+                    End="-14.0456364025697,76.6347151705239" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.0456364025697,76.6347151705239"
+                    Point2="-18.0456364025697,76.6347151705239"
+                    Point3="-18.0456364025697,80.6347151705239" />
+                  <mssgle:LineSegment
+                    End="-18.0456364025697,145.769430341048" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1227,30 +1235,30 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="135.836902325856,1439.12058587684">
+          TopLeft="893.646437099391,1019.4813614106">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="238.756742719022,73.1770330462523"
+              EndConnector="-68.5765939067585,60.5025259592576"
               Start="0,0"
-              End="238.756742719022,65.6770330462523">
+              End="-68.5765939067585,53.0025259592576">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5885165231261" />
+                    End="0,26.2512629796288" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.5885165231261"
-                    Point2="0,36.5885165231261"
-                    Point3="4,36.5885165231261" />
+                    Point1="0,26.2512629796288"
+                    Point2="0,30.2512629796288"
+                    Point3="-4,30.2512629796288" />
                   <mssgle:LineSegment
-                    End="234.756742719022,36.5885165231261" />
+                    End="-64.5765939067585,30.2512629796288" />
                   <mssgle:CubicBezierSegment
-                    Point1="234.756742719022,36.5885165231261"
-                    Point2="238.756742719022,36.5885165231261"
-                    Point3="238.756742719022,40.5885165231261" />
+                    Point1="-64.5765939067585,30.2512629796288"
+                    Point2="-68.5765939067585,30.2512629796288"
+                    Point3="-68.5765939067585,34.2512629796288" />
                   <mssgle:LineSegment
-                    End="238.756742719022,65.6770330462523" />
+                    End="-68.5765939067585,53.0025259592576" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1262,44 +1270,44 @@ EXEC (@sql)</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="636,1608"
-          Size="636,1651.2"
+          PanelSize="1336.8,1229.6"
+          Size="1336.8,1272.8"
           Id="Package\Foreach Loop Container"
           TopLeft="113.472220531355,250.297616133591" />
         <NodeLayout
           Size="251.2,41.6"
           Id="Package\Get list of dates to loop from landing"
-          TopLeft="244.98511621814,141.710619833175" />
+          TopLeft="575.461312322307,141.710619833176" />
         <NodeLayout
           Size="165.6,42.4"
           Id="Package\SQL Update views"
-          TopLeft="828.749987650664,1004.39442648447" />
+          TopLeft="1561.13095250399,940.159131465948" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="370.58511621814,183.310619833175">
+          TopLeft="701.061312322307,183.310619833176">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="60.887104313215,66.9869963004161"
+              EndConnector="80.8109082090483,66.9869963004151"
               Start="0,0"
-              End="60.887104313215,59.4869963004161">
+              End="80.8109082090483,59.4869963004151">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.493498150208" />
+                    End="0,29.4934981502075" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.493498150208"
-                    Point2="0,33.493498150208"
-                    Point3="4,33.493498150208" />
+                    Point1="0,29.4934981502075"
+                    Point2="0,33.4934981502075"
+                    Point3="4,33.4934981502075" />
                   <mssgle:LineSegment
-                    End="56.887104313215,33.493498150208" />
+                    End="76.8109082090483,33.4934981502075" />
                   <mssgle:CubicBezierSegment
-                    Point1="56.887104313215,33.493498150208"
-                    Point2="60.887104313215,33.493498150208"
-                    Point3="60.887104313215,37.493498150208" />
+                    Point1="76.8109082090483,33.4934981502075"
+                    Point2="80.8109082090483,33.4934981502075"
+                    Point3="80.8109082090483,37.4934981502075" />
                   <mssgle:LineSegment
-                    End="60.887104313215,59.4869963004161" />
+                    End="80.8109082090483,59.4869963004151" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1310,30 +1318,30 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="749.472220531355,1075.89761613359">
+          TopLeft="1450.27222053135,886.697616133591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="79.277767119309,-50.3031896491211"
+              EndConnector="110.858731972635,74.6615153323573"
               Start="0,0"
-              End="71.777767119309,-50.3031896491211">
+              End="103.358731972635,74.6615153323573">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="35.6388835596545,0" />
+                    End="51.4293659863176,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="35.6388835596545,0"
-                    Point2="39.6388835596545,0"
-                    Point3="39.6388835596545,-4" />
+                    Point1="51.4293659863176,0"
+                    Point2="55.4293659863176,0"
+                    Point3="55.4293659863176,4" />
                   <mssgle:LineSegment
-                    End="39.6388835596545,-46.3031896491211" />
+                    End="55.4293659863176,70.6615153323573" />
                   <mssgle:CubicBezierSegment
-                    Point1="39.6388835596545,-46.3031896491211"
-                    Point2="39.6388835596545,-50.3031896491211"
-                    Point3="43.6388835596545,-50.3031896491211" />
+                    Point1="55.4293659863176,70.6615153323573"
+                    Point2="55.4293659863176,74.6615153323573"
+                    Point3="59.4293659863176,74.6615153323573" />
                   <mssgle:LineSegment
-                    End="71.777767119309,-50.3031896491211" />
+                    End="103.358731972635,74.6615153323573" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

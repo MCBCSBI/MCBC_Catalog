@@ -20,10 +20,10 @@ drop table if exists Fact_Balances;
 			add 
 				 constraint pk_Fact_Balances primary key nonclustered (
 						timestamp
-						,date_key
+						--,date_key
 						--,gl_mapping_key
-						,Account_Key
-						,Customer_Key
+						--,Account_Key
+						--,Customer_Key
 						--,IsPrimary
 						--,asset_type
 						--,branch_key

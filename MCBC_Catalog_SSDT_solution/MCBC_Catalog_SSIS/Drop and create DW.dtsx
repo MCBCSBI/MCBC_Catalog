@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Drop and create DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{ED3584FE-8085-45C5-8935-661B73447867}">
+  DTS:VersionBuild="85"
+  DTS:VersionGUID="{D34D868B-FDA1-4DB9-9770-B368E6F63B05}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -83,6 +83,24 @@ EXEC (@sql)</DTS:VariableValue>
 SELECT @SQL = BulkColumn
 FROM OPENROWSET
     (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\ddl_dim_date.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F5F89798-9F3C-453F-ACC4-853B497CD271}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;ddl_fact_account_opening&quot;+&#xA; @[User::_3_ending_script]&#x9;&#x9;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fact_account_opening">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\ddl_fact_account_opening.sql'
     ,   SINGLE_BLOB ) AS MYTABLE
 
 --PRINT @sql
@@ -198,6 +216,24 @@ EXEC (@sql)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{2579777A-11A2-4975-936A-70F58500740D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;v_fact_account_opening&quot;+&#xA; @[User::_3_ending_script]&#x9;&#x9;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_fact_account_opening">
+      <DTS:VariableValue
+        DTS:DataType="8">DECLARE @SQL varchar(MAX)
+SELECT @SQL = BulkColumn
+FROM OPENROWSET
+    (   BULK 'C:\Users\yohram\Desktop\Y\repo\MCBC_Catalog\MCBC_Catalog_SSMS_Solution\SQL Scripts\v_fact_account_opening.sql'
+    ,   SINGLE_BLOB ) AS MYTABLE
+
+--PRINT @sql
+EXEC (@sql)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{341207A8-8D39-4B28-99CA-C53928C2853E}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::_2_opening_script]+&#xA;&quot;v_fact_balances&quot;+&#xA; @[User::_3_ending_script]&#x9;&#x9;"
@@ -270,6 +306,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Dimensions\Dim_Account"
               DTS:CreationName="STOCK:SEQUENCE"
               DTS:Description="Sequence Container"
+              DTS:Disabled="True"
               DTS:DTSID="{949F80A3-0FD3-41A8-8B86-E0FF82552B02}"
               DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
@@ -375,6 +412,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Dimensions\Dim_Customer"
               DTS:CreationName="STOCK:SEQUENCE"
               DTS:Description="Sequence Container"
+              DTS:Disabled="True"
               DTS:DTSID="{be3239e9-e8b3-46b0-b3c3-ec6e630d8de8}"
               DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
@@ -489,50 +527,119 @@ EXEC (@sql)</DTS:VariableValue>
           <DTS:Variables />
           <DTS:Executables>
             <DTS:Executable
-              DTS:refId="Package\Create Dw\Create facts\SQL create fact_balances"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{44856931-ab0b-4004-86a1-35e180c83f9c}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:refId="Package\Create Dw\Create facts\create fact account opening"
+              DTS:CreationName="STOCK:SEQUENCE"
+              DTS:Description="Sequence Container"
+              DTS:DTSID="{c57334a6-9df2-428d-ac63-b6116abb8f79}"
+              DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL create fact_balances"
-              DTS:ThreadHint="0">
+              DTS:ObjectName="create fact account opening">
               <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
-                  SQLTask:SqlStmtSourceType="Variable"
-                  SQLTask:SqlStatementSource="User::fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-              </DTS:ObjectData>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Create Dw\Create facts\create fact account opening\SQL create fact_account_opening"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{1f50cac8-cb16-4db5-bd46-61d614e0c379}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL create fact_account_opening"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStmtSourceType="Variable"
+                      SQLTask:SqlStatementSource="User::fact_account_opening" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Create Dw\Create facts\create fact account opening\SQL create v_fact_balances"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{5959a132-be01-4fb9-a3f6-124c0f033571}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL create v_fact_balances"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStmtSourceType="Variable"
+                      SQLTask:SqlStatementSource="User::v_fact_account_opening" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Create Dw\Create facts\create fact account opening.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{bc6b2c7a-8560-4e56-a674-b3477d857372}"
+                  DTS:From="Package\Create Dw\Create facts\create fact account opening\SQL create fact_account_opening"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\Create Dw\Create facts\create fact account opening\SQL create v_fact_balances" />
+              </DTS:PrecedenceConstraints>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\Create Dw\Create facts\SQL create v_fact_balances"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{3e2250e6-6cd7-4f78-91cb-f1cc2070ba50}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:refId="Package\Create Dw\Create facts\create Fact Balances"
+              DTS:CreationName="STOCK:SEQUENCE"
+              DTS:Description="Sequence Container"
+              DTS:Disabled="True"
+              DTS:DTSID="{11E58600-B007-4957-9C29-80BA24935858}"
+              DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL create v_fact_balances"
-              DTS:ThreadHint="0">
+              DTS:ObjectName="create Fact Balances">
               <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
-                  SQLTask:SqlStmtSourceType="Variable"
-                  SQLTask:SqlStatementSource="User::v_fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-              </DTS:ObjectData>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Create Dw\Create facts\create Fact Balances\SQL create fact_balances"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{44856931-ab0b-4004-86a1-35e180c83f9c}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL create fact_balances"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStmtSourceType="Variable"
+                      SQLTask:SqlStatementSource="User::fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Create Dw\Create facts\create Fact Balances\SQL create v_fact_balances"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{3e2250e6-6cd7-4f78-91cb-f1cc2070ba50}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL create v_fact_balances"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStmtSourceType="Variable"
+                      SQLTask:SqlStatementSource="User::v_fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Create Dw\Create facts\create Fact Balances.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{F2654225-50B5-4E34-BEE0-80273E3D3129}"
+                  DTS:From="Package\Create Dw\Create facts\create Fact Balances\SQL create fact_balances"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\Create Dw\Create facts\create Fact Balances\SQL create v_fact_balances" />
+              </DTS:PrecedenceConstraints>
             </DTS:Executable>
           </DTS:Executables>
-          <DTS:PrecedenceConstraints>
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Create Dw\Create facts.PrecedenceConstraints[Constraint]"
-              DTS:CreationName=""
-              DTS:DTSID="{F2654225-50B5-4E34-BEE0-80273E3D3129}"
-              DTS:From="Package\Create Dw\Create facts\SQL create fact_balances"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint"
-              DTS:To="Package\Create Dw\Create facts\SQL create v_fact_balances" />
-          </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Create Dw\Create Utilities"
@@ -575,7 +682,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Utilities\SQL create dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
-              DTS:Disabled="True"
               DTS:DTSID="{458c28bc-b8c8-4223-b138-749e5800836a}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
@@ -601,7 +707,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Utilities\SQL Create v_dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
-              DTS:Disabled="True"
               DTS:DTSID="{eae29382-eb12-4d90-8bd6-0d55c810f7a8}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
@@ -679,6 +784,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Account"
               DTS:CreationName="STOCK:SEQUENCE"
               DTS:Description="Sequence Container"
+              DTS:Disabled="True"
               DTS:DTSID="{62190B76-DC25-471E-B5B5-5C457A5E5F58}"
               DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
@@ -781,6 +887,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Customer"
               DTS:CreationName="STOCK:SEQUENCE"
               DTS:Description="Sequence Container"
+              DTS:Disabled="True"
               DTS:DTSID="{d5d80f13-34e7-4de7-8085-6a76aa9d60c7}"
               DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
@@ -892,72 +999,163 @@ EXEC (@sql)</DTS:VariableValue>
           <DTS:Variables />
           <DTS:Executables>
             <DTS:Executable
-              DTS:refId="Package\Drop DW\Drop Facts\SQL drop fact_balances"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{6DF0F9CA-1670-4E6C-843B-E58EF9F4291C}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:refId="Package\Drop DW\Drop Facts\Fact Account Opening"
+              DTS:CreationName="STOCK:SEQUENCE"
+              DTS:Description="Sequence Container"
+              DTS:DTSID="{517ddecb-919a-465d-b65d-cb5242afff7a}"
+              DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL drop fact_balances"
-              DTS:ThreadHint="0">
+              DTS:ObjectName="Fact Account Opening">
               <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
-                  SQLTask:SqlStatementSource="drop table if exists fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-              </DTS:ObjectData>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop fact_account_opening"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{9209b5aa-a98e-457b-a2a5-1af03ba3ca50}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL drop fact_account_opening"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="drop table if exists fact_account_opening" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop v_fact_account_opening"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{f4495ddd-2d59-4c24-878c-92f21d71b717}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL drop v_fact_account_opening"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="drop view if exists v_fact_account_opening" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Account Opening\SQL Update Ctrl Table fact acct opening"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{440f493b-c33c-4be9-af6f-3f8443d5521b}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Update Ctrl Table fact acct opening"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="update Control_Table&#xA;set Last_Execution_Date = '1900-01-01',Last_Date_Loaded = '1900-01-01'&#xA;where Table_name = 'fact_account_opening'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Account Opening.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{063d4704-e73c-4f51-8384-45b0253a20c9}"
+                  DTS:From="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop fact_account_opening"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop v_fact_account_opening" />
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Account Opening.PrecedenceConstraints[Constraint 1]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{c01615a0-731e-4ad9-b21e-a00bd7de9c43}"
+                  DTS:From="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop v_fact_account_opening"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint 1"
+                  DTS:To="Package\Drop DW\Drop Facts\Fact Account Opening\SQL Update Ctrl Table fact acct opening" />
+              </DTS:PrecedenceConstraints>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\Drop DW\Drop Facts\SQL drop v_fact_balances"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{176811ee-2d6f-49db-997e-6df7766f86bb}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:refId="Package\Drop DW\Drop Facts\Fact Balances"
+              DTS:CreationName="STOCK:SEQUENCE"
+              DTS:Description="Sequence Container"
+              DTS:Disabled="True"
+              DTS:DTSID="{811AB2A1-B3E9-4BED-AA56-7A6D99B2CDF8}"
+              DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL drop v_fact_balances"
-              DTS:ThreadHint="0">
+              DTS:ObjectName="Fact Balances">
               <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
-                  SQLTask:SqlStatementSource="drop view if exists v_fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Drop DW\Drop Facts\SQL Update Ctrl Table fact balances"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{98aa740c-7b1a-4702-a9b5-4a2f7731a6bf}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="SQL Update Ctrl Table fact balances"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
-                  SQLTask:SqlStatementSource="update Control_Table&#xA;set Last_Execution_Date = '1900-01-01',Last_Date_Loaded = '1900-01-01'&#xA;where Table_name = 'fact_balances'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-              </DTS:ObjectData>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Balances\SQL drop fact_balances"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{6DF0F9CA-1670-4E6C-843B-E58EF9F4291C}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL drop fact_balances"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="drop table if exists fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Balances\SQL drop v_fact_balances"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{176811ee-2d6f-49db-997e-6df7766f86bb}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL drop v_fact_balances"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="drop view if exists v_fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Balances\SQL Update Ctrl Table fact balances"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{98aa740c-7b1a-4702-a9b5-4a2f7731a6bf}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Update Ctrl Table fact balances"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="update Control_Table&#xA;set Last_Execution_Date = '1900-01-01',Last_Date_Loaded = '1900-01-01'&#xA;where Table_name = 'fact_balances'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Balances.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{37549068-4545-4417-AC69-A88CDD968D61}"
+                  DTS:From="Package\Drop DW\Drop Facts\Fact Balances\SQL drop fact_balances"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\Drop DW\Drop Facts\Fact Balances\SQL drop v_fact_balances" />
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Drop DW\Drop Facts\Fact Balances.PrecedenceConstraints[Constraint 1]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{56EE2E54-FAB6-4303-A774-15F97CCFF6E0}"
+                  DTS:From="Package\Drop DW\Drop Facts\Fact Balances\SQL drop v_fact_balances"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint 1"
+                  DTS:To="Package\Drop DW\Drop Facts\Fact Balances\SQL Update Ctrl Table fact balances" />
+              </DTS:PrecedenceConstraints>
             </DTS:Executable>
           </DTS:Executables>
-          <DTS:PrecedenceConstraints>
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Drop DW\Drop Facts.PrecedenceConstraints[Constraint]"
-              DTS:CreationName=""
-              DTS:DTSID="{37549068-4545-4417-AC69-A88CDD968D61}"
-              DTS:From="Package\Drop DW\Drop Facts\SQL drop fact_balances"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint"
-              DTS:To="Package\Drop DW\Drop Facts\SQL drop v_fact_balances" />
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Drop DW\Drop Facts.PrecedenceConstraints[Constraint 1]"
-              DTS:CreationName=""
-              DTS:DTSID="{56EE2E54-FAB6-4303-A774-15F97CCFF6E0}"
-              DTS:From="Package\Drop DW\Drop Facts\SQL drop v_fact_balances"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint 1"
-              DTS:To="Package\Drop DW\Drop Facts\SQL Update Ctrl Table fact balances" />
-          </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Drop DW\Drop Utilities"
@@ -991,7 +1189,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Utilities\SQL drop dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
-              DTS:Disabled="True"
               DTS:DTSID="{2d6491f5-a2bb-44f1-8641-00d26f09e337}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
@@ -1008,7 +1205,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Utilities\SQL drop v_dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
-              DTS:Disabled="True"
               DTS:DTSID="{715091f9-486a-4cf8-8921-fcc17e776bcd}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
@@ -1099,7 +1295,7 @@ EXEC (@sql)</DTS:VariableValue>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="194.4,42.4"
           Id="Package\Create Dw\Create Dimensions\Dim_Account\SQL create dim_account"
@@ -1157,10 +1353,10 @@ EXEC (@sql)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
+          HeaderHeight="43.2"
+          IsExpanded="False"
           PanelSize="671.2,112"
-          Size="671.2,155.2"
+          Size="207.2,43.2"
           Id="Package\Create Dw\Create Dimensions\Dim_Account"
           TopLeft="16.5904979579313,21.8941205234264" />
         <NodeLayout
@@ -1232,30 +1428,26 @@ EXEC (@sql)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
+          HeaderHeight="43.2"
+          IsExpanded="False"
           PanelSize="671.2,131.2"
-          Size="671.2,174.4"
+          Size="212,43.2"
           Id="Package\Create Dw\Create Dimensions\Dim_Customer"
-          TopLeft="15.1619265050317,190.094121435027" />
+          TopLeft="16.1143074736317,78.9568649744078" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="699.2,419.2"
-          Size="699.2,462.4"
+          PanelSize="455.2,177.6"
+          Size="455.2,220.8"
           Id="Package\Create Dw\Create Dimensions"
-          TopLeft="34.8154670481191,190.740898739212" />
+          TopLeft="22.2440382626005,450.129137671152" />
         <NodeLayout
           Size="196.8,41.6"
-          Id="Package\Create Dw\Create facts\SQL create fact_balances"
-          TopLeft="16.5306115046186,20.5630246569955" />
-        <NodeLayout
-          Size="208,41.6"
-          Id="Package\Create Dw\Create facts\SQL create v_fact_balances"
-          TopLeft="245.102043968596,22.7512585569007" />
+          Id="Package\Create Dw\Create facts\create Fact Balances\SQL create fact_balances"
+          TopLeft="12.4734714939016,3.72773273791432" />
         <EdgeLayout
-          Id="Package\Create Dw\Create facts.PrecedenceConstraints[Constraint]"
-          TopLeft="213.330611504619,42.4571416069481">
+          Id="Package\Create Dw\Create facts\create Fact Balances.PrecedenceConstraints[Constraint]"
+          TopLeft="209.273471493902,25.6218496878669">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1275,13 +1467,73 @@ EXEC (@sql)</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Create Dw\Create facts\create Fact Balances\SQL create v_fact_balances"
+          TopLeft="241.044903957879,5.91596663781962" />
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="454.4,102.4"
+          Size="199.2,43.2"
+          Id="Package\Create Dw\Create facts\create Fact Balances"
+          TopLeft="20.2857255814029,8.43529574780291" />
+        <NodeLayout
+          Size="236,41.6"
+          Id="Package\Create Dw\Create facts\create fact account opening\SQL create fact_account_opening"
+          TopLeft="12.4734714939016,28" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Create Dw\Create facts\create fact account opening\SQL create v_fact_balances"
+          TopLeft="241.044903957879,29.5084953282808" />
+        <EdgeLayout
+          Id="Package\Create Dw\Create facts\create fact account opening.PrecedenceConstraints[Constraint]"
+          TopLeft="130.473471493902,28">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="214.571432463977,1.50849532828084"
+              Start="0,0"
+              End="214.571432463977,-5.99150467171916">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="210.571432463977,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="210.571432463977,-22.5"
+                    Point2="214.571432463977,-22.5"
+                    Point3="214.571432463977,-18.5" />
+                  <mssgle:LineSegment
+                    End="214.571432463977,-5.99150467171916" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="True"
+          PanelSize="454.4,126.4"
+          Size="454.4,169.6"
+          Id="Package\Create Dw\Create facts\create fact account opening"
+          TopLeft="21.5555668728693,89.2039228841918" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="456.8,218.4"
-          Size="456.8,261.6"
+          PanelSize="630.4,331.2"
+          Size="630.4,374.4"
           Id="Package\Create Dw\Create facts"
-          TopLeft="62.6547492642941,691.111763249065" />
+          TopLeft="62.654749264294,691.111763249065" />
         <NodeLayout
           Size="176,42.4"
           Id="Package\Create Dw\Create Utilities\SQL create ctrl table"
@@ -1289,25 +1541,25 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="178.4,42.4"
           Id="Package\Create Dw\Create Utilities\SQL create dim_date"
-          TopLeft="209.948408244241,13.3488205766327" />
+          TopLeft="208.805551081921,14.572350005557" />
         <NodeLayout
           Size="189.6,41.6"
           Id="Package\Create Dw\Create Utilities\SQL Create v_dim_date"
           TopLeft="428.809531420774,15.8272505478195" />
         <EdgeLayout
           Id="Package\Create Dw\Create Utilities.PrecedenceConstraints[Constraint]"
-          TopLeft="388.348408244241,35.5880355622261">
+          TopLeft="387.205551081921,36.1998002766882">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="40.461123176533,0"
+              EndConnector="41.6039803388532,0"
               Start="0,0"
-              End="32.961123176533,0">
+              End="34.1039803388532,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="32.961123176533,0" />
+                    End="34.1039803388532,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1325,18 +1577,30 @@ EXEC (@sql)</DTS:VariableValue>
           TopLeft="32.309515321184,3.7114834737819" />
         <EdgeLayout
           Id="Package\Create Dw.PrecedenceConstraints[Constraint]"
-          TopLeft="383.962491184652,165.311483473782">
+          TopLeft="383.509515321184,165.311483473782">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.4294152654301"
+              EndConnector="-133.665477058583,284.81765419737"
               Start="0,0"
-              End="0,17.9294152654301">
+              End="-133.665477058583,277.31765419737">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.9294152654301" />
+                    End="0,138.408827098685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,138.408827098685"
+                    Point2="0,142.408827098685"
+                    Point3="-4,142.408827098685" />
+                  <mssgle:LineSegment
+                    End="-129.665477058583,142.408827098685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-129.665477058583,142.408827098685"
+                    Point2="-133.665477058583,142.408827098685"
+                    Point3="-133.665477058583,146.408827098685" />
+                  <mssgle:LineSegment
+                    End="-133.665477058583,277.31765419737" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1347,30 +1611,24 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Create Dw.PrecedenceConstraints[Constraint 1]"
-          TopLeft="384.415467048119,653.140898739212">
+          TopLeft="477.4440382626,560.529137671152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-93.3607177838251,37.9708645098533"
+              EndConnector="-99.5892889983065,130.582625577913"
               Start="0,0"
-              End="-93.3607177838251,30.4708645098533">
+              End="-99.5892889983065,123.082625577913">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.9854322549266" />
+                    End="-95.5892889983065,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.9854322549266"
-                    Point2="0,18.9854322549267"
-                    Point3="-4,18.9854322549267" />
+                    Point1="-95.5892889983065,0"
+                    Point2="-99.5892889983065,0"
+                    Point3="-99.5892889983065,4" />
                   <mssgle:LineSegment
-                    End="-89.3607177838251,18.9854322549267" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-89.3607177838251,18.9854322549267"
-                    Point2="-93.3607177838251,18.9854322549267"
-                    Point3="-93.3607177838251,22.9854322549267" />
-                  <mssgle:LineSegment
-                    End="-93.3607177838251,30.4708645098533" />
+                    End="-99.5892889983065,123.082625577913" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1382,10 +1640,10 @@ EXEC (@sql)</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="799.2,1008"
-          Size="799.2,1051.2"
+          PanelSize="799.2,1120.8"
+          Size="799.2,1164"
           Id="Package\Create Dw"
-          TopLeft="957.394168267529,114.354995686495" />
+          TopLeft="1658.2513230602,115.578525115419" />
         <NodeLayout
           Size="176,42.4"
           Id="Package\Drop DW\Drop Dimensions\Dim_Account\SQL drop dim_account"
@@ -1476,9 +1734,9 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="624.8,167.2"
-          Size="624.8,210.4"
+          Size="164,43.2"
           Id="Package\Drop DW\Drop Dimensions\Dim_Account"
           TopLeft="15.3401385636092,18.5170914364521" />
         <NodeLayout
@@ -1576,41 +1834,63 @@ EXEC (@sql)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="True"
+          HeaderHeight="43"
+          IsExpanded="False"
           PanelSize="624.8,148.8"
-          Size="624.8,192"
+          Size="175.2,43.2"
           Id="Package\Drop DW\Drop Dimensions\Dim_Customer"
-          TopLeft="22.8503427731402,263.340622834433" />
+          TopLeft="12.5646283122613,76.140620209024" />
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="706.4,506.4"
-          Size="706.4,549.6"
+          PanelSize="679.2,208"
+          Size="679.2,251.2"
           Id="Package\Drop DW\Drop Dimensions"
-          TopLeft="13.9741097910684,210.751948932924" />
+          TopLeft="41.0217292993057,520.304894450758" />
         <NodeLayout
           Size="189.6,41.6"
-          Id="Package\Drop DW\Drop Facts\SQL drop fact_balances"
-          TopLeft="24.7074899047875,15.0901981028484" />
-        <NodeLayout
-          Size="189.6,42.4"
-          Id="Package\Drop DW\Drop Facts\SQL drop v_fact_balances"
-          TopLeft="280.897970458162,11.6705887868507" />
+          Id="Package\Drop DW\Drop Facts\Fact Balances\SQL drop fact_balances"
+          TopLeft="11.8217769936294,8.91960931599772" />
         <EdgeLayout
-          Id="Package\Drop DW\Drop Facts.PrecedenceConstraints[Constraint]"
-          TopLeft="214.307489904787,34.3803934448495">
+          Id="Package\Drop DW\Drop Facts\Fact Balances.PrecedenceConstraints[Constraint]"
+          TopLeft="201.421776993629,28.2098046579988">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="66.5904805533741,0"
+              EndConnector="66.5904805533742,0"
               Start="0,0"
-              End="59.0904805533741,0">
+              End="59.0904805533742,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="59.0904805533741,0" />
+                    End="59.0904805533742,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="189.6,42.4"
+          Id="Package\Drop DW\Drop Facts\Fact Balances\SQL drop v_fact_balances"
+          TopLeft="268.012257547004,5.5" />
+        <EdgeLayout
+          Id="Package\Drop DW\Drop Facts\Fact Balances.PrecedenceConstraints[Constraint 1]"
+          TopLeft="457.612257547004,28.7016704984598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.7700257172309,0"
+              Start="0,0"
+              End="32.2700257172309,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="32.2700257172309,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1621,22 +1901,63 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <NodeLayout
           Size="172.8,43.2"
-          Id="Package\Drop DW\Drop Facts\SQL Update Ctrl Table fact balances"
-          TopLeft="510.267996175393,16.4974592126945" />
+          Id="Package\Drop DW\Drop Facts\Fact Balances\SQL Update Ctrl Table fact balances"
+          TopLeft="497.382283264236,9.10334099691954" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="1187.2,293.6"
+          Size="166.4,43.2"
+          Id="Package\Drop DW\Drop Facts\Fact Balances"
+          TopLeft="31.7714328045747,26.9058835970077" />
+        <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop fact_account_opening"
+          TopLeft="11.8217769936294,8.15490342292009" />
+        <NodeLayout
+          Size="189.6,42.4"
+          Id="Package\Drop DW\Drop Facts\Fact Account Opening\SQL drop v_fact_account_opening"
+          TopLeft="268.012257547004,4.73529410692231" />
+        <NodeLayout
+          Size="172.8,43.2"
+          Id="Package\Drop DW\Drop Facts\Fact Account Opening\SQL Update Ctrl Table fact acct opening"
+          TopLeft="497.382283264236,9.10334099691954" />
         <EdgeLayout
-          Id="Package\Drop DW\Drop Facts.PrecedenceConstraints[Constraint 1]"
-          TopLeft="470.497970458162,35.4840239997726">
+          Id="Package\Drop DW\Drop Facts\Fact Account Opening.PrecedenceConstraints[Constraint]"
+          TopLeft="223.021776993629,27.4450987649212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="39.7700257172311,0"
+              EndConnector="44.9904805533747,0"
               Start="0,0"
-              End="32.2700257172311,0">
+              End="37.4904805533747,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="32.2700257172311,0" />
+                    End="37.4904805533747,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Drop DW\Drop Facts\Fact Account Opening.PrecedenceConstraints[Constraint 1]"
+          TopLeft="457.612257547004,28.3193175519209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.7700257172319,0"
+              Start="0,0"
+              End="32.2700257172319,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="32.2700257172319,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1646,12 +1967,19 @@ EXEC (@sql)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="768,101.6"
+          Size="205.6,43.2"
+          Id="Package\Drop DW\Drop Facts\Fact Account Opening"
+          TopLeft="31.7714328045746,130.105883597008" />
+        <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="738.4,131.2"
-          Size="738.4,174.4"
+          PanelSize="788,387.2"
+          Size="788,430.4"
           Id="Package\Drop DW\Drop Facts"
-          TopLeft="23.6989647400097,6.72352942892428" />
+          TopLeft="23.6989647400096,6.72352942892428" />
         <NodeLayout
           Size="168,42.4"
           Id="Package\Drop DW\Drop Utilities\SQL drop ctrl table"
@@ -1707,30 +2035,30 @@ EXEC (@sql)</DTS:VariableValue>
           TopLeft="16.6989733905892,918.766383255618" />
         <EdgeLayout
           Id="Package\Drop DW.PrecedenceConstraints[Constraint]"
-          TopLeft="367.174109791068,760.351948932924">
+          TopLeft="380.621729299306,771.504894450758">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-109.275136400479,158.414434322694"
+              EndConnector="-122.722755908716,147.26148880486"
               Start="0,0"
-              End="-109.275136400479,150.914434322694">
+              End="-122.722755908716,139.76148880486">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,75.2072171613471" />
+                    End="0,69.6307444024302" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,75.2072171613471"
-                    Point2="0,79.2072171613471"
-                    Point3="-4,79.2072171613471" />
+                    Point1="0,69.6307444024302"
+                    Point2="0,73.6307444024302"
+                    Point3="-4,73.6307444024302" />
                   <mssgle:LineSegment
-                    End="-105.275136400479,79.2072171613471" />
+                    End="-118.722755908716,73.6307444024302" />
                   <mssgle:CubicBezierSegment
-                    Point1="-105.275136400479,79.2072171613471"
-                    Point2="-109.275136400479,79.2072171613471"
-                    Point3="-109.275136400479,83.2072171613471" />
+                    Point1="-118.722755908716,73.6307444024302"
+                    Point2="-122.722755908716,73.6307444024302"
+                    Point3="-122.722755908716,77.6307444024302" />
                   <mssgle:LineSegment
-                    End="-109.275136400479,150.914434322694" />
+                    End="-122.722755908716,139.76148880486" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1741,30 +2069,30 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Drop DW.PrecedenceConstraints[Constraint 1]"
-          TopLeft="392.89896474001,181.123529428924">
+          TopLeft="417.69896474001,437.123529428924">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.7248549489412,29.6284195039996"
+              EndConnector="-37.0772354407039,83.1813650218335"
               Start="0,0"
-              End="-25.7248549489412,22.1284195039996">
+              End="-37.0772354407039,75.6813650218335">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.8142097519998" />
+                    End="0,37.5906825109167" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.8142097519998"
-                    Point2="0,14.8142097519998"
-                    Point3="-4,14.8142097519998" />
+                    Point1="0,37.5906825109167"
+                    Point2="0,41.5906825109167"
+                    Point3="-4,41.5906825109167" />
                   <mssgle:LineSegment
-                    End="-21.7248549489412,14.8142097519998" />
+                    End="-33.0772354407039,41.5906825109167" />
                   <mssgle:CubicBezierSegment
-                    Point1="-21.7248549489412,14.8142097519998"
-                    Point2="-25.7248549489412,14.8142097519998"
-                    Point3="-25.7248549489412,18.8142097519998" />
+                    Point1="-33.0772354407039,41.5906825109167"
+                    Point2="-37.0772354407039,41.5906825109167"
+                    Point3="-37.0772354407039,45.5906825109167" />
                   <mssgle:LineSegment
-                    End="-25.7248549489412,22.1284195039996" />
+                    End="-37.0772354407039,75.6813650218335" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1814,36 +2142,36 @@ EXEC (@sql)</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="790.4,1253.6"
-          Size="790.4,1296.8"
+          PanelSize="866.4,1253.6"
+          Size="866.4,1296.8"
           Id="Package\Drop DW"
-          TopLeft="85.1587288897661,111.543883238565" />
+          TopLeft="512.873021887984,132.343883530277" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="875.558728889766,759.943883238565">
+          TopLeft="1379.27302188798,780.743883530277">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="81.8354393777628,-119.98888755207"
+              EndConnector="278.978301172212,-83.1653584148578"
               Start="0,0"
-              End="74.3354393777628,-119.98888755207">
+              End="271.478301172212,-83.1653584148578">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="36.9177196888814,0" />
+                    End="135.489150586106,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="36.9177196888814,0"
-                    Point2="40.9177196888814,0"
-                    Point3="40.9177196888814,-4" />
+                    Point1="135.489150586106,0"
+                    Point2="139.489150586106,0"
+                    Point3="139.489150586106,-4" />
                   <mssgle:LineSegment
-                    End="40.9177196888814,-115.98888755207" />
+                    End="139.489150586106,-79.1653584148578" />
                   <mssgle:CubicBezierSegment
-                    Point1="40.9177196888814,-115.98888755207"
-                    Point2="40.9177196888814,-119.98888755207"
-                    Point3="44.9177196888814,-119.98888755207" />
+                    Point1="139.489150586106,-79.1653584148578"
+                    Point2="139.489150586106,-83.1653584148578"
+                    Point3="143.489150586106,-83.1653584148578" />
                   <mssgle:LineSegment
-                    End="74.3354393777628,-119.98888755207" />
+                    End="271.478301172212,-83.1653584148578" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

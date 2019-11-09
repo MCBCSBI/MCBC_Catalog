@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Dim_Date"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{0B059AC9-DF55-4D2F-A818-89A286610C88}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{4166FA9C-C8FA-4E30-9644-1FC5F1D671D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -673,9 +673,9 @@
                   name="SingleQueryText"
                   state="cdata"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"><![CDATA[let
-    Source = #date(2005, 1, 1),
+    Source = #date(1980, 1, 1),
     #"List of Dates" = List.Dates(
-                Source, Number.From(DateTime.LocalNow())+34675-Number.From(Source),#duration(1,0,0,0)
+                Source, Number.From(DateTime.LocalNow())+36600-Number.From(Source),#duration(1,0,0,0)
                 ),
     #"Converted to Table" = Table.FromList(
                                 #"List of Dates", Splitter.SplitByNothing(), null, null, ExtraValues.Error
@@ -888,7 +888,7 @@ in
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="168,42.6666666666667"
+          Size="168,42.4"
           Id="Package\DF Load Dim_Date"
           TopLeft="102.499998472631,58.4999989539385" />
       </GraphLayout>
@@ -900,15 +900,15 @@ in
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176,42.6666666666667"
+          Size="176,42.4"
           Id="Package\DF Load Dim_Date\Power Query Source"
           TopLeft="131.527775817861,34.9555549305016" />
         <NodeLayout
-          Size="152,41.3333333333334"
+          Size="152,41.6"
           Id="Package\DF Load Dim_Date\Load Dim_Date"
           TopLeft="220.243052273678,225.402773771104" />
         <NodeLayout
-          Size="157.333333333334,42.6666666666667"
+          Size="157.6,42.4"
           Id="Package\DF Load Dim_Date\Data Conversion"
           TopLeft="267.027773880711,116.433331349691" />
         <EdgeLayout

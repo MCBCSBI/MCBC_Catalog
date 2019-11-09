@@ -262,6 +262,11 @@
             "dataType": "double",
             "isHidden": true,
             "sourceColumn": "Balance_FCY"
+          },
+          {
+            "name": "Customer_Key",
+            "dataType": "int64",
+            "sourceColumn": "Customer_Key"
           }
         ],
         "partitions": [
@@ -428,6 +433,87 @@
             "displayFolder": "Product"
           }
         ]
+      },
+      {
+        "name": "v_dim_customer",
+        "columns": [
+          {
+            "name": "Customer_key",
+            "dataType": "int64",
+            "sourceColumn": "Customer_key"
+          },
+          {
+            "name": "Customer_No",
+            "dataType": "string",
+            "sourceColumn": "Customer_No"
+          },
+          {
+            "name": "Customer_Name",
+            "dataType": "string",
+            "sourceColumn": "Customer_Name"
+          },
+          {
+            "name": "Sector",
+            "dataType": "string",
+            "sourceColumn": "Sector"
+          },
+          {
+            "name": "Target",
+            "dataType": "string",
+            "sourceColumn": "Target"
+          },
+          {
+            "name": "Industry",
+            "dataType": "string",
+            "sourceColumn": "Industry"
+          },
+          {
+            "name": "Customer_Branch_Code",
+            "dataType": "string",
+            "sourceColumn": "Customer_Branch_Code"
+          },
+          {
+            "name": "Customer_Branch_Name",
+            "dataType": "string",
+            "sourceColumn": "Customer_Branch_Name"
+          },
+          {
+            "name": "Customer_Since",
+            "dataType": "string",
+            "sourceColumn": "Customer_Since"
+          },
+          {
+            "name": "Scd2_Start",
+            "dataType": "dateTime",
+            "sourceColumn": "Scd2_Start"
+          },
+          {
+            "name": "Scd2_End",
+            "dataType": "dateTime",
+            "sourceColumn": "Scd2_End"
+          },
+          {
+            "name": "Scd2_Hash",
+            "dataType": "string",
+            "sourceColumn": "Scd2_Hash"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/134lt135\\mssqlserver01;MCBC_DW_Sey_V2\",",
+                "    dbo_v_dim_customer = Source{[Schema=\"dbo\",Item=\"v_dim_customer\"]}[Data]",
+                "in",
+                "    dbo_v_dim_customer"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -452,29 +538,18 @@
         "toTable": "v_dim_date",
         "toColumn": "Date",
         "isActive": false
+      },
+      {
+        "name": "a4fb344c-66d3-4013-bf7e-931090a19b51",
+        "fromTable": "v_fact_balances",
+        "fromColumn": "Customer_Key",
+        "toTable": "v_dim_customer",
+        "toColumn": "Customer_key"
       }
     ],
     "cultures": [
       {
         "name": "en-MU"
-      }
-    ],
-    "roles": [
-      {
-        "name": "Role",
-        "modelPermission": "read",
-        "members": [
-          {
-            "memberName": "Administrator",
-            "memberId": "S-1-5-21-3092496722-774728330-2087076155-500"
-          }
-        ],
-        "tablePermissions": [
-          {
-            "name": "v_dim_account",
-            "filterExpression": "[product_description] = \"Forex Spot\""
-          }
-        ]
       }
     ],
     "annotations": [

@@ -195,17 +195,17 @@ select
 	,u.branch_code
 	,u.BRANCH_NAME
 	,isnull(convert(char(66),HASHBYTES('SHA2_256',concat(
-	u.account_no
-	,u.account_contract_id
-	,u.account_title_1
-	,u.CATEGORY
-	,u.CATEGORY_DESC
-	,u.Currency_Denomination
-	,u.OPENING_DATE
-	,u.MATURITY_DATE
-	,u.CLOSE_DATE
-	,u.branch_code
-	,u.BRANCH_NAME
+		u.account_no
+		,u.account_contract_id
+		,u.account_title_1
+		,u.CATEGORY
+		,u.CATEGORY_DESC
+		,u.Currency_Denomination
+		,u.OPENING_DATE
+		,u.MATURITY_DATE
+		,u.CLOSE_DATE
+		,u.branch_code
+		,u.BRANCH_NAME
 				)),1),0) as Hash_SCD2
 from u
 

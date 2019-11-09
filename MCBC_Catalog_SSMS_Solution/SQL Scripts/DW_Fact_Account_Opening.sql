@@ -1,22 +1,192 @@
-declare @businessdate date = ?
-select * from
-(	
-	select 
-		a.BRANCH_CO_MNE
-		,a.[@ID]
-		,concat(substring(a.OPENING_DATE,1,4),'-',substring(a.OPENING_DATE,5,2),'-',substring(a.OPENING_DATE,7,2)) as DATE
-		,N'Opening' as Action
-	from
-		bs.ACCOUNT a
-	where a.MIS_DATE = a.OPENING_DATE
-union
+Declare @dt date = ?;
+--Declare @dt Date =  '2019-09-30';
+
+with a as(
+/*ACCOUNTS*/
+select 
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,isnull(t.ARRANGEMENT_ID,t.[@ID]) as ACCOUNT_CONTRACT_ID
+	,t.ACCOUNT_TITLE_1
+	,t.CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.CURRENCY as Currency_Denomination
+	,t.CUSTOMER
+	,t.JOINT_HOLDER
+	,cast(t.OPENING_DATE as date) as OPENING_DATE
+	,d.MATURITY_DATE
+	,cl.ACCT_CLOSE_DATE as CLOSE_DATE
+	,t.INACTIV_MARKER
+	--,null as INTEREST
+	--,null as PENALTY_INTEREST
+	--,CASE WHEN Overdrawn_Account.ACCOUNT_ID is not null THEN N'Y' ELSE N'N' END as Overdrawn_Flag
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+from
+	dbo.BNK_ACCOUNT t
+	left join bnk_category c
+		on c.[@id] = t.category
+		and c.mis_date = t.mis_date
+	left join bnk_company co
+		on co.[@id] = t.co_code
+		and co.mis_date = t.mis_date
+	left join BNK_AA_ACCOUNT_DETAILS d
+		on d.MIS_DATE = t.MIS_DATE
+		and d.[@ID] = t.ARRANGEMENT_ID
+	left join BNK_ACCOUNT_CLOSED cl
+		on cl.MIS_DATE = t.MIS_DATE
+		and cl.[@ID] = t.[@ID]
+where 
+	t.MIS_DATE = @dt
+
+),
+
+l as (
+/*LETTER OF CREDIT*/
 	select
-		c.BRANCH_CO_MNE
-		,c.[@ID]
-		,C.ACCT_CLOSE_DATE
-		,N'Closure' as Action
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.[@ID] as account_contract_id
+	,null as account_title
+	,t.CATEGORY_CODE as CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.LC_CURRENCY as Currency_Denomination
+	,t.CON_CUS_LINK as CUSTOMER
+	,null as JOINT_HOLDER
+	,t.ISSUE_DATE as opening_date
+	,t.EXPIRY_DATE as MATURITY_DATE
+	,null as CLOSE_DATE
+	,null as INACTIV_MARKER
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
 	from
-		bs.ACCOUNT_CLOSED c
-	where c.MIS_DATE = c.ACCT_CLOSE_DATE
-) a
-where a.DATE = @businessdate
+		BNK_LETTER_OF_CREDIT t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY_CODE
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where 
+		t.MIS_DATE = @dt
+),
+
+m as (
+/*MONEY MARKET*/
+	select 
+		t.MIS_DATE,
+		t.[@id] as account_no
+		,t.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,t.CATEGORY
+		,c.description as CATEGORY_DESC
+		,t.CURRENCY as Currency_Denomination
+		,t.CUSTOMER_ID as CUSTOMER
+		,null as JOINT_HOLDER
+		,t.DEAL_DATE
+		,isnull(t.ROLLOVER_DATE,t.MATURITY_DATE) as MATURITY_DATE
+		,null as CLOSE_DATE
+		,null as INACTIV_MARKER
+		,t.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_MM_MONEY_MARKET t
+		left join bnk_category c
+			on c.[@id] = t.category
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where t.MIS_DATE = @dt
+),
+
+f as (
+/*FOREX*/
+	select 
+		t.MIS_DATE,
+		t.[@id] as account_no
+		,t.[@ID] as account_contract_id
+		,null as ACCOUNT_TITLE_1
+		,t.CATEGORY_CODE
+		,c.description as CATEGORY_DESC
+		,null as Currency_Denomination
+		,t.COUNTERPARTY as CUSTOMER
+		,null as JOINT_HOLDER
+		,t.DEAL_DATE
+		,case 
+			when t.VALUE_DATE_BUY > t.VALUE_DATE_SELL
+			then t.VALUE_DATE_BUY
+			else t.VALUE_DATE_SELL
+		end as MATURITY_DATE
+		,null as CLOSE_DATE
+		,null as INACTIV_MARKER
+		,t.CO_CODE as BRANCH_CODE
+		,co.COMPANY_NAME as BRANCH_NAME
+
+	from
+		BNK_FOREX t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY_CODE
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where t.MIS_DATE = @dt
+
+),
+
+md as(
+/*MD DEALS*/
+	select
+	t.MIS_DATE
+	,t.[@ID] as account_no
+	,t.[@ID] as account_contract_id
+	,null as account_title
+	,t.CATEGORY
+	,c.description as CATEGORY_DESC
+	,t.CURRENCY as Currency_Denomination
+	,t.CUSTOMER as CUSTOMER
+	,null as JOINT_HOLDER
+	,t.DEAL_DATE as opening_date
+	,t.MATURITY_DATE as MATURITY_DATE
+	,null as CLOSE_DATE
+	,null as INACTIV_MARKER
+	,t.CO_CODE as BRANCH_CODE
+	,co.COMPANY_NAME as BRANCH_NAME
+	--,*
+	from
+		BNK_MD_DEAL t
+		left join bnk_category c
+			on c.[@id] = t.CATEGORY
+			and c.mis_date = t.mis_date
+		left join bnk_company co
+			on co.[@id] = t.co_code
+			and co.mis_date = t.mis_date
+	where 
+		t.MIS_DATE = @dt
+),
+
+u as (
+	select * from a
+	union
+	select * from l
+	union
+	select * from m
+	union
+	select * from f
+	union
+	select * from md
+)
+
+
+select
+	u.OPENING_DATE,
+	u.account_no,
+	u.CUSTOMER
+from u
+
+
+
+
