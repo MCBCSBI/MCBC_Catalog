@@ -459,6 +459,24 @@
         "name": "en-MU"
       }
     ],
+    "roles": [
+      {
+        "name": "Role",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "Administrator",
+            "memberId": "S-1-5-21-3092496722-774728330-2087076155-500"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "v_dim_account",
+            "filterExpression": "[product_description] = \"Forex Spot\""
+          }
+        ]
+      }
+    ],
     "annotations": [
       {
         "name": "ClientCompatibilityLevel",

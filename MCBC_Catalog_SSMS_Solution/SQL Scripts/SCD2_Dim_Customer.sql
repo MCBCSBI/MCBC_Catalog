@@ -1,4 +1,4 @@
-use MCBC_DW_Sey
+--use MCBC_DW_Sey
 drop table if exists SCD2_Dim_Customer
 create table SCD2_Dim_Customer
 (

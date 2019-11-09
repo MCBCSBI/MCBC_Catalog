@@ -1,5 +1,7 @@
 --use insightlanding_sey
-declare @dt date = '2019-09-30';
+
+--declare @dt date = '2019-09-30';
+declare @dt date = ? ;
 
 with c as(
 SELECT 
