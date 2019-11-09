@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Drop and create DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{F3EDF628-C215-4D36-9B5E-79EAE60EE09D}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{835D1016-47B8-4960-8B2F-318D23F5587E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -270,7 +270,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Dimensions\Dim_Account"
               DTS:CreationName="STOCK:SEQUENCE"
               DTS:Description="Sequence Container"
-              DTS:Disabled="True"
               DTS:DTSID="{949F80A3-0FD3-41A8-8B86-E0FF82552B02}"
               DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
@@ -556,7 +555,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL create ctrl table"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -581,7 +580,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL create dim_date"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -606,7 +605,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL Create v_dim_date"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -678,7 +677,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Account"
               DTS:CreationName="STOCK:SEQUENCE"
               DTS:Description="Sequence Container"
-              DTS:Disabled="True"
               DTS:DTSID="{62190B76-DC25-471E-B5B5-5C457A5E5F58}"
               DTS:ExecutableType="STOCK:SEQUENCE"
               DTS:LocaleID="-1"
@@ -907,7 +905,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL drop ctrl table"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -923,7 +921,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL drop dim_date"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -939,7 +937,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL drop v_dim_date"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData

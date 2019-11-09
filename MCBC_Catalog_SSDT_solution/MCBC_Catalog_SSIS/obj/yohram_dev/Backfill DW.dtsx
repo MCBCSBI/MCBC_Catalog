@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="298"
-  DTS:VersionGUID="{47414824-2782-437E-AFCD-8F0E2371DACD}">
+  DTS:VersionBuild="302"
+  DTS:VersionGUID="{ECA07B82-E8A9-4BE5-B4CC-68CB0B2ECADF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -229,6 +229,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim Customer"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
+              DTS:Disabled="True"
               DTS:DTSID="{72ABF681-B004-4D01-A0E7-DE5D051E4492}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -360,7 +361,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim_Account"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
-              DTS:Disabled="True"
               DTS:DTSID="{132de1c2-782e-4327-b8ee-5efde8c61123}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -893,7 +893,7 @@ EXEC (@sql)</DTS:VariableValue>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{671548CD-8576-49C9-868B-AEAAB720CD7E}"
-          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;BNK_ACCOUNT --where mis_date = '2019-09-30'&#xA;order by&#xA;&#x9;MIS_DATE"
+          SQLTask:SqlStatementSource="select distinct &#xA;&#x9;MIS_DATE&#xA;from&#xA;&#x9;BNK_ACCOUNT where mis_date = '2019-09-30'&#xA;order by&#xA;&#x9;MIS_DATE"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -996,7 +996,7 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="161.6,41.6"
           Id="Package\Foreach Loop Container\load dimensions\Dim_Account"
-          TopLeft="29.4563557710116,11.4308811801437" />
+          TopLeft="30.4087367396115,11.4308811801437" />
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\Foreach Loop Container\load dimensions\Dim_Customer_Risk"

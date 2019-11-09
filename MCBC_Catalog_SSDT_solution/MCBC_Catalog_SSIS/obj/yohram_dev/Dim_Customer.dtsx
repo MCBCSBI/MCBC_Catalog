@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="466"
-  DTS:VersionGUID="{548FB55B-1D5B-45AA-AB46-30AC74C6ED40}">
+  DTS:VersionBuild="468"
+  DTS:VersionGUID="{5C4FE0EB-ED1B-456F-896E-70C7BC32F107}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -481,19 +481,6 @@ where [refTable].[Customer_No] = ?</property>
                       externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Hash]"
                       lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[Scd2_Hash]" />
                     <inputColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MIS_DATE]"
-                      cachedDataType="dbDate"
-                      cachedName="MIS_DATE"
-                      externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Start]"
-                      lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]" />
-                    <inputColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CUSTOMER_SINCE]"
-                      cachedDataType="wstr"
-                      cachedLength="35"
-                      cachedName="CUSTOMER_SINCE"
-                      externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Since]"
-                      lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[CUSTOMER_SINCE]" />
-                    <inputColumn
                       refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sector]"
                       cachedDataType="wstr"
                       cachedLength="35"
@@ -514,6 +501,13 @@ where [refTable].[Customer_No] = ?</property>
                       cachedName="Industry"
                       externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Industry]"
                       lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[Industry]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CUSTOMER_SINCE]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="CUSTOMER_SINCE"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Since]"
+                      lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[CUSTOMER_SINCE]" />
                     <inputColumn
                       refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[@ID]"
                       cachedDataType="wstr"
@@ -542,6 +536,12 @@ where [refTable].[Customer_No] = ?</property>
                       cachedName="BRANCH_NAME"
                       externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Branch_Name]"
                       lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[BRANCH_NAME]" />
+                    <inputColumn
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MIS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MIS_DATE"
+                      externalMetadataColumnId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Start]"
+                      lineageId="Package\DF Load Dim_Customer\Union All.Outputs[Union All Output 1].Columns[MIS_DATE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -550,19 +550,15 @@ where [refTable].[Customer_No] = ?</property>
                       dataType="i4"
                       name="Customer_key" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Start]"
-                      dataType="dbDate"
-                      name="Scd2_Start" />
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_No]"
+                      dataType="wstr"
+                      length="10"
+                      name="Customer_No" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_End]"
-                      dataType="dbDate"
-                      name="Scd2_End" />
-                    <externalMetadataColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Hash]"
-                      codePage="1252"
-                      dataType="str"
-                      length="66"
-                      name="Scd2_Hash" />
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Name]"
+                      dataType="wstr"
+                      length="150"
+                      name="Customer_Name" />
                     <externalMetadataColumn
                       refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sector]"
                       dataType="wstr"
@@ -579,30 +575,34 @@ where [refTable].[Customer_No] = ?</property>
                       length="35"
                       name="Industry" />
                     <externalMetadataColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Since]"
-                      dataType="wstr"
-                      length="35"
-                      name="Customer_Since" />
-                    <externalMetadataColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_No]"
-                      dataType="wstr"
-                      length="10"
-                      name="Customer_No" />
-                    <externalMetadataColumn
-                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Name]"
-                      dataType="wstr"
-                      length="100"
-                      name="Customer_Name" />
-                    <externalMetadataColumn
                       refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Branch_Code]"
                       dataType="wstr"
-                      length="9"
+                      length="11"
                       name="Customer_Branch_Code" />
                     <externalMetadataColumn
                       refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Branch_Name]"
                       dataType="wstr"
                       length="75"
                       name="Customer_Branch_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Since]"
+                      dataType="wstr"
+                      length="35"
+                      name="Customer_Since" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Start]"
+                      dataType="dbDate"
+                      name="Scd2_Start" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_End]"
+                      dataType="dbDate"
+                      name="Scd2_End" />
+                    <externalMetadataColumn
+                      refId="Package\DF Load Dim_Customer\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scd2_Hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="66"
+                      name="Scd2_Hash" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1713,9 +1713,7 @@ from c</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{06A3317A-172E-45C8-8F41-DA4445D9569D}"
-      DTS:EvalOp="3"
-      DTS:Expression="@[User::v_LastDateLoaded] != @[$Package::v_Backfill_Date_To_Load]"
+      DTS:DTSID="{910854D8-96B5-43CA-B002-F18301F39AC3}"
       DTS:From="Package\SQL Get last date loaded from Ctrl table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
@@ -1732,9 +1730,9 @@ from c</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190.4,42.4"
+          Size="189.6,41.6"
           Id="Package\DF Load Dim_Customer"
           TopLeft="208.13194201815,239.213653678261" />
         <NodeLayout
@@ -1759,30 +1757,30 @@ from c</property>
           TopLeft="463.154749977371,235.941822027037" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="380.55653831618,186.459307359322">
+          TopLeft="380.55653831618,186.192640692655">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-77.0912629646967,52.754346318939"
+              EndConnector="-77.62459629803,53.021012985606"
               Start="0,0"
-              End="-77.0912629646967,45.254346318939">
+              End="-77.62459629803,45.521012985606">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.3771731594695" />
+                    End="0,22.510506492803" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.3771731594695"
-                    Point2="0,26.3771731594695"
-                    Point3="-4,26.3771731594695" />
+                    Point1="0,22.510506492803"
+                    Point2="0,26.510506492803"
+                    Point3="-4,26.510506492803" />
                   <mssgle:LineSegment
-                    End="-73.0912629646967,26.3771731594695" />
+                    End="-73.62459629803,26.510506492803" />
                   <mssgle:CubicBezierSegment
-                    Point1="-73.0912629646967,26.3771731594695"
-                    Point2="-77.0912629646967,26.3771731594695"
-                    Point3="-77.0912629646967,30.3771731594695" />
+                    Point1="-73.62459629803,26.510506492803"
+                    Point2="-77.62459629803,26.510506492803"
+                    Point3="-77.62459629803,30.510506492803" />
                   <mssgle:LineSegment
-                    End="-77.0912629646967,45.254346318939" />
+                    End="-77.62459629803,45.521012985606" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1793,18 +1791,18 @@ from c</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="398.798608684817,258.911071185982">
+          TopLeft="397.73194201815,258.577737852649">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64.3561412925545,0"
+              EndConnector="65.4228079592211,0"
               Start="0,0"
-              End="56.8561412925545,0">
+              End="57.9228079592211,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="56.8561412925545,0" />
+                    End="57.9228079592211,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1883,13 +1881,13 @@ from c</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="299.298605699972,107.34698343812">
+          TopLeft="299.298605699972,107.213650104786">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="81.2579326162079,36.4456572545358"
+              EndConnector="81.2579326162079,36.5789905878688"
               Start="0,0"
-              End="81.2579326162079,28.9456572545358">
+              End="81.2579326162079,29.0789905878688">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1900,15 +1898,13 @@ from c</property>
                     Point2="81.2579326162079,0"
                     Point3="81.2579326162079,4" />
                   <mssgle:LineSegment
-                    End="81.2579326162079,28.9456572545358" />
+                    End="81.2579326162079,29.0789905878688" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="73.2579326162079,-22,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1920,13 +1916,13 @@ from c</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="120,41.6"
+          Id="Package\DF Load Dim_Customer\Union All"
+          TopLeft="385.714292282961,326.591600946784" />
+        <NodeLayout
           Size="296,42.4"
           Id="Package\DF Load Dim_Customer\LKP lookup landing against existing dimension"
           TopLeft="298.928575854064,227.962932182341" />
-        <NodeLayout
-          Size="172,42.4"
-          Id="Package\DF Load Dim_Customer\OLE DB Destination"
-          TopLeft="324.523815058019,491.352947815067" />
         <NodeLayout
           Size="252,41.6"
           Id="Package\DF Load Dim_Customer\MLT dupicate type 2 change streams"
@@ -1936,71 +1932,13 @@ from c</property>
           Id="Package\DF Load Dim_Customer\OLE_SRC Get Data From landing"
           TopLeft="39.6904768397921,38.6079370342554" />
         <NodeLayout
-          Size="296,41.6"
-          Id="Package\DF Load Dim_Customer\OLE_DST write type 2 changes to type 2 table"
-          TopLeft="666.190487535632,491.352947815067" />
-        <NodeLayout
           Size="236.8,41.6"
           Id="Package\DF Load Dim_Customer\CSPL check old hash vs new hash"
           TopLeft="700.00001192093,140.392158607299" />
-        <EdgeLayout
-          Id="Package\DF Load Dim_Customer.Paths[Multicast Output 2]"
-          TopLeft="815.137766641156,368.191600946784">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,123.161346868283"
-              Start="0,0"
-              End="0,115.661346868283">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,115.661346868283" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Load Dim_Customer.Paths[Lookup Match Output]"
-          TopLeft="494.928575854064,227.962932182341">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="285.338102733533,-45.970773575042"
-              Start="0,0"
-              End="285.338102733533,-38.470773575042">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-18.9471415516016" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-18.9471415516016"
-                    Point2="0,-22.9471415516016"
-                    Point3="4,-22.9471415516016" />
-                  <mssgle:LineSegment
-                    End="281.338102733533,-22.9471415516016" />
-                  <mssgle:CubicBezierSegment
-                    Point1="281.338102733533,-22.9471415516016"
-                    Point2="285.338102733533,-22.9471415516016"
-                    Point3="285.338102733533,-26.9471415516016" />
-                  <mssgle:LineSegment
-                    End="285.338102733533,-38.470773575042" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="94.4776646480164,-17.9471415516016,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="296,41.6"
+          Id="Package\DF Load Dim_Customer\OLE_DST write type 2 changes to type 2 table"
+          TopLeft="666.190487535632,491.352947815067" />
         <EdgeLayout
           Id="Package\DF Load Dim_Customer.Paths[Type 2 Change]"
           TopLeft="856.533345254263,181.992158607299">
@@ -2071,32 +2009,26 @@ from c</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\DF Load Dim_Customer\Union All"
-          TopLeft="385.714292282961,326.591600946784" />
         <EdgeLayout
-          Id="Package\DF Load Dim_Customer.Paths[Lookup No Match Output]"
-          TopLeft="446.321434068512,270.362932182341">
+          Id="Package\DF Load Dim_Customer.Paths[Multicast Output 2]"
+          TopLeft="815.137766641156,368.191600946784">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.2286687644431"
+              EndConnector="0,123.161346868283"
               Start="0,0"
-              End="0,48.7286687644431">
+              End="0,115.661346868283">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.7286687644431" />
+                    End="0,115.661346868283" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,18.5596468822215,111.6127734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2122,31 +2054,95 @@ from c</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DF Load Dim_Customer.Paths[Lookup No Match Output]"
+          TopLeft="446.321434068512,270.362932182341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.2286687644431"
+              Start="0,0"
+              End="0,48.7286687644431">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.7286687644431" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,18.5596468822215,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Load Dim_Customer.Paths[Lookup Match Output]"
+          TopLeft="494.928575854064,227.962932182341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="285.338102733533,-45.970773575042"
+              Start="0,0"
+              End="285.338102733533,-38.470773575042">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.9471415516016" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.9471415516016"
+                    Point2="0,-22.9471415516016"
+                    Point3="4,-22.9471415516016" />
+                  <mssgle:LineSegment
+                    End="281.338102733533,-22.9471415516016" />
+                  <mssgle:CubicBezierSegment
+                    Point1="281.338102733533,-22.9471415516016"
+                    Point2="285.338102733533,-22.9471415516016"
+                    Point3="285.338102733533,-26.9471415516016" />
+                  <mssgle:LineSegment
+                    End="285.338102733533,-38.470773575042" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="94.4776646480164,-17.9471415516016,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DF Load Dim_Customer\OLE DB Destination"
+          TopLeft="341.224495606937,493.781519530141" />
+        <EdgeLayout
           Id="Package\DF Load Dim_Customer.Paths[Union All Output 1]"
           TopLeft="445.714292282961,368.191600946784">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-35.1904772249419,123.161346868283"
+              EndConnector="-19.2897966760241,125.589918583357"
               Start="0,0"
-              End="-35.1904772249419,115.661346868283">
+              End="-19.2897966760241,118.089918583357">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5806734341415" />
+                    End="0,58.7949592916786" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,57.5806734341415"
-                    Point2="0,61.5806734341415"
-                    Point3="-4,61.5806734341415" />
+                    Point1="0,58.7949592916786"
+                    Point2="0,62.7949592916786"
+                    Point3="-4,62.7949592916786" />
                   <mssgle:LineSegment
-                    End="-31.1904772249419,61.5806734341415" />
+                    End="-15.2897966760241,62.7949592916786" />
                   <mssgle:CubicBezierSegment
-                    Point1="-31.1904772249419,61.5806734341415"
-                    Point2="-35.1904772249419,61.5806734341415"
-                    Point3="-35.1904772249419,65.5806734341415" />
+                    Point1="-15.2897966760241,62.7949592916786"
+                    Point2="-19.2897966760241,62.7949592916786"
+                    Point3="-19.2897966760241,66.7949592916786" />
                   <mssgle:LineSegment
-                    End="-35.1904772249419,115.661346868283" />
+                    End="-19.2897966760241,118.089918583357" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2182,7 +2178,15 @@ from c</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load Dim_Customer\OLE DB Destination">
+    design-time-name="Package\DF Load Dim_Customer\OLE_SRC Get Data From landing">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Load Dim_Customer\OLE_DST write type 2 changes to type 2 table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2195,15 +2199,7 @@ from c</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Load Dim_Customer\OLE_SRC Get Data From landing">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF Load Dim_Customer\OLE_DST write type 2 changes to type 2 table">
+    design-time-name="Package\DF Load Dim_Customer\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

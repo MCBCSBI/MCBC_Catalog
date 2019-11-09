@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Master Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="144"
-  DTS:VersionGUID="{D4E9CB0A-E1A7-4E04-A09B-5DAD6FF580AB}">
+  DTS:VersionBuild="145"
+  DTS:VersionGUID="{1DE8A70C-D4C2-460F-9864-5BA3F2DC3520}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -63,6 +63,7 @@
       DTS:refId="Package\Drop and create DW"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{D6655DBB-D62C-4FB7-8077-846050CBCD15}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
