@@ -18,12 +18,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Master Package.dtsx</Name>
-      <LastWriteTime>2019-11-09T10:34:51.2946291Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T17:03:00.6723109Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Backfill DW.dtsx</Name>
-      <LastWriteTime>2019-11-09T10:35:26.9476484Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T17:03:18.3532051Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -33,12 +33,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact Balances.dtsx</Name>
-      <LastWriteTime>2019-11-09T10:27:27.0619292Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T16:33:26.7253136Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Account.dtsx</Name>
-      <LastWriteTime>2019-11-09T07:13:50.2719188Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T16:32:54.4083354Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -58,7 +58,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Customer.dtsx</Name>
-      <LastWriteTime>2019-11-09T10:34:40.5896286Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T16:32:52.5901794Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -163,7 +163,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Drop and create DW.dtsx</Name>
-      <LastWriteTime>2019-11-09T10:28:12.6094619Z</LastWriteTime>
+      <LastWriteTime>2019-11-09T17:02:45.5227011Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>

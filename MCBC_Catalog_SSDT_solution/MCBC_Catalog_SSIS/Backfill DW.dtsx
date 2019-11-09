@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Backfill DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="302"
-  DTS:VersionGUID="{ECA07B82-E8A9-4BE5-B4CC-68CB0B2ECADF}">
+  DTS:VersionBuild="304"
+  DTS:VersionGUID="{EC6933F1-A4D8-4268-91E0-6CB54D62175A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -229,7 +229,6 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Foreach Loop Container\load dimensions\Dim Customer"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
-              DTS:Disabled="True"
               DTS:DTSID="{72ABF681-B004-4D01-A0E7-DE5D051E4492}"
               DTS:ExecutableType="Microsoft.ExecutePackageTask"
               DTS:LocaleID="-1"
@@ -972,7 +971,7 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="146.4,42.4"
           Id="Package\Foreach Loop Container\load dimensions\Dim Customer"
-          TopLeft="252.536708005071,8.40071522798206" />
+          TopLeft="252.536708005071,9.42032308541883" />
         <NodeLayout
           Size="152,42.4"
           Id="Package\Foreach Loop Container\load dimensions\dim gl mapping"

@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="10"
   DTS:ObjectName="Dim_Customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="468"
-  DTS:VersionGUID="{5C4FE0EB-ED1B-456F-896E-70C7BC32F107}">
+  DTS:VersionBuild="469"
+  DTS:VersionGUID="{75F864B4-A18C-4893-A230-C98BFDA7F85F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -1714,6 +1714,8 @@ from c</property>
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
       DTS:DTSID="{910854D8-96B5-43CA-B002-F18301F39AC3}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[$Package::v_Backfill_Date_To_Load]&gt; @[User::v_LastDateLoaded]"
       DTS:From="Package\SQL Get last date loaded from Ctrl table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
@@ -1730,7 +1732,7 @@ from c</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="189.6,41.6"
           Id="Package\DF Load Dim_Customer"
@@ -1904,7 +1906,9 @@ from c</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="73.2579326162079,-22,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

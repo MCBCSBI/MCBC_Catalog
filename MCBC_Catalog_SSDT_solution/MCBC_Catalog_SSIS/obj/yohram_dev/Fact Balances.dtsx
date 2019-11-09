@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Fact Balances"
   DTS:PackageType="5"
-  DTS:VersionBuild="112"
-  DTS:VersionGUID="{C3DC54D2-312B-482C-A55B-76775938BB2E}">
+  DTS:VersionBuild="114"
+  DTS:VersionGUID="{C12C756C-6FB3-43AA-9044-CA860924C9D9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -146,7 +146,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="v_Last_Date_Loaded">
       <DTS:VariableValue
-        DTS:DataType="7">6/2/2019 11:29:21 AM</DTS:VariableValue>
+        DTS:DataType="7">6/2/2019 11:29:00 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2121,6 +2121,8 @@ where
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{8CA814C6-8729-43AC-B1FE-FD0EDF0A66B1}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[$Package::v_Backfill_Date_To_Load]&gt; @[User::v_Last_Date_Loaded]"
       DTS:From="Package\SQL Get last date loaded from Ctrl table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -2145,7 +2147,7 @@ where
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184.8,42.4"
           Id="Package\DF Load fact_balances"
@@ -2189,7 +2191,9 @@ where
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-22.0477038303129,34.7063927371901,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

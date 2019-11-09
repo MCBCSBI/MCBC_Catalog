@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Drop and create DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{835D1016-47B8-4960-8B2F-318D23F5587E}">
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{ED3584FE-8085-45C5-8935-661B73447867}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -285,7 +285,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:MaxErrorCount="0"
                   DTS:ObjectName="SQL create dim_account"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -310,7 +310,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:MaxErrorCount="0"
                   DTS:ObjectName="SQL create scd2_dim_account"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -335,7 +335,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:MaxErrorCount="0"
                   DTS:ObjectName="SQL create v_dim_account"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -390,7 +390,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:MaxErrorCount="0"
                   DTS:ObjectName="SQL create dim_customer"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -415,7 +415,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:MaxErrorCount="0"
                   DTS:ObjectName="SQL create scd2_dim_customer"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -440,7 +440,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:MaxErrorCount="0"
                   DTS:ObjectName="SQL create v_dim_customer"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -555,7 +555,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL create ctrl table"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -575,12 +575,13 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Utilities\SQL create dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
+              DTS:Disabled="True"
               DTS:DTSID="{458c28bc-b8c8-4223-b138-749e5800836a}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL create dim_date"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -600,12 +601,13 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Create Dw\Create Utilities\SQL Create v_dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
+              DTS:Disabled="True"
               DTS:DTSID="{eae29382-eb12-4d90-8bd6-0d55c810f7a8}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="0"
               DTS:ObjectName="SQL Create v_dim_date"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -691,7 +693,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:ExecutableType="Microsoft.ExecuteSQLTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL drop dim_account"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -707,7 +709,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:ExecutableType="Microsoft.ExecuteSQLTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL drop scd2_dim_account"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -723,12 +725,28 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:ExecutableType="Microsoft.ExecuteSQLTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL drop v_dim_account"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
                       SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
                       SQLTask:SqlStatementSource="drop view if exists v_dim_account" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Account\SQL Update Ctrl Table dim account"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{C7FB12A6-C57C-476B-AF4E-4730C1B5E9C8}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Update Ctrl Table dim account"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="update Control_Table&#xA;set Last_Execution_Date = '1900-01-01',Last_Date_Loaded = '1900-01-01'&#xA;where Table_name = 'dim_account'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
                   </DTS:ObjectData>
                 </DTS:Executable>
               </DTS:Executables>
@@ -749,6 +767,14 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LogicalAnd="True"
                   DTS:ObjectName="Constraint 1"
                   DTS:To="Package\Drop DW\Drop Dimensions\Dim_Account\SQL drop v_dim_account" />
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Account.PrecedenceConstraints[Constraint 2]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{DD01F927-CF88-483A-99B3-E84DCEDF2E9E}"
+                  DTS:From="Package\Drop DW\Drop Dimensions\Dim_Account\SQL drop v_dim_account"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint 2"
+                  DTS:To="Package\Drop DW\Drop Dimensions\Dim_Account\SQL Update Ctrl Table dim account" />
               </DTS:PrecedenceConstraints>
             </DTS:Executable>
             <DTS:Executable
@@ -769,7 +795,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:ExecutableType="Microsoft.ExecuteSQLTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL drop dim_customer"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -785,7 +811,7 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:ExecutableType="Microsoft.ExecuteSQLTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL drop scd2_dim_customer"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -801,12 +827,28 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:ExecutableType="Microsoft.ExecuteSQLTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL drop v_dim_customer"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
                       SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
                       SQLTask:SqlStatementSource="drop view if exists v_dim_customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL Update Ctrl Table dim customer"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{ac5dfd72-9fbb-44e6-a4e9-1d1da68b91ad}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Update Ctrl Table dim customer"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                      SQLTask:SqlStatementSource="update Control_Table&#xA;set Last_Execution_Date = '1900-01-01',Last_Date_Loaded = '1900-01-01'&#xA;where Table_name = 'dim_customer'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
                   </DTS:ObjectData>
                 </DTS:Executable>
               </DTS:Executables>
@@ -827,6 +869,14 @@ EXEC (@sql)</DTS:VariableValue>
                   DTS:LogicalAnd="True"
                   DTS:ObjectName="Constraint 1"
                   DTS:To="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL drop v_dim_customer" />
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Drop DW\Drop Dimensions\Dim_Customer.PrecedenceConstraints[Constraint 2]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{2221413E-FD0A-419E-B832-E51D15458866}"
+                  DTS:From="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL drop v_dim_customer"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint 2"
+                  DTS:To="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL Update Ctrl Table dim customer" />
               </DTS:PrecedenceConstraints>
             </DTS:Executable>
           </DTS:Executables>
@@ -873,6 +923,22 @@ EXEC (@sql)</DTS:VariableValue>
                   SQLTask:SqlStatementSource="drop view if exists v_fact_balances" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Drop DW\Drop Facts\SQL Update Ctrl Table fact balances"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{98aa740c-7b1a-4702-a9b5-4a2f7731a6bf}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Update Ctrl Table fact balances"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+                  SQLTask:SqlStatementSource="update Control_Table&#xA;set Last_Execution_Date = '1900-01-01',Last_Date_Loaded = '1900-01-01'&#xA;where Table_name = 'fact_balances'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
           </DTS:Executables>
           <DTS:PrecedenceConstraints>
             <DTS:PrecedenceConstraint
@@ -883,6 +949,14 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\Drop DW\Drop Facts\SQL drop v_fact_balances" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Drop DW\Drop Facts.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{56EE2E54-FAB6-4303-A774-15F97CCFF6E0}"
+              DTS:From="Package\Drop DW\Drop Facts\SQL drop v_fact_balances"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Drop DW\Drop Facts\SQL Update Ctrl Table fact balances" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
@@ -917,6 +991,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Utilities\SQL drop dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
+              DTS:Disabled="True"
               DTS:DTSID="{2d6491f5-a2bb-44f1-8641-00d26f09e337}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
@@ -933,6 +1008,7 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:refId="Package\Drop DW\Drop Utilities\SQL drop v_dim_date"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
+              DTS:Disabled="True"
               DTS:DTSID="{715091f9-486a-4cf8-8921-fcc17e776bcd}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
@@ -957,6 +1033,22 @@ EXEC (@sql)</DTS:VariableValue>
               DTS:To="Package\Drop DW\Drop Utilities\SQL drop v_dim_date" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Drop DW\SQL wipe has_data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EE5CC074-9886-45E6-9129-52D712126D52}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL wipe has_data"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{CE6FF6DE-331C-4BE3-9522-4F58AE92722B}"
+              SQLTask:SqlStatementSource="update Dim_Date&#xA;set Has_Data = null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -975,6 +1067,14 @@ EXEC (@sql)</DTS:VariableValue>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Drop DW\Drop Dimensions" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Drop DW.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{D2DBEAE8-929F-4144-9C9F-C2F53BB4EA75}"
+          DTS:From="Package\Drop DW\Drop Utilities"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Drop DW\SQL wipe has_data" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -1222,21 +1322,21 @@ EXEC (@sql)</DTS:VariableValue>
           PanelSize="702.4,118.4"
           Size="702.4,161.6"
           Id="Package\Create Dw\Create Utilities"
-          TopLeft="32.3095153211838,2.83753388169316" />
+          TopLeft="32.309515321184,3.7114834737819" />
         <EdgeLayout
           Id="Package\Create Dw.PrecedenceConstraints[Constraint]"
-          TopLeft="383.962491184651,164.437533881693">
+          TopLeft="383.962491184652,165.311483473782">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26.3033648575189"
+              EndConnector="0,25.4294152654301"
               Start="0,0"
-              End="0,18.8033648575189">
+              End="0,17.9294152654301">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.8033648575189" />
+                    End="0,17.9294152654301" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1297,7 +1397,7 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="145.6,42.4"
           Id="Package\Drop DW\Drop Dimensions\Dim_Account\SQL drop v_dim_account"
-          TopLeft="472.12935669524,5.5" />
+          TopLeft="471.313030150726,6.37394959208859" />
         <EdgeLayout
           Id="Package\Drop DW\Drop Dimensions\Dim_Account.PrecedenceConstraints[Constraint]"
           TopLeft="179.58174470251,27.3117647144621">
@@ -1322,18 +1422,50 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Drop DW\Drop Dimensions\Dim_Account.PrecedenceConstraints[Constraint 1]"
-          TopLeft="407.430946172871,26.8333333333333">
+          TopLeft="407.430946172871,27.1369747960443">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64.6984105223694,0"
+              EndConnector="63.8820839778547,0"
               Start="0,0"
-              End="57.1984105223694,0">
+              End="56.3820839778547,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="57.1984105223694,0" />
+                    End="56.3820839778547,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Drop DW\Drop Dimensions\Dim_Account\SQL Update Ctrl Table dim account"
+          TopLeft="346.724495606937,70.5352928306818" />
+        <EdgeLayout
+          Id="Package\Drop DW\Drop Dimensions\Dim_Account.PrecedenceConstraints[Constraint 2]"
+          TopLeft="471.313030150726,33.3072829254219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-2.98853454378883,37.2280099052599"
+              Start="0,0"
+              End="-2.98853454378883,29.7280099052599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="1.01146545621117,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="1.01146545621117,0"
+                    Point2="-2.98853454378883,0"
+                    Point3="-2.98853454378883,4" />
+                  <mssgle:LineSegment
+                    End="-2.98853454378883,29.7280099052599" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1345,10 +1477,10 @@ EXEC (@sql)</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="624.8,104"
-          Size="624.8,147.2"
+          PanelSize="624.8,167.2"
+          Size="624.8,210.4"
           Id="Package\Drop DW\Drop Dimensions\Dim_Account"
-          TopLeft="15.3401385636092,17.2935620075278" />
+          TopLeft="15.3401385636092,18.5170914364521" />
         <NodeLayout
           Size="192,41.6"
           Id="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL drop dim_customer"
@@ -1360,7 +1492,7 @@ EXEC (@sql)</DTS:VariableValue>
         <NodeLayout
           Size="145.6,42.4"
           Id="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL drop v_dim_customer"
-          TopLeft="472.12935669524,5.5" />
+          TopLeft="472.945683239754,6.37394959208882" />
         <EdgeLayout
           Id="Package\Drop DW\Drop Dimensions\Dim_Customer.PrecedenceConstraints[Constraint]"
           TopLeft="188.38174470251,27.1117647144621">
@@ -1385,18 +1517,56 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Drop DW\Drop Dimensions\Dim_Customer.PrecedenceConstraints[Constraint 1]"
-          TopLeft="407.430946172871,26.8333333333333">
+          TopLeft="407.430946172871,27.1369747960444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64.6984105223694,0"
+              EndConnector="65.5147370668832,0"
               Start="0,0"
-              End="57.1984105223694,0">
+              End="58.0147370668832,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="57.1984105223694,0" />
+                    End="58.0147370668832,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Drop DW\Drop Dimensions\Dim_Customer\SQL Update Ctrl Table dim customer"
+          TopLeft="332.561342141734,73.3655457453744" />
+        <EdgeLayout
+          Id="Package\Drop DW\Drop Dimensions\Dim_Customer.PrecedenceConstraints[Constraint 2]"
+          TopLeft="545.745683239754,48.7739495920888">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91.5843410980203,24.5915961532856"
+              Start="0,0"
+              End="-91.5843410980203,17.0915961532856">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.29579807664281" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.29579807664281"
+                    Point2="0,12.2957980766428"
+                    Point3="-4,12.2957980766428" />
+                  <mssgle:LineSegment
+                    End="-87.5843410980203,12.2957980766428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-87.5843410980203,12.2957980766428"
+                    Point2="-91.5843410980203,12.2957980766428"
+                    Point3="-91.5843410980203,16.2957980766428" />
+                  <mssgle:LineSegment
+                    End="-91.5843410980203,17.0915961532856" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1408,17 +1578,17 @@ EXEC (@sql)</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="624.8,104"
-          Size="624.8,147.2"
+          PanelSize="624.8,148.8"
+          Size="624.8,192"
           Id="Package\Drop DW\Drop Dimensions\Dim_Customer"
-          TopLeft="26.7687101868083,174.022974522963" />
+          TopLeft="22.8503427731402,263.340622834433" />
         <ContainerLayout
-          HeaderHeight="43"
+          HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="713.6,388"
-          Size="713.6,431.2"
+          PanelSize="706.4,506.4"
+          Size="706.4,549.6"
           Id="Package\Drop DW\Drop Dimensions"
-          TopLeft="15.1169669533883,210.751948932924" />
+          TopLeft="13.9741097910684,210.751948932924" />
         <NodeLayout
           Size="189.6,41.6"
           Id="Package\Drop DW\Drop Facts\SQL drop fact_balances"
@@ -1449,28 +1619,54 @@ EXEC (@sql)</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="172.8,43.2"
+          Id="Package\Drop DW\Drop Facts\SQL Update Ctrl Table fact balances"
+          TopLeft="510.267996175393,16.4974592126945" />
+        <EdgeLayout
+          Id="Package\Drop DW\Drop Facts.PrecedenceConstraints[Constraint 1]"
+          TopLeft="470.497970458162,35.4840239997726">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.7700257172311,0"
+              Start="0,0"
+              End="32.2700257172311,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="32.2700257172311,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
-          HeaderHeight="43"
+          HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="507.2,104.8"
-          Size="507.2,148"
+          PanelSize="738.4,131.2"
+          Size="738.4,174.4"
           Id="Package\Drop DW\Drop Facts"
-          TopLeft="22.5561075776898,5.50000000000003" />
+          TopLeft="23.6989647400097,6.72352942892428" />
         <NodeLayout
           Size="168,42.4"
           Id="Package\Drop DW\Drop Utilities\SQL drop ctrl table"
-          TopLeft="12.9761911768998,11.7142865777015" />
+          TopLeft="12.9761911768998,10.4907571487773" />
         <NodeLayout
           Size="170.4,42.4"
           Id="Package\Drop DW\Drop Utilities\SQL drop dim_date"
-          TopLeft="206.658729760268,18.4472366456231" />
+          TopLeft="206.658729760268,17.2237072166989" />
         <NodeLayout
           Size="180,41.6"
           Id="Package\Drop DW\Drop Utilities\SQL drop v_dim_date"
-          TopLeft="215.833337488679,109.631550213818" />
+          TopLeft="215.833337488679,108.408020784894" />
         <EdgeLayout
           Id="Package\Drop DW\Drop Utilities.PrecedenceConstraints[Constraint]"
-          TopLeft="291.858729760268,60.8472366456231">
+          TopLeft="291.858729760268,59.6237072166989">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1481,17 +1677,17 @@ EXEC (@sql)</DTS:VariableValue>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3921567840972" />
+                    End="0,20.3921567840973" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.3921567840972"
-                    Point2="0,24.3921567840972"
-                    Point3="4,24.3921567840972" />
+                    Point1="0,20.3921567840973"
+                    Point2="0,24.3921567840973"
+                    Point3="4,24.3921567840973" />
                   <mssgle:LineSegment
-                    End="9.97460772841129,24.3921567840972" />
+                    End="9.97460772841134,24.3921567840973" />
                   <mssgle:CubicBezierSegment
-                    Point1="9.97460772841129,24.3921567840972"
-                    Point2="13.9746077284113,24.3921567840972"
-                    Point3="13.9746077284113,28.3921567840972" />
+                    Point1="9.97460772841134,24.3921567840973"
+                    Point2="13.9746077284113,24.3921567840973"
+                    Point3="13.9746077284113,28.3921567840973" />
                   <mssgle:LineSegment
                     End="13.9746077284113,41.2843135681944" />
                 </mssgle:SegmentCollection>
@@ -1503,38 +1699,38 @@ EXEC (@sql)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
-          HeaderHeight="43"
+          HeaderHeight="43.2"
           IsExpanded="True"
           PanelSize="482.4,218.4"
           Size="482.4,261.6"
           Id="Package\Drop DW\Drop Utilities"
-          TopLeft="153.107138978913,788.941171350835" />
+          TopLeft="16.6989733905892,918.766383255618" />
         <EdgeLayout
           Id="Package\Drop DW.PrecedenceConstraints[Constraint]"
-          TopLeft="371.916966953388,641.951948932924">
+          TopLeft="367.174109791068,760.351948932924">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="22.3901720255242,146.989222417911"
+              EndConnector="-109.275136400479,158.414434322694"
               Start="0,0"
-              End="22.3901720255242,139.489222417911">
+              End="-109.275136400479,150.914434322694">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.4946112089554" />
+                    End="0,75.2072171613471" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,69.4946112089554"
-                    Point2="0,73.4946112089554"
-                    Point3="4,73.4946112089554" />
+                    Point1="0,75.2072171613471"
+                    Point2="0,79.2072171613471"
+                    Point3="-4,79.2072171613471" />
                   <mssgle:LineSegment
-                    End="18.3901720255242,73.4946112089554" />
+                    End="-105.275136400479,79.2072171613471" />
                   <mssgle:CubicBezierSegment
-                    Point1="18.3901720255242,73.4946112089554"
-                    Point2="22.3901720255242,73.4946112089554"
-                    Point3="22.3901720255242,77.4946112089554" />
+                    Point1="-105.275136400479,79.2072171613471"
+                    Point2="-109.275136400479,79.2072171613471"
+                    Point3="-109.275136400479,83.2072171613471" />
                   <mssgle:LineSegment
-                    End="22.3901720255242,139.489222417911" />
+                    End="-109.275136400479,150.914434322694" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1545,30 +1741,68 @@ EXEC (@sql)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Drop DW.PrecedenceConstraints[Constraint 1]"
-          TopLeft="276.15610757769,153.5">
+          TopLeft="392.89896474001,181.123529428924">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.7608593756985,57.251948932924"
+              EndConnector="-25.7248549489412,29.6284195039996"
               Start="0,0"
-              End="95.7608593756985,49.751948932924">
+              End="-25.7248549489412,22.1284195039996">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.625974466462" />
+                    End="0,10.8142097519998" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.625974466462"
-                    Point2="0,28.625974466462"
-                    Point3="4,28.625974466462" />
+                    Point1="0,10.8142097519998"
+                    Point2="0,14.8142097519998"
+                    Point3="-4,14.8142097519998" />
                   <mssgle:LineSegment
-                    End="91.7608593756985,28.625974466462" />
+                    End="-21.7248549489412,14.8142097519998" />
                   <mssgle:CubicBezierSegment
-                    Point1="91.7608593756985,28.625974466462"
-                    Point2="95.7608593756985,28.625974466462"
-                    Point3="95.7608593756985,32.625974466462" />
+                    Point1="-21.7248549489412,14.8142097519998"
+                    Point2="-25.7248549489412,14.8142097519998"
+                    Point3="-25.7248549489412,18.8142097519998" />
                   <mssgle:LineSegment
-                    End="95.7608593756985,49.751948932924" />
+                    End="-25.7248549489412,22.1284195039996" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Drop DW\SQL wipe has_data"
+          TopLeft="557.342868078485,1046.95295802499" />
+        <EdgeLayout
+          Id="Package\Drop DW.PrecedenceConstraints[Constraint 2]"
+          TopLeft="499.098973390589,1049.56638325562">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.2438946878958,18.1865747693744"
+              Start="0,0"
+              End="50.7438946878958,18.1865747693744">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.1219473439479,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.1219473439479,0"
+                    Point2="29.1219473439479,0"
+                    Point3="29.1219473439479,4" />
+                  <mssgle:LineSegment
+                    End="29.1219473439479,14.1865747693744" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.1219473439479,14.1865747693744"
+                    Point2="29.1219473439479,18.1865747693744"
+                    Point3="33.1219473439479,18.1865747693744" />
+                  <mssgle:LineSegment
+                    End="50.7438946878958,18.1865747693744" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1580,19 +1814,19 @@ EXEC (@sql)</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="790.4,1105.6"
-          Size="790.4,1148.8"
+          PanelSize="790.4,1253.6"
+          Size="790.4,1296.8"
           Id="Package\Drop DW"
           TopLeft="85.1587288897661,111.543883238565" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="875.558728889766,685.943883238565">
+          TopLeft="875.558728889766,759.943883238565">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="81.8354393777628,-45.9888875520699"
+              EndConnector="81.8354393777628,-119.98888755207"
               Start="0,0"
-              End="74.3354393777628,-45.9888875520699">
+              End="74.3354393777628,-119.98888755207">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1603,13 +1837,13 @@ EXEC (@sql)</DTS:VariableValue>
                     Point2="40.9177196888814,0"
                     Point3="40.9177196888814,-4" />
                   <mssgle:LineSegment
-                    End="40.9177196888814,-41.9888875520699" />
+                    End="40.9177196888814,-115.98888755207" />
                   <mssgle:CubicBezierSegment
-                    Point1="40.9177196888814,-41.9888875520699"
-                    Point2="40.9177196888814,-45.9888875520699"
-                    Point3="44.9177196888814,-45.9888875520699" />
+                    Point1="40.9177196888814,-115.98888755207"
+                    Point2="40.9177196888814,-119.98888755207"
+                    Point3="44.9177196888814,-119.98888755207" />
                   <mssgle:LineSegment
-                    End="74.3354393777628,-45.9888875520699" />
+                    End="74.3354393777628,-119.98888755207" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
